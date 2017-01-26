@@ -1,0 +1,82 @@
+https://www.mirantis.com/blog/openstack-security-tip-create-a-keypair-for-accessing-vms
+https://gitlab.i13.in.tum.de/christoph_doblander/i13-cluster/wikis/openvpn
+https://openstack.cluster.msrg.in.tum.de/horizon/auth/login/?next=/horizon/
+https://www.rittmanmead.com/blog/2014/12/linux-cluster-sysadmin-ssh-keys/
+
+http://www.debugpoint.com/2015/02/terminator-work-in-multiple-terminals-in-one-window-how-to-install-and-use/#
+	
+	1. CONNECT TO VPN:
+	------------------
+	cd ~/Desktop/thesis
+	sudo openvpn vpnil13.ovpn
+	tomar/Erfr.fel
+
+	2. CONNECT TO CLUSTER NODE:
+	--------------------------
+	ssh -i ~/.ssh/pranav-vmsevaluation.pem ubuntu@
+
+	ssh -i ~/.ssh/pranav-vmsevaluation.pem ubuntu@sue-data-1
+	ssh -i ~/.ssh/pranav-vmsevaluation.pem ubuntu@sue-data-2
+
+	ssh -i ~/.ssh/pranav-vmsevaluation.pem ubuntu@evaluation-driver-1
+
+
+	CLUSTER SETUP GAMEPLAN:
+	----------------------
+
+	All nodes of type medium =>> 4.9GB | 10GB | 2 VCPUs
+
+	1. 	Create 6 SUE nodes (2 for master processes + 4 for data processes) on which HDFS + HBASE (and later + VMS) will reside
+	   	
+	2. 	Create 4 Evaluation Driver nodes.
+		The first of these nodes are meant to host 3 processes: EvaluationDriver Main, JobTracker, TaskTracker
+		Remaining 3 nodes will host only the TaskTracker process
+
+	3. 	Copy hadoop to /thesis/tocluster/hadoop
+
+		3.1. Set replication to 1 in conf/hdfs-site.xml
+
+		3.2. Set mapred.tasks.maximum and fairshare scheduler in conf/hdfs-site.xml
+
+			<property>
+			<name>mapred.tasktracker.map.tasks.maximum</name>
+			<value>5</value>
+			</property>
+			<property>
+			  <name>mapred.jobtracker.taskScheduler</name>
+			  <value>org.apache.hadoop.mapred.FairScheduler</value>
+			</property>
+
+		3.3. add all nodes to ~/etc/hosts of all nodes
+
+echo /home/pranav/Desktop/thesis/VmsTpchEvaluation/src/de/tum/in/vmseval/cluster/nodes.txt | ssh -i ~/.ssh/pranav_evaluationkey.pem Evaluation-Driver-4 'sudo cat >> /etc/hosts'
+
+http://stackoverflow.com/questions/11371341/how-to-separate-hadoop-mapreduce-from-hdfs
+
+
+----------
+
+0.	ant build --> generate-jar-for-deployment-to-cluster (~/Desktop/thesis/cluster-setup/upload/driver/mr-jar/VmsTpchEvaluation.jar)
+1. copy driver jar to evaluation-driver-1
+2. put dbgen script to evaluation-driver HDFS
+
+hadoop jar /home/ubuntu/VmsTpchEvaluation.jar -inputlocation /user/ubuntu/vmsevaluation/input/ -outputlocation /user/ubuntu/vmsevaluation/output/ -dbgenscriptlocation /user/ubuntu/vmsevaluation/dbgen/ -nodecount 4 -nodememory 4 -nodedisk 10 -nodereplication 1 -tpchscale 1 -loadtype uniform -testflag 1 > tempLog.log && grep -F '>> ' tempLog.log
+
+hadoop job -list
+hadoop job -kill
+
+
+!!!!!
+https://www.researchgate.net/publication/236132848_Benchmarking_with_TPC-H_on_Off-the-Shelf_Hardware_An_Experiments_Report
+!!!!!
+
+keys must be left padded with zeros to a constant length
+number of splits must be equal to number of mappers
+number of parts must be a multiple of the number of mappers
+number of parts must be a multiple of the number of nodes
+
+
+https://issues.apache.org/jira/browse/HBASE-12829
+https://issues.apache.org/jira/browse/HBASE-11387
+https://issues.apache.org/jira/browse/HBASE-11788
+https://issues.apache.org/jira/browse/HBASE-11143

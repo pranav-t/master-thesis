@@ -1,0 +1,38 @@
+package de.webdataplatform.parser;
+
+import java.util.List;
+import java.util.Map;
+
+import de.webdataplatform.system.TableRecord;
+
+public class Substraction extends MathOperator{
+
+
+
+	public Substraction(ITerm leftTerm, ITerm rightTerm) {
+		super(leftTerm, rightTerm);
+	}
+
+	
+	
+	@Override
+	public String toString() {
+		return "[" + leftTerm
+				+ " - " + rightTerm + "]";
+	}
+	
+
+	@Override
+	public int eval(TableRecord tableRecord) throws Exception {
+
+		return leftTerm.eval(tableRecord)-rightTerm.eval(tableRecord);
+	}
+
+	@Override
+	public int evalGrouping(List<TableRecord> tableRecords) throws Exception {
+
+		return leftTerm.evalGrouping(tableRecords)-rightTerm.evalGrouping(tableRecords);
+	}
+
+	
+}

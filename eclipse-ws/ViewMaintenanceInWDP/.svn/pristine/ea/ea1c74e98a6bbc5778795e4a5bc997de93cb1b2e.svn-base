@@ -1,0 +1,54 @@
+package de.webdataplatform.parser;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import de.webdataplatform.system.TableRecord;
+
+public class Enumeration implements ITerm{
+
+
+
+	
+	private List<Constant> elements;
+	
+	
+	
+
+	public Enumeration() {
+		super();
+		elements = new ArrayList<Constant>();
+	}
+
+
+	public void addElement(Constant constant){
+		
+		elements.add(constant);
+		
+	}
+
+	@Override
+	public String toString() {
+		return "Enumeration [elements=" + elements + "]";
+	}
+	
+	@Override
+	public List<ColumnName> getBaseColumns() {
+
+		return new ArrayList<ColumnName>();
+	}
+
+	@Override
+	public Object eval(TableRecord tableRecord) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Object evalGrouping(List<TableRecord> tableRecord) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	
+}

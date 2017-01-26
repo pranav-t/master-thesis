@@ -1,0 +1,44 @@
+package de.webdataplatform.test;
+
+import org.apache.hadoop.hbase.util.Bytes;
+
+import de.webdataplatform.client.HbaseClient;
+import de.webdataplatform.log.Log;
+import de.webdataplatform.settings.NetworkConfig;
+import de.webdataplatform.settings.SystemConfig;
+import de.webdataplatform.settings.TableConfig;
+
+public class TestHClient {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+
+		Log log = new Log("evaluation.log");
+
+		SystemConfig.load(log);
+		NetworkConfig.load(log);
+		TableConfig.load(log);
+		
+		HbaseClient hbaseClient = new HbaseClient(log);
+		
+		
+		try {
+			for (byte[] region : hbaseClient.createRegionArray("bt1", 10)){
+				
+				System.out.println(Bytes.toString(region));
+			}
+			
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+
+	}
+
+}

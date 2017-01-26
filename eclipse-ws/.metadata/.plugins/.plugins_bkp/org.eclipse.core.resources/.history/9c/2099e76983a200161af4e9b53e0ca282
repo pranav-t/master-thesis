@@ -1,0 +1,112 @@
+package de.webdataplatform.message;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.util.List;
+import java.util.Queue;
+
+import de.webdataplatform.basetable.BaseTableOperation;
+import de.webdataplatform.log.Log;
+import de.webdataplatform.settings.SystemConfig;
+import de.webdataplatform.system.StatisticsElement;
+
+public class ServerUpdateHandler extends ServerHandler implements Runnable { //oder 'extends Thread'
+	
+	protected Queue<String> updateQueue;
+	
+	private StatisticsElement statisticReceived;
+	
+	private Log log; 
+	
+	private SystemID sender;
+	
+	
+	  public ServerUpdateHandler(Log log, Queue<String> updateQueue, StatisticsElement statisticReceived, Socket client) { //Server/Client-Socket
+		  
+		 super(client); 
+		 this.updateQueue = updateQueue;
+		 this.statisticReceived = statisticReceived;
+		 this.log = log;
+
+
+	  }
+	  
+
+		
+		@Override
+		public void run() {
+		  
+	    StringBuffer sb = new StringBuffer();
+	    PrintWriter out = null;
+	    MessageResolver messageResolver = new MessageResolver();
+	    
+	    try {
+	    	
+	    	
+	    	
+	      out = new PrintWriter( client.getOutputStream(), true );
+	      BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(client.getInputStream()));
+	      char[] buffer = new char[SystemConfig.MESSAGES_LENGTH];
+	      int anzahlZeichen = bufferedReader.read(buffer, 0, SystemConfig.MESSAGES_LENGTH); // blockiert bis Nachricht empfangen
+	      String nachricht = new String(buffer, 0, anzahlZeichen);
+	      
+	      Message message = new Message(nachricht);
+	      log.info(this.getClass(),"incoming sending request: "+nachricht+"");
+	   
+	      sender = message.getSystemID();
+	      log.info(this.getClass(),"adding sender: "+sender+"");
+	   
+	      log.info(this.getClass(),"completing request");
+	      sb.append("ok: " + client.getLocalPort() + "-" + client.getPort());
+	      out.println(sb);
+//	      String previousMessage="";
+	      while(true){
+	    	  
+
+	    	  
+		      anzahlZeichen = bufferedReader.read(buffer, 0, SystemConfig.MESSAGES_LENGTH); // blockiert bis Nachricht empfangen
+		      nachricht = new String(buffer, 0, anzahlZeichen);
+		      log.info(this.getClass(),"update: "+nachricht);
+		      
+		     
+		      
+		      List<String> updates = messageResolver.resolve(nachricht);
+		      log.info(this.getClass()," resolved updates: "+updates);
+
+		      for (String update : updates) {
+		    	  
+		    	  BaseTableOperation bto = new BaseTableOperation(log, update);
+		    	  bto.setSender(sender);
+		    	  
+		    	  statisticReceived.recordUpdate();
+		    	  updateQueue.add(bto.convertToString());
+		    	  
+		      }
+		      
+		      
+	    	  
+	      }
+	      
+	    } catch (IOException e) {
+	    	  log.error(this.getClass(),e);
+	    }
+	    
+	    
+	    finally { 
+	      out.println(sb);  //R�ckgabe Ergebnis an den Client
+	      if ( !client.isClosed() ) {
+	        System.out.println("****** Handler:Client close");
+	        try {
+	          client.close();
+	        } catch ( IOException e ) {   log.error(this.getClass(),e);}
+	      } 
+	    }
+	  }  //Ende run
+
+
+	 
+
+}

@@ -1,0 +1,75 @@
+\section{Fault Tolerance}
+\label{sec:fault_tolerance}
+
+Failure detection and recovery play a critical role, especially in
+large-scale distributed systems.  In this section, we analyze the
+behavior of VMS under VM and node crashes to ensure that after
+appropriate recovery measures, views still converge.
+
+\noindent
+\textbf{VM crash} -- A VM maintains a queue with operations dispatched
+to it. Upon a VM crash, these updates are lost, which may result in
+non-converging views. Our recovery measures described here, ensure
+view convergence under VM crash. For every update a VM propagates, it
+stores the sequence ID of the processed operation in its commit log. A
+VM crash triggers an event via Zookeeper
+(cf. Section~\ref{sec:system_overview}), notifying the VMS
+coordinator. Via the commit log, the coordinator retrieves the last
+operation the crashed VM successfully propagated. The commit log order
+is determined by the order the VM propagates updates, which results
+from the stream of operations dispatched to it, respecting record
+timeline semantics. Now, the coordinator executes the steps of
+Algorithm~\ref{alg:crashed_vm}.
+
+
+
+\begin{algorithm}
+\caption{VM recovery in VMS}
+\label{alg:crashed_vm}
+\begin{algorithmic}[5]
+\Procedure{$onVMCrashed$}{$nx, VM_{nx}, vm_c$}
+\State $sendMessage(nx, withdraw, vm_c)$
+\ForAll{$vm \in VM_{nx}$}	
+\State $sendMessage(vm, requestSID)$
+\EndFor
+\ForAll{$vm \in VM_{nx}$}	
+\State $SIDs \leftarrow receiveMessage(vm, SID)$	
+\EndFor
+\State $smallestSID \leftarrow minimum(SIDs)$
+\State $sendMessage(nx, replay, smallestSeqID)$	
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+First, the coordinator sends a withdraw command to the 
+concerned NX component. The NX withdraws the crashed VM from the 
+hash-ring and stops dispatching operations to it. This way no updates, 
+that were in-fight while the VM crashed, are lost. Next, the coordinator 
+obtains the last sequence ID of every VM (assigned to the node the 
+crashed VM belonged to) and determines the smallest one, including the 
+one from the crashed VM's commit log. The VMS advises the NX component 
+to replay the log entries from the point of the smallest ID. This 
+recovery measure is necessary for the following reasons: It might happen 
+that a running view manager is executing a base table operation with a 
+smaller sequence ID than the crashed one. Then, a replay from the crashed 
+view manager's ID would cut off some of the client operations. Taking 
+the smallest sequence ID, the VMS ensures that no operation gets lost.
+However, there might be a case when the crashed view manager had already 
+queued up operations but not written anything to the commit log.  Then 
+the recovery of the sequence ID fails and again, operations may be lost.
+The VM can just avoid this case by writing the first sequence ID it ever
+receives from a node, directly to the commit log, marking it as 'not 
+processed'. Then the transaction log can be replayed from this point. 
+Another problem during replay is that some operations may be forwarded 
+to the view managers again. This leads to duplicate view updates. 
+But thanks to the signature mechanism (cf.Section~\ref{sec:consistency}), 
+the duplicate operations can be identified and just ignored. 
+
+
+\noindent
+\textbf{Node crash} -- A node crash is handled by the recovery
+mechanism of the KV-store. It selects a new node and replay's the
+crashed node's TL. The coordinator of VMS just notices the
+crash  and re-assigns the idle view managers to another
+node.
+

@@ -1,0 +1,311 @@
+package de.webdataplatform.master;
+
+import de.webdataplatform.log.Log;
+import de.webdataplatform.message.SystemID;
+import de.webdataplatform.query.Query;
+import de.webdataplatform.settings.NetworkConfig;
+import de.webdataplatform.settings.SystemConfig;
+import de.webdataplatform.system.Event;
+import de.webdataplatform.system.IEventHandler;
+
+public class MasterController implements Runnable, IEventHandler {
+
+	
+	private Master master;
+
+	private MasterDispatcher dispatcher;
+	
+	private Log log;
+	
+	
+	public MasterController(Log log, Master master) {
+		super();
+		this.master = master;
+		this.dispatcher = master.getDispatcher();
+		this.log = log;
+
+
+	}
+
+
+	public void initialize()throws Exception{
+		
+		log.info(this.getClass(),"connecting to zookeeper on address: "+NetworkConfig.ZOOKEEPER_QUORUM);
+		master.getZooKeeperService().startup();
+		
+		if(!master.getZooKeeperService().nodeExists(SystemConfig.MASTER_ZOOKEEPERPATH)){
+			
+			log.info(this.getClass(),"creating new master node");
+			master.getZooKeeperService().createPersistentNode(SystemConfig.MASTER_ZOOKEEPERPATH);
+		}
+		
+		log.info(this.getClass(),"creating session node");
+		boolean created = master.getZooKeeperService().createSessionNode(SystemConfig.MASTER_ZOOKEEPERPATH+"/"+master.getSystemID().toString());
+
+		if(!created)throw new Exception("Zookeeper Session node could not be created");
+		
+		if(master.getZooKeeperService().nodeExists(SystemConfig.REGIONSERVER_ZOOKEEPERPATH)){
+			
+			log.info(this.getClass(),"deleting region server node");
+			master.getZooKeeperService().deleteNode(SystemConfig.REGIONSERVER_ZOOKEEPERPATH);
+			
+		}
+		log.info(this.getClass(),"creating new region server");
+		master.getZooKeeperService().createPersistentNode(SystemConfig.REGIONSERVER_ZOOKEEPERPATH);
+		master.getZooKeeperService().setTriggerOnChildren(SystemConfig.REGIONSERVER_ZOOKEEPERPATH);
+		
+		
+		if(master.getZooKeeperService().nodeExists(SystemConfig.VIEWMANAGER_ZOOKEEPERPATH)){
+			
+			log.info(this.getClass(),"deleting old view manager node");
+			master.getZooKeeperService().deleteNode(SystemConfig.VIEWMANAGER_ZOOKEEPERPATH);
+			
+		}
+		log.info(this.getClass(),"creating new view manager node");
+		master.getZooKeeperService().createPersistentNode(SystemConfig.VIEWMANAGER_ZOOKEEPERPATH);
+		master.getZooKeeperService().setTriggerOnChildren(SystemConfig.VIEWMANAGER_ZOOKEEPERPATH);
+		
+		log.info(this.getClass(),"generating query table");	
+		master.getQueryManager().getQueryTable().generateQueryTable();
+		
+		log.info(this.getClass(),"load query table");		
+		master.getQueryManager().loadQueries();
+		
+//		log.info(this.getClass(),"loading query table");	
+//		master.getQueryTable().loadQueries();
+
+		
+		log.info(this.getClass(),"ip address of master: "+master.getSystemID().getIp());
+		
+		log.info(this.getClass(),"starting message server on port: "+master.getSystemID().getMessagePort());
+		master.getMessageServer().start();
+		
+//		log.info(this.getClass(),"starting component controller");
+//		Thread tcc = new Thread(master.getComponentController());
+//		tcc.start();
+
+//		log.info(this.getClass(),"starting load balancer");
+//		Thread tlb = new Thread(master.getLoadBalancer());
+//		tlb.start();		
+//
+//		log.info(this.getClass(),"starting recovery manager");
+//		Thread trm = new Thread(master.getRecoveryManager());
+//		trm.start();		
+		
+	}
+	
+	
+	/** VIEW MANAGER EVENTS */
+	
+	public void viewManagerAdded(SystemID viewManager){
+		
+		log.info(this.getClass(),"view manager has been added: "+viewManager);
+		master.getMetaData().getViewManagers().add(viewManager);
+		
+		
+//		Event loadBalancingJob = new Event(Event.VIEWMANAGER_ADDED, viewManager);
+//		loadBalancer.addEvent(loadBalancingJob);
+		
+//		log.info(this.getClass(),"informing all region servers: ");
+//		for(SystemID rs : master.getMetaData().getRegionServers()){
+//		
+//			sender.sendAssignViewManager(rs, viewManager);
+//		}
+//		log.info(this.getClass(),"informing all region servers: ");
+//		for(SystemID vm : master.getMetaData().getViewManagers()){
+//			
+//			sender.sendAssignViewManager(vm, viewManager);
+//		}
+//		
+//		Command command = new Command(Command.VIEWMANAGER_ASSIGN, viewManager, chosenRegionServer);
+//		componentController.queueCommand(this, command);
+		
+		
+	}
+	
+	public void viewManagerShutdown(SystemID viewManager){
+		
+		log.info(this.getClass(),"view manager has been shut down: "+viewManager);
+		master.getMetaData().getViewManagers().remove(viewManager);
+		Event event = new Event(Event.VIEWMANAGER_SHUTDOWN, viewManager, master.getMetaData().getVmRemoved().get(viewManager));
+		master.getMetaData().getVmRemoved().remove(viewManager);
+//		loadBalancer.addEvent(event);
+		
+	}
+	
+	public void viewManagerCrashed(SystemID viewManager){
+		
+		log.info(this.getClass(),"view manager has been crashed: "+viewManager);
+		master.getMetaData().getViewManagers().remove(viewManager);
+//		Event event = new Event(Event.VIEWMANAGER_RS_CRASHED, viewManager, lookupRSOfViewManager(viewManager));
+//		loadBalancer.addEvent(event);
+//		recoveryManager.addEvent(event);
+		
+	}
+
+	
+	/** VIEW MANAGER ACTIONS */
+	
+//	public void viewManagerAssigned(SystemID viewManager, SystemID regionServer){
+//		
+//		log.info(this.getClass(),"view manager has been assigned: "+viewManager);
+//		
+//		List<SystemID> viewManagers = master.getMetaData().getAssignedViewManagers().get(regionServer);
+//		
+//		if(viewManagers == null)viewManagers = new ArrayList<SystemID>();
+//		
+//		viewManagers.add(viewManager);
+//		
+//		master.getMetaData().getAssignedViewManagers().put(regionServer, viewManagers);
+//		
+//		log.info(this.getClass(),"assigned managers: "+master.getMetaData().getAssignedViewManagers());
+//
+//	}
+	
+//	public SystemID viewManagerWithdrawn(SystemID viewManager){
+//		
+//		log.info(this.getClass(),"view manager has been withdrawn: "+viewManager);
+//		
+//		log.info(this.getClass(),"assigned managers: "+master.getMetaData().getAssignedViewManagers());
+//
+//		SystemID regionServer = lookupRSOfViewManager(viewManager);
+//		
+//		master.getMetaData().getAssignedViewManagers().get(regionServer).remove(viewManager);
+//
+//		return regionServer;
+//
+//
+//	}
+//	
+//	
+//	public void crashedViewManagerWithdrawn(SystemID viewManager){
+//		
+//		log.info(this.getClass(),"crashed view manager has been withdrawn: "+viewManager);
+//		
+//		SystemID regionServer = lookupRSOfViewManager(viewManager);
+//		
+//		master.getMetaData().getAssignedViewManagers().get(regionServer).remove(viewManager);
+//
+//
+//		log.info(this.getClass(),"assigned managers: "+master.getMetaData().getAssignedViewManagers());
+//
+//	}
+//	
+//	public void viewManagerReassigned(SystemID viewManager, SystemID regionServer){
+//		
+//		log.info(this.getClass(),"view manager has been reassigned: "+viewManager);
+//		
+//		viewManagerWithdrawn(viewManager);
+//
+//		viewManagerAssigned(viewManager, regionServer);
+//		
+//	}	
+//	
+//	public void viewManagerShutdown(SystemID viewManager){
+//		
+//		log.info(this.getClass(),"view manager shuts down: "+viewManager);
+//
+//		SystemID regionServer = viewManagerWithdrawn(viewManager);
+//		
+//		master.getMetaData().getVmRemoved().put(viewManager, regionServer);
+//				
+//		log.info(this.getClass(),"assigned managers: "+master.getMetaData().getAssignedViewManagers());
+//		
+//	}
+//	
+//	
+//	
+//	public SystemID lookupRSOfViewManager(SystemID viewManager){
+//		
+//		for(SystemID regionServer : master.getMetaData().getAssignedViewManagers().keySet()){
+//			
+//			List<SystemID> viewManagers = master.getMetaData().getAssignedViewManagers().get(regionServer);
+//			if(viewManagers.contains(viewManager)){
+//				return regionServer;
+//				
+//			}
+//		}
+//		return null;
+//	}
+	
+	
+	/** REGION SERVER EVENTS */
+	
+	public void regionServerAdded(SystemID regionServer){
+		
+		log.info(this.getClass(),"region server has been added: "+regionServer);
+		master.getMetaData().getRegionServers().add(regionServer);
+		Event event = new Event(Event.REGIONSERVER_ADDED, null, regionServer);
+//		loadBalancer.addEvent(event);
+		
+	}
+	
+	public void regionServerShutdown(SystemID regionServer){
+		
+		log.info(this.getClass(),"region server has been shut down: "+regionServer);
+		master.getMetaData().getRegionServers().remove(regionServer);
+		master.getMetaData().getRsRemoved().remove(regionServer);
+//		Event loadBalancingJob = new Event(Event.REGIONSERVER_SHUTDOWN, null, regionServer);
+//		loadBalancer.addEvent(loadBalancingJob);
+	}
+	
+	public void regionServerCrashed(SystemID regionServer){
+		
+		log.info(this.getClass(),"region server has been crashed: "+regionServer);
+		master.getMetaData().getRegionServers().remove(regionServer);
+		
+//		Event loadBalancingJob = new Event(Event.REGIONSERVER_CRASHED, null, regionServer);
+//		loadBalancer.addEvent(loadBalancingJob);
+//		recoveryManager.addEvent(loadBalancingJob);
+	}
+	
+
+	
+
+	
+	@Override
+	public void run() {
+		
+		
+		try {
+			initialize();
+		} catch (Exception e1) {
+		
+			log.error(this.getClass(), e1);
+		}
+		
+		while(true){
+			
+			try{
+			
+			String messageString = master.getIncomingMessages().poll();
+			
+			if(messageString != null){
+				
+				dispatcher.receiveMessage(messageString);
+				
+			}
+
+			
+			
+			try {
+				Thread.sleep(SystemConfig.MESSAGES_POLLINGINTERVAL);
+			} catch (InterruptedException e) {
+	
+				e.printStackTrace();
+			}
+			
+			
+			
+		}catch(Exception e){
+			log.error(this.getClass(), e);
+		}
+	}
+
+	}
+	
+
+
+
+
+}

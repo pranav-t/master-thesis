@@ -1,0 +1,161 @@
+{
+	"weeks-0-0"	: {
+		"reading": {},
+		"setup" : {}
+	},
+	"weeks-1-2" : {
+		"bulk-load" : {
+			"resources" : [ 
+				"http://blog.cloudera.com/blog/2013/09/how-to-use-hbase-bulk-loading-and-why", 
+				"https://hbase.apache.org/book.html#arch.bulk.load"
+			],
+			"steps" : [
+				{
+					"prepare": {
+						[
+							"
+							fire up your cluster
+								su hduser
+								start-hdfs
+								start-mr
+								start-hbase
+								check status on hdfs/mr/hbase web consoles
+
+							delete old ImportTSV data from hdfs:
+								hduser/hdfsbin$ hadoop dfs -rmr user/hduser/importtsv_output_*
+
+							disable and drop existing hbase tables:
+								hduser/hbasebin$ 	./hbase shell
+													list
+													disable_all '*.*'
+													drop_all '*.*'
+													exit
+
+													OR
+
+								hduser/hbasebin$	./hbase shell /media/sf_shared/tpch_2_17_0/hbase-shell-scripts/drop.txt
+
+							decide on TPC-H scale factor
+							decide on cluster configuration
+							give the scale and config to SplitPointsGenerator.java to generate split points for each table in the form of split files
+
+							create new tpch tables in HBase using the generated split points
+								hduser/hbasebin$	./hbase shell /media/sf_shared/tpch_2_17_0/hbase-shell-scripts/create-1-x.txt
+
+											create 'part', 'f', SPLITS_FILE=>'/media/sf_shared/tpch_2_17_0/generated-data/1-x/splits_part.txt'
+											create 'partsupp', 'f', SPLITS_FILE=>'/media/sf_shared/tpch_2_17_0/generated-data/1-x/splits_partsupp.txt'
+											create 'lineitem', 'f', SPLITS_FILE=>'/media/sf_shared/tpch_2_17_0/generated-data/1-x/splits_lineitem.txt'
+											create 'orders', 'f', SPLITS_FILE=>'/media/sf_shared/tpch_2_17_0/generated-data/1-x/splits_orders.txt'
+											create 'supplier', 'f', SPLITS_FILE=>'/media/sf_shared/tpch_2_17_0/generated-data/1-x/splits_supplier.txt'
+											create 'customer', 'f', SPLITS_FILE=>'/media/sf_shared/tpch_2_17_0/generated-data/1-x/splits_customer.txt'
+											create 'nation', 'f'
+											create 'region', 'f'
+							"
+
+						]
+					}
+					"extract": {
+						"TPC-H dbgen": {
+							"
+							pranav@xerces:~$ cd ~/shared/tpch_2_17_0/dbgen && ./dbgen -s 1 -v && mv *.tbl ../generated-data/1-x/
+
+							hduser@node1:/hdfsbin$ 
+								hadoop dfs -put /media/sf_shared/tpch_2_17_0/generated-data/1-x/part.tbl 		generated-data/1-x/part.tbl
+								hadoop dfs -put /media/sf_shared/tpch_2_17_0/generated-data/1-x/partsupp.tbl 	generated-data/1-x/partsupp.tbl
+								hadoop dfs -put /media/sf_shared/tpch_2_17_0/generated-data/1-x/lineitem.tbl    generated-data/1-x/lineitem.tbl
+								hadoop dfs -put /media/sf_shared/tpch_2_17_0/generated-data/1-x/orders.tbl      generated-data/1-x/orders.tbl
+								hadoop dfs -put /media/sf_shared/tpch_2_17_0/generated-data/1-x/supplier.tbl    generated-data/1-x/supplier.tbl
+								hadoop dfs -put /media/sf_shared/tpch_2_17_0/generated-data/1-x/customer.tbl    generated-data/1-x/customer.tbl
+								hadoop dfs -put /media/sf_shared/tpch_2_17_0/generated-data/1-x/nation.tbl      generated-data/1-x/nation.tbl
+								hadoop dfs -put /media/sf_shared/tpch_2_17_0/generated-data/1-x/region.tbl      generated-data/1-x/region.tbl
+							"
+						}	
+					}
+				},
+				{
+					"transform": {
+						"ImportTSV": {
+
+							"
+							cleanup from last time:
+							hduser@node1:/hdfsbin$  hadoop dfs -rmr /user/hduser/importtsv_*
+
+							hduser@node1:/hbasebin$
+
+							PARTKEY	
+							./hbase org.apache.hadoop.hbase.mapreduce.ImportTsv '-Dimporttsv.separator=|' -Dimporttsv.columns=HBASE_ROW_KEY,f:name,f:mfgr,f:brand,f:type,f:size,f:container,f:retailprice,f:comment,f:extra -Dimporttsv.bulk.output=importtsv_output_part part generated-data/1-x/part.tbl
+
+							!!! SUPPKEY-PARTKEY !!!
+							./hbase org.apache.hadoop.hbase.mapreduce.ImportTsv '-Dimporttsv.separator=|' -Dimporttsv.columns=HBASE_ROW_KEY,f:availqty,f:supplycost,f:comment
+							-Dimporttsv.bulk.output=importtsv_output_partsupp partsupp user/hduser/generated-data/1-x/partsupp.tbl
+
+							!!! ORDERKEY-LINENUMBER !!!
+							./hbase org.apache.hadoop.hbase.mapreduce.ImportTsv '-Dimporttsv.separator=|' -Dimporttsv.columns=HBASE_ROW_KEY,f:partkey,f:suppkey,f:quantity,f:extendedprice,f:discount,f:tax,f:returnflag,f:linestatus,f:shipdate,f:commitdate,f:receiptdate,f:shipinstruct,f:shipmode,f:comment
+							-Dimporttsv.bulk.output=importtsv_output_lineitem lineitem user/hduser/generated-data/1-x/lineitem.tbl
+
+							ORDERKEY
+							./hbase org.apache.hadoop.hbase.mapreduce.ImportTsv '-Dimporttsv.separator=|' -Dimporttsv.columns=HBASE_ROW_KEY,f:custkey,f:orderstatus,f:totalprice,f:orderdate,f:order-priority,f:clerk,f:ship-priority,f:comment,f:extra -Dimporttsv.bulk.output=importtsv_output_orders orders user/hduser/generated-data/1-x/orders.tbl
+
+							SUPPKEY
+							./hbase org.apache.hadoop.hbase.mapreduce.ImportTsv '-Dimporttsv.separator=|' -Dimporttsv.columns=HBASE_ROW_KEY,f:name,f:address,f:nationkey,f:phone,f:acctbal,f:comment,f:extra
+							-Dimporttsv.bulk.output=importtsv_output_supplier supplier user/hduser/generated-data/1-x/supplier.tbl
+
+							CUSTKEY
+							./hbase org.apache.hadoop.hbase.mapreduce.ImportTsv '-Dimporttsv.separator=|' -Dimporttsv.columns=HBASE_ROW_KEY,f:name,f:address,f:nationkey,f:phone,f:acctbal,f:mktsegment,f:comment,f:extra
+							-Dimporttsv.bulk.output=importtsv_output_customer customer user/hduser/generated-data/1-x/customer.tbl
+							
+							NATIONKEY
+							./hbase org.apache.hadoop.hbase.mapreduce.ImportTsv '-Dimporttsv.separator=|' -Dimporttsv.columns=HBASE_ROW_KEY,f:name,f:regionkey,f:comment,f:extra
+							-Dimporttsv.bulk.output=importtsv_output_nation nation user/hduser/generated-data/1-x/nation.tbl
+							
+							REGIONKEY
+							./hbase org.apache.hadoop.hbase.mapreduce.ImportTsv '-Dimporttsv.separator=|' -Dimporttsv.columns=HBASE_ROW_KEY,f:name,f:comment,f:extra
+							-Dimporttsv.bulk.output=importtsv_output_region region user/hduser/generated-data/1-x/region.tbl					
+							"
+						}
+					}
+				},
+				{
+					"load": {
+						"LoadIncrementalHFiles" : {
+
+							"
+							hduser@node1:/hbasebin$ 
+								./hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles importtsv_output_part part 
+								!!! ./hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles importtsv_output_partsupp partsupp  !!!
+								!!! ./hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles importtsv_output_lineitem lineitem  !!!
+								./hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles importtsv_output_orders orders 
+								./hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles importtsv_output_supplier supplier 
+								./hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles importtsv_output_customer customer 
+								./hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles importtsv_output_nation nation
+								./hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles importtsv_output_region region
+							"
+						}
+					}
+				}
+
+			]
+		}
+	},
+	{
+		"weeks-3-4" : {
+			"bulk-load-RELOADED!!" : {
+				"resources" : [
+					"http://stackoverflow.com/questions/4113798/hadoop-streaming-mapper-wrapping-a-binary-executable"
+				]
+			}
+		}
+	},
+	{
+
+		https://www.researchgate.net/publication/236132848_Benchmarking_with_TPC-H_on_Off-the-Shelf_Hardware_An_Experiments_Report
+
+		Resizing VirtualBox virtual machine
+		http://askubuntu.com/questions/101715/resizing-virtual-drive
+		http://blog.mwpreston.net/2012/06/22/expanding-a-linux-disk-with-gparted-and-getting-swap-out-of-the-way/
+
+		
+	}
+}
+
+	

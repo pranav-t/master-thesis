@@ -1,0 +1,70 @@
+\section{Introduction}
+
+
+Big-data infrastructures are growing rapidly in storage capacity and 
+distribution.Modern databases, called key-value stores (Google's 
+BigTable\cite{kv_store1}, Amazon's Dynamo~\cite{kv_store2}, 
+Yahoo's PNUTS~\cite{kv_store3}, Apache's HBase~\cite{kv_store4} 
+and Cassandra~\cite{kv_store5}) are capable of managing the 
+enormous amounts of data. Thus, the analytical tasks come into 
+foreground. Today's analytical frameworks have to keep pace with 
+ever-growing amounts of stored and distributed data. Not only have they 
+to execute fast, consistent and fault-tolerant, efficiency and cost are 
+measures that gain importance, likewise. An analytical framework may be 
+fast when executed in memory, but repeated scan over large chunks of 
+data may trigger unnecessary read and waste processing time, thus, 
+increase the cost of running the system. 
+
+In order to save storage and processing capacity, data bases have always 
+used optimization algorithms. Multi-query optimization is used to 
+improve the evaluation of analytical statements beforehand. In order to 
+re-use computations results -- instead of re-reading and re-evaluating a 
+data set--, multi-query optimizations use techniques of data 
+materialization. A common problem of multi-query optimization is the 
+view selection problem. View selection, as is also described in 
+\cite{view_selection1, view_selection2} is a problem, where a set of 
+view candidates is defined, and the algorithm chooses which sub-set of 
+the candidates should be materialized. It is a NP-hard problem that 
+grows exponentially with the number of views (i.e. $2^n$); mostly it is 
+solved by using heuristics. 
+
+While multi-query optimization and view selection have been discussed in 
+the literature, widely \cite{multi_query1, multi_query2, multi_query3, 
+multi_query4, multi_query5}, multi-view optimization is a relatively 
+under-represented problem. In multi-view optimization every view has its 
+materialization. Even if there are methods to reduce the number of 
+intermediate view tables (e.g. by merging them), a minimum of views has 
+to be materialized. Thus, we can indeed apply some of the techniques 
+known from multi-query optimization and view selection, the general 
+approach (and optimization algorithm), however, is different. 
+
+Adler, Jergler and Jacobsen \cite{adler_vms} showed that a distributed view 
+maintenance framework (VMS) can be used to efficiently create and 
+maintain sets of basic views expressions. The VMS supports real-time 
+view updates and scales in and out with number of view maintained. To 
+save processing power and avoid needless re-computations, the VMS takes 
+an incremental maintenance approach. Results sets are materialized and 
+updates on a base table propagate to the corresponding view table. 
+
+Knowing that these basic view types can form higher level analytical 
+(i.e.SQL-like) statements, we propose, based on the VMS, an approach for 
+multi-view optimization. We translate SQL-queries into maintenance 
+plans, where each plan comprises a set of materialized views.  Then, we 
+show how resources can be shared locally and globally. We propose an 
+algorithm for multi-view optimization that captures the logic of finding 
+the best global plan for incremental maintenance of views. 
+
+Roadmap: The paper is structured as follows: first, we briefly discuss 
+the basic architecture; i.e. the view maintenance system that is build 
+on top of the key-value store. Then, we introduce the basic view 
+expressions and show how a maintenance plans serves to execute a chain 
+of these basic expressions. Further, we discuss the translation of a 
+general SQL-statement into a proper maintenance plan. In the core part 
+of the paper, we discuss optimization techniques and introduce our 
+multi-view algorithm; Finally, we evaluate the algorithm in comparison 
+to the non-optimized version. 
+
+
+
+
+

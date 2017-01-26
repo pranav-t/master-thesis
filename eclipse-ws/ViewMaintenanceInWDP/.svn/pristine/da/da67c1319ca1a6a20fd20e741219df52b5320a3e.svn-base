@@ -1,0 +1,300 @@
+package de.webdataplatform.test;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import de.webdataplatform.basetable.BaseTableUpdate;
+import de.webdataplatform.log.Log;
+import de.webdataplatform.parser.Column;
+import de.webdataplatform.parser.ColumnName;
+import de.webdataplatform.parser.ColumnSequence;
+import de.webdataplatform.settings.JoinTablePair;
+import de.webdataplatform.settings.NetworkConfig;
+import de.webdataplatform.settings.SystemConfig;
+import de.webdataplatform.system.DeltaRecord;
+import de.webdataplatform.system.PreAggRecord;
+import de.webdataplatform.system.ReverseJoinRecord;
+import de.webdataplatform.system.TableRecord;
+import de.webdataplatform.view.operation.PreAggregation;
+import de.webdataplatform.view.operation.ReverseJoin;
+
+public class TestRecordProcessing {
+
+	/**
+	 * @param args
+	 */
+	
+	private static Log log;
+	
+
+	
+	
+	public static void main(String[] args) {
+
+		log = new Log("TestClient");
+		SystemConfig.load(log);
+		NetworkConfig.load(log);
+
+		
+		TableRecord tableRecord = TableRecord.generateTableRecord("A", "k1", "c1", "x1", "c2", "10");
+		
+		TableRecord tableRecordA = TableRecord.generateTableRecord("q1_V1", "l0616", "c1", "x02", "c2", "089");
+		TableRecord tableRecordA2 = TableRecord.generateTableRecord("q1_V1", "l0617", "c1", "x02", "c2", "077");
+		TableRecord tableRecordB = TableRecord.generateTableRecord("q1_V0", "k39", "d1", "x02", "d2", "018");
+		
+		
+//		TableRecord tableRecordC = generateTableRecord("C", "m1", "c1", "x1", "c2", "10", "c3", "15");
+		
+		TableRecord tableRecord1 = TableRecord.generateTableRecord("A", "k1", "c1", "x1;x2", "c2", "10;12");
+		TableRecord tableRecord2 = TableRecord.generateTableRecord("A", "k1", "c1", "null;x2", "c2", "null;12");
+		TableRecord tableRecord3 = TableRecord.generateTableRecord("A", "k1", "c1", "null;x1", "c2", "null;10");
+		
+		
+		
+		
+		DeltaRecord deltaRecord1 = new DeltaRecord(tableRecord1);
+		DeltaRecord deltaRecord2 = new DeltaRecord(tableRecord2);
+		DeltaRecord deltaRecord3 = new DeltaRecord(null, new DeltaRecord(tableRecord3).getNewRecord());
+		
+		
+		System.out.println("deltaRecord1: "+deltaRecord1);
+		System.out.println("deltaRecord2: "+deltaRecord2);
+		System.out.println("deltaRecord3: "+deltaRecord3);
+		
+		System.out.println("-------------");
+		
+		System.out.println("deltaRecord1 back: "+deltaRecord1.transform());
+		System.out.println("deltaRecord2 back: "+deltaRecord2.transform());
+		System.out.println("deltaRecord3 back: "+deltaRecord3.transform());
+		
+		
+		System.out.println("-------------");
+		
+		ColumnSequence select = new ColumnSequence();//{"avg1", "sum2","sum3", "count1"};
+		select.addColumn(new Column("count(A.c2)", "count"));
+		select.addColumn(new Column("sum(A.c2)", "sum1"));
+//		select.addColumn(new Column("sum(A.c3)", "sum2"));
+//		select.addColumn(new Column("100 + sum(A.c3)", "sum3"));
+//		select.addColumn(new Column("count(*)", "count1"));
+		
+		
+		ColumnSequence groupingKeys = new ColumnSequence();//{"A.c1"};
+		groupingKeys.addColumn(new Column("A.c1", null));
+//		groupingKeys.addColumn(new Column("A.c1", null));
+
+		
+		TableRecord tableRecord4 = TableRecord.generateTableRecord("A", "k1", "c1","x1", "c2","14.4");
+		
+		TableRecord tableRecordNew = TableRecord.generateTableRecord("A", "x1", "c1", "241638:260050.01;243046:261172.12;242434:268955.94;245473:44991.22;1190:55891.86;3399:9"
+                                         +"8801.08;10887:65830.21;429985:210404.03;899:154199.50;259968:233513.47;430625:208317.17;365889:150655.85;131745:321918"
+                                         +".95;62496:146361.58;431873:169147.41;429314:162426.17;300480:51862.03;261318:154625.97;263105:113744.47;14630:151592.4"
+                                         +"0;371330:178525.39;186661:322935.64;12487:60409.97;304322:42564.50;370082:280320.31;369187:72661.79;26820:9770.64;4806"
+                                         +"76:45342.85;133313:204029.17;61795:89437.40;191648:233960.97;135810:161187.04;309637:406401.69;68353:100884.65;372896:"
+                                         +"206733.79;272455:227940.48;68966:197164.34;20193:314124.56;21252:257098.53;69253:80875.22;151201:175708.93;542020:4609"
+                                         +"1.99;542659:180757.71;191105:109054.87;102753:123062.00;451522:14233.67;386052:39694.96;388739:61773.33;37798:128763.9"
+                                         +"0;160996:86683.95;443777:272670.66;103200:211099.71;388417:273125.96;557408:103615.39;206720:48740.71;445508:84640.36;"
+                                         +"446978:12602.44;558919:27560.59;228579:291127.48;391174:40985.03;394338:134293.21;566881:25682.30;457958:241185.50;392"
+                                         +"290:74515.75;41733:52505.79;572999:73658.32;2283077:194453.86;44673:56369.95;226688:43906.08;394116:41952.95;106599:13"
+                                         +"7192.80;2287687:292215.16;56417:140375.59;2340295:4527.29;2293699:225572.33;2300103:252340.01;2293573:26728.60;2292935"
+                                         +":166548.63;2297668:317016.51;2288386:53841.22;234631:319746.83;161444:200010.82;161025:149464.45;38594:166171.85;42695"
+                                         +":21332.87;233665:36894.76;233152:132551.77;104038:288671.38;141826:178127.56;458723:280788.48;459457:25959.29;110500:7"
+                                         +"5495.34;46276:154771.35;2521792:117055.89;388679:160872.49;2282723:64831.89;2700451:32018.80;2520455:29196.09;159206:2"
+                                         +"17494.56;2358371:95752.00;2528001:17248.77;214784:145381.84;205671:173811.93;84711:180426.02;2589159:188217.05;2360995"
+                                         +":148958.87;2362565:203480.40;399462:215261.18;311744:124284.79;145124:194896.56;213475:40923.14;215457:55810.25;217153"
+                                         +":274457.02;214401:238712.11;79847:239205.72;112903:211243.11;116769:38234.24;219234:231300.43;221156:274597.94;2043552"
+                                         +":57117.85;2308773:204830.10;407043:13042.15;2648676:300588.56;2253569:166455.02;219524:160543.94;2648167:74652.89;4988"
+                                         +"55:89922.38;407396:317794.03;91459:279563.50;2649376:131731.16;2311623:97067.48;2307683:146091.23;2102784:102136.35;27"
+                                         +"09445:191424.67;2704358:250281.06;2042885:193952.01;85028:131110.12;87654:132472.36;90821:140496.37;282306:81128.46;27"
+                                         +"5585:205956.12;2530532:23833.40;2589063:76333.08;2358146:55587.82;29350:168120.46;1561473:330112.65;146662:148528.51;2"
+                                         +"653601:129809.43;97827:176669.09;501443:203685.36;2310851:131925.64;28291:86055.14;498115:304731.60;508133:101964.36;9"
+                                         +"6325:265776.05;98337:280061.60;2589667:127404.15;287973:167185.85;293538:100205.24;477702:161583.37;286563:111738.11;2"
+                                         +"305346:153053.90;287041:192142.17;291872:211629.05;2314529:14167.89;323297:212921.46;299141:139889.77;1327169:150032.5"
+                                         +"1;295585:70886.22;1266791:264962.45;1388422:6448.01;505123:316464.32;1269029:27479.70;1386658:189598.80;51011:121015.4"
+                                         +"7;514949:36379.34;2379969:148258.92;2539047:87340.76;2650146:145419.39;519398:261324.48;1561828:66147.62;1383876:10325"
+                                         +"3.07;2310627:241337.17;2164962:100112.31;1324099:171622.53;2103651:83649.54;1330880:127058.59;1443428:337394.59;522657"
+                                         +":125826.84;2046529:124582.99;1271330:119313.96;34370:202979.12;1385730:224553.67;513189:222289.44;323650:330241.25;329"
+                                         +"95:327571.21;32612:34296.72;1442628:298860.83;503076:86769.52;1444391:50221.44;319201:118322.45;327719:327613.94;32544"
+                                         +"7:145463.84;2540928:80363.71;2716708:228773.52;2710022:77657.19;1271687:150824.22;1759431:22886.37;32833:150175.48;175"
+                                         +"5909:142832.63;2598464:233841.00;2333380:61323.64;2265575:43405.03;2320898:254990.75;2053826:167644.07;1766756:175314."
+                                         +"48;343459:37118.59;1771237:219528.59;1788164:48586.68;1278596:168560.90;410757:311084.27;527717:33040.39;1780674:12870"
+                                         +"4.42;1792228:81468.56;1793762:5068.69;1788771:6972.99;1791206:244951.79;2390144:224859.47;2162757:92925.85;2109763:245"
+                                         +"93.27;1391040:332007.82;1791847:183453.54;1800741:243360.95;1779137:65984.93;1921317:59849.96;2332418:83244.76;2388613"
+                                         +":98448.57;1282754:55526.18;1332133:152892.30;577187:162129.66;2328262:17651.73;1801537:107791.43;1336929:189428.34;241638:260050.01;243046:261172.12;242434:268955.94;245473:44991.22;1190:55891.86;3399:9"
+                                         +"8801.08;10887:65830.21;429985:210404.03;899:154199.50;259968:233513.47;430625:208317.17;365889:150655.85;131745:321918"
+                                         +".95;62496:146361.58;431873:169147.41;429314:162426.17;300480:51862.03;261318:154625.97;263105:113744.47;14630:151592.4"
+                                         +"0;371330:178525.39;186661:322935.64;12487:60409.97;304322:42564.50;370082:280320.31;369187:72661.79;26820:9770.64;4806"
+                                         +"76:45342.85;133313:204029.17;61795:89437.40;191648:233960.97;135810:161187.04;309637:406401.69;68353:100884.65;372896:"
+                                         +"206733.79;272455:227940.48;68966:197164.34;20193:314124.56;21252:257098.53;69253:80875.22;151201:175708.93;542020:4609"
+                                         +"1.99;542659:180757.71;191105:109054.87;102753:123062.00;451522:14233.67;386052:39694.96;388739:61773.33;37798:128763.9"
+                                         +"0;160996:86683.95;443777:272670.66;103200:211099.71;388417:273125.96;557408:103615.39;206720:48740.71;445508:84640.36;"
+                                         +"446978:12602.44;558919:27560.59;228579:291127.48;391174:40985.03;394338:134293.21;566881:25682.30;457958:241185.50;392"
+                                         +"290:74515.75;41733:52505.79;572999:73658.32;2283077:194453.86;44673:56369.95;226688:43906.08;394116:41952.95;106599:13"
+                                         +"7192.80;2287687:292215.16;56417:140375.59;2340295:4527.29;2293699:225572.33;2300103:252340.01;2293573:26728.60;2292935"
+                                         +":166548.63;2297668:317016.51;2288386:53841.22;234631:319746.83;161444:200010.82;161025:149464.45;38594:166171.85;42695"
+                                         +":21332.87;233665:36894.76;233152:132551.77;104038:288671.38;141826:178127.56;458723:280788.48;459457:25959.29;110500:7"
+                                         +"5495.34;46276:154771.35;2521792:117055.89;388679:160872.49;2282723:64831.89;2700451:32018.80;2520455:29196.09;159206:2"
+                                         +"17494.56;2358371:95752.00;2528001:17248.77;214784:145381.84;205671:173811.93;84711:180426.02;2589159:188217.05;2360995"
+                                         +":148958.87;2362565:203480.40;399462:215261.18;311744:124284.79;145124:194896.56;213475:40923.14;215457:55810.25;217153"
+                                         +":274457.02;214401:238712.11;79847:239205.72;112903:211243.11;116769:38234.24;219234:231300.43;221156:274597.94;2043552"
+                                         +":57117.85;2308773:204830.10;407043:13042.15;2648676:300588.56;2253569:166455.02;219524:160543.94;2648167:74652.89;4988"
+                                         +"55:89922.38;407396:317794.03;91459:279563.50;2649376:131731.16;2311623:97067.48;2307683:146091.23;2102784:102136.35;27"
+                                         +"09445:191424.67;2704358:250281.06;2042885:193952.01;85028:131110.12;87654:132472.36;90821:140496.37;282306:81128.46;27"
+                                         +"5585:205956.12;2530532:23833.40;2589063:76333.08;2358146:55587.82;29350:168120.46;1561473:330112.65;146662:148528.51;2"
+                                         +"653601:129809.43;97827:176669.09;501443:203685.36;2310851:131925.64;28291:86055.14;498115:304731.60;508133:101964.36;9"
+                                         +"6325:265776.05;98337:280061.60;2589667:127404.15;287973:167185.85;293538:100205.24;477702:161583.37;286563:111738.11;2"
+                                         +"305346:153053.90;287041:192142.17;291872:211629.05;2314529:14167.89;323297:212921.46;299141:139889.77;1327169:150032.5"
+                                         +"1;295585:70886.22;1266791:264962.45;1388422:6448.01;505123:316464.32;1269029:27479.70;1386658:189598.80;51011:121015.4"
+                                         +"7;514949:36379.34;2379969:148258.92;2539047:87340.76;2650146:145419.39;519398:261324.48;1561828:66147.62;1383876:10325"
+                                         +"3.07;2310627:241337.17;2164962:100112.31;1324099:171622.53;2103651:83649.54;1330880:127058.59;1443428:337394.59;522657"
+                                         +":125826.84;2046529:124582.99;1271330:119313.96;34370:202979.12;1385730:224553.67;513189:222289.44;323650:330241.25;329"
+                                         +"95:327571.21;32612:34296.72;1442628:298860.83;503076:86769.52;1444391:50221.44;319201:118322.45;327719:327613.94;32544"
+                                         +"7:145463.84;2540928:80363.71;2716708:228773.52;2710022:77657.19;1271687:150824.22;1759431:22886.37;32833:150175.48;175"
+                                         +"5909:142832.63;2598464:233841.00;2333380:61323.64;2265575:43405.03;2320898:254990.75;2053826:167644.07;1766756:175314."
+                                         +"48;343459:37118.59;1771237:219528.59;1788164:48586.68;1278596:168560.90;410757:311084.27;527717:33040.39;1780674:12870"
+                                         +"4.42;1792228:81468.56;1793762:5068.69;1788771:6972.99;1791206:244951.79;2390144:224859.47;2162757:92925.85;2109763:245"
+                                         +"93.27;1391040:332007.82;1791847:183453.54;1800741:243360.95;1779137:65984.93;1921317:59849.96;2332418:83244.76;2388613"
+                                         +":98448.57;1282754:55526.18;1332133:152892.30;577187:162129.66;2328262:17651.73;1801537:107791.43;1336929:189428.34;");
+		
+		
+		
+		long start = new Date().getTime();
+		PreAggregation preAggregation = new PreAggregation(select, groupingKeys,  false);
+		
+		PreAggRecord preAggRecord = new PreAggRecord(tableRecordNew, preAggregation);
+
+//		System.out.println("preAggRecord: "+preAggRecord);
+		preAggRecord.addRecord(tableRecord4);
+//		System.out.println("preAggRecord.add: "+preAggRecord);
+		try {
+			System.out.println("preAggRecord: "+preAggRecord.buildAggRecord("C", "x1"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		try {
+			System.out.println("preAggRecord trans: "+preAggRecord.transform());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		System.out.println(">Time: "+(new Date().getTime()-start));
+		
+//		try {
+//			preAggRecord.backTransform(preAggRecord.transform());
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+		System.out.println("preAggRecord back-trans: "+preAggRecord);
+		
+//		System.out.println("preAggRecord result: "+preAggRecord.buildAggRecord("C", "x1"));
+//		System.out.println("preAggRecord back: "+preAggRecord.transform());
+		
+		System.out.println("-------------");
+		
+
+		List<ColumnName> joinColumns = new ArrayList<ColumnName>();
+		joinColumns.add(new ColumnName("q1_V0.c1"));
+		joinColumns.add(new ColumnName("q1_V1.d1"));
+		
+//		String[] columns = {"q1_V0.c1","q1_V0.c2","q1_V1.c2", "q1_V1.c3"};
+		
+//		TableRecord tableRecordJoin = generateTableRecord("A", "x1", "colfam_A", "k1","f1", "colfam_B", "l1","15", "colfam_C", "m1","10");
+
+//		TableRecord tableRecordNew1 = TableRecord.generateTableRecord("A", "x1", "q1_V0", "k1:c2=10,c3=15;k2:c2=5,c3=8;k3:c2=7,c3=18;", "q1_V1", "l1:d2=12,d3=15;l2:d2=5,d3=8;l3:d2=7,d3=18;");
+		TableRecord tableRecordNew1 = TableRecord.generateTableRecord(null, "x0173", "c1", "q1_V0{k09069:c1=x0173,c2=056;}|q1_V1{l08069:d1=x0173,d2=088;l0500:d1=x0173,d2=098;}");
+		
+		ReverseJoin reverseJoin= new ReverseJoin(joinColumns, false);
+		
+//		tableRecordJoin, 
+		ReverseJoinRecord reverseJoinRecord = new ReverseJoinRecord(tableRecordNew1, reverseJoin);
+		
+//		tableRecordA = TableRecord.generateTableRecord("q1_V1", "l4", "d1", "x1", "d2", "11", "d3", "13");
+//		reverseJoinRecord.addRecord(tableRecordA);
+		
+		tableRecordB = TableRecord.generateTableRecord("q1_V0", "k1", "c1", "x1", "c2", "11", "c3", "13");
+
+		BaseTableUpdate btu = new BaseTableUpdate();
+		btu.setBaseRecord(tableRecordB);
+		btu.setOperationType("Put");
+		
+		
+//		reverseJoinRecord.removeTable(btu.getBaseRecord().getTableName());
+//		
+//		reverseJoinRecord.addRecord(btu.getBaseRecord());
+		
+//		reverseJoinRecord.addRecord(tableRecordA2);
+//		reverseJoinRecord.addRecord(tableRecordB);
+//		reverseJoinRecord.addRecord(tableRecordC);
+		
+		System.out.println("reverseJoinRecord: "+reverseJoinRecord);
+		TableRecord joinRec;
+		try {
+			joinRec = reverseJoinRecord.transform();
+			System.out.println("reverseJoinRecord trans: "+joinRec);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		joinRec.setTableName(null);
+		
+		try {
+			reverseJoinRecord.backTransform(reverseJoinRecord.transform());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.out.println("reverseJoinRecord back-trans: "+reverseJoinRecord);
+//		reverseJoinRecord.backTransform(joinRec);
+//		System.out.println("reverseJoinRecord back: "+reverseJoinRecord);
+		List<TableRecord> joinRecords = reverseJoinRecord.buildJoinRecords();
+		System.out.println("joinRecords:"+joinRecords);
+	
+
+		List<BaseTableUpdate> outputBtus=new ArrayList<BaseTableUpdate>();
+		
+		if(joinRecords != null){
+			for (TableRecord joinRecord : joinRecords) {
+				
+				
+				BaseTableUpdate btuCopy = btu.copy();
+				joinRecord.setTableName("q0_3");
+				btuCopy.setRecord(btu.getOperationType(), joinRecord);
+
+				outputBtus.add(btuCopy);
+				
+				System.out.println("btuCopy: "+btuCopy);
+			}
+		}	
+		
+		
+//		System.out.println("preAggRecord back: "+preAggRecord.transform());
+		
+		
+		
+		
+		
+//		ReverseJoinRecord reverseJoinRecord2 = new ReverseJoinRecord(reverseJoin);
+//		
+//		List<TableRecord> records = new ArrayList<TableRecord>();
+//		records.add(tableRecord);
+//		
+//		reverseJoinRecord2.getTableRecords().put(tableRecord.getTableName(), records);
+//		System.out.println("reverseJoinRecord2: "+reverseJoinRecord2.transform());
+
+		
+		
+		
+		
+		
+		
+	}
+
+
+	
+	
+}

@@ -1,0 +1,23 @@
+\section{Conclusions}
+\label{sec:conclusion}
+
+In this paper, we developed a scalable view maintenance system (\VMS),
+fully integrated with a distributed \KVS. We demonstrated the
+efficient, incremental, and deferred materialization of selection,
+index, aggregation, and join views based on \VMS\ and realizes as part
+of \HB. Our approach is capable of consistently maintain multiple
+views that may depend on each other.  In the spirit today's \KVSs, our
+view maintenance architecture is designed to be incrementally
+scalable, thus, accommodating the addition of view managers as
+maintenance load increases. In our approach, a stream of base table
+updates is propagated to view tables by a bank of view managers
+operating in parallel. To establish view table consistency, we resort
+to the application of a number of known techniques that are combined
+in novel ways to materialize views consistently at large scale. We
+also address fault tolerance and recovery to react to failing view
+managers. Our experimental evaluation quantified the benefits and cost
+of the approach and showed that it scales linearly in view update load
+and number of view managers running. There are many avenues for future
+work, such as exploring optimizations for the maintenance of multiple,
+overlapping view expressions and exploring automatic means for
+reacting to view maintenance load variations.

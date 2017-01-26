@@ -1,0 +1,126 @@
+package de.webdataplatform.parser;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import de.webdataplatform.system.TableRecord;
+
+public class Constant implements ITerm{
+
+
+	private Integer valInteger;
+	private String valString;
+	
+
+	public Constant(Integer value) {
+		super();
+		this.valInteger = value;
+	}
+
+	public Constant(String value) {
+		super();
+		this.valString = value;
+	}
+
+	public boolean isInteger() {
+
+		
+		return (valInteger != null);
+
+	}
+	
+	public boolean isString() {
+
+		
+		return (valString != null);
+
+	}	
+
+	public static boolean isInteger(String string) {
+
+		try{
+			Integer.parseInt(string);
+		}catch(NumberFormatException nfe){
+			return false;
+		}
+		
+		return true;
+
+	}
+	
+	public static boolean isString(String token) {
+		
+		if(SQL.isSQLKeyword(token))return false;
+		
+		Pattern logEntry = Pattern.compile("\\'[\\w_\\s]*\\'");
+		
+//		System.out.println("isstring: "+token);
+		
+		Matcher matchPattern = logEntry.matcher(token);
+		
+		if(matchPattern.find()){
+//			System.out.println("isstring: "+matchPattern.group());
+			return true;
+		}
+		
+		return false;
+		
+	}
+
+	
+	
+
+	@Override
+	public int eval(TableRecord tableRecord) throws Exception {
+
+		return valInteger;
+	}
+
+
+
+
+
+	public Integer getValInteger() {
+		return valInteger;
+	}
+
+	public void setValInteger(Integer valInteger) {
+		this.valInteger = valInteger;
+	}
+
+	public String getValString() {
+		return valString;
+	}
+
+	public void setValString(String valString) {
+		this.valString = valString;
+	}
+
+	@Override
+	public String toString() {
+		
+		if(valString == null)
+		return "" + valInteger;
+		else return valString;
+	}
+
+	@Override
+	public List<ColumnName> getBaseColumns() {
+
+		return new ArrayList<ColumnName>();
+	}
+
+	@Override
+	public int evalGrouping(List<TableRecord> tableRecord) throws Exception {
+
+		return valInteger;
+	}
+	
+	
+	
+	
+
+}

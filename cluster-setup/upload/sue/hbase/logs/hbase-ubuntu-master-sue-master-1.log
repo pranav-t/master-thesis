@@ -1,0 +1,1074 @@
+Tue Jan 17 19:13:52 UTC 2017 Starting master on sue-master-1
+core file size          (blocks, -c) 0
+data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
+file size               (blocks, -f) unlimited
+pending signals                 (-i) 514644
+max locked memory       (kbytes, -l) 64
+max memory size         (kbytes, -m) unlimited
+open files                      (-n) 1024
+pipe size            (512 bytes, -p) 8
+POSIX message queues     (bytes, -q) 819200
+real-time priority              (-r) 0
+stack size              (kbytes, -s) 8192
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) unlimited
+virtual memory          (kbytes, -v) unlimited
+file locks                      (-x) unlimited
+2017-01-17 19:13:52,748 INFO  [main] util.VersionInfo: HBase 0.98.0-hadoop1
+2017-01-17 19:13:52,749 INFO  [main] util.VersionInfo: Subversion https://svn.apache.org/repos/asf/hbase/tags/0.98.0RC2 -r 1565492
+2017-01-17 19:13:52,749 INFO  [main] util.VersionInfo: Compiled by apurtell on Thu Feb  6 16:20:15 PST 2014
+2017-01-17 19:13:52,854 INFO  [main] util.ServerCommandLine: env:HBASE_LOGFILE=hbase-ubuntu-master-sue-master-1.log
+2017-01-17 19:13:52,854 INFO  [main] util.ServerCommandLine: env:PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+2017-01-17 19:13:52,854 INFO  [main] util.ServerCommandLine: env:LC_MEASUREMENT=de_DE.UTF-8
+2017-01-17 19:13:52,854 INFO  [main] util.ServerCommandLine: env:LC_MONETARY=de_DE.UTF-8
+2017-01-17 19:13:52,854 INFO  [main] util.ServerCommandLine: env:LC_TELEPHONE=de_DE.UTF-8
+2017-01-17 19:13:52,854 INFO  [main] util.ServerCommandLine: env:LC_TIME=de_DE.UTF-8
+2017-01-17 19:13:52,854 INFO  [main] util.ServerCommandLine: env:JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre/
+2017-01-17 19:13:52,854 INFO  [main] util.ServerCommandLine: env:LANG=en_US.UTF-8
+2017-01-17 19:13:52,854 INFO  [main] util.ServerCommandLine: env:XDG_SESSION_ID=c24
+2017-01-17 19:13:52,854 INFO  [main] util.ServerCommandLine: env:MAIL=/var/mail/ubuntu
+2017-01-17 19:13:52,854 INFO  [main] util.ServerCommandLine: env:LC_PAPER=de_DE.UTF-8
+2017-01-17 19:13:52,854 INFO  [main] util.ServerCommandLine: env:LOGNAME=ubuntu
+2017-01-17 19:13:52,854 INFO  [main] util.ServerCommandLine: env:HBASE_REST_OPTS=
+2017-01-17 19:13:52,855 INFO  [main] util.ServerCommandLine: env:PWD=/usr/local/hbase
+2017-01-17 19:13:52,855 INFO  [main] util.ServerCommandLine: env:LC_NAME=de_DE.UTF-8
+2017-01-17 19:13:52,855 INFO  [main] util.ServerCommandLine: env:HBASE_ROOT_LOGGER=INFO,RFA
+2017-01-17 19:13:52,855 INFO  [main] util.ServerCommandLine: env:SHELL=/bin/bash
+2017-01-17 19:13:52,855 INFO  [main] util.ServerCommandLine: env:LC_ADDRESS=de_DE.UTF-8
+2017-01-17 19:13:52,855 INFO  [main] util.ServerCommandLine: env:HBASE_ENV_INIT=true
+2017-01-17 19:13:52,855 INFO  [main] util.ServerCommandLine: env:HBASE_IDENT_STRING=ubuntu
+2017-01-17 19:13:52,855 INFO  [main] util.ServerCommandLine: env:HBASE_ZNODE_FILE=/tmp/hbase-ubuntu-master.znode
+2017-01-17 19:13:52,855 INFO  [main] util.ServerCommandLine: env:SSH_CLIENT=172.24.43.157 46756 22
+2017-01-17 19:13:52,855 INFO  [main] util.ServerCommandLine: env:HBASE_LOG_PREFIX=hbase-ubuntu-master-sue-master-1
+2017-01-17 19:13:52,855 INFO  [main] util.ServerCommandLine: env:HBASE_LOG_DIR=/usr/local/hbase/bin/../logs
+2017-01-17 19:13:52,855 INFO  [main] util.ServerCommandLine: env:USER=ubuntu
+2017-01-17 19:13:52,855 INFO  [main] util.ServerCommandLine: env:CLASSPATH=/usr/local/hbase/bin/../conf:/usr/lib/jvm/java-8-openjdk-amd64/jre//lib/tools.jar:/usr/local/hbase/bin/..:/usr/local/hbase/bin/../lib/activation-1.1.jar:/usr/local/hbase/bin/../lib/asm-3.1.jar:/usr/local/hbase/bin/../lib/commons-beanutils-1.7.0.jar:/usr/local/hbase/bin/../lib/commons-beanutils-core-1.8.0.jar:/usr/local/hbase/bin/../lib/commons-cli-1.2.jar:/usr/local/hbase/bin/../lib/commons-codec-1.7.jar:/usr/local/hbase/bin/../lib/commons-collections-3.2.1.jar:/usr/local/hbase/bin/../lib/commons-configuration-1.6.jar:/usr/local/hbase/bin/../lib/commons-digester-1.8.jar:/usr/local/hbase/bin/../lib/commons-el-1.0.jar:/usr/local/hbase/bin/../lib/commons-httpclient-3.1.jar:/usr/local/hbase/bin/../lib/commons-io-2.4.jar:/usr/local/hbase/bin/../lib/commons-lang-2.6.jar:/usr/local/hbase/bin/../lib/commons-logging-1.1.1.jar:/usr/local/hbase/bin/../lib/commons-math-2.2.jar:/usr/local/hbase/bin/../lib/commons-net-1.4.1.jar:/usr/local/hbase/bin/../lib/core-3.1.1.jar:/usr/local/hbase/bin/../lib/findbugs-annotations-1.3.9-1.jar:/usr/local/hbase/bin/../lib/guava-12.0.1.jar:/usr/local/hbase/bin/../lib/hadoop-core-1.2.1.jar:/usr/local/hbase/bin/../lib/hamcrest-core-1.3.jar:/usr/local/hbase/bin/../lib/hbase-client-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-common-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-common-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-examples-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-hadoop1-compat-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-hadoop-compat-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-it-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-it-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-prefix-tree-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-protocol-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-server-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-server-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-shell-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-testing-util-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-thrift-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/high-scale-lib-1.1.1.jar:/usr/local/hbase/bin/../lib/htrace-core-2.04.jar:/usr/local/hbase/bin/../lib/httpclient-4.1.3.jar:/usr/local/hbase/bin/../lib/httpcore-4.1.3.jar:/usr/local/hbase/bin/../lib/jackson-core-asl-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-jaxrs-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-mapper-asl-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-xc-1.8.8.jar:/usr/local/hbase/bin/../lib/jamon-runtime-2.3.1.jar:/usr/local/hbase/bin/../lib/jasper-compiler-5.5.23.jar:/usr/local/hbase/bin/../lib/jasper-runtime-5.5.23.jar:/usr/local/hbase/bin/../lib/jaxb-api-2.2.2.jar:/usr/local/hbase/bin/../lib/jaxb-impl-2.2.3-1.jar:/usr/local/hbase/bin/../lib/jersey-core-1.8.jar:/usr/local/hbase/bin/../lib/jersey-json-1.8.jar:/usr/local/hbase/bin/../lib/jersey-server-1.8.jar:/usr/local/hbase/bin/../lib/jettison-1.3.1.jar:/usr/local/hbase/bin/../lib/jetty-6.1.26.jar:/usr/local/hbase/bin/../lib/jetty-sslengine-6.1.26.jar:/usr/local/hbase/bin/../lib/jetty-util-6.1.26.jar:/usr/local/hbase/bin/../lib/jruby-complete-1.6.8.jar:/usr/local/hbase/bin/../lib/jsp-2.1-6.1.14.jar:/usr/local/hbase/bin/../lib/jsp-api-2.1-6.1.14.jar:/usr/local/hbase/bin/../lib/jsr305-1.3.9.jar:/usr/local/hbase/bin/../lib/junit-4.11.jar:/usr/local/hbase/bin/../lib/libthrift-0.9.0.jar:/usr/local/hbase/bin/../lib/log4j-1.2.17.jar:/usr/local/hbase/bin/../lib/metrics-core-2.1.2.jar:/usr/local/hbase/bin/../lib/netty-3.6.6.Final.jar:/usr/local/hbase/bin/../lib/protobuf-java-2.5.0.jar:/usr/local/hbase/bin/../lib/servlet-api-2.5-6.1.14.jar:/usr/local/hbase/bin/../lib/slf4j-api-1.6.4.jar:/usr/local/hbase/bin/../lib/slf4j-log4j12-1.6.4.jar:/usr/local/hbase/bin/../lib/stax-api-1.0.1.jar:/usr/local/hbase/bin/../lib/xmlenc-0.52.jar:/usr/local/hbase/bin/../lib/zookeeper-3.4.5.jar:
+2017-01-17 19:13:52,855 INFO  [main] util.ServerCommandLine: env:HBASE_MANAGES_ZK=true
+2017-01-17 19:13:52,855 INFO  [main] util.ServerCommandLine: env:LC_NUMERIC=de_DE.UTF-8
+2017-01-17 19:13:52,855 INFO  [main] util.ServerCommandLine: env:SSH_CONNECTION=172.24.43.157 46756 172.24.43.156 22
+2017-01-17 19:13:52,855 INFO  [main] util.ServerCommandLine: env:HBASE_NICENESS=0
+2017-01-17 19:13:52,855 INFO  [main] util.ServerCommandLine: env:HBASE_OPTS=-XX:+UseConcMarkSweepGC   -Dhbase.log.dir=/usr/local/hbase/bin/../logs -Dhbase.log.file=hbase-ubuntu-master-sue-master-1.log -Dhbase.home.dir=/usr/local/hbase/bin/.. -Dhbase.id.str=ubuntu -Dhbase.root.logger=INFO,RFA -Dhbase.security.logger=INFO,RFAS
+2017-01-17 19:13:52,855 INFO  [main] util.ServerCommandLine: env:HBASE_START_FILE=/tmp/hbase-ubuntu-master.autorestart
+2017-01-17 19:13:52,855 INFO  [main] util.ServerCommandLine: env:HBASE_SECURITY_LOGGER=INFO,RFAS
+2017-01-17 19:13:52,855 INFO  [main] util.ServerCommandLine: env:XDG_RUNTIME_DIR=/run/user/1000
+2017-01-17 19:13:52,855 INFO  [main] util.ServerCommandLine: env:HBASE_THRIFT_OPTS=
+2017-01-17 19:13:52,855 INFO  [main] util.ServerCommandLine: env:HBASE_HOME=/usr/local/hbase/bin/..
+2017-01-17 19:13:52,856 INFO  [main] util.ServerCommandLine: env:SHLVL=3
+2017-01-17 19:13:52,856 INFO  [main] util.ServerCommandLine: env:HOME=/home/ubuntu
+2017-01-17 19:13:52,856 INFO  [main] util.ServerCommandLine: env:LC_IDENTIFICATION=de_DE.UTF-8
+2017-01-17 19:13:52,856 INFO  [main] util.ServerCommandLine: env:MALLOC_ARENA_MAX=4
+2017-01-17 19:13:52,858 INFO  [main] util.ServerCommandLine: vmName=OpenJDK 64-Bit Server VM, vmVendor=Oracle Corporation, vmVersion=25.111-b14
+2017-01-17 19:13:52,858 INFO  [main] util.ServerCommandLine: vmInputArguments=[-Dproc_master, -XX:OnOutOfMemoryError=kill -9 %p, -Xmx1000m, -XX:+UseConcMarkSweepGC, -Dhbase.log.dir=/usr/local/hbase/bin/../logs, -Dhbase.log.file=hbase-ubuntu-master-sue-master-1.log, -Dhbase.home.dir=/usr/local/hbase/bin/.., -Dhbase.id.str=ubuntu, -Dhbase.root.logger=INFO,RFA, -Dhbase.security.logger=INFO,RFAS]
+2017-01-17 19:13:52,961 DEBUG [main] master.HMaster: master/sue-master-1/172.24.43.156:60000 HConnection server-to-server retries=350
+2017-01-17 19:13:53,120 INFO  [main] ipc.RpcServer: master/sue-master-1/172.24.43.156:60000: started 10 reader(s).
+2017-01-17 19:13:53,165 INFO  [main] impl.MetricsConfig: loaded properties from hadoop-metrics2-hbase.properties
+2017-01-17 19:13:53,227 INFO  [main] impl.MetricsSourceAdapter: MBean for source MetricsSystem,sub=Stats registered.
+2017-01-17 19:13:53,228 INFO  [main] impl.MetricsSystemImpl: Scheduled snapshot period at 10 second(s).
+2017-01-17 19:13:53,228 INFO  [main] impl.MetricsSystemImpl: HBase metrics system started
+2017-01-17 19:13:53,232 INFO  [main] impl.MetricsSourceAdapter: MBean for source jvm registered.
+2017-01-17 19:13:53,239 INFO  [main] impl.MetricsSourceAdapter: MBean for source IPC,sub=IPC registered.
+2017-01-17 19:13:53,395 INFO  [main] impl.MetricsSourceAdapter: MBean for source ugi registered.
+2017-01-17 19:13:53,395 WARN  [main] impl.MetricsSystemImpl: Source name ugi already exists!
+2017-01-17 19:13:53,614 INFO  [main] master.HMaster: hbase.rootdir=hdfs://sue-master-1:54310/hbase, hbase.cluster.distributed=true
+2017-01-17 19:13:53,642 INFO  [main] zookeeper.ZooKeeper: Client environment:zookeeper.version=3.4.5--1, built on 10/05/2013 16:05 GMT
+2017-01-17 19:13:53,642 INFO  [main] zookeeper.ZooKeeper: Client environment:host.name=sue-master-1
+2017-01-17 19:13:53,643 INFO  [main] zookeeper.ZooKeeper: Client environment:java.version=1.8.0_111
+2017-01-17 19:13:53,643 INFO  [main] zookeeper.ZooKeeper: Client environment:java.vendor=Oracle Corporation
+2017-01-17 19:13:53,643 INFO  [main] zookeeper.ZooKeeper: Client environment:java.home=/usr/lib/jvm/java-8-openjdk-amd64/jre
+2017-01-17 19:13:53,643 INFO  [main] zookeeper.ZooKeeper: Client environment:java.class.path=/usr/local/hbase/bin/../conf:/usr/lib/jvm/java-8-openjdk-amd64/jre//lib/tools.jar:/usr/local/hbase/bin/..:/usr/local/hbase/bin/../lib/activation-1.1.jar:/usr/local/hbase/bin/../lib/asm-3.1.jar:/usr/local/hbase/bin/../lib/commons-beanutils-1.7.0.jar:/usr/local/hbase/bin/../lib/commons-beanutils-core-1.8.0.jar:/usr/local/hbase/bin/../lib/commons-cli-1.2.jar:/usr/local/hbase/bin/../lib/commons-codec-1.7.jar:/usr/local/hbase/bin/../lib/commons-collections-3.2.1.jar:/usr/local/hbase/bin/../lib/commons-configuration-1.6.jar:/usr/local/hbase/bin/../lib/commons-digester-1.8.jar:/usr/local/hbase/bin/../lib/commons-el-1.0.jar:/usr/local/hbase/bin/../lib/commons-httpclient-3.1.jar:/usr/local/hbase/bin/../lib/commons-io-2.4.jar:/usr/local/hbase/bin/../lib/commons-lang-2.6.jar:/usr/local/hbase/bin/../lib/commons-logging-1.1.1.jar:/usr/local/hbase/bin/../lib/commons-math-2.2.jar:/usr/local/hbase/bin/../lib/commons-net-1.4.1.jar:/usr/local/hbase/bin/../lib/core-3.1.1.jar:/usr/local/hbase/bin/../lib/findbugs-annotations-1.3.9-1.jar:/usr/local/hbase/bin/../lib/guava-12.0.1.jar:/usr/local/hbase/bin/../lib/hadoop-core-1.2.1.jar:/usr/local/hbase/bin/../lib/hamcrest-core-1.3.jar:/usr/local/hbase/bin/../lib/hbase-client-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-common-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-common-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-examples-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-hadoop1-compat-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-hadoop-compat-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-it-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-it-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-prefix-tree-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-protocol-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-server-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-server-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-shell-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-testing-util-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-thrift-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/high-scale-lib-1.1.1.jar:/usr/local/hbase/bin/../lib/htrace-core-2.04.jar:/usr/local/hbase/bin/../lib/httpclient-4.1.3.jar:/usr/local/hbase/bin/../lib/httpcore-4.1.3.jar:/usr/local/hbase/bin/../lib/jackson-core-asl-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-jaxrs-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-mapper-asl-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-xc-1.8.8.jar:/usr/local/hbase/bin/../lib/jamon-runtime-2.3.1.jar:/usr/local/hbase/bin/../lib/jasper-compiler-5.5.23.jar:/usr/local/hbase/bin/../lib/jasper-runtime-5.5.23.jar:/usr/local/hbase/bin/../lib/jaxb-api-2.2.2.jar:/usr/local/hbase/bin/../lib/jaxb-impl-2.2.3-1.jar:/usr/local/hbase/bin/../lib/jersey-core-1.8.jar:/usr/local/hbase/bin/../lib/jersey-json-1.8.jar:/usr/local/hbase/bin/../lib/jersey-server-1.8.jar:/usr/local/hbase/bin/../lib/jettison-1.3.1.jar:/usr/local/hbase/bin/../lib/jetty-6.1.26.jar:/usr/local/hbase/bin/../lib/jetty-sslengine-6.1.26.jar:/usr/local/hbase/bin/../lib/jetty-util-6.1.26.jar:/usr/local/hbase/bin/../lib/jruby-complete-1.6.8.jar:/usr/local/hbase/bin/../lib/jsp-2.1-6.1.14.jar:/usr/local/hbase/bin/../lib/jsp-api-2.1-6.1.14.jar:/usr/local/hbase/bin/../lib/jsr305-1.3.9.jar:/usr/local/hbase/bin/../lib/junit-4.11.jar:/usr/local/hbase/bin/../lib/libthrift-0.9.0.jar:/usr/local/hbase/bin/../lib/log4j-1.2.17.jar:/usr/local/hbase/bin/../lib/metrics-core-2.1.2.jar:/usr/local/hbase/bin/../lib/netty-3.6.6.Final.jar:/usr/local/hbase/bin/../lib/protobuf-java-2.5.0.jar:/usr/local/hbase/bin/../lib/servlet-api-2.5-6.1.14.jar:/usr/local/hbase/bin/../lib/slf4j-api-1.6.4.jar:/usr/local/hbase/bin/../lib/slf4j-log4j12-1.6.4.jar:/usr/local/hbase/bin/../lib/stax-api-1.0.1.jar:/usr/local/hbase/bin/../lib/xmlenc-0.52.jar:/usr/local/hbase/bin/../lib/zookeeper-3.4.5.jar:
+2017-01-17 19:13:53,643 INFO  [main] zookeeper.ZooKeeper: Client environment:java.library.path=/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+2017-01-17 19:13:53,643 INFO  [main] zookeeper.ZooKeeper: Client environment:java.io.tmpdir=/tmp
+2017-01-17 19:13:53,643 INFO  [main] zookeeper.ZooKeeper: Client environment:java.compiler=<NA>
+2017-01-17 19:13:53,643 INFO  [main] zookeeper.ZooKeeper: Client environment:os.name=Linux
+2017-01-17 19:13:53,643 INFO  [main] zookeeper.ZooKeeper: Client environment:os.arch=amd64
+2017-01-17 19:13:53,643 INFO  [main] zookeeper.ZooKeeper: Client environment:os.version=4.4.0-53-generic
+2017-01-17 19:13:53,643 INFO  [main] zookeeper.ZooKeeper: Client environment:user.name=ubuntu
+2017-01-17 19:13:53,643 INFO  [main] zookeeper.ZooKeeper: Client environment:user.home=/home/ubuntu
+2017-01-17 19:13:53,643 INFO  [main] zookeeper.ZooKeeper: Client environment:user.dir=/usr/local/hbase
+2017-01-17 19:13:53,643 INFO  [main] zookeeper.ZooKeeper: Initiating client connection, connectString=sue-data-2:2181,sue-data-1:2181,sue-master-2:2181,sue-master-1:2181,sue-data-4:2181,sue-data-3:2181 sessionTimeout=90000 watcher=master:60000, quorum=sue-data-2:2181,sue-data-1:2181,sue-master-2:2181,sue-master-1:2181,sue-data-4:2181,sue-data-3:2181, baseZNode=/hbase
+2017-01-17 19:13:53,657 INFO  [main-SendThread(sue-master-2:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-master-2/172.24.43.157:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-17 19:13:53,658 INFO  [main] zookeeper.RecoverableZooKeeper: Process identifier=master:60000 connecting to ZooKeeper ensemble=sue-data-2:2181,sue-data-1:2181,sue-master-2:2181,sue-master-1:2181,sue-data-4:2181,sue-data-3:2181
+2017-01-17 19:13:53,663 INFO  [main-SendThread(sue-master-2:2181)] zookeeper.ClientCnxn: Socket connection established to sue-master-2/172.24.43.157:2181, initiating session
+2017-01-17 19:13:53,674 INFO  [main-SendThread(sue-master-2:2181)] zookeeper.ClientCnxn: Session establishment complete on server sue-master-2/172.24.43.157:2181, sessionid = 0x159add983dc0004, negotiated timeout = 90000
+2017-01-17 19:13:53,677 INFO  [main] zookeeper.RecoverableZooKeeper: Node /hbase already exists and this is not a retry
+2017-01-17 19:13:53,704 INFO  [RpcServer.responder] ipc.RpcServer: RpcServer.responder: starting
+2017-01-17 19:13:53,704 INFO  [RpcServer.listener,port=60000] ipc.RpcServer: RpcServer.listener,port=60000: starting
+2017-01-17 19:13:53,719 INFO  [main] impl.MetricsSourceAdapter: MBean for source Master,sub=Server registered.
+2017-01-17 19:13:53,786 INFO  [master:sue-master-1:60000] mortbay.log: Logging to org.slf4j.impl.Log4jLoggerAdapter(org.mortbay.log) via org.mortbay.log.Slf4jLog
+2017-01-17 19:13:53,828 INFO  [master:sue-master-1:60000] http.HttpServer: Added global filtersafety (class=org.apache.hadoop.http.HttpServer$QuotingInputFilter)
+2017-01-17 19:13:53,833 INFO  [master:sue-master-1:60000] http.HttpServer: Port returned by webServer.getConnectors()[0].getLocalPort() before open() is -1. Opening the listener on 60010
+2017-01-17 19:13:53,834 INFO  [master:sue-master-1:60000] http.HttpServer: listener.getLocalPort() returned 60010 webServer.getConnectors()[0].getLocalPort() returned 60010
+2017-01-17 19:13:53,834 INFO  [master:sue-master-1:60000] http.HttpServer: Jetty bound to port 60010
+2017-01-17 19:13:53,834 INFO  [master:sue-master-1:60000] mortbay.log: jetty-6.1.26
+2017-01-17 19:13:54,143 INFO  [master:sue-master-1:60000] mortbay.log: Started SelectChannelConnector@0.0.0.0:60010
+2017-01-17 19:13:54,144 DEBUG [master:sue-master-1:60000] master.HMaster: HMaster started in backup mode.  Stalling until master znode is written.
+2017-01-17 19:13:54,208 INFO  [master:sue-master-1:60000] zookeeper.RecoverableZooKeeper: Node /hbase/master already exists and this is not a retry
+2017-01-17 19:13:54,209 INFO  [master:sue-master-1:60000] master.ActiveMasterManager: Adding ZNode for /hbase/backup-masters/sue-master-1,60000,1484680433312 in backup master directory
+2017-01-17 19:13:54,217 INFO  [master:sue-master-1:60000] master.ActiveMasterManager: Another master is the active master, sue-master-2,60000,1484680430478; waiting to become the next active master
+2017-01-18 10:45:06,336 INFO  [main-SendThread(sue-master-2:2181)] zookeeper.ClientCnxn: Client session timed out, have not heard from server in 53230591ms for sessionid 0x159add983dc0004, closing socket connection and attempting reconnect
+2017-01-18 10:45:06,361 WARN  [JvmPauseMonitor] util.JvmPauseMonitor: Detected pause in JVM or host machine (eg GC): pause of approximately 53194048ms
+No GCs detected
+2017-01-18 10:45:06,601 INFO  [main-SendThread(sue-data-1:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-1/172.24.43.148:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:45:06,602 INFO  [main-SendThread(sue-data-1:2181)] zookeeper.ClientCnxn: Socket connection established to sue-data-1/172.24.43.148:2181, initiating session
+2017-01-18 10:45:21,617 INFO  [main-SendThread(sue-data-1:2181)] zookeeper.ClientCnxn: Client session timed out, have not heard from server in 15015ms for sessionid 0x159add983dc0004, closing socket connection and attempting reconnect
+2017-01-18 10:45:22,137 INFO  [main-SendThread(sue-master-1:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-master-1/172.24.43.156:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:45:22,138 INFO  [main-SendThread(sue-master-1:2181)] zookeeper.ClientCnxn: Socket connection established to sue-master-1/172.24.43.156:2181, initiating session
+2017-01-18 10:45:22,139 INFO  [main-SendThread(sue-master-1:2181)] zookeeper.ClientCnxn: Unable to read additional data from server sessionid 0x159add983dc0004, likely server has closed socket, closing socket connection and attempting reconnect
+2017-01-18 10:45:22,690 INFO  [main-SendThread(sue-data-2:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-2/172.24.43.151:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:45:22,690 INFO  [main-SendThread(sue-data-2:2181)] zookeeper.ClientCnxn: Socket connection established to sue-data-2/172.24.43.151:2181, initiating session
+2017-01-18 10:45:37,705 INFO  [main-SendThread(sue-data-2:2181)] zookeeper.ClientCnxn: Client session timed out, have not heard from server in 15015ms for sessionid 0x159add983dc0004, closing socket connection and attempting reconnect
+2017-01-18 10:45:38,506 INFO  [main-SendThread(sue-data-4:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-4/172.24.43.149:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:45:38,506 INFO  [main-SendThread(sue-data-4:2181)] zookeeper.ClientCnxn: Socket connection established to sue-data-4/172.24.43.149:2181, initiating session
+2017-01-18 10:45:38,509 WARN  [main-SendThread(sue-data-4:2181)] zookeeper.ClientCnxn: Session 0x159add983dc0004 for server sue-data-4/172.24.43.149:2181, unexpected error, closing socket connection and attempting reconnect
+java.io.IOException: Broken pipe
+	at sun.nio.ch.FileDispatcherImpl.write0(Native Method)
+	at sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:47)
+	at sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:93)
+	at sun.nio.ch.IOUtil.write(IOUtil.java:65)
+	at sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:471)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doIO(ClientCnxnSocketNIO.java:117)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:355)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1068)
+2017-01-18 10:45:38,981 INFO  [main-SendThread(sue-data-3:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-3/172.24.43.150:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:45:38,983 INFO  [main-SendThread(sue-data-3:2181)] zookeeper.ClientCnxn: Socket connection established to sue-data-3/172.24.43.150:2181, initiating session
+2017-01-18 10:45:43,667 INFO  [main-SendThread(sue-data-3:2181)] zookeeper.ClientCnxn: Unable to read additional data from server sessionid 0x159add983dc0004, likely server has closed socket, closing socket connection and attempting reconnect
+2017-01-18 10:45:44,935 INFO  [main-SendThread(sue-master-2:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-master-2/172.24.43.157:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:45:44,935 INFO  [main-SendThread(sue-master-2:2181)] zookeeper.ClientCnxn: Socket connection established to sue-master-2/172.24.43.157:2181, initiating session
+2017-01-18 10:45:44,936 INFO  [main-SendThread(sue-master-2:2181)] zookeeper.ClientCnxn: Unable to read additional data from server sessionid 0x159add983dc0004, likely server has closed socket, closing socket connection and attempting reconnect
+2017-01-18 10:45:45,311 INFO  [main-SendThread(sue-data-1:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-1/172.24.43.148:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:45:45,313 INFO  [main-SendThread(sue-data-1:2181)] zookeeper.ClientCnxn: Socket connection established to sue-data-1/172.24.43.148:2181, initiating session
+2017-01-18 10:45:56,362 INFO  [main-SendThread(sue-data-1:2181)] zookeeper.ClientCnxn: Unable to read additional data from server sessionid 0x159add983dc0004, likely server has closed socket, closing socket connection and attempting reconnect
+2017-01-18 10:45:56,544 INFO  [main-SendThread(sue-master-1:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-master-1/172.24.43.156:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:45:56,545 INFO  [main-SendThread(sue-master-1:2181)] zookeeper.ClientCnxn: Socket connection established to sue-master-1/172.24.43.156:2181, initiating session
+2017-01-18 10:45:56,548 INFO  [main-SendThread(sue-master-1:2181)] zookeeper.ClientCnxn: Session establishment complete on server sue-master-1/172.24.43.156:2181, sessionid = 0x159add983dc0004, negotiated timeout = 90000
+2017-01-18 10:53:15,052 INFO  [main-SendThread(sue-master-1:2181)] zookeeper.ClientCnxn: Unable to read additional data from server sessionid 0x159add983dc0004, likely server has closed socket, closing socket connection and attempting reconnect
+2017-01-18 10:53:15,711 INFO  [main-SendThread(sue-data-2:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-2/172.24.43.151:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:53:15,711 INFO  [main-SendThread(sue-data-2:2181)] zookeeper.ClientCnxn: Socket connection established to sue-data-2/172.24.43.151:2181, initiating session
+2017-01-18 10:53:15,713 INFO  [main-SendThread(sue-data-2:2181)] zookeeper.ClientCnxn: Unable to read additional data from server sessionid 0x159add983dc0004, likely server has closed socket, closing socket connection and attempting reconnect
+2017-01-18 10:53:16,089 INFO  [main-SendThread(sue-data-4:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-4/172.24.43.149:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:53:16,090 WARN  [main-SendThread(sue-data-4:2181)] zookeeper.ClientCnxn: Session 0x159add983dc0004 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1068)
+2017-01-18 10:53:16,235 INFO  [main-SendThread(sue-data-3:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-3/172.24.43.150:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:53:16,235 INFO  [main-SendThread(sue-data-3:2181)] zookeeper.ClientCnxn: Socket connection established to sue-data-3/172.24.43.150:2181, initiating session
+2017-01-18 10:53:16,236 INFO  [main-SendThread(sue-data-3:2181)] zookeeper.ClientCnxn: Unable to read additional data from server sessionid 0x159add983dc0004, likely server has closed socket, closing socket connection and attempting reconnect
+2017-01-18 10:53:17,273 INFO  [main-SendThread(sue-master-2:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-master-2/172.24.43.157:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:53:17,273 INFO  [main-SendThread(sue-master-2:2181)] zookeeper.ClientCnxn: Socket connection established to sue-master-2/172.24.43.157:2181, initiating session
+2017-01-18 10:53:17,274 INFO  [main-SendThread(sue-master-2:2181)] zookeeper.ClientCnxn: Unable to read additional data from server sessionid 0x159add983dc0004, likely server has closed socket, closing socket connection and attempting reconnect
+2017-01-18 10:53:17,684 INFO  [main-SendThread(sue-data-1:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-1/172.24.43.148:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:53:17,685 INFO  [main-SendThread(sue-data-1:2181)] zookeeper.ClientCnxn: Socket connection established to sue-data-1/172.24.43.148:2181, initiating session
+2017-01-18 10:53:17,686 INFO  [main-SendThread(sue-data-1:2181)] zookeeper.ClientCnxn: Unable to read additional data from server sessionid 0x159add983dc0004, likely server has closed socket, closing socket connection and attempting reconnect
+2017-01-18 10:53:19,611 INFO  [main-SendThread(sue-master-1:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-master-1/172.24.43.156:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:53:19,612 INFO  [main-SendThread(sue-master-1:2181)] zookeeper.ClientCnxn: Socket connection established to sue-master-1/172.24.43.156:2181, initiating session
+2017-01-18 10:53:19,612 INFO  [main-SendThread(sue-master-1:2181)] zookeeper.ClientCnxn: Unable to read additional data from server sessionid 0x159add983dc0004, likely server has closed socket, closing socket connection and attempting reconnect
+2017-01-18 10:53:20,132 INFO  [main-SendThread(sue-data-2:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-2/172.24.43.151:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:53:20,132 WARN  [main-SendThread(sue-data-2:2181)] zookeeper.ClientCnxn: Session 0x159add983dc0004 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1068)
+2017-01-18 10:53:20,510 INFO  [main-SendThread(sue-data-4:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-4/172.24.43.149:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:53:20,511 WARN  [main-SendThread(sue-data-4:2181)] zookeeper.ClientCnxn: Session 0x159add983dc0004 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1068)
+2017-01-18 10:53:21,278 INFO  [main-SendThread(sue-data-3:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-3/172.24.43.150:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:53:21,279 WARN  [main-SendThread(sue-data-3:2181)] zookeeper.ClientCnxn: Session 0x159add983dc0004 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1068)
+2017-01-18 10:53:21,649 INFO  [main-SendThread(sue-master-2:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-master-2/172.24.43.157:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:53:21,649 INFO  [main-SendThread(sue-master-2:2181)] zookeeper.ClientCnxn: Socket connection established to sue-master-2/172.24.43.157:2181, initiating session
+2017-01-18 10:53:21,650 INFO  [main-SendThread(sue-master-2:2181)] zookeeper.ClientCnxn: Unable to read additional data from server sessionid 0x159add983dc0004, likely server has closed socket, closing socket connection and attempting reconnect
+2017-01-18 10:53:22,607 INFO  [main-SendThread(sue-data-1:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-1/172.24.43.148:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:53:22,608 WARN  [main-SendThread(sue-data-1:2181)] zookeeper.ClientCnxn: Session 0x159add983dc0004 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1068)
+Wed Jan 18 10:56:23 UTC 2017 Starting master on sue-master-1
+core file size          (blocks, -c) 0
+data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
+file size               (blocks, -f) unlimited
+pending signals                 (-i) 514644
+max locked memory       (kbytes, -l) 64
+max memory size         (kbytes, -m) unlimited
+open files                      (-n) 1024
+pipe size            (512 bytes, -p) 8
+POSIX message queues     (bytes, -q) 819200
+real-time priority              (-r) 0
+stack size              (kbytes, -s) 8192
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) unlimited
+virtual memory          (kbytes, -v) unlimited
+file locks                      (-x) unlimited
+2017-01-18 10:56:24,153 INFO  [main] util.VersionInfo: HBase 0.98.0-hadoop1
+2017-01-18 10:56:24,153 INFO  [main] util.VersionInfo: Subversion https://svn.apache.org/repos/asf/hbase/tags/0.98.0RC2 -r 1565492
+2017-01-18 10:56:24,153 INFO  [main] util.VersionInfo: Compiled by apurtell on Thu Feb  6 16:20:15 PST 2014
+2017-01-18 10:56:24,261 INFO  [main] util.ServerCommandLine: env:HBASE_LOGFILE=hbase-ubuntu-master-sue-master-1.log
+2017-01-18 10:56:24,261 INFO  [main] util.ServerCommandLine: env:PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+2017-01-18 10:56:24,261 INFO  [main] util.ServerCommandLine: env:LC_MEASUREMENT=de_DE.UTF-8
+2017-01-18 10:56:24,261 INFO  [main] util.ServerCommandLine: env:LC_MONETARY=de_DE.UTF-8
+2017-01-18 10:56:24,261 INFO  [main] util.ServerCommandLine: env:LC_TELEPHONE=de_DE.UTF-8
+2017-01-18 10:56:24,261 INFO  [main] util.ServerCommandLine: env:LC_TIME=de_DE.UTF-8
+2017-01-18 10:56:24,261 INFO  [main] util.ServerCommandLine: env:JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre/
+2017-01-18 10:56:24,261 INFO  [main] util.ServerCommandLine: env:LANG=en_US.UTF-8
+2017-01-18 10:56:24,261 INFO  [main] util.ServerCommandLine: env:XDG_SESSION_ID=c42
+2017-01-18 10:56:24,261 INFO  [main] util.ServerCommandLine: env:MAIL=/var/mail/ubuntu
+2017-01-18 10:56:24,261 INFO  [main] util.ServerCommandLine: env:LC_PAPER=de_DE.UTF-8
+2017-01-18 10:56:24,261 INFO  [main] util.ServerCommandLine: env:LOGNAME=ubuntu
+2017-01-18 10:56:24,261 INFO  [main] util.ServerCommandLine: env:HBASE_REST_OPTS=
+2017-01-18 10:56:24,261 INFO  [main] util.ServerCommandLine: env:PWD=/usr/local/hbase
+2017-01-18 10:56:24,262 INFO  [main] util.ServerCommandLine: env:LC_NAME=de_DE.UTF-8
+2017-01-18 10:56:24,262 INFO  [main] util.ServerCommandLine: env:HBASE_ROOT_LOGGER=INFO,RFA
+2017-01-18 10:56:24,262 INFO  [main] util.ServerCommandLine: env:SHELL=/bin/bash
+2017-01-18 10:56:24,262 INFO  [main] util.ServerCommandLine: env:LC_ADDRESS=de_DE.UTF-8
+2017-01-18 10:56:24,262 INFO  [main] util.ServerCommandLine: env:HBASE_ENV_INIT=true
+2017-01-18 10:56:24,262 INFO  [main] util.ServerCommandLine: env:HBASE_IDENT_STRING=ubuntu
+2017-01-18 10:56:24,262 INFO  [main] util.ServerCommandLine: env:HBASE_ZNODE_FILE=/tmp/hbase-ubuntu-master.znode
+2017-01-18 10:56:24,262 INFO  [main] util.ServerCommandLine: env:SSH_CLIENT=172.24.43.157 37086 22
+2017-01-18 10:56:24,262 INFO  [main] util.ServerCommandLine: env:HBASE_LOG_PREFIX=hbase-ubuntu-master-sue-master-1
+2017-01-18 10:56:24,262 INFO  [main] util.ServerCommandLine: env:HBASE_LOG_DIR=/usr/local/hbase/bin/../logs
+2017-01-18 10:56:24,262 INFO  [main] util.ServerCommandLine: env:USER=ubuntu
+2017-01-18 10:56:24,262 INFO  [main] util.ServerCommandLine: env:CLASSPATH=/usr/local/hbase/bin/../conf:/usr/lib/jvm/java-8-openjdk-amd64/jre//lib/tools.jar:/usr/local/hbase/bin/..:/usr/local/hbase/bin/../lib/activation-1.1.jar:/usr/local/hbase/bin/../lib/asm-3.1.jar:/usr/local/hbase/bin/../lib/commons-beanutils-1.7.0.jar:/usr/local/hbase/bin/../lib/commons-beanutils-core-1.8.0.jar:/usr/local/hbase/bin/../lib/commons-cli-1.2.jar:/usr/local/hbase/bin/../lib/commons-codec-1.7.jar:/usr/local/hbase/bin/../lib/commons-collections-3.2.1.jar:/usr/local/hbase/bin/../lib/commons-configuration-1.6.jar:/usr/local/hbase/bin/../lib/commons-digester-1.8.jar:/usr/local/hbase/bin/../lib/commons-el-1.0.jar:/usr/local/hbase/bin/../lib/commons-httpclient-3.1.jar:/usr/local/hbase/bin/../lib/commons-io-2.4.jar:/usr/local/hbase/bin/../lib/commons-lang-2.6.jar:/usr/local/hbase/bin/../lib/commons-logging-1.1.1.jar:/usr/local/hbase/bin/../lib/commons-math-2.2.jar:/usr/local/hbase/bin/../lib/commons-net-1.4.1.jar:/usr/local/hbase/bin/../lib/core-3.1.1.jar:/usr/local/hbase/bin/../lib/findbugs-annotations-1.3.9-1.jar:/usr/local/hbase/bin/../lib/guava-12.0.1.jar:/usr/local/hbase/bin/../lib/hadoop-core-1.2.1.jar:/usr/local/hbase/bin/../lib/hamcrest-core-1.3.jar:/usr/local/hbase/bin/../lib/hbase-client-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-common-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-common-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-examples-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-hadoop1-compat-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-hadoop-compat-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-it-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-it-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-prefix-tree-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-protocol-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-server-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-server-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-shell-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-testing-util-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-thrift-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/high-scale-lib-1.1.1.jar:/usr/local/hbase/bin/../lib/htrace-core-2.04.jar:/usr/local/hbase/bin/../lib/httpclient-4.1.3.jar:/usr/local/hbase/bin/../lib/httpcore-4.1.3.jar:/usr/local/hbase/bin/../lib/jackson-core-asl-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-jaxrs-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-mapper-asl-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-xc-1.8.8.jar:/usr/local/hbase/bin/../lib/jamon-runtime-2.3.1.jar:/usr/local/hbase/bin/../lib/jasper-compiler-5.5.23.jar:/usr/local/hbase/bin/../lib/jasper-runtime-5.5.23.jar:/usr/local/hbase/bin/../lib/jaxb-api-2.2.2.jar:/usr/local/hbase/bin/../lib/jaxb-impl-2.2.3-1.jar:/usr/local/hbase/bin/../lib/jersey-core-1.8.jar:/usr/local/hbase/bin/../lib/jersey-json-1.8.jar:/usr/local/hbase/bin/../lib/jersey-server-1.8.jar:/usr/local/hbase/bin/../lib/jettison-1.3.1.jar:/usr/local/hbase/bin/../lib/jetty-6.1.26.jar:/usr/local/hbase/bin/../lib/jetty-sslengine-6.1.26.jar:/usr/local/hbase/bin/../lib/jetty-util-6.1.26.jar:/usr/local/hbase/bin/../lib/jruby-complete-1.6.8.jar:/usr/local/hbase/bin/../lib/jsp-2.1-6.1.14.jar:/usr/local/hbase/bin/../lib/jsp-api-2.1-6.1.14.jar:/usr/local/hbase/bin/../lib/jsr305-1.3.9.jar:/usr/local/hbase/bin/../lib/junit-4.11.jar:/usr/local/hbase/bin/../lib/libthrift-0.9.0.jar:/usr/local/hbase/bin/../lib/log4j-1.2.17.jar:/usr/local/hbase/bin/../lib/metrics-core-2.1.2.jar:/usr/local/hbase/bin/../lib/netty-3.6.6.Final.jar:/usr/local/hbase/bin/../lib/protobuf-java-2.5.0.jar:/usr/local/hbase/bin/../lib/servlet-api-2.5-6.1.14.jar:/usr/local/hbase/bin/../lib/slf4j-api-1.6.4.jar:/usr/local/hbase/bin/../lib/slf4j-log4j12-1.6.4.jar:/usr/local/hbase/bin/../lib/stax-api-1.0.1.jar:/usr/local/hbase/bin/../lib/xmlenc-0.52.jar:/usr/local/hbase/bin/../lib/zookeeper-3.4.5.jar:
+2017-01-18 10:56:24,262 INFO  [main] util.ServerCommandLine: env:HBASE_MANAGES_ZK=true
+2017-01-18 10:56:24,262 INFO  [main] util.ServerCommandLine: env:LC_NUMERIC=de_DE.UTF-8
+2017-01-18 10:56:24,262 INFO  [main] util.ServerCommandLine: env:SSH_CONNECTION=172.24.43.157 37086 172.24.43.156 22
+2017-01-18 10:56:24,262 INFO  [main] util.ServerCommandLine: env:HBASE_NICENESS=0
+2017-01-18 10:56:24,262 INFO  [main] util.ServerCommandLine: env:HBASE_OPTS=-XX:+UseConcMarkSweepGC   -Dhbase.log.dir=/usr/local/hbase/bin/../logs -Dhbase.log.file=hbase-ubuntu-master-sue-master-1.log -Dhbase.home.dir=/usr/local/hbase/bin/.. -Dhbase.id.str=ubuntu -Dhbase.root.logger=INFO,RFA -Dhbase.security.logger=INFO,RFAS
+2017-01-18 10:56:24,262 INFO  [main] util.ServerCommandLine: env:HBASE_START_FILE=/tmp/hbase-ubuntu-master.autorestart
+2017-01-18 10:56:24,262 INFO  [main] util.ServerCommandLine: env:HBASE_SECURITY_LOGGER=INFO,RFAS
+2017-01-18 10:56:24,262 INFO  [main] util.ServerCommandLine: env:XDG_RUNTIME_DIR=/run/user/1000
+2017-01-18 10:56:24,262 INFO  [main] util.ServerCommandLine: env:HBASE_THRIFT_OPTS=
+2017-01-18 10:56:24,262 INFO  [main] util.ServerCommandLine: env:HBASE_HOME=/usr/local/hbase/bin/..
+2017-01-18 10:56:24,262 INFO  [main] util.ServerCommandLine: env:SHLVL=3
+2017-01-18 10:56:24,262 INFO  [main] util.ServerCommandLine: env:HOME=/home/ubuntu
+2017-01-18 10:56:24,262 INFO  [main] util.ServerCommandLine: env:LC_IDENTIFICATION=de_DE.UTF-8
+2017-01-18 10:56:24,262 INFO  [main] util.ServerCommandLine: env:MALLOC_ARENA_MAX=4
+2017-01-18 10:56:24,263 INFO  [main] util.ServerCommandLine: vmName=OpenJDK 64-Bit Server VM, vmVendor=Oracle Corporation, vmVersion=25.111-b14
+2017-01-18 10:56:24,264 INFO  [main] util.ServerCommandLine: vmInputArguments=[-Dproc_master, -XX:OnOutOfMemoryError=kill -9 %p, -Xmx1000m, -XX:+UseConcMarkSweepGC, -Dhbase.log.dir=/usr/local/hbase/bin/../logs, -Dhbase.log.file=hbase-ubuntu-master-sue-master-1.log, -Dhbase.home.dir=/usr/local/hbase/bin/.., -Dhbase.id.str=ubuntu, -Dhbase.root.logger=INFO,RFA, -Dhbase.security.logger=INFO,RFAS]
+2017-01-18 10:56:24,339 DEBUG [main] master.HMaster: master/sue-master-1/172.24.43.156:60000 HConnection server-to-server retries=350
+2017-01-18 10:56:24,460 INFO  [main] ipc.RpcServer: master/sue-master-1/172.24.43.156:60000: started 10 reader(s).
+2017-01-18 10:56:24,495 INFO  [main] impl.MetricsConfig: loaded properties from hadoop-metrics2-hbase.properties
+2017-01-18 10:56:24,543 INFO  [main] impl.MetricsSourceAdapter: MBean for source MetricsSystem,sub=Stats registered.
+2017-01-18 10:56:24,543 INFO  [main] impl.MetricsSystemImpl: Scheduled snapshot period at 10 second(s).
+2017-01-18 10:56:24,544 INFO  [main] impl.MetricsSystemImpl: HBase metrics system started
+2017-01-18 10:56:24,548 INFO  [main] impl.MetricsSourceAdapter: MBean for source jvm registered.
+2017-01-18 10:56:24,550 INFO  [main] impl.MetricsSourceAdapter: MBean for source IPC,sub=IPC registered.
+2017-01-18 10:56:24,714 INFO  [main] impl.MetricsSourceAdapter: MBean for source ugi registered.
+2017-01-18 10:56:24,714 WARN  [main] impl.MetricsSystemImpl: Source name ugi already exists!
+2017-01-18 10:56:24,937 INFO  [main] master.HMaster: hbase.rootdir=hdfs://sue-master-1:54310/hbase, hbase.cluster.distributed=true
+2017-01-18 10:56:24,961 INFO  [main] zookeeper.ZooKeeper: Client environment:zookeeper.version=3.4.5--1, built on 10/05/2013 16:05 GMT
+2017-01-18 10:56:24,961 INFO  [main] zookeeper.ZooKeeper: Client environment:host.name=sue-master-1
+2017-01-18 10:56:24,961 INFO  [main] zookeeper.ZooKeeper: Client environment:java.version=1.8.0_111
+2017-01-18 10:56:24,961 INFO  [main] zookeeper.ZooKeeper: Client environment:java.vendor=Oracle Corporation
+2017-01-18 10:56:24,961 INFO  [main] zookeeper.ZooKeeper: Client environment:java.home=/usr/lib/jvm/java-8-openjdk-amd64/jre
+2017-01-18 10:56:24,961 INFO  [main] zookeeper.ZooKeeper: Client environment:java.class.path=/usr/local/hbase/bin/../conf:/usr/lib/jvm/java-8-openjdk-amd64/jre//lib/tools.jar:/usr/local/hbase/bin/..:/usr/local/hbase/bin/../lib/activation-1.1.jar:/usr/local/hbase/bin/../lib/asm-3.1.jar:/usr/local/hbase/bin/../lib/commons-beanutils-1.7.0.jar:/usr/local/hbase/bin/../lib/commons-beanutils-core-1.8.0.jar:/usr/local/hbase/bin/../lib/commons-cli-1.2.jar:/usr/local/hbase/bin/../lib/commons-codec-1.7.jar:/usr/local/hbase/bin/../lib/commons-collections-3.2.1.jar:/usr/local/hbase/bin/../lib/commons-configuration-1.6.jar:/usr/local/hbase/bin/../lib/commons-digester-1.8.jar:/usr/local/hbase/bin/../lib/commons-el-1.0.jar:/usr/local/hbase/bin/../lib/commons-httpclient-3.1.jar:/usr/local/hbase/bin/../lib/commons-io-2.4.jar:/usr/local/hbase/bin/../lib/commons-lang-2.6.jar:/usr/local/hbase/bin/../lib/commons-logging-1.1.1.jar:/usr/local/hbase/bin/../lib/commons-math-2.2.jar:/usr/local/hbase/bin/../lib/commons-net-1.4.1.jar:/usr/local/hbase/bin/../lib/core-3.1.1.jar:/usr/local/hbase/bin/../lib/findbugs-annotations-1.3.9-1.jar:/usr/local/hbase/bin/../lib/guava-12.0.1.jar:/usr/local/hbase/bin/../lib/hadoop-core-1.2.1.jar:/usr/local/hbase/bin/../lib/hamcrest-core-1.3.jar:/usr/local/hbase/bin/../lib/hbase-client-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-common-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-common-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-examples-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-hadoop1-compat-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-hadoop-compat-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-it-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-it-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-prefix-tree-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-protocol-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-server-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-server-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-shell-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-testing-util-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-thrift-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/high-scale-lib-1.1.1.jar:/usr/local/hbase/bin/../lib/htrace-core-2.04.jar:/usr/local/hbase/bin/../lib/httpclient-4.1.3.jar:/usr/local/hbase/bin/../lib/httpcore-4.1.3.jar:/usr/local/hbase/bin/../lib/jackson-core-asl-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-jaxrs-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-mapper-asl-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-xc-1.8.8.jar:/usr/local/hbase/bin/../lib/jamon-runtime-2.3.1.jar:/usr/local/hbase/bin/../lib/jasper-compiler-5.5.23.jar:/usr/local/hbase/bin/../lib/jasper-runtime-5.5.23.jar:/usr/local/hbase/bin/../lib/jaxb-api-2.2.2.jar:/usr/local/hbase/bin/../lib/jaxb-impl-2.2.3-1.jar:/usr/local/hbase/bin/../lib/jersey-core-1.8.jar:/usr/local/hbase/bin/../lib/jersey-json-1.8.jar:/usr/local/hbase/bin/../lib/jersey-server-1.8.jar:/usr/local/hbase/bin/../lib/jettison-1.3.1.jar:/usr/local/hbase/bin/../lib/jetty-6.1.26.jar:/usr/local/hbase/bin/../lib/jetty-sslengine-6.1.26.jar:/usr/local/hbase/bin/../lib/jetty-util-6.1.26.jar:/usr/local/hbase/bin/../lib/jruby-complete-1.6.8.jar:/usr/local/hbase/bin/../lib/jsp-2.1-6.1.14.jar:/usr/local/hbase/bin/../lib/jsp-api-2.1-6.1.14.jar:/usr/local/hbase/bin/../lib/jsr305-1.3.9.jar:/usr/local/hbase/bin/../lib/junit-4.11.jar:/usr/local/hbase/bin/../lib/libthrift-0.9.0.jar:/usr/local/hbase/bin/../lib/log4j-1.2.17.jar:/usr/local/hbase/bin/../lib/metrics-core-2.1.2.jar:/usr/local/hbase/bin/../lib/netty-3.6.6.Final.jar:/usr/local/hbase/bin/../lib/protobuf-java-2.5.0.jar:/usr/local/hbase/bin/../lib/servlet-api-2.5-6.1.14.jar:/usr/local/hbase/bin/../lib/slf4j-api-1.6.4.jar:/usr/local/hbase/bin/../lib/slf4j-log4j12-1.6.4.jar:/usr/local/hbase/bin/../lib/stax-api-1.0.1.jar:/usr/local/hbase/bin/../lib/xmlenc-0.52.jar:/usr/local/hbase/bin/../lib/zookeeper-3.4.5.jar:
+2017-01-18 10:56:24,961 INFO  [main] zookeeper.ZooKeeper: Client environment:java.library.path=/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+2017-01-18 10:56:24,961 INFO  [main] zookeeper.ZooKeeper: Client environment:java.io.tmpdir=/tmp
+2017-01-18 10:56:24,961 INFO  [main] zookeeper.ZooKeeper: Client environment:java.compiler=<NA>
+2017-01-18 10:56:24,961 INFO  [main] zookeeper.ZooKeeper: Client environment:os.name=Linux
+2017-01-18 10:56:24,961 INFO  [main] zookeeper.ZooKeeper: Client environment:os.arch=amd64
+2017-01-18 10:56:24,961 INFO  [main] zookeeper.ZooKeeper: Client environment:os.version=4.4.0-53-generic
+2017-01-18 10:56:24,961 INFO  [main] zookeeper.ZooKeeper: Client environment:user.name=ubuntu
+2017-01-18 10:56:24,961 INFO  [main] zookeeper.ZooKeeper: Client environment:user.home=/home/ubuntu
+2017-01-18 10:56:24,961 INFO  [main] zookeeper.ZooKeeper: Client environment:user.dir=/usr/local/hbase
+2017-01-18 10:56:24,962 INFO  [main] zookeeper.ZooKeeper: Initiating client connection, connectString=sue-data-2:2181,sue-data-1:2181,sue-master-2:2181,sue-master-1:2181,sue-data-4:2181,sue-data-3:2181 sessionTimeout=90000 watcher=master:60000, quorum=sue-data-2:2181,sue-data-1:2181,sue-master-2:2181,sue-master-1:2181,sue-data-4:2181,sue-data-3:2181, baseZNode=/hbase
+2017-01-18 10:56:24,971 INFO  [main-SendThread(sue-master-2:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-master-2/172.24.43.157:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:56:24,971 INFO  [main-SendThread(sue-master-2:2181)] zookeeper.ClientCnxn: Socket connection established to sue-master-2/172.24.43.157:2181, initiating session
+2017-01-18 10:56:24,975 INFO  [main] zookeeper.RecoverableZooKeeper: Process identifier=master:60000 connecting to ZooKeeper ensemble=sue-data-2:2181,sue-data-1:2181,sue-master-2:2181,sue-master-1:2181,sue-data-4:2181,sue-data-3:2181
+2017-01-18 10:56:24,977 INFO  [main-SendThread(sue-master-2:2181)] zookeeper.ClientCnxn: Session establishment complete on server sue-master-2/172.24.43.157:2181, sessionid = 0x159b1386b5f0002, negotiated timeout = 90000
+2017-01-18 10:56:24,988 INFO  [main] zookeeper.RecoverableZooKeeper: Node /hbase already exists and this is not a retry
+2017-01-18 10:56:25,001 INFO  [RpcServer.responder] ipc.RpcServer: RpcServer.responder: starting
+2017-01-18 10:56:25,003 INFO  [main] impl.MetricsSourceAdapter: MBean for source Master,sub=Server registered.
+2017-01-18 10:56:25,006 INFO  [RpcServer.listener,port=60000] ipc.RpcServer: RpcServer.listener,port=60000: starting
+2017-01-18 10:56:25,043 INFO  [master:sue-master-1:60000] mortbay.log: Logging to org.slf4j.impl.Log4jLoggerAdapter(org.mortbay.log) via org.mortbay.log.Slf4jLog
+2017-01-18 10:56:25,067 INFO  [master:sue-master-1:60000] http.HttpServer: Added global filtersafety (class=org.apache.hadoop.http.HttpServer$QuotingInputFilter)
+2017-01-18 10:56:25,071 INFO  [master:sue-master-1:60000] http.HttpServer: Port returned by webServer.getConnectors()[0].getLocalPort() before open() is -1. Opening the listener on 60010
+2017-01-18 10:56:25,071 INFO  [master:sue-master-1:60000] http.HttpServer: listener.getLocalPort() returned 60010 webServer.getConnectors()[0].getLocalPort() returned 60010
+2017-01-18 10:56:25,071 INFO  [master:sue-master-1:60000] http.HttpServer: Jetty bound to port 60010
+2017-01-18 10:56:25,071 INFO  [master:sue-master-1:60000] mortbay.log: jetty-6.1.26
+2017-01-18 10:56:25,368 INFO  [master:sue-master-1:60000] mortbay.log: Started SelectChannelConnector@0.0.0.0:60010
+2017-01-18 10:56:25,368 DEBUG [master:sue-master-1:60000] master.HMaster: HMaster started in backup mode.  Stalling until master znode is written.
+2017-01-18 10:56:25,430 INFO  [master:sue-master-1:60000] zookeeper.RecoverableZooKeeper: Node /hbase/master already exists and this is not a retry
+2017-01-18 10:56:25,431 INFO  [master:sue-master-1:60000] master.ActiveMasterManager: Adding ZNode for /hbase/backup-masters/sue-master-1,60000,1484736984650 in backup master directory
+2017-01-18 10:56:25,440 INFO  [master:sue-master-1:60000] master.ActiveMasterManager: Another master is the active master, sue-master-2,60000,1484736981769; waiting to become the next active master
+2017-01-18 10:56:29,536 DEBUG [main-EventThread] master.ActiveMasterManager: No master available. Notifying waiting threads
+2017-01-18 10:56:29,545 DEBUG [main-EventThread] master.ActiveMasterManager: A master is now available
+2017-01-18 10:56:29,546 INFO  [master:sue-master-1:60000] master.ActiveMasterManager: Deleting ZNode for /hbase/backup-masters/sue-master-1,60000,1484736984650 from backup master directory
+2017-01-18 10:56:29,553 INFO  [master:sue-master-1:60000] master.ActiveMasterManager: Registered Active Master=sue-master-1,60000,1484736984650
+2017-01-18 10:56:29,557 INFO  [master:sue-master-1:60000] impl.MetricsSourceAdapter: MBean for source Master,sub=FileSystem registered.
+2017-01-18 10:56:29,722 DEBUG [master:sue-master-1:60000] util.FSTableDescriptors: Current tableInfoPath = hdfs://sue-master-1:54310/hbase/data/hbase/meta/.tabledesc/.tableinfo.0000000001
+2017-01-18 10:56:29,751 DEBUG [master:sue-master-1:60000] util.FSTableDescriptors: TableInfo already exists.. Skipping creation
+2017-01-18 10:56:29,770 INFO  [master:sue-master-1:60000] fs.HFileSystem: Added intercepting call to namenode#getBlockLocations so can do block reordering using class class org.apache.hadoop.hbase.fs.HFileSystem$ReorderWALBlocks
+2017-01-18 10:56:29,774 INFO  [master:sue-master-1:60000] master.SplitLogManager: Timeout=120000, unassigned timeout=180000, distributedLogReplay=false
+2017-01-18 10:56:29,788 INFO  [master:sue-master-1:60000] master.SplitLogManager: Found 0 orphan tasks and 0 rescan nodes
+2017-01-18 10:56:29,803 INFO  [master:sue-master-1:60000] zookeeper.ZooKeeper: Initiating client connection, connectString=sue-data-2:2181,sue-data-1:2181,sue-master-2:2181,sue-master-1:2181,sue-data-4:2181,sue-data-3:2181 sessionTimeout=90000 watcher=hconnection-0x66425d23, quorum=sue-data-2:2181,sue-data-1:2181,sue-master-2:2181,sue-master-1:2181,sue-data-4:2181,sue-data-3:2181, baseZNode=/hbase
+2017-01-18 10:56:29,806 INFO  [master:sue-master-1:60000-SendThread(sue-data-1:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-1/172.24.43.148:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:56:29,806 INFO  [master:sue-master-1:60000] zookeeper.RecoverableZooKeeper: Process identifier=hconnection-0x66425d23 connecting to ZooKeeper ensemble=sue-data-2:2181,sue-data-1:2181,sue-master-2:2181,sue-master-1:2181,sue-data-4:2181,sue-data-3:2181
+2017-01-18 10:56:29,807 INFO  [master:sue-master-1:60000-SendThread(sue-data-1:2181)] zookeeper.ClientCnxn: Socket connection established to sue-data-1/172.24.43.148:2181, initiating session
+2017-01-18 10:56:29,814 INFO  [master:sue-master-1:60000-SendThread(sue-data-1:2181)] zookeeper.ClientCnxn: Session establishment complete on server sue-data-1/172.24.43.148:2181, sessionid = 0x259b1386b610003, negotiated timeout = 90000
+2017-01-18 10:56:29,833 DEBUG [master:sue-master-1:60000] catalog.CatalogTracker: Starting catalog tracker org.apache.hadoop.hbase.catalog.CatalogTracker@4db05095
+2017-01-18 10:56:29,839 INFO  [master:sue-master-1:60000] impl.MetricsSourceAdapter: MBean for source Master,sub=Balancer registered.
+2017-01-18 10:56:29,943 INFO  [master:sue-master-1:60000] impl.MetricsSourceAdapter: MBean for source Master,sub=AssignmentManger registered.
+2017-01-18 10:56:29,971 DEBUG [master:sue-master-1:60000] zookeeper.RegionServerTracker: RS node: /hbase/rs/sue-data-1,60020,1484680431984 data: PBUF??
+2017-01-18 10:56:29,973 DEBUG [master:sue-master-1:60000] zookeeper.RegionServerTracker: RS node: /hbase/rs/sue-data-1,60020,1484736983195 data: PBUF??
+2017-01-18 10:56:29,973 DEBUG [master:sue-master-1:60000] zookeeper.RegionServerTracker: RS node: /hbase/rs/sue-data-3,60020,1484680431854 data: PBUF??
+2017-01-18 10:56:29,974 DEBUG [master:sue-master-1:60000] zookeeper.RegionServerTracker: RS node: /hbase/rs/sue-data-2,60020,1484736983147 data: PBUF??
+2017-01-18 10:56:29,975 DEBUG [master:sue-master-1:60000] zookeeper.RegionServerTracker: RS node: /hbase/rs/sue-data-4,60020,1484680431918 data: PBUF??
+2017-01-18 10:56:29,976 DEBUG [master:sue-master-1:60000] zookeeper.RegionServerTracker: RS node: /hbase/rs/sue-data-2,60020,1484680431865 data: PBUF??
+2017-01-18 10:56:29,977 DEBUG [master:sue-master-1:60000] zookeeper.RegionServerTracker: RS node: /hbase/rs/sue-data-3,60020,1484736983206 data: PBUF??
+2017-01-18 10:56:29,983 DEBUG [master:sue-master-1:60000] zookeeper.RegionServerTracker: RS node: /hbase/rs/sue-data-4,60020,1484736983052 data: PBUF??
+2017-01-18 10:56:29,984 INFO  [master:sue-master-1:60000] master.HMaster: Server active/primary master=sue-master-1,60000,1484736984650, sessionid=0x159b1386b5f0002, setting cluster-up flag (Was=true)
+2017-01-18 10:56:30,013 INFO  [master:sue-master-1:60000] zookeeper.RecoverableZooKeeper: Node /hbase/online-snapshot/acquired already exists and this is not a retry
+2017-01-18 10:56:30,016 INFO  [master:sue-master-1:60000] procedure.ZKProcedureUtil: Clearing all procedure znodes: /hbase/online-snapshot/acquired /hbase/online-snapshot/reached /hbase/online-snapshot/abort
+2017-01-18 10:56:30,019 DEBUG [master:sue-master-1:60000] procedure.ZKProcedureCoordinatorRpcs: Starting the controller for procedure member:sue-master-1,60000,1484736984650
+2017-01-18 10:56:30,030 DEBUG [master:sue-master-1:60000] executor.ExecutorService: Starting executor service name=MASTER_OPEN_REGION-sue-master-1:60000, corePoolSize=5, maxPoolSize=5
+2017-01-18 10:56:30,030 DEBUG [master:sue-master-1:60000] executor.ExecutorService: Starting executor service name=MASTER_CLOSE_REGION-sue-master-1:60000, corePoolSize=5, maxPoolSize=5
+2017-01-18 10:56:30,030 DEBUG [master:sue-master-1:60000] executor.ExecutorService: Starting executor service name=MASTER_SERVER_OPERATIONS-sue-master-1:60000, corePoolSize=5, maxPoolSize=5
+2017-01-18 10:56:30,031 DEBUG [master:sue-master-1:60000] executor.ExecutorService: Starting executor service name=MASTER_META_SERVER_OPERATIONS-sue-master-1:60000, corePoolSize=5, maxPoolSize=5
+2017-01-18 10:56:30,031 DEBUG [master:sue-master-1:60000] executor.ExecutorService: Starting executor service name=M_LOG_REPLAY_OPS-sue-master-1:60000, corePoolSize=10, maxPoolSize=10
+2017-01-18 10:56:30,031 DEBUG [master:sue-master-1:60000] executor.ExecutorService: Starting executor service name=MASTER_TABLE_OPERATIONS-sue-master-1:60000, corePoolSize=1, maxPoolSize=1
+2017-01-18 10:56:30,032 DEBUG [master:sue-master-1:60000] cleaner.CleanerChore: initialize cleaner=org.apache.hadoop.hbase.master.cleaner.TimeToLiveLogCleaner
+2017-01-18 10:56:30,034 INFO  [master:sue-master-1:60000] zookeeper.ZooKeeper: Initiating client connection, connectString=sue-data-2:2181,sue-data-1:2181,sue-master-2:2181,sue-master-1:2181,sue-data-4:2181,sue-data-3:2181 sessionTimeout=90000 watcher=replicationLogCleaner, quorum=sue-data-2:2181,sue-data-1:2181,sue-master-2:2181,sue-master-1:2181,sue-data-4:2181,sue-data-3:2181, baseZNode=/hbase
+2017-01-18 10:56:30,038 INFO  [master:sue-master-1:60000] zookeeper.RecoverableZooKeeper: Process identifier=replicationLogCleaner connecting to ZooKeeper ensemble=sue-data-2:2181,sue-data-1:2181,sue-master-2:2181,sue-master-1:2181,sue-data-4:2181,sue-data-3:2181
+2017-01-18 10:56:30,041 INFO  [master:sue-master-1:60000-SendThread(sue-master-1:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-master-1/172.24.43.156:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:56:30,041 INFO  [master:sue-master-1:60000-SendThread(sue-master-1:2181)] zookeeper.ClientCnxn: Socket connection established to sue-master-1/172.24.43.156:2181, initiating session
+2017-01-18 10:56:30,045 INFO  [master:sue-master-1:60000-SendThread(sue-master-1:2181)] zookeeper.ClientCnxn: Session establishment complete on server sue-master-1/172.24.43.156:2181, sessionid = 0x59b1386b5f0001, negotiated timeout = 90000
+2017-01-18 10:56:30,055 INFO  [master:sue-master-1:60000] zookeeper.RecoverableZooKeeper: Node /hbase/replication/rs already exists and this is not a retry
+2017-01-18 10:56:30,055 DEBUG [master:sue-master-1:60000] cleaner.CleanerChore: initialize cleaner=org.apache.hadoop.hbase.replication.master.ReplicationLogCleaner
+2017-01-18 10:56:30,058 DEBUG [master:sue-master-1:60000] cleaner.CleanerChore: initialize cleaner=org.apache.hadoop.hbase.master.snapshot.SnapshotLogCleaner
+2017-01-18 10:56:30,061 DEBUG [master:sue-master-1:60000] cleaner.CleanerChore: initialize cleaner=org.apache.hadoop.hbase.master.cleaner.HFileLinkCleaner
+2017-01-18 10:56:30,062 DEBUG [master:sue-master-1:60000] cleaner.CleanerChore: initialize cleaner=org.apache.hadoop.hbase.master.snapshot.SnapshotHFileCleaner
+2017-01-18 10:56:30,064 DEBUG [master:sue-master-1:60000] cleaner.CleanerChore: initialize cleaner=org.apache.hadoop.hbase.master.cleaner.TimeToLiveHFileCleaner
+2017-01-18 10:56:30,064 INFO  [master:sue-master-1:60000] master.ServerManager: Waiting for region servers count to settle; currently checked in 0, slept for 0 ms, expecting minimum of 1, maximum of 2147483647, timeout of 4500 ms, interval of 1500 ms.
+2017-01-18 10:56:31,568 INFO  [master:sue-master-1:60000] master.ServerManager: Waiting for region servers count to settle; currently checked in 0, slept for 1504 ms, expecting minimum of 1, maximum of 2147483647, timeout of 4500 ms, interval of 1500 ms.
+2017-01-18 10:56:33,071 INFO  [master:sue-master-1:60000] master.ServerManager: Waiting for region servers count to settle; currently checked in 0, slept for 3007 ms, expecting minimum of 1, maximum of 2147483647, timeout of 4500 ms, interval of 1500 ms.
+2017-01-18 10:56:34,151 INFO  [FifoRpcScheduler.handler1-thread-2] master.ServerManager: Registering server=sue-data-4,60020,1484736983052
+2017-01-18 10:56:34,185 INFO  [FifoRpcScheduler.handler1-thread-3] master.ServerManager: Registering server=sue-data-3,60020,1484736983206
+2017-01-18 10:56:34,185 INFO  [FifoRpcScheduler.handler1-thread-1] master.ServerManager: Registering server=sue-data-1,60020,1484736983195
+2017-01-18 10:56:34,189 INFO  [FifoRpcScheduler.handler1-thread-4] master.ServerManager: Registering server=sue-data-2,60020,1484736983147
+2017-01-18 10:56:34,193 INFO  [master:sue-master-1:60000] master.ServerManager: Waiting for region servers count to settle; currently checked in 4, slept for 4129 ms, expecting minimum of 1, maximum of 2147483647, timeout of 4500 ms, interval of 1500 ms.
+2017-01-18 10:56:35,582 INFO  [main-EventThread] zookeeper.RegionServerTracker: RegionServer ephemeral node deleted, processing expiration [sue-data-4,60020,1484736983052]
+2017-01-18 10:56:35,582 INFO  [main-EventThread] master.ServerManager: Master doesn't enable ServerShutdownHandler during initialization, delay expiring server sue-data-4,60020,1484736983052
+2017-01-18 10:56:35,596 DEBUG [main-EventThread] zookeeper.RegionServerTracker: RS node: /hbase/rs/sue-data-1,60020,1484680431984 data: PBUF??
+2017-01-18 10:56:35,597 DEBUG [main-EventThread] zookeeper.RegionServerTracker: RS node: /hbase/rs/sue-data-1,60020,1484736983195 data: PBUF??
+2017-01-18 10:56:35,598 DEBUG [main-EventThread] zookeeper.RegionServerTracker: RS node: /hbase/rs/sue-data-3,60020,1484680431854 data: PBUF??
+2017-01-18 10:56:35,599 DEBUG [main-EventThread] zookeeper.RegionServerTracker: RS node: /hbase/rs/sue-data-2,60020,1484736983147 data: PBUF??
+2017-01-18 10:56:35,600 DEBUG [main-EventThread] zookeeper.RegionServerTracker: RS node: /hbase/rs/sue-data-4,60020,1484680431918 data: PBUF??
+2017-01-18 10:56:35,601 DEBUG [main-EventThread] zookeeper.RegionServerTracker: RS node: /hbase/rs/sue-data-2,60020,1484680431865 data: PBUF??
+2017-01-18 10:56:35,602 DEBUG [main-EventThread] zookeeper.RegionServerTracker: RS node: /hbase/rs/sue-data-3,60020,1484736983206 data: PBUF??
+2017-01-18 10:56:35,696 INFO  [master:sue-master-1:60000] master.ServerManager: Finished waiting for region servers count to settle; checked in 4, slept for 5632 ms, expecting minimum of 1, maximum of 2147483647, master is running.
+2017-01-18 10:56:35,696 INFO  [master:sue-master-1:60000] master.ServerManager: Server serverName=sue-data-1,60020,1484680431984 rejected; we already have sue-data-1,60020,1484736983195 registered with same hostname and port
+2017-01-18 10:56:35,696 INFO  [master:sue-master-1:60000] master.ServerManager: Server serverName=sue-data-2,60020,1484680431865 rejected; we already have sue-data-2,60020,1484736983147 registered with same hostname and port
+2017-01-18 10:56:35,696 INFO  [master:sue-master-1:60000] master.ServerManager: Server serverName=sue-data-3,60020,1484680431854 rejected; we already have sue-data-3,60020,1484736983206 registered with same hostname and port
+2017-01-18 10:56:35,696 INFO  [master:sue-master-1:60000] master.ServerManager: Server serverName=sue-data-4,60020,1484680431918 rejected; we already have sue-data-4,60020,1484736983052 registered with same hostname and port
+2017-01-18 10:56:35,701 INFO  [master:sue-master-1:60000] master.MasterFileSystem: Log folder hdfs://sue-master-1:54310/hbase/WALs/sue-data-1,60020,1484736983195 belongs to an existing region server
+2017-01-18 10:56:35,701 INFO  [master:sue-master-1:60000] master.MasterFileSystem: Log folder hdfs://sue-master-1:54310/hbase/WALs/sue-data-2,60020,1484736983147 belongs to an existing region server
+2017-01-18 10:56:35,701 INFO  [master:sue-master-1:60000] master.MasterFileSystem: Log folder hdfs://sue-master-1:54310/hbase/WALs/sue-data-3,60020,1484736983206 belongs to an existing region server
+2017-01-18 10:56:35,701 INFO  [master:sue-master-1:60000] master.MasterFileSystem: Log folder hdfs://sue-master-1:54310/hbase/WALs/sue-data-4,60020,1484736983052 belongs to an existing region server
+2017-01-18 10:56:35,799 INFO  [master:sue-master-1:60000] catalog.CatalogTracker: Failed verification of hbase:meta,,1 at address=sue-data-4,60020,1484736983052, exception=java.net.ConnectException: Connection refused
+2017-01-18 10:56:35,800 INFO  [master:sue-master-1:60000] master.HMaster: Forcing expire of sue-data-4,60020,1484736983052
+2017-01-18 10:56:35,801 INFO  [master:sue-master-1:60000] master.ServerManager: Master doesn't enable ServerShutdownHandler during initialization, delay expiring server sue-data-4,60020,1484736983052
+2017-01-18 10:56:35,805 DEBUG [master:sue-master-1:60000] master.MasterFileSystem: Renamed region directory: hdfs://sue-master-1:54310/hbase/WALs/sue-data-4,60020,1484736983052-splitting
+2017-01-18 10:56:35,805 INFO  [master:sue-master-1:60000] master.SplitLogManager: dead splitlog workers [sue-data-4,60020,1484736983052]
+2017-01-18 10:56:35,810 DEBUG [master:sue-master-1:60000] master.SplitLogManager: Scheduling batch of logs to split
+2017-01-18 10:56:35,811 INFO  [master:sue-master-1:60000] master.SplitLogManager: started splitting 1 logs in [hdfs://sue-master-1:54310/hbase/WALs/sue-data-4,60020,1484736983052-splitting]
+2017-01-18 10:56:35,821 DEBUG [main-EventThread] master.SplitLogManager: put up splitlog task at znode /hbase/splitWAL/WALs%2Fsue-data-4%2C60020%2C1484736983052-splitting%2Fsue-data-4%252C60020%252C1484736983052.1484736989183.meta
+2017-01-18 10:56:35,823 DEBUG [main-EventThread] master.SplitLogManager: task not yet acquired /hbase/splitWAL/WALs%2Fsue-data-4%2C60020%2C1484736983052-splitting%2Fsue-data-4%252C60020%252C1484736983052.1484736989183.meta ver = 0
+2017-01-18 10:56:35,846 INFO  [main-EventThread] master.SplitLogManager: task /hbase/splitWAL/WALs%2Fsue-data-4%2C60020%2C1484736983052-splitting%2Fsue-data-4%252C60020%252C1484736983052.1484736989183.meta acquired by sue-data-2,60020,1484736983147
+2017-01-18 10:56:36,037 INFO  [main-EventThread] zookeeper.RegionServerTracker: RegionServer ephemeral node deleted, processing expiration [sue-data-3,60020,1484736983206]
+2017-01-18 10:56:36,037 INFO  [main-EventThread] master.ServerManager: Master doesn't enable ServerShutdownHandler during initialization, delay expiring server sue-data-3,60020,1484736983206
+2017-01-18 10:56:36,052 DEBUG [main-EventThread] zookeeper.RegionServerTracker: RS node: /hbase/rs/sue-data-1,60020,1484680431984 data: PBUF??
+2017-01-18 10:56:36,054 DEBUG [main-EventThread] zookeeper.RegionServerTracker: RS node: /hbase/rs/sue-data-1,60020,1484736983195 data: PBUF??
+2017-01-18 10:56:36,055 DEBUG [main-EventThread] zookeeper.RegionServerTracker: RS node: /hbase/rs/sue-data-3,60020,1484680431854 data: PBUF??
+2017-01-18 10:56:36,056 DEBUG [main-EventThread] zookeeper.RegionServerTracker: RS node: /hbase/rs/sue-data-2,60020,1484736983147 data: PBUF??
+2017-01-18 10:56:36,057 DEBUG [main-EventThread] zookeeper.RegionServerTracker: RS node: /hbase/rs/sue-data-4,60020,1484680431918 data: PBUF??
+2017-01-18 10:56:36,058 DEBUG [main-EventThread] zookeeper.RegionServerTracker: RS node: /hbase/rs/sue-data-2,60020,1484680431865 data: PBUF??
+2017-01-18 10:56:36,302 INFO  [main-SendThread(sue-master-2:2181)] zookeeper.ClientCnxn: Unable to read additional data from server sessionid 0x159b1386b5f0002, likely server has closed socket, closing socket connection and attempting reconnect
+2017-01-18 10:56:36,307 INFO  [master:sue-master-1:60000-SendThread(sue-data-1:2181)] zookeeper.ClientCnxn: Unable to read additional data from server sessionid 0x259b1386b610003, likely server has closed socket, closing socket connection and attempting reconnect
+2017-01-18 10:56:36,310 INFO  [master:sue-master-1:60000-SendThread(sue-master-1:2181)] zookeeper.ClientCnxn: Unable to read additional data from server sessionid 0x59b1386b5f0001, likely server has closed socket, closing socket connection and attempting reconnect
+2017-01-18 10:56:36,403 WARN  [master:sue-master-1:60000] zookeeper.RecoverableZooKeeper: Possibly transient ZooKeeper, quorum=sue-data-2:2181,sue-data-1:2181,sue-master-2:2181,sue-master-1:2181,sue-data-4:2181,sue-data-3:2181, exception=org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /hbase/splitWAL
+2017-01-18 10:56:36,403 INFO  [master:sue-master-1:60000] util.RetryCounter: Sleeping 1000ms before retry #0...
+2017-01-18 10:56:36,482 INFO  [master:sue-master-1:60000-SendThread(sue-master-2:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-master-2/172.24.43.157:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:56:36,482 INFO  [master:sue-master-1:60000-SendThread(sue-master-2:2181)] zookeeper.ClientCnxn: Socket connection established to sue-master-2/172.24.43.157:2181, initiating session
+2017-01-18 10:56:36,483 INFO  [master:sue-master-1:60000-SendThread(sue-master-2:2181)] zookeeper.ClientCnxn: Unable to read additional data from server sessionid 0x59b1386b5f0001, likely server has closed socket, closing socket connection and attempting reconnect
+2017-01-18 10:56:36,786 INFO  [sue-master-1,60000,1484736984650.splitLogManagerTimeoutMonitor] master.SplitLogManager: total tasks = 1 unassigned = 0 tasks={/hbase/splitWAL/WALs%2Fsue-data-4%2C60020%2C1484736983052-splitting%2Fsue-data-4%252C60020%252C1484736983052.1484736989183.meta=last_update = 1484736995897 last_version = 2 cur_worker_name = sue-data-2,60020,1484736983147 status = in_progress incarnation = 0 resubmits = 0 batch = installed = 1 done = 0 error = 0}
+2017-01-18 10:56:36,871 INFO  [master:sue-master-1:60000-SendThread(sue-data-4:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-4/172.24.43.149:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:56:36,872 WARN  [master:sue-master-1:60000-SendThread(sue-data-4:2181)] zookeeper.ClientCnxn: Session 0x259b1386b610003 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1068)
+2017-01-18 10:56:36,883 INFO  [master:sue-master-1:60000-SendThread(sue-data-2:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-2/172.24.43.151:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:56:36,883 WARN  [master:sue-master-1:60000-SendThread(sue-data-2:2181)] zookeeper.ClientCnxn: Session 0x59b1386b5f0001 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1068)
+2017-01-18 10:56:37,067 INFO  [main-SendThread(sue-data-1:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-1/172.24.43.148:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:56:37,068 WARN  [main-SendThread(sue-data-1:2181)] zookeeper.ClientCnxn: Session 0x159b1386b5f0002 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1068)
+2017-01-18 10:56:37,781 INFO  [main-SendThread(sue-data-4:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-4/172.24.43.149:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:56:37,781 WARN  [main-SendThread(sue-data-4:2181)] zookeeper.ClientCnxn: Session 0x159b1386b5f0002 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1068)
+2017-01-18 10:56:37,784 INFO  [master:sue-master-1:60000-SendThread(sue-data-3:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-3/172.24.43.150:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:56:37,784 WARN  [master:sue-master-1:60000-SendThread(sue-data-3:2181)] zookeeper.ClientCnxn: Session 0x259b1386b610003 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1068)
+2017-01-18 10:56:37,882 WARN  [master:sue-master-1:60000] zookeeper.RecoverableZooKeeper: Possibly transient ZooKeeper, quorum=sue-data-2:2181,sue-data-1:2181,sue-master-2:2181,sue-master-1:2181,sue-data-4:2181,sue-data-3:2181, exception=org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /hbase/splitWAL
+2017-01-18 10:56:37,882 INFO  [master:sue-master-1:60000] util.RetryCounter: Sleeping 2000ms before retry #1...
+2017-01-18 10:56:37,941 INFO  [master:sue-master-1:60000-SendThread(sue-data-3:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-3/172.24.43.150:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:56:37,943 WARN  [master:sue-master-1:60000-SendThread(sue-data-3:2181)] zookeeper.ClientCnxn: Session 0x59b1386b5f0001 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1068)
+2017-01-18 10:56:38,571 INFO  [main] util.VersionInfo: HBase 0.98.0-hadoop1
+2017-01-18 10:56:38,571 INFO  [main] util.VersionInfo: Subversion https://svn.apache.org/repos/asf/hbase/tags/0.98.0RC2 -r 1565492
+2017-01-18 10:56:38,571 INFO  [main] util.VersionInfo: Compiled by apurtell on Thu Feb  6 16:20:15 PST 2014
+2017-01-18 10:56:38,702 INFO  [main] zookeeper.ZooKeeper: Client environment:zookeeper.version=3.4.5--1, built on 10/05/2013 16:05 GMT
+2017-01-18 10:56:38,702 INFO  [main] zookeeper.ZooKeeper: Client environment:host.name=sue-master-1
+2017-01-18 10:56:38,702 INFO  [main] zookeeper.ZooKeeper: Client environment:java.version=1.8.0_111
+2017-01-18 10:56:38,702 INFO  [main] zookeeper.ZooKeeper: Client environment:java.vendor=Oracle Corporation
+2017-01-18 10:56:38,702 INFO  [main] zookeeper.ZooKeeper: Client environment:java.home=/usr/lib/jvm/java-8-openjdk-amd64/jre
+2017-01-18 10:56:38,702 INFO  [main] zookeeper.ZooKeeper: Client environment:java.class.path=/usr/local/hbase/bin/../conf:/usr/lib/jvm/java-8-openjdk-amd64/jre//lib/tools.jar:/usr/local/hbase/bin/..:/usr/local/hbase/bin/../lib/activation-1.1.jar:/usr/local/hbase/bin/../lib/asm-3.1.jar:/usr/local/hbase/bin/../lib/commons-beanutils-1.7.0.jar:/usr/local/hbase/bin/../lib/commons-beanutils-core-1.8.0.jar:/usr/local/hbase/bin/../lib/commons-cli-1.2.jar:/usr/local/hbase/bin/../lib/commons-codec-1.7.jar:/usr/local/hbase/bin/../lib/commons-collections-3.2.1.jar:/usr/local/hbase/bin/../lib/commons-configuration-1.6.jar:/usr/local/hbase/bin/../lib/commons-digester-1.8.jar:/usr/local/hbase/bin/../lib/commons-el-1.0.jar:/usr/local/hbase/bin/../lib/commons-httpclient-3.1.jar:/usr/local/hbase/bin/../lib/commons-io-2.4.jar:/usr/local/hbase/bin/../lib/commons-lang-2.6.jar:/usr/local/hbase/bin/../lib/commons-logging-1.1.1.jar:/usr/local/hbase/bin/../lib/commons-math-2.2.jar:/usr/local/hbase/bin/../lib/commons-net-1.4.1.jar:/usr/local/hbase/bin/../lib/core-3.1.1.jar:/usr/local/hbase/bin/../lib/findbugs-annotations-1.3.9-1.jar:/usr/local/hbase/bin/../lib/guava-12.0.1.jar:/usr/local/hbase/bin/../lib/hadoop-core-1.2.1.jar:/usr/local/hbase/bin/../lib/hamcrest-core-1.3.jar:/usr/local/hbase/bin/../lib/hbase-client-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-common-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-common-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-examples-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-hadoop1-compat-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-hadoop-compat-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-it-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-it-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-prefix-tree-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-protocol-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-server-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-server-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-shell-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-testing-util-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-thrift-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/high-scale-lib-1.1.1.jar:/usr/local/hbase/bin/../lib/htrace-core-2.04.jar:/usr/local/hbase/bin/../lib/httpclient-4.1.3.jar:/usr/local/hbase/bin/../lib/httpcore-4.1.3.jar:/usr/local/hbase/bin/../lib/jackson-core-asl-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-jaxrs-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-mapper-asl-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-xc-1.8.8.jar:/usr/local/hbase/bin/../lib/jamon-runtime-2.3.1.jar:/usr/local/hbase/bin/../lib/jasper-compiler-5.5.23.jar:/usr/local/hbase/bin/../lib/jasper-runtime-5.5.23.jar:/usr/local/hbase/bin/../lib/jaxb-api-2.2.2.jar:/usr/local/hbase/bin/../lib/jaxb-impl-2.2.3-1.jar:/usr/local/hbase/bin/../lib/jersey-core-1.8.jar:/usr/local/hbase/bin/../lib/jersey-json-1.8.jar:/usr/local/hbase/bin/../lib/jersey-server-1.8.jar:/usr/local/hbase/bin/../lib/jettison-1.3.1.jar:/usr/local/hbase/bin/../lib/jetty-6.1.26.jar:/usr/local/hbase/bin/../lib/jetty-sslengine-6.1.26.jar:/usr/local/hbase/bin/../lib/jetty-util-6.1.26.jar:/usr/local/hbase/bin/../lib/jruby-complete-1.6.8.jar:/usr/local/hbase/bin/../lib/jsp-2.1-6.1.14.jar:/usr/local/hbase/bin/../lib/jsp-api-2.1-6.1.14.jar:/usr/local/hbase/bin/../lib/jsr305-1.3.9.jar:/usr/local/hbase/bin/../lib/junit-4.11.jar:/usr/local/hbase/bin/../lib/libthrift-0.9.0.jar:/usr/local/hbase/bin/../lib/log4j-1.2.17.jar:/usr/local/hbase/bin/../lib/metrics-core-2.1.2.jar:/usr/local/hbase/bin/../lib/netty-3.6.6.Final.jar:/usr/local/hbase/bin/../lib/protobuf-java-2.5.0.jar:/usr/local/hbase/bin/../lib/servlet-api-2.5-6.1.14.jar:/usr/local/hbase/bin/../lib/slf4j-api-1.6.4.jar:/usr/local/hbase/bin/../lib/slf4j-log4j12-1.6.4.jar:/usr/local/hbase/bin/../lib/stax-api-1.0.1.jar:/usr/local/hbase/bin/../lib/xmlenc-0.52.jar:/usr/local/hbase/bin/../lib/zookeeper-3.4.5.jar:
+2017-01-18 10:56:38,702 INFO  [main] zookeeper.ZooKeeper: Client environment:java.library.path=/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+2017-01-18 10:56:38,702 INFO  [main] zookeeper.ZooKeeper: Client environment:java.io.tmpdir=/tmp
+2017-01-18 10:56:38,702 INFO  [main] zookeeper.ZooKeeper: Client environment:java.compiler=<NA>
+2017-01-18 10:56:38,702 INFO  [main] zookeeper.ZooKeeper: Client environment:os.name=Linux
+2017-01-18 10:56:38,702 INFO  [main] zookeeper.ZooKeeper: Client environment:os.arch=amd64
+2017-01-18 10:56:38,702 INFO  [main] zookeeper.ZooKeeper: Client environment:os.version=4.4.0-53-generic
+2017-01-18 10:56:38,702 INFO  [main] zookeeper.ZooKeeper: Client environment:user.name=ubuntu
+2017-01-18 10:56:38,702 INFO  [main] zookeeper.ZooKeeper: Client environment:user.home=/home/ubuntu
+2017-01-18 10:56:38,702 INFO  [main] zookeeper.ZooKeeper: Client environment:user.dir=/usr/local/hbase
+2017-01-18 10:56:38,703 INFO  [main] zookeeper.ZooKeeper: Initiating client connection, connectString=sue-data-2:2181,sue-data-1:2181,sue-master-2:2181,sue-master-1:2181,sue-data-4:2181,sue-data-3:2181 sessionTimeout=90000 watcher=clean znode for master, quorum=sue-data-2:2181,sue-data-1:2181,sue-master-2:2181,sue-master-1:2181,sue-data-4:2181,sue-data-3:2181, baseZNode=/hbase
+2017-01-18 10:56:38,721 INFO  [main-SendThread(sue-data-3:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-3/172.24.43.150:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:56:38,732 INFO  [main] zookeeper.RecoverableZooKeeper: Process identifier=clean znode for master connecting to ZooKeeper ensemble=sue-data-2:2181,sue-data-1:2181,sue-master-2:2181,sue-master-1:2181,sue-data-4:2181,sue-data-3:2181
+2017-01-18 10:56:38,782 WARN  [main-SendThread(sue-data-3:2181)] zookeeper.ClientCnxn: Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1068)
+2017-01-18 10:56:38,889 INFO  [main-SendThread(sue-data-2:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-2/172.24.43.151:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:56:38,890 WARN  [main-SendThread(sue-data-2:2181)] zookeeper.ClientCnxn: Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1068)
+2017-01-18 10:56:38,891 WARN  [main] zookeeper.RecoverableZooKeeper: Possibly transient ZooKeeper, quorum=sue-data-2:2181,sue-data-1:2181,sue-master-2:2181,sue-master-1:2181,sue-data-4:2181,sue-data-3:2181, exception=org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /hbase/master
+2017-01-18 10:56:38,891 INFO  [main] util.RetryCounter: Sleeping 1000ms before retry #0...
+2017-01-18 10:56:38,992 INFO  [main-SendThread(sue-data-4:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-4/172.24.43.149:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:56:38,992 WARN  [main-SendThread(sue-data-4:2181)] zookeeper.ClientCnxn: Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1068)
+2017-01-18 10:56:39,096 INFO  [main-SendThread(sue-master-2:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-master-2/172.24.43.157:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:56:39,097 WARN  [main-SendThread(sue-master-2:2181)] zookeeper.ClientCnxn: Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1068)
+2017-01-18 10:56:39,201 INFO  [main-SendThread(sue-master-1:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-master-1/172.24.43.156:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:56:39,201 WARN  [main-SendThread(sue-master-1:2181)] zookeeper.ClientCnxn: Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1068)
+2017-01-18 10:56:39,303 INFO  [main-SendThread(sue-data-1:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-1/172.24.43.148:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:56:39,304 WARN  [main-SendThread(sue-data-1:2181)] zookeeper.ClientCnxn: Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1068)
+2017-01-18 10:56:40,405 INFO  [main-SendThread(sue-data-3:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-3/172.24.43.150:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:56:40,405 WARN  [main-SendThread(sue-data-3:2181)] zookeeper.ClientCnxn: Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1068)
+2017-01-18 10:56:40,506 WARN  [main] zookeeper.RecoverableZooKeeper: Possibly transient ZooKeeper, quorum=sue-data-2:2181,sue-data-1:2181,sue-master-2:2181,sue-master-1:2181,sue-data-4:2181,sue-data-3:2181, exception=org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /hbase/master
+2017-01-18 10:56:40,506 ERROR [main] zookeeper.RecoverableZooKeeper: ZooKeeper getData failed after 1 attempts
+2017-01-18 10:56:40,506 WARN  [main] zookeeper.ZKUtil: clean znode for master, quorum=sue-data-2:2181,sue-data-1:2181,sue-master-2:2181,sue-master-1:2181,sue-data-4:2181,sue-data-3:2181, baseZNode=/hbase Unable to get data of znode /hbase/master
+org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /hbase/master
+	at org.apache.zookeeper.KeeperException.create(KeeperException.java:99)
+	at org.apache.zookeeper.KeeperException.create(KeeperException.java:51)
+	at org.apache.zookeeper.ZooKeeper.getData(ZooKeeper.java:1151)
+	at org.apache.hadoop.hbase.zookeeper.RecoverableZooKeeper.getData(RecoverableZooKeeper.java:337)
+	at org.apache.hadoop.hbase.zookeeper.ZKUtil.getDataNoWatch(ZKUtil.java:777)
+	at org.apache.hadoop.hbase.zookeeper.MasterAddressTracker.deleteIfEquals(MasterAddressTracker.java:170)
+	at org.apache.hadoop.hbase.ZNodeClearer.clear(ZNodeClearer.java:149)
+	at org.apache.hadoop.hbase.master.HMasterCommandLine.run(HMasterCommandLine.java:138)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:65)
+	at org.apache.hadoop.hbase.util.ServerCommandLine.doMain(ServerCommandLine.java:126)
+	at org.apache.hadoop.hbase.master.HMaster.main(HMaster.java:2785)
+2017-01-18 10:56:40,507 ERROR [main] zookeeper.ZooKeeperWatcher: clean znode for master, quorum=sue-data-2:2181,sue-data-1:2181,sue-master-2:2181,sue-master-1:2181,sue-data-4:2181,sue-data-3:2181, baseZNode=/hbase Received unexpected KeeperException, re-throwing exception
+org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /hbase/master
+	at org.apache.zookeeper.KeeperException.create(KeeperException.java:99)
+	at org.apache.zookeeper.KeeperException.create(KeeperException.java:51)
+	at org.apache.zookeeper.ZooKeeper.getData(ZooKeeper.java:1151)
+	at org.apache.hadoop.hbase.zookeeper.RecoverableZooKeeper.getData(RecoverableZooKeeper.java:337)
+	at org.apache.hadoop.hbase.zookeeper.ZKUtil.getDataNoWatch(ZKUtil.java:777)
+	at org.apache.hadoop.hbase.zookeeper.MasterAddressTracker.deleteIfEquals(MasterAddressTracker.java:170)
+	at org.apache.hadoop.hbase.ZNodeClearer.clear(ZNodeClearer.java:149)
+	at org.apache.hadoop.hbase.master.HMasterCommandLine.run(HMasterCommandLine.java:138)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:65)
+	at org.apache.hadoop.hbase.util.ServerCommandLine.doMain(ServerCommandLine.java:126)
+	at org.apache.hadoop.hbase.master.HMaster.main(HMaster.java:2785)
+2017-01-18 10:56:40,507 WARN  [main] zookeeper.ZooKeeperNodeTracker: Can't get or delete the master znode
+org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /hbase/master
+	at org.apache.zookeeper.KeeperException.create(KeeperException.java:99)
+	at org.apache.zookeeper.KeeperException.create(KeeperException.java:51)
+	at org.apache.zookeeper.ZooKeeper.getData(ZooKeeper.java:1151)
+	at org.apache.hadoop.hbase.zookeeper.RecoverableZooKeeper.getData(RecoverableZooKeeper.java:337)
+	at org.apache.hadoop.hbase.zookeeper.ZKUtil.getDataNoWatch(ZKUtil.java:777)
+	at org.apache.hadoop.hbase.zookeeper.MasterAddressTracker.deleteIfEquals(MasterAddressTracker.java:170)
+	at org.apache.hadoop.hbase.ZNodeClearer.clear(ZNodeClearer.java:149)
+	at org.apache.hadoop.hbase.master.HMasterCommandLine.run(HMasterCommandLine.java:138)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:65)
+	at org.apache.hadoop.hbase.util.ServerCommandLine.doMain(ServerCommandLine.java:126)
+	at org.apache.hadoop.hbase.master.HMaster.main(HMaster.java:2785)
+2017-01-18 10:56:40,614 INFO  [main] zookeeper.ZooKeeper: Session: 0x0 closed
+2017-01-18 10:56:40,615 INFO  [main-EventThread] zookeeper.ClientCnxn: EventThread shut down
+Wed Jan 18 10:57:08 UTC 2017 Starting master on sue-master-1
+core file size          (blocks, -c) 0
+data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
+file size               (blocks, -f) unlimited
+pending signals                 (-i) 514644
+max locked memory       (kbytes, -l) 64
+max memory size         (kbytes, -m) unlimited
+open files                      (-n) 1024
+pipe size            (512 bytes, -p) 8
+POSIX message queues     (bytes, -q) 819200
+real-time priority              (-r) 0
+stack size              (kbytes, -s) 8192
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) unlimited
+virtual memory          (kbytes, -v) unlimited
+file locks                      (-x) unlimited
+2017-01-18 10:57:09,225 INFO  [main] util.VersionInfo: HBase 0.98.0-hadoop1
+2017-01-18 10:57:09,226 INFO  [main] util.VersionInfo: Subversion https://svn.apache.org/repos/asf/hbase/tags/0.98.0RC2 -r 1565492
+2017-01-18 10:57:09,226 INFO  [main] util.VersionInfo: Compiled by apurtell on Thu Feb  6 16:20:15 PST 2014
+2017-01-18 10:57:09,353 INFO  [main] util.ServerCommandLine: env:HBASE_LOGFILE=hbase-ubuntu-master-sue-master-1.log
+2017-01-18 10:57:09,353 INFO  [main] util.ServerCommandLine: env:PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+2017-01-18 10:57:09,353 INFO  [main] util.ServerCommandLine: env:LC_MEASUREMENT=de_DE.UTF-8
+2017-01-18 10:57:09,353 INFO  [main] util.ServerCommandLine: env:LC_MONETARY=de_DE.UTF-8
+2017-01-18 10:57:09,353 INFO  [main] util.ServerCommandLine: env:LC_TELEPHONE=de_DE.UTF-8
+2017-01-18 10:57:09,353 INFO  [main] util.ServerCommandLine: env:LC_TIME=de_DE.UTF-8
+2017-01-18 10:57:09,353 INFO  [main] util.ServerCommandLine: env:JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre/
+2017-01-18 10:57:09,353 INFO  [main] util.ServerCommandLine: env:LANG=en_US.UTF-8
+2017-01-18 10:57:09,353 INFO  [main] util.ServerCommandLine: env:XDG_SESSION_ID=c50
+2017-01-18 10:57:09,353 INFO  [main] util.ServerCommandLine: env:MAIL=/var/mail/ubuntu
+2017-01-18 10:57:09,353 INFO  [main] util.ServerCommandLine: env:LC_PAPER=de_DE.UTF-8
+2017-01-18 10:57:09,353 INFO  [main] util.ServerCommandLine: env:LOGNAME=ubuntu
+2017-01-18 10:57:09,353 INFO  [main] util.ServerCommandLine: env:HBASE_REST_OPTS=
+2017-01-18 10:57:09,353 INFO  [main] util.ServerCommandLine: env:PWD=/usr/local/hbase
+2017-01-18 10:57:09,353 INFO  [main] util.ServerCommandLine: env:LC_NAME=de_DE.UTF-8
+2017-01-18 10:57:09,353 INFO  [main] util.ServerCommandLine: env:HBASE_ROOT_LOGGER=INFO,RFA
+2017-01-18 10:57:09,353 INFO  [main] util.ServerCommandLine: env:SHELL=/bin/bash
+2017-01-18 10:57:09,353 INFO  [main] util.ServerCommandLine: env:LC_ADDRESS=de_DE.UTF-8
+2017-01-18 10:57:09,353 INFO  [main] util.ServerCommandLine: env:HBASE_ENV_INIT=true
+2017-01-18 10:57:09,353 INFO  [main] util.ServerCommandLine: env:HBASE_IDENT_STRING=ubuntu
+2017-01-18 10:57:09,353 INFO  [main] util.ServerCommandLine: env:HBASE_ZNODE_FILE=/tmp/hbase-ubuntu-master.znode
+2017-01-18 10:57:09,353 INFO  [main] util.ServerCommandLine: env:SSH_CLIENT=172.24.43.157 37208 22
+2017-01-18 10:57:09,353 INFO  [main] util.ServerCommandLine: env:HBASE_LOG_PREFIX=hbase-ubuntu-master-sue-master-1
+2017-01-18 10:57:09,353 INFO  [main] util.ServerCommandLine: env:HBASE_LOG_DIR=/usr/local/hbase/bin/../logs
+2017-01-18 10:57:09,353 INFO  [main] util.ServerCommandLine: env:USER=ubuntu
+2017-01-18 10:57:09,354 INFO  [main] util.ServerCommandLine: env:CLASSPATH=/usr/local/hbase/bin/../conf:/usr/lib/jvm/java-8-openjdk-amd64/jre//lib/tools.jar:/usr/local/hbase/bin/..:/usr/local/hbase/bin/../lib/activation-1.1.jar:/usr/local/hbase/bin/../lib/asm-3.1.jar:/usr/local/hbase/bin/../lib/commons-beanutils-1.7.0.jar:/usr/local/hbase/bin/../lib/commons-beanutils-core-1.8.0.jar:/usr/local/hbase/bin/../lib/commons-cli-1.2.jar:/usr/local/hbase/bin/../lib/commons-codec-1.7.jar:/usr/local/hbase/bin/../lib/commons-collections-3.2.1.jar:/usr/local/hbase/bin/../lib/commons-configuration-1.6.jar:/usr/local/hbase/bin/../lib/commons-digester-1.8.jar:/usr/local/hbase/bin/../lib/commons-el-1.0.jar:/usr/local/hbase/bin/../lib/commons-httpclient-3.1.jar:/usr/local/hbase/bin/../lib/commons-io-2.4.jar:/usr/local/hbase/bin/../lib/commons-lang-2.6.jar:/usr/local/hbase/bin/../lib/commons-logging-1.1.1.jar:/usr/local/hbase/bin/../lib/commons-math-2.2.jar:/usr/local/hbase/bin/../lib/commons-net-1.4.1.jar:/usr/local/hbase/bin/../lib/core-3.1.1.jar:/usr/local/hbase/bin/../lib/findbugs-annotations-1.3.9-1.jar:/usr/local/hbase/bin/../lib/guava-12.0.1.jar:/usr/local/hbase/bin/../lib/hadoop-core-1.2.1.jar:/usr/local/hbase/bin/../lib/hamcrest-core-1.3.jar:/usr/local/hbase/bin/../lib/hbase-client-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-common-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-common-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-examples-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-hadoop1-compat-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-hadoop-compat-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-it-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-it-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-prefix-tree-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-protocol-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-server-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-server-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-shell-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-testing-util-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-thrift-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/high-scale-lib-1.1.1.jar:/usr/local/hbase/bin/../lib/htrace-core-2.04.jar:/usr/local/hbase/bin/../lib/httpclient-4.1.3.jar:/usr/local/hbase/bin/../lib/httpcore-4.1.3.jar:/usr/local/hbase/bin/../lib/jackson-core-asl-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-jaxrs-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-mapper-asl-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-xc-1.8.8.jar:/usr/local/hbase/bin/../lib/jamon-runtime-2.3.1.jar:/usr/local/hbase/bin/../lib/jasper-compiler-5.5.23.jar:/usr/local/hbase/bin/../lib/jasper-runtime-5.5.23.jar:/usr/local/hbase/bin/../lib/jaxb-api-2.2.2.jar:/usr/local/hbase/bin/../lib/jaxb-impl-2.2.3-1.jar:/usr/local/hbase/bin/../lib/jersey-core-1.8.jar:/usr/local/hbase/bin/../lib/jersey-json-1.8.jar:/usr/local/hbase/bin/../lib/jersey-server-1.8.jar:/usr/local/hbase/bin/../lib/jettison-1.3.1.jar:/usr/local/hbase/bin/../lib/jetty-6.1.26.jar:/usr/local/hbase/bin/../lib/jetty-sslengine-6.1.26.jar:/usr/local/hbase/bin/../lib/jetty-util-6.1.26.jar:/usr/local/hbase/bin/../lib/jruby-complete-1.6.8.jar:/usr/local/hbase/bin/../lib/jsp-2.1-6.1.14.jar:/usr/local/hbase/bin/../lib/jsp-api-2.1-6.1.14.jar:/usr/local/hbase/bin/../lib/jsr305-1.3.9.jar:/usr/local/hbase/bin/../lib/junit-4.11.jar:/usr/local/hbase/bin/../lib/libthrift-0.9.0.jar:/usr/local/hbase/bin/../lib/log4j-1.2.17.jar:/usr/local/hbase/bin/../lib/metrics-core-2.1.2.jar:/usr/local/hbase/bin/../lib/netty-3.6.6.Final.jar:/usr/local/hbase/bin/../lib/protobuf-java-2.5.0.jar:/usr/local/hbase/bin/../lib/servlet-api-2.5-6.1.14.jar:/usr/local/hbase/bin/../lib/slf4j-api-1.6.4.jar:/usr/local/hbase/bin/../lib/slf4j-log4j12-1.6.4.jar:/usr/local/hbase/bin/../lib/stax-api-1.0.1.jar:/usr/local/hbase/bin/../lib/xmlenc-0.52.jar:/usr/local/hbase/bin/../lib/zookeeper-3.4.5.jar:
+2017-01-18 10:57:09,354 INFO  [main] util.ServerCommandLine: env:HBASE_MANAGES_ZK=true
+2017-01-18 10:57:09,354 INFO  [main] util.ServerCommandLine: env:LC_NUMERIC=de_DE.UTF-8
+2017-01-18 10:57:09,354 INFO  [main] util.ServerCommandLine: env:SSH_CONNECTION=172.24.43.157 37208 172.24.43.156 22
+2017-01-18 10:57:09,354 INFO  [main] util.ServerCommandLine: env:HBASE_NICENESS=0
+2017-01-18 10:57:09,354 INFO  [main] util.ServerCommandLine: env:HBASE_OPTS=-XX:+UseConcMarkSweepGC   -Dhbase.log.dir=/usr/local/hbase/bin/../logs -Dhbase.log.file=hbase-ubuntu-master-sue-master-1.log -Dhbase.home.dir=/usr/local/hbase/bin/.. -Dhbase.id.str=ubuntu -Dhbase.root.logger=INFO,RFA -Dhbase.security.logger=INFO,RFAS
+2017-01-18 10:57:09,354 INFO  [main] util.ServerCommandLine: env:HBASE_START_FILE=/tmp/hbase-ubuntu-master.autorestart
+2017-01-18 10:57:09,354 INFO  [main] util.ServerCommandLine: env:HBASE_SECURITY_LOGGER=INFO,RFAS
+2017-01-18 10:57:09,354 INFO  [main] util.ServerCommandLine: env:XDG_RUNTIME_DIR=/run/user/1000
+2017-01-18 10:57:09,354 INFO  [main] util.ServerCommandLine: env:HBASE_THRIFT_OPTS=
+2017-01-18 10:57:09,354 INFO  [main] util.ServerCommandLine: env:HBASE_HOME=/usr/local/hbase/bin/..
+2017-01-18 10:57:09,354 INFO  [main] util.ServerCommandLine: env:SHLVL=3
+2017-01-18 10:57:09,354 INFO  [main] util.ServerCommandLine: env:HOME=/home/ubuntu
+2017-01-18 10:57:09,354 INFO  [main] util.ServerCommandLine: env:LC_IDENTIFICATION=de_DE.UTF-8
+2017-01-18 10:57:09,354 INFO  [main] util.ServerCommandLine: env:MALLOC_ARENA_MAX=4
+2017-01-18 10:57:09,355 INFO  [main] util.ServerCommandLine: vmName=OpenJDK 64-Bit Server VM, vmVendor=Oracle Corporation, vmVersion=25.111-b14
+2017-01-18 10:57:09,355 INFO  [main] util.ServerCommandLine: vmInputArguments=[-Dproc_master, -XX:OnOutOfMemoryError=kill -9 %p, -Xmx1000m, -XX:+UseConcMarkSweepGC, -Dhbase.log.dir=/usr/local/hbase/bin/../logs, -Dhbase.log.file=hbase-ubuntu-master-sue-master-1.log, -Dhbase.home.dir=/usr/local/hbase/bin/.., -Dhbase.id.str=ubuntu, -Dhbase.root.logger=INFO,RFA, -Dhbase.security.logger=INFO,RFAS]
+2017-01-18 10:57:09,406 DEBUG [main] master.HMaster: master/sue-master-1/172.24.43.156:60000 HConnection server-to-server retries=350
+2017-01-18 10:57:09,508 INFO  [main] ipc.RpcServer: master/sue-master-1/172.24.43.156:60000: started 10 reader(s).
+2017-01-18 10:57:09,543 INFO  [main] impl.MetricsConfig: loaded properties from hadoop-metrics2-hbase.properties
+2017-01-18 10:57:09,586 INFO  [main] impl.MetricsSourceAdapter: MBean for source MetricsSystem,sub=Stats registered.
+2017-01-18 10:57:09,587 INFO  [main] impl.MetricsSystemImpl: Scheduled snapshot period at 10 second(s).
+2017-01-18 10:57:09,587 INFO  [main] impl.MetricsSystemImpl: HBase metrics system started
+2017-01-18 10:57:09,589 INFO  [main] impl.MetricsSourceAdapter: MBean for source jvm registered.
+2017-01-18 10:57:09,591 INFO  [main] impl.MetricsSourceAdapter: MBean for source IPC,sub=IPC registered.
+2017-01-18 10:57:09,786 INFO  [main] impl.MetricsSourceAdapter: MBean for source ugi registered.
+2017-01-18 10:57:09,786 WARN  [main] impl.MetricsSystemImpl: Source name ugi already exists!
+2017-01-18 10:57:10,045 INFO  [main] master.HMaster: hbase.rootdir=hdfs://sue-master-1:54310/hbase, hbase.cluster.distributed=true
+2017-01-18 10:57:10,077 INFO  [main] zookeeper.ZooKeeper: Client environment:zookeeper.version=3.4.5--1, built on 10/05/2013 16:05 GMT
+2017-01-18 10:57:10,077 INFO  [main] zookeeper.ZooKeeper: Client environment:host.name=sue-master-1
+2017-01-18 10:57:10,077 INFO  [main] zookeeper.ZooKeeper: Client environment:java.version=1.8.0_111
+2017-01-18 10:57:10,077 INFO  [main] zookeeper.ZooKeeper: Client environment:java.vendor=Oracle Corporation
+2017-01-18 10:57:10,077 INFO  [main] zookeeper.ZooKeeper: Client environment:java.home=/usr/lib/jvm/java-8-openjdk-amd64/jre
+2017-01-18 10:57:10,077 INFO  [main] zookeeper.ZooKeeper: Client environment:java.class.path=/usr/local/hbase/bin/../conf:/usr/lib/jvm/java-8-openjdk-amd64/jre//lib/tools.jar:/usr/local/hbase/bin/..:/usr/local/hbase/bin/../lib/activation-1.1.jar:/usr/local/hbase/bin/../lib/asm-3.1.jar:/usr/local/hbase/bin/../lib/commons-beanutils-1.7.0.jar:/usr/local/hbase/bin/../lib/commons-beanutils-core-1.8.0.jar:/usr/local/hbase/bin/../lib/commons-cli-1.2.jar:/usr/local/hbase/bin/../lib/commons-codec-1.7.jar:/usr/local/hbase/bin/../lib/commons-collections-3.2.1.jar:/usr/local/hbase/bin/../lib/commons-configuration-1.6.jar:/usr/local/hbase/bin/../lib/commons-digester-1.8.jar:/usr/local/hbase/bin/../lib/commons-el-1.0.jar:/usr/local/hbase/bin/../lib/commons-httpclient-3.1.jar:/usr/local/hbase/bin/../lib/commons-io-2.4.jar:/usr/local/hbase/bin/../lib/commons-lang-2.6.jar:/usr/local/hbase/bin/../lib/commons-logging-1.1.1.jar:/usr/local/hbase/bin/../lib/commons-math-2.2.jar:/usr/local/hbase/bin/../lib/commons-net-1.4.1.jar:/usr/local/hbase/bin/../lib/core-3.1.1.jar:/usr/local/hbase/bin/../lib/findbugs-annotations-1.3.9-1.jar:/usr/local/hbase/bin/../lib/guava-12.0.1.jar:/usr/local/hbase/bin/../lib/hadoop-core-1.2.1.jar:/usr/local/hbase/bin/../lib/hamcrest-core-1.3.jar:/usr/local/hbase/bin/../lib/hbase-client-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-common-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-common-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-examples-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-hadoop1-compat-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-hadoop-compat-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-it-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-it-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-prefix-tree-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-protocol-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-server-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-server-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-shell-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-testing-util-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-thrift-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/high-scale-lib-1.1.1.jar:/usr/local/hbase/bin/../lib/htrace-core-2.04.jar:/usr/local/hbase/bin/../lib/httpclient-4.1.3.jar:/usr/local/hbase/bin/../lib/httpcore-4.1.3.jar:/usr/local/hbase/bin/../lib/jackson-core-asl-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-jaxrs-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-mapper-asl-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-xc-1.8.8.jar:/usr/local/hbase/bin/../lib/jamon-runtime-2.3.1.jar:/usr/local/hbase/bin/../lib/jasper-compiler-5.5.23.jar:/usr/local/hbase/bin/../lib/jasper-runtime-5.5.23.jar:/usr/local/hbase/bin/../lib/jaxb-api-2.2.2.jar:/usr/local/hbase/bin/../lib/jaxb-impl-2.2.3-1.jar:/usr/local/hbase/bin/../lib/jersey-core-1.8.jar:/usr/local/hbase/bin/../lib/jersey-json-1.8.jar:/usr/local/hbase/bin/../lib/jersey-server-1.8.jar:/usr/local/hbase/bin/../lib/jettison-1.3.1.jar:/usr/local/hbase/bin/../lib/jetty-6.1.26.jar:/usr/local/hbase/bin/../lib/jetty-sslengine-6.1.26.jar:/usr/local/hbase/bin/../lib/jetty-util-6.1.26.jar:/usr/local/hbase/bin/../lib/jruby-complete-1.6.8.jar:/usr/local/hbase/bin/../lib/jsp-2.1-6.1.14.jar:/usr/local/hbase/bin/../lib/jsp-api-2.1-6.1.14.jar:/usr/local/hbase/bin/../lib/jsr305-1.3.9.jar:/usr/local/hbase/bin/../lib/junit-4.11.jar:/usr/local/hbase/bin/../lib/libthrift-0.9.0.jar:/usr/local/hbase/bin/../lib/log4j-1.2.17.jar:/usr/local/hbase/bin/../lib/metrics-core-2.1.2.jar:/usr/local/hbase/bin/../lib/netty-3.6.6.Final.jar:/usr/local/hbase/bin/../lib/protobuf-java-2.5.0.jar:/usr/local/hbase/bin/../lib/servlet-api-2.5-6.1.14.jar:/usr/local/hbase/bin/../lib/slf4j-api-1.6.4.jar:/usr/local/hbase/bin/../lib/slf4j-log4j12-1.6.4.jar:/usr/local/hbase/bin/../lib/stax-api-1.0.1.jar:/usr/local/hbase/bin/../lib/xmlenc-0.52.jar:/usr/local/hbase/bin/../lib/zookeeper-3.4.5.jar:
+2017-01-18 10:57:10,077 INFO  [main] zookeeper.ZooKeeper: Client environment:java.library.path=/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+2017-01-18 10:57:10,077 INFO  [main] zookeeper.ZooKeeper: Client environment:java.io.tmpdir=/tmp
+2017-01-18 10:57:10,078 INFO  [main] zookeeper.ZooKeeper: Client environment:java.compiler=<NA>
+2017-01-18 10:57:10,078 INFO  [main] zookeeper.ZooKeeper: Client environment:os.name=Linux
+2017-01-18 10:57:10,078 INFO  [main] zookeeper.ZooKeeper: Client environment:os.arch=amd64
+2017-01-18 10:57:10,078 INFO  [main] zookeeper.ZooKeeper: Client environment:os.version=4.4.0-53-generic
+2017-01-18 10:57:10,078 INFO  [main] zookeeper.ZooKeeper: Client environment:user.name=ubuntu
+2017-01-18 10:57:10,078 INFO  [main] zookeeper.ZooKeeper: Client environment:user.home=/home/ubuntu
+2017-01-18 10:57:10,078 INFO  [main] zookeeper.ZooKeeper: Client environment:user.dir=/usr/local/hbase
+2017-01-18 10:57:10,078 INFO  [main] zookeeper.ZooKeeper: Initiating client connection, connectString=sue-data-2:2181,sue-data-1:2181,sue-master-2:2181,sue-master-1:2181,sue-data-4:2181,sue-data-3:2181 sessionTimeout=90000 watcher=master:60000, quorum=sue-data-2:2181,sue-data-1:2181,sue-master-2:2181,sue-master-1:2181,sue-data-4:2181,sue-data-3:2181, baseZNode=/hbase
+2017-01-18 10:57:10,096 INFO  [main-SendThread(sue-data-3:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-3/172.24.43.150:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:57:10,103 INFO  [main] zookeeper.RecoverableZooKeeper: Process identifier=master:60000 connecting to ZooKeeper ensemble=sue-data-2:2181,sue-data-1:2181,sue-master-2:2181,sue-master-1:2181,sue-data-4:2181,sue-data-3:2181
+2017-01-18 10:57:10,111 INFO  [main-SendThread(sue-data-3:2181)] zookeeper.ClientCnxn: Socket connection established to sue-data-3/172.24.43.150:2181, initiating session
+2017-01-18 10:57:10,117 INFO  [main-SendThread(sue-data-3:2181)] zookeeper.ClientCnxn: Session establishment complete on server sue-data-3/172.24.43.150:2181, sessionid = 0x459b139182e0004, negotiated timeout = 90000
+2017-01-18 10:57:10,122 INFO  [main] zookeeper.RecoverableZooKeeper: Node /hbase already exists and this is not a retry
+2017-01-18 10:57:10,154 INFO  [RpcServer.responder] ipc.RpcServer: RpcServer.responder: starting
+2017-01-18 10:57:10,156 INFO  [RpcServer.listener,port=60000] ipc.RpcServer: RpcServer.listener,port=60000: starting
+2017-01-18 10:57:10,158 INFO  [main] impl.MetricsSourceAdapter: MBean for source Master,sub=Server registered.
+2017-01-18 10:57:10,202 INFO  [master:sue-master-1:60000] mortbay.log: Logging to org.slf4j.impl.Log4jLoggerAdapter(org.mortbay.log) via org.mortbay.log.Slf4jLog
+2017-01-18 10:57:10,231 INFO  [master:sue-master-1:60000] http.HttpServer: Added global filtersafety (class=org.apache.hadoop.http.HttpServer$QuotingInputFilter)
+2017-01-18 10:57:10,236 INFO  [master:sue-master-1:60000] http.HttpServer: Port returned by webServer.getConnectors()[0].getLocalPort() before open() is -1. Opening the listener on 60010
+2017-01-18 10:57:10,236 INFO  [master:sue-master-1:60000] http.HttpServer: listener.getLocalPort() returned 60010 webServer.getConnectors()[0].getLocalPort() returned 60010
+2017-01-18 10:57:10,236 INFO  [master:sue-master-1:60000] http.HttpServer: Jetty bound to port 60010
+2017-01-18 10:57:10,236 INFO  [master:sue-master-1:60000] mortbay.log: jetty-6.1.26
+2017-01-18 10:57:10,563 INFO  [master:sue-master-1:60000] mortbay.log: Started SelectChannelConnector@0.0.0.0:60010
+2017-01-18 10:57:10,563 DEBUG [master:sue-master-1:60000] master.HMaster: HMaster started in backup mode.  Stalling until master znode is written.
+2017-01-18 10:57:10,606 INFO  [master:sue-master-1:60000] zookeeper.RecoverableZooKeeper: Node /hbase/master already exists and this is not a retry
+2017-01-18 10:57:10,613 INFO  [master:sue-master-1:60000] master.ActiveMasterManager: Adding ZNode for /hbase/backup-masters/sue-master-1,60000,1484737029653 in backup master directory
+2017-01-18 10:57:10,621 INFO  [master:sue-master-1:60000] master.ActiveMasterManager: Another master is the active master, sue-master-2,60000,1484737026969; waiting to become the next active master
+2017-01-18 10:57:16,824 INFO  [main-SendThread(sue-data-3:2181)] zookeeper.ClientCnxn: Unable to read additional data from server sessionid 0x459b139182e0004, likely server has closed socket, closing socket connection and attempting reconnect
+2017-01-18 10:57:17,617 INFO  [main-SendThread(sue-data-4:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-4/172.24.43.149:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:57:17,618 WARN  [main-SendThread(sue-data-4:2181)] zookeeper.ClientCnxn: Session 0x459b139182e0004 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1068)
+2017-01-18 10:57:17,824 INFO  [main-SendThread(sue-data-2:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-2/172.24.43.151:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:57:17,824 INFO  [main-SendThread(sue-data-2:2181)] zookeeper.ClientCnxn: Socket connection established to sue-data-2/172.24.43.151:2181, initiating session
+2017-01-18 10:57:17,827 INFO  [main-SendThread(sue-data-2:2181)] zookeeper.ClientCnxn: Unable to read additional data from server sessionid 0x459b139182e0004, likely server has closed socket, closing socket connection and attempting reconnect
+2017-01-18 10:57:18,521 INFO  [main-SendThread(sue-master-2:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-master-2/172.24.43.157:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:57:18,528 INFO  [main-SendThread(sue-master-2:2181)] zookeeper.ClientCnxn: Socket connection established to sue-master-2/172.24.43.157:2181, initiating session
+2017-01-18 10:57:18,529 INFO  [main-SendThread(sue-master-2:2181)] zookeeper.ClientCnxn: Unable to read additional data from server sessionid 0x459b139182e0004, likely server has closed socket, closing socket connection and attempting reconnect
+2017-01-18 10:57:19,512 INFO  [main-SendThread(sue-data-1:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-1/172.24.43.148:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:57:19,513 WARN  [main-SendThread(sue-data-1:2181)] zookeeper.ClientCnxn: Session 0x459b139182e0004 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1068)
+2017-01-18 10:57:20,406 INFO  [main-SendThread(sue-master-1:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-master-1/172.24.43.156:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:57:20,407 INFO  [main-SendThread(sue-master-1:2181)] zookeeper.ClientCnxn: Socket connection established to sue-master-1/172.24.43.156:2181, initiating session
+2017-01-18 10:57:20,414 INFO  [main-SendThread(sue-master-1:2181)] zookeeper.ClientCnxn: Unable to read additional data from server sessionid 0x459b139182e0004, likely server has closed socket, closing socket connection and attempting reconnect
+Wed Jan 18 10:57:52 UTC 2017 Starting master on sue-master-1
+core file size          (blocks, -c) 0
+data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
+file size               (blocks, -f) unlimited
+pending signals                 (-i) 514644
+max locked memory       (kbytes, -l) 64
+max memory size         (kbytes, -m) unlimited
+open files                      (-n) 1024
+pipe size            (512 bytes, -p) 8
+POSIX message queues     (bytes, -q) 819200
+real-time priority              (-r) 0
+stack size              (kbytes, -s) 8192
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) unlimited
+virtual memory          (kbytes, -v) unlimited
+file locks                      (-x) unlimited
+2017-01-18 10:57:52,950 INFO  [main] util.VersionInfo: HBase 0.98.0-hadoop1
+2017-01-18 10:57:52,951 INFO  [main] util.VersionInfo: Subversion https://svn.apache.org/repos/asf/hbase/tags/0.98.0RC2 -r 1565492
+2017-01-18 10:57:52,951 INFO  [main] util.VersionInfo: Compiled by apurtell on Thu Feb  6 16:20:15 PST 2014
+2017-01-18 10:57:53,055 INFO  [main] util.ServerCommandLine: env:HBASE_LOGFILE=hbase-ubuntu-master-sue-master-1.log
+2017-01-18 10:57:53,055 INFO  [main] util.ServerCommandLine: env:PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+2017-01-18 10:57:53,055 INFO  [main] util.ServerCommandLine: env:LC_MEASUREMENT=de_DE.UTF-8
+2017-01-18 10:57:53,055 INFO  [main] util.ServerCommandLine: env:LC_MONETARY=de_DE.UTF-8
+2017-01-18 10:57:53,055 INFO  [main] util.ServerCommandLine: env:LC_TELEPHONE=de_DE.UTF-8
+2017-01-18 10:57:53,055 INFO  [main] util.ServerCommandLine: env:LC_TIME=de_DE.UTF-8
+2017-01-18 10:57:53,055 INFO  [main] util.ServerCommandLine: env:JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre/
+2017-01-18 10:57:53,056 INFO  [main] util.ServerCommandLine: env:LANG=en_US.UTF-8
+2017-01-18 10:57:53,056 INFO  [main] util.ServerCommandLine: env:XDG_SESSION_ID=c58
+2017-01-18 10:57:53,056 INFO  [main] util.ServerCommandLine: env:MAIL=/var/mail/ubuntu
+2017-01-18 10:57:53,056 INFO  [main] util.ServerCommandLine: env:LC_PAPER=de_DE.UTF-8
+2017-01-18 10:57:53,056 INFO  [main] util.ServerCommandLine: env:LOGNAME=ubuntu
+2017-01-18 10:57:53,056 INFO  [main] util.ServerCommandLine: env:HBASE_REST_OPTS=
+2017-01-18 10:57:53,056 INFO  [main] util.ServerCommandLine: env:PWD=/usr/local/hbase
+2017-01-18 10:57:53,056 INFO  [main] util.ServerCommandLine: env:LC_NAME=de_DE.UTF-8
+2017-01-18 10:57:53,056 INFO  [main] util.ServerCommandLine: env:HBASE_ROOT_LOGGER=INFO,RFA
+2017-01-18 10:57:53,056 INFO  [main] util.ServerCommandLine: env:SHELL=/bin/bash
+2017-01-18 10:57:53,056 INFO  [main] util.ServerCommandLine: env:LC_ADDRESS=de_DE.UTF-8
+2017-01-18 10:57:53,056 INFO  [main] util.ServerCommandLine: env:HBASE_ENV_INIT=true
+2017-01-18 10:57:53,056 INFO  [main] util.ServerCommandLine: env:HBASE_IDENT_STRING=ubuntu
+2017-01-18 10:57:53,056 INFO  [main] util.ServerCommandLine: env:HBASE_ZNODE_FILE=/tmp/hbase-ubuntu-master.znode
+2017-01-18 10:57:53,056 INFO  [main] util.ServerCommandLine: env:SSH_CLIENT=172.24.43.157 37348 22
+2017-01-18 10:57:53,056 INFO  [main] util.ServerCommandLine: env:HBASE_LOG_PREFIX=hbase-ubuntu-master-sue-master-1
+2017-01-18 10:57:53,056 INFO  [main] util.ServerCommandLine: env:HBASE_LOG_DIR=/usr/local/hbase/bin/../logs
+2017-01-18 10:57:53,056 INFO  [main] util.ServerCommandLine: env:USER=ubuntu
+2017-01-18 10:57:53,058 INFO  [main] util.ServerCommandLine: env:CLASSPATH=/usr/local/hbase/bin/../conf:/usr/lib/jvm/java-8-openjdk-amd64/jre//lib/tools.jar:/usr/local/hbase/bin/..:/usr/local/hbase/bin/../lib/activation-1.1.jar:/usr/local/hbase/bin/../lib/asm-3.1.jar:/usr/local/hbase/bin/../lib/commons-beanutils-1.7.0.jar:/usr/local/hbase/bin/../lib/commons-beanutils-core-1.8.0.jar:/usr/local/hbase/bin/../lib/commons-cli-1.2.jar:/usr/local/hbase/bin/../lib/commons-codec-1.7.jar:/usr/local/hbase/bin/../lib/commons-collections-3.2.1.jar:/usr/local/hbase/bin/../lib/commons-configuration-1.6.jar:/usr/local/hbase/bin/../lib/commons-digester-1.8.jar:/usr/local/hbase/bin/../lib/commons-el-1.0.jar:/usr/local/hbase/bin/../lib/commons-httpclient-3.1.jar:/usr/local/hbase/bin/../lib/commons-io-2.4.jar:/usr/local/hbase/bin/../lib/commons-lang-2.6.jar:/usr/local/hbase/bin/../lib/commons-logging-1.1.1.jar:/usr/local/hbase/bin/../lib/commons-math-2.2.jar:/usr/local/hbase/bin/../lib/commons-net-1.4.1.jar:/usr/local/hbase/bin/../lib/core-3.1.1.jar:/usr/local/hbase/bin/../lib/findbugs-annotations-1.3.9-1.jar:/usr/local/hbase/bin/../lib/guava-12.0.1.jar:/usr/local/hbase/bin/../lib/hadoop-core-1.2.1.jar:/usr/local/hbase/bin/../lib/hamcrest-core-1.3.jar:/usr/local/hbase/bin/../lib/hbase-client-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-common-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-common-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-examples-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-hadoop1-compat-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-hadoop-compat-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-it-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-it-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-prefix-tree-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-protocol-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-server-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-server-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-shell-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-testing-util-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-thrift-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/high-scale-lib-1.1.1.jar:/usr/local/hbase/bin/../lib/htrace-core-2.04.jar:/usr/local/hbase/bin/../lib/httpclient-4.1.3.jar:/usr/local/hbase/bin/../lib/httpcore-4.1.3.jar:/usr/local/hbase/bin/../lib/jackson-core-asl-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-jaxrs-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-mapper-asl-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-xc-1.8.8.jar:/usr/local/hbase/bin/../lib/jamon-runtime-2.3.1.jar:/usr/local/hbase/bin/../lib/jasper-compiler-5.5.23.jar:/usr/local/hbase/bin/../lib/jasper-runtime-5.5.23.jar:/usr/local/hbase/bin/../lib/jaxb-api-2.2.2.jar:/usr/local/hbase/bin/../lib/jaxb-impl-2.2.3-1.jar:/usr/local/hbase/bin/../lib/jersey-core-1.8.jar:/usr/local/hbase/bin/../lib/jersey-json-1.8.jar:/usr/local/hbase/bin/../lib/jersey-server-1.8.jar:/usr/local/hbase/bin/../lib/jettison-1.3.1.jar:/usr/local/hbase/bin/../lib/jetty-6.1.26.jar:/usr/local/hbase/bin/../lib/jetty-sslengine-6.1.26.jar:/usr/local/hbase/bin/../lib/jetty-util-6.1.26.jar:/usr/local/hbase/bin/../lib/jruby-complete-1.6.8.jar:/usr/local/hbase/bin/../lib/jsp-2.1-6.1.14.jar:/usr/local/hbase/bin/../lib/jsp-api-2.1-6.1.14.jar:/usr/local/hbase/bin/../lib/jsr305-1.3.9.jar:/usr/local/hbase/bin/../lib/junit-4.11.jar:/usr/local/hbase/bin/../lib/libthrift-0.9.0.jar:/usr/local/hbase/bin/../lib/log4j-1.2.17.jar:/usr/local/hbase/bin/../lib/metrics-core-2.1.2.jar:/usr/local/hbase/bin/../lib/netty-3.6.6.Final.jar:/usr/local/hbase/bin/../lib/protobuf-java-2.5.0.jar:/usr/local/hbase/bin/../lib/servlet-api-2.5-6.1.14.jar:/usr/local/hbase/bin/../lib/slf4j-api-1.6.4.jar:/usr/local/hbase/bin/../lib/slf4j-log4j12-1.6.4.jar:/usr/local/hbase/bin/../lib/stax-api-1.0.1.jar:/usr/local/hbase/bin/../lib/xmlenc-0.52.jar:/usr/local/hbase/bin/../lib/zookeeper-3.4.5.jar:
+2017-01-18 10:57:53,058 INFO  [main] util.ServerCommandLine: env:HBASE_MANAGES_ZK=true
+2017-01-18 10:57:53,058 INFO  [main] util.ServerCommandLine: env:LC_NUMERIC=de_DE.UTF-8
+2017-01-18 10:57:53,058 INFO  [main] util.ServerCommandLine: env:SSH_CONNECTION=172.24.43.157 37348 172.24.43.156 22
+2017-01-18 10:57:53,058 INFO  [main] util.ServerCommandLine: env:HBASE_NICENESS=0
+2017-01-18 10:57:53,058 INFO  [main] util.ServerCommandLine: env:HBASE_OPTS=-XX:+UseConcMarkSweepGC   -Dhbase.log.dir=/usr/local/hbase/bin/../logs -Dhbase.log.file=hbase-ubuntu-master-sue-master-1.log -Dhbase.home.dir=/usr/local/hbase/bin/.. -Dhbase.id.str=ubuntu -Dhbase.root.logger=INFO,RFA -Dhbase.security.logger=INFO,RFAS
+2017-01-18 10:57:53,058 INFO  [main] util.ServerCommandLine: env:HBASE_START_FILE=/tmp/hbase-ubuntu-master.autorestart
+2017-01-18 10:57:53,058 INFO  [main] util.ServerCommandLine: env:HBASE_SECURITY_LOGGER=INFO,RFAS
+2017-01-18 10:57:53,058 INFO  [main] util.ServerCommandLine: env:XDG_RUNTIME_DIR=/run/user/1000
+2017-01-18 10:57:53,058 INFO  [main] util.ServerCommandLine: env:HBASE_THRIFT_OPTS=
+2017-01-18 10:57:53,058 INFO  [main] util.ServerCommandLine: env:HBASE_HOME=/usr/local/hbase/bin/..
+2017-01-18 10:57:53,058 INFO  [main] util.ServerCommandLine: env:SHLVL=3
+2017-01-18 10:57:53,058 INFO  [main] util.ServerCommandLine: env:HOME=/home/ubuntu
+2017-01-18 10:57:53,058 INFO  [main] util.ServerCommandLine: env:LC_IDENTIFICATION=de_DE.UTF-8
+2017-01-18 10:57:53,058 INFO  [main] util.ServerCommandLine: env:MALLOC_ARENA_MAX=4
+2017-01-18 10:57:53,060 INFO  [main] util.ServerCommandLine: vmName=OpenJDK 64-Bit Server VM, vmVendor=Oracle Corporation, vmVersion=25.111-b14
+2017-01-18 10:57:53,060 INFO  [main] util.ServerCommandLine: vmInputArguments=[-Dproc_master, -XX:OnOutOfMemoryError=kill -9 %p, -Xmx1000m, -XX:+UseConcMarkSweepGC, -Dhbase.log.dir=/usr/local/hbase/bin/../logs, -Dhbase.log.file=hbase-ubuntu-master-sue-master-1.log, -Dhbase.home.dir=/usr/local/hbase/bin/.., -Dhbase.id.str=ubuntu, -Dhbase.root.logger=INFO,RFA, -Dhbase.security.logger=INFO,RFAS]
+2017-01-18 10:57:53,127 DEBUG [main] master.HMaster: master/sue-master-1/172.24.43.156:60000 HConnection server-to-server retries=350
+2017-01-18 10:57:53,268 INFO  [main] ipc.RpcServer: master/sue-master-1/172.24.43.156:60000: started 10 reader(s).
+2017-01-18 10:57:53,304 INFO  [main] impl.MetricsConfig: loaded properties from hadoop-metrics2-hbase.properties
+2017-01-18 10:57:53,343 INFO  [main] impl.MetricsSourceAdapter: MBean for source MetricsSystem,sub=Stats registered.
+2017-01-18 10:57:53,343 INFO  [main] impl.MetricsSystemImpl: Scheduled snapshot period at 10 second(s).
+2017-01-18 10:57:53,343 INFO  [main] impl.MetricsSystemImpl: HBase metrics system started
+2017-01-18 10:57:53,346 INFO  [main] impl.MetricsSourceAdapter: MBean for source jvm registered.
+2017-01-18 10:57:53,350 INFO  [main] impl.MetricsSourceAdapter: MBean for source IPC,sub=IPC registered.
+2017-01-18 10:57:53,446 INFO  [main] impl.MetricsSourceAdapter: MBean for source ugi registered.
+2017-01-18 10:57:53,446 WARN  [main] impl.MetricsSystemImpl: Source name ugi already exists!
+2017-01-18 10:57:53,704 INFO  [main] master.HMaster: hbase.rootdir=hdfs://sue-master-1:54310/hbase, hbase.cluster.distributed=true
+2017-01-18 10:57:53,735 INFO  [main] zookeeper.ZooKeeper: Client environment:zookeeper.version=3.4.5--1, built on 10/05/2013 16:05 GMT
+2017-01-18 10:57:53,735 INFO  [main] zookeeper.ZooKeeper: Client environment:host.name=sue-master-1
+2017-01-18 10:57:53,735 INFO  [main] zookeeper.ZooKeeper: Client environment:java.version=1.8.0_111
+2017-01-18 10:57:53,735 INFO  [main] zookeeper.ZooKeeper: Client environment:java.vendor=Oracle Corporation
+2017-01-18 10:57:53,735 INFO  [main] zookeeper.ZooKeeper: Client environment:java.home=/usr/lib/jvm/java-8-openjdk-amd64/jre
+2017-01-18 10:57:53,735 INFO  [main] zookeeper.ZooKeeper: Client environment:java.class.path=/usr/local/hbase/bin/../conf:/usr/lib/jvm/java-8-openjdk-amd64/jre//lib/tools.jar:/usr/local/hbase/bin/..:/usr/local/hbase/bin/../lib/activation-1.1.jar:/usr/local/hbase/bin/../lib/asm-3.1.jar:/usr/local/hbase/bin/../lib/commons-beanutils-1.7.0.jar:/usr/local/hbase/bin/../lib/commons-beanutils-core-1.8.0.jar:/usr/local/hbase/bin/../lib/commons-cli-1.2.jar:/usr/local/hbase/bin/../lib/commons-codec-1.7.jar:/usr/local/hbase/bin/../lib/commons-collections-3.2.1.jar:/usr/local/hbase/bin/../lib/commons-configuration-1.6.jar:/usr/local/hbase/bin/../lib/commons-digester-1.8.jar:/usr/local/hbase/bin/../lib/commons-el-1.0.jar:/usr/local/hbase/bin/../lib/commons-httpclient-3.1.jar:/usr/local/hbase/bin/../lib/commons-io-2.4.jar:/usr/local/hbase/bin/../lib/commons-lang-2.6.jar:/usr/local/hbase/bin/../lib/commons-logging-1.1.1.jar:/usr/local/hbase/bin/../lib/commons-math-2.2.jar:/usr/local/hbase/bin/../lib/commons-net-1.4.1.jar:/usr/local/hbase/bin/../lib/core-3.1.1.jar:/usr/local/hbase/bin/../lib/findbugs-annotations-1.3.9-1.jar:/usr/local/hbase/bin/../lib/guava-12.0.1.jar:/usr/local/hbase/bin/../lib/hadoop-core-1.2.1.jar:/usr/local/hbase/bin/../lib/hamcrest-core-1.3.jar:/usr/local/hbase/bin/../lib/hbase-client-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-common-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-common-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-examples-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-hadoop1-compat-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-hadoop-compat-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-it-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-it-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-prefix-tree-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-protocol-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-server-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-server-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-shell-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-testing-util-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-thrift-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/high-scale-lib-1.1.1.jar:/usr/local/hbase/bin/../lib/htrace-core-2.04.jar:/usr/local/hbase/bin/../lib/httpclient-4.1.3.jar:/usr/local/hbase/bin/../lib/httpcore-4.1.3.jar:/usr/local/hbase/bin/../lib/jackson-core-asl-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-jaxrs-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-mapper-asl-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-xc-1.8.8.jar:/usr/local/hbase/bin/../lib/jamon-runtime-2.3.1.jar:/usr/local/hbase/bin/../lib/jasper-compiler-5.5.23.jar:/usr/local/hbase/bin/../lib/jasper-runtime-5.5.23.jar:/usr/local/hbase/bin/../lib/jaxb-api-2.2.2.jar:/usr/local/hbase/bin/../lib/jaxb-impl-2.2.3-1.jar:/usr/local/hbase/bin/../lib/jersey-core-1.8.jar:/usr/local/hbase/bin/../lib/jersey-json-1.8.jar:/usr/local/hbase/bin/../lib/jersey-server-1.8.jar:/usr/local/hbase/bin/../lib/jettison-1.3.1.jar:/usr/local/hbase/bin/../lib/jetty-6.1.26.jar:/usr/local/hbase/bin/../lib/jetty-sslengine-6.1.26.jar:/usr/local/hbase/bin/../lib/jetty-util-6.1.26.jar:/usr/local/hbase/bin/../lib/jruby-complete-1.6.8.jar:/usr/local/hbase/bin/../lib/jsp-2.1-6.1.14.jar:/usr/local/hbase/bin/../lib/jsp-api-2.1-6.1.14.jar:/usr/local/hbase/bin/../lib/jsr305-1.3.9.jar:/usr/local/hbase/bin/../lib/junit-4.11.jar:/usr/local/hbase/bin/../lib/libthrift-0.9.0.jar:/usr/local/hbase/bin/../lib/log4j-1.2.17.jar:/usr/local/hbase/bin/../lib/metrics-core-2.1.2.jar:/usr/local/hbase/bin/../lib/netty-3.6.6.Final.jar:/usr/local/hbase/bin/../lib/protobuf-java-2.5.0.jar:/usr/local/hbase/bin/../lib/servlet-api-2.5-6.1.14.jar:/usr/local/hbase/bin/../lib/slf4j-api-1.6.4.jar:/usr/local/hbase/bin/../lib/slf4j-log4j12-1.6.4.jar:/usr/local/hbase/bin/../lib/stax-api-1.0.1.jar:/usr/local/hbase/bin/../lib/xmlenc-0.52.jar:/usr/local/hbase/bin/../lib/zookeeper-3.4.5.jar:
+2017-01-18 10:57:53,736 INFO  [main] zookeeper.ZooKeeper: Client environment:java.library.path=/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+2017-01-18 10:57:53,736 INFO  [main] zookeeper.ZooKeeper: Client environment:java.io.tmpdir=/tmp
+2017-01-18 10:57:53,736 INFO  [main] zookeeper.ZooKeeper: Client environment:java.compiler=<NA>
+2017-01-18 10:57:53,736 INFO  [main] zookeeper.ZooKeeper: Client environment:os.name=Linux
+2017-01-18 10:57:53,736 INFO  [main] zookeeper.ZooKeeper: Client environment:os.arch=amd64
+2017-01-18 10:57:53,736 INFO  [main] zookeeper.ZooKeeper: Client environment:os.version=4.4.0-53-generic
+2017-01-18 10:57:53,736 INFO  [main] zookeeper.ZooKeeper: Client environment:user.name=ubuntu
+2017-01-18 10:57:53,736 INFO  [main] zookeeper.ZooKeeper: Client environment:user.home=/home/ubuntu
+2017-01-18 10:57:53,736 INFO  [main] zookeeper.ZooKeeper: Client environment:user.dir=/usr/local/hbase
+2017-01-18 10:57:53,736 INFO  [main] zookeeper.ZooKeeper: Initiating client connection, connectString=sue-data-2:2181,sue-data-1:2181,sue-master-2:2181,sue-master-1:2181,sue-data-4:2181,sue-data-3:2181 sessionTimeout=90000 watcher=master:60000, quorum=sue-data-2:2181,sue-data-1:2181,sue-master-2:2181,sue-master-1:2181,sue-data-4:2181,sue-data-3:2181, baseZNode=/hbase
+2017-01-18 10:57:53,747 INFO  [main-SendThread(sue-data-4:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-4/172.24.43.149:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 10:57:53,748 INFO  [main] zookeeper.RecoverableZooKeeper: Process identifier=master:60000 connecting to ZooKeeper ensemble=sue-data-2:2181,sue-data-1:2181,sue-master-2:2181,sue-master-1:2181,sue-data-4:2181,sue-data-3:2181
+2017-01-18 10:57:53,758 INFO  [main-SendThread(sue-data-4:2181)] zookeeper.ClientCnxn: Socket connection established to sue-data-4/172.24.43.149:2181, initiating session
+2017-01-18 10:57:53,763 INFO  [main-SendThread(sue-data-4:2181)] zookeeper.ClientCnxn: Session establishment complete on server sue-data-4/172.24.43.149:2181, sessionid = 0x559b139c2b00004, negotiated timeout = 90000
+2017-01-18 10:57:53,766 INFO  [main] zookeeper.RecoverableZooKeeper: Node /hbase already exists and this is not a retry
+2017-01-18 10:57:53,779 INFO  [RpcServer.responder] ipc.RpcServer: RpcServer.responder: starting
+2017-01-18 10:57:53,781 INFO  [RpcServer.listener,port=60000] ipc.RpcServer: RpcServer.listener,port=60000: starting
+2017-01-18 10:57:53,783 INFO  [main] impl.MetricsSourceAdapter: MBean for source Master,sub=Server registered.
+2017-01-18 10:57:53,844 INFO  [master:sue-master-1:60000] mortbay.log: Logging to org.slf4j.impl.Log4jLoggerAdapter(org.mortbay.log) via org.mortbay.log.Slf4jLog
+2017-01-18 10:57:53,915 INFO  [master:sue-master-1:60000] http.HttpServer: Added global filtersafety (class=org.apache.hadoop.http.HttpServer$QuotingInputFilter)
+2017-01-18 10:57:53,934 INFO  [master:sue-master-1:60000] http.HttpServer: Port returned by webServer.getConnectors()[0].getLocalPort() before open() is -1. Opening the listener on 60010
+2017-01-18 10:57:53,935 INFO  [master:sue-master-1:60000] http.HttpServer: listener.getLocalPort() returned 60010 webServer.getConnectors()[0].getLocalPort() returned 60010
+2017-01-18 10:57:53,935 INFO  [master:sue-master-1:60000] http.HttpServer: Jetty bound to port 60010
+2017-01-18 10:57:53,935 INFO  [master:sue-master-1:60000] mortbay.log: jetty-6.1.26
+2017-01-18 10:57:54,252 INFO  [master:sue-master-1:60000] mortbay.log: Started SelectChannelConnector@0.0.0.0:60010
+2017-01-18 10:57:54,253 DEBUG [master:sue-master-1:60000] master.HMaster: HMaster started in backup mode.  Stalling until master znode is written.
+2017-01-18 10:57:54,335 INFO  [master:sue-master-1:60000] zookeeper.RecoverableZooKeeper: Node /hbase/master already exists and this is not a retry
+2017-01-18 10:57:54,336 INFO  [master:sue-master-1:60000] master.ActiveMasterManager: Adding ZNode for /hbase/backup-masters/sue-master-1,60000,1484737073391 in backup master directory
+2017-01-18 10:57:54,343 INFO  [master:sue-master-1:60000] master.ActiveMasterManager: Another master is the active master, sue-master-2,60000,1484737070570; waiting to become the next active master
+2017-01-18 12:47:44,149 INFO  [main-SendThread(sue-data-4:2181)] zookeeper.ClientCnxn: Unable to read additional data from server sessionid 0x559b139c2b00004, likely server has closed socket, closing socket connection and attempting reconnect
+2017-01-18 12:47:44,404 INFO  [main-SendThread(sue-data-2:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-2/172.24.43.151:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 12:47:44,405 INFO  [main-SendThread(sue-data-2:2181)] zookeeper.ClientCnxn: Socket connection established to sue-data-2/172.24.43.151:2181, initiating session
+2017-01-18 12:47:44,407 INFO  [main-SendThread(sue-data-2:2181)] zookeeper.ClientCnxn: Unable to read additional data from server sessionid 0x559b139c2b00004, likely server has closed socket, closing socket connection and attempting reconnect
+2017-01-18 12:47:45,464 INFO  [main-SendThread(sue-master-2:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-master-2/172.24.43.157:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 12:47:45,465 INFO  [main-SendThread(sue-master-2:2181)] zookeeper.ClientCnxn: Socket connection established to sue-master-2/172.24.43.157:2181, initiating session
+2017-01-18 12:47:45,466 INFO  [main-SendThread(sue-master-2:2181)] zookeeper.ClientCnxn: Unable to read additional data from server sessionid 0x559b139c2b00004, likely server has closed socket, closing socket connection and attempting reconnect
+2017-01-18 12:47:46,526 INFO  [main-SendThread(sue-data-3:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-3/172.24.43.150:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 12:47:46,528 WARN  [main-SendThread(sue-data-3:2181)] zookeeper.ClientCnxn: Session 0x559b139c2b00004 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1068)
+2017-01-18 12:47:46,661 INFO  [main-SendThread(sue-master-1:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-master-1/172.24.43.156:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 12:47:46,662 INFO  [main-SendThread(sue-master-1:2181)] zookeeper.ClientCnxn: Socket connection established to sue-master-1/172.24.43.156:2181, initiating session
+2017-01-18 12:47:46,662 INFO  [main-SendThread(sue-master-1:2181)] zookeeper.ClientCnxn: Unable to read additional data from server sessionid 0x559b139c2b00004, likely server has closed socket, closing socket connection and attempting reconnect
+Wed Jan 18 12:48:16 UTC 2017 Starting master on sue-master-1
+core file size          (blocks, -c) 0
+data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
+file size               (blocks, -f) unlimited
+pending signals                 (-i) 514644
+max locked memory       (kbytes, -l) 64
+max memory size         (kbytes, -m) unlimited
+open files                      (-n) 1024
+pipe size            (512 bytes, -p) 8
+POSIX message queues     (bytes, -q) 819200
+real-time priority              (-r) 0
+stack size              (kbytes, -s) 8192
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) unlimited
+virtual memory          (kbytes, -v) unlimited
+file locks                      (-x) unlimited
+2017-01-18 12:48:17,200 INFO  [main] util.VersionInfo: HBase 0.98.0-hadoop1
+2017-01-18 12:48:17,200 INFO  [main] util.VersionInfo: Subversion https://svn.apache.org/repos/asf/hbase/tags/0.98.0RC2 -r 1565492
+2017-01-18 12:48:17,201 INFO  [main] util.VersionInfo: Compiled by apurtell on Thu Feb  6 16:20:15 PST 2014
+2017-01-18 12:48:17,300 INFO  [main] util.ServerCommandLine: env:HBASE_LOGFILE=hbase-ubuntu-master-sue-master-1.log
+2017-01-18 12:48:17,300 INFO  [main] util.ServerCommandLine: env:PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+2017-01-18 12:48:17,301 INFO  [main] util.ServerCommandLine: env:LC_MEASUREMENT=de_DE.UTF-8
+2017-01-18 12:48:17,301 INFO  [main] util.ServerCommandLine: env:LC_MONETARY=de_DE.UTF-8
+2017-01-18 12:48:17,301 INFO  [main] util.ServerCommandLine: env:LC_TELEPHONE=de_DE.UTF-8
+2017-01-18 12:48:17,301 INFO  [main] util.ServerCommandLine: env:LC_TIME=de_DE.UTF-8
+2017-01-18 12:48:17,301 INFO  [main] util.ServerCommandLine: env:JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre/
+2017-01-18 12:48:17,301 INFO  [main] util.ServerCommandLine: env:LANG=en_US.UTF-8
+2017-01-18 12:48:17,301 INFO  [main] util.ServerCommandLine: env:XDG_SESSION_ID=c67
+2017-01-18 12:48:17,301 INFO  [main] util.ServerCommandLine: env:MAIL=/var/mail/ubuntu
+2017-01-18 12:48:17,301 INFO  [main] util.ServerCommandLine: env:LC_PAPER=de_DE.UTF-8
+2017-01-18 12:48:17,301 INFO  [main] util.ServerCommandLine: env:LOGNAME=ubuntu
+2017-01-18 12:48:17,301 INFO  [main] util.ServerCommandLine: env:HBASE_REST_OPTS=
+2017-01-18 12:48:17,301 INFO  [main] util.ServerCommandLine: env:PWD=/usr/local/hbase
+2017-01-18 12:48:17,301 INFO  [main] util.ServerCommandLine: env:LC_NAME=de_DE.UTF-8
+2017-01-18 12:48:17,301 INFO  [main] util.ServerCommandLine: env:HBASE_ROOT_LOGGER=INFO,RFA
+2017-01-18 12:48:17,301 INFO  [main] util.ServerCommandLine: env:SHELL=/bin/bash
+2017-01-18 12:48:17,301 INFO  [main] util.ServerCommandLine: env:LC_ADDRESS=de_DE.UTF-8
+2017-01-18 12:48:17,301 INFO  [main] util.ServerCommandLine: env:HBASE_ENV_INIT=true
+2017-01-18 12:48:17,301 INFO  [main] util.ServerCommandLine: env:HBASE_IDENT_STRING=ubuntu
+2017-01-18 12:48:17,303 INFO  [main] util.ServerCommandLine: env:HBASE_ZNODE_FILE=/tmp/hbase-ubuntu-master.znode
+2017-01-18 12:48:17,303 INFO  [main] util.ServerCommandLine: env:SSH_CLIENT=172.24.43.157 39152 22
+2017-01-18 12:48:17,303 INFO  [main] util.ServerCommandLine: env:HBASE_LOG_PREFIX=hbase-ubuntu-master-sue-master-1
+2017-01-18 12:48:17,303 INFO  [main] util.ServerCommandLine: env:HBASE_LOG_DIR=/usr/local/hbase/bin/../logs
+2017-01-18 12:48:17,303 INFO  [main] util.ServerCommandLine: env:USER=ubuntu
+2017-01-18 12:48:17,304 INFO  [main] util.ServerCommandLine: env:CLASSPATH=/usr/local/hbase/bin/../conf:/usr/lib/jvm/java-8-openjdk-amd64/jre//lib/tools.jar:/usr/local/hbase/bin/..:/usr/local/hbase/bin/../lib/activation-1.1.jar:/usr/local/hbase/bin/../lib/asm-3.1.jar:/usr/local/hbase/bin/../lib/commons-beanutils-1.7.0.jar:/usr/local/hbase/bin/../lib/commons-beanutils-core-1.8.0.jar:/usr/local/hbase/bin/../lib/commons-cli-1.2.jar:/usr/local/hbase/bin/../lib/commons-codec-1.7.jar:/usr/local/hbase/bin/../lib/commons-collections-3.2.1.jar:/usr/local/hbase/bin/../lib/commons-configuration-1.6.jar:/usr/local/hbase/bin/../lib/commons-digester-1.8.jar:/usr/local/hbase/bin/../lib/commons-el-1.0.jar:/usr/local/hbase/bin/../lib/commons-httpclient-3.1.jar:/usr/local/hbase/bin/../lib/commons-io-2.4.jar:/usr/local/hbase/bin/../lib/commons-lang-2.6.jar:/usr/local/hbase/bin/../lib/commons-logging-1.1.1.jar:/usr/local/hbase/bin/../lib/commons-math-2.2.jar:/usr/local/hbase/bin/../lib/commons-net-1.4.1.jar:/usr/local/hbase/bin/../lib/core-3.1.1.jar:/usr/local/hbase/bin/../lib/findbugs-annotations-1.3.9-1.jar:/usr/local/hbase/bin/../lib/guava-12.0.1.jar:/usr/local/hbase/bin/../lib/hadoop-core-1.2.1.jar:/usr/local/hbase/bin/../lib/hamcrest-core-1.3.jar:/usr/local/hbase/bin/../lib/hbase-client-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-common-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-common-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-examples-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-hadoop1-compat-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-hadoop-compat-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-it-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-it-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-prefix-tree-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-protocol-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-server-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-server-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-shell-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-testing-util-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-thrift-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/high-scale-lib-1.1.1.jar:/usr/local/hbase/bin/../lib/htrace-core-2.04.jar:/usr/local/hbase/bin/../lib/httpclient-4.1.3.jar:/usr/local/hbase/bin/../lib/httpcore-4.1.3.jar:/usr/local/hbase/bin/../lib/jackson-core-asl-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-jaxrs-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-mapper-asl-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-xc-1.8.8.jar:/usr/local/hbase/bin/../lib/jamon-runtime-2.3.1.jar:/usr/local/hbase/bin/../lib/jasper-compiler-5.5.23.jar:/usr/local/hbase/bin/../lib/jasper-runtime-5.5.23.jar:/usr/local/hbase/bin/../lib/jaxb-api-2.2.2.jar:/usr/local/hbase/bin/../lib/jaxb-impl-2.2.3-1.jar:/usr/local/hbase/bin/../lib/jersey-core-1.8.jar:/usr/local/hbase/bin/../lib/jersey-json-1.8.jar:/usr/local/hbase/bin/../lib/jersey-server-1.8.jar:/usr/local/hbase/bin/../lib/jettison-1.3.1.jar:/usr/local/hbase/bin/../lib/jetty-6.1.26.jar:/usr/local/hbase/bin/../lib/jetty-sslengine-6.1.26.jar:/usr/local/hbase/bin/../lib/jetty-util-6.1.26.jar:/usr/local/hbase/bin/../lib/jruby-complete-1.6.8.jar:/usr/local/hbase/bin/../lib/jsp-2.1-6.1.14.jar:/usr/local/hbase/bin/../lib/jsp-api-2.1-6.1.14.jar:/usr/local/hbase/bin/../lib/jsr305-1.3.9.jar:/usr/local/hbase/bin/../lib/junit-4.11.jar:/usr/local/hbase/bin/../lib/libthrift-0.9.0.jar:/usr/local/hbase/bin/../lib/log4j-1.2.17.jar:/usr/local/hbase/bin/../lib/metrics-core-2.1.2.jar:/usr/local/hbase/bin/../lib/netty-3.6.6.Final.jar:/usr/local/hbase/bin/../lib/protobuf-java-2.5.0.jar:/usr/local/hbase/bin/../lib/servlet-api-2.5-6.1.14.jar:/usr/local/hbase/bin/../lib/slf4j-api-1.6.4.jar:/usr/local/hbase/bin/../lib/slf4j-log4j12-1.6.4.jar:/usr/local/hbase/bin/../lib/stax-api-1.0.1.jar:/usr/local/hbase/bin/../lib/xmlenc-0.52.jar:/usr/local/hbase/bin/../lib/zookeeper-3.4.5.jar:
+2017-01-18 12:48:17,304 INFO  [main] util.ServerCommandLine: env:HBASE_MANAGES_ZK=true
+2017-01-18 12:48:17,304 INFO  [main] util.ServerCommandLine: env:LC_NUMERIC=de_DE.UTF-8
+2017-01-18 12:48:17,304 INFO  [main] util.ServerCommandLine: env:SSH_CONNECTION=172.24.43.157 39152 172.24.43.156 22
+2017-01-18 12:48:17,304 INFO  [main] util.ServerCommandLine: env:HBASE_NICENESS=0
+2017-01-18 12:48:17,304 INFO  [main] util.ServerCommandLine: env:HBASE_OPTS=-XX:+UseConcMarkSweepGC   -Dhbase.log.dir=/usr/local/hbase/bin/../logs -Dhbase.log.file=hbase-ubuntu-master-sue-master-1.log -Dhbase.home.dir=/usr/local/hbase/bin/.. -Dhbase.id.str=ubuntu -Dhbase.root.logger=INFO,RFA -Dhbase.security.logger=INFO,RFAS
+2017-01-18 12:48:17,304 INFO  [main] util.ServerCommandLine: env:HBASE_START_FILE=/tmp/hbase-ubuntu-master.autorestart
+2017-01-18 12:48:17,304 INFO  [main] util.ServerCommandLine: env:HBASE_SECURITY_LOGGER=INFO,RFAS
+2017-01-18 12:48:17,304 INFO  [main] util.ServerCommandLine: env:XDG_RUNTIME_DIR=/run/user/1000
+2017-01-18 12:48:17,304 INFO  [main] util.ServerCommandLine: env:HBASE_THRIFT_OPTS=
+2017-01-18 12:48:17,304 INFO  [main] util.ServerCommandLine: env:HBASE_HOME=/usr/local/hbase/bin/..
+2017-01-18 12:48:17,304 INFO  [main] util.ServerCommandLine: env:SHLVL=3
+2017-01-18 12:48:17,304 INFO  [main] util.ServerCommandLine: env:HOME=/home/ubuntu
+2017-01-18 12:48:17,304 INFO  [main] util.ServerCommandLine: env:LC_IDENTIFICATION=de_DE.UTF-8
+2017-01-18 12:48:17,304 INFO  [main] util.ServerCommandLine: env:MALLOC_ARENA_MAX=4
+2017-01-18 12:48:17,307 INFO  [main] util.ServerCommandLine: vmName=OpenJDK 64-Bit Server VM, vmVendor=Oracle Corporation, vmVersion=25.111-b14
+2017-01-18 12:48:17,307 INFO  [main] util.ServerCommandLine: vmInputArguments=[-Dproc_master, -XX:OnOutOfMemoryError=kill -9 %p, -Xmx1000m, -XX:+UseConcMarkSweepGC, -Dhbase.log.dir=/usr/local/hbase/bin/../logs, -Dhbase.log.file=hbase-ubuntu-master-sue-master-1.log, -Dhbase.home.dir=/usr/local/hbase/bin/.., -Dhbase.id.str=ubuntu, -Dhbase.root.logger=INFO,RFA, -Dhbase.security.logger=INFO,RFAS]
+2017-01-18 12:48:17,368 DEBUG [main] master.HMaster: master/sue-master-1/172.24.43.156:60000 HConnection server-to-server retries=350
+2017-01-18 12:48:17,475 INFO  [main] ipc.RpcServer: master/sue-master-1/172.24.43.156:60000: started 10 reader(s).
+2017-01-18 12:48:17,509 INFO  [main] impl.MetricsConfig: loaded properties from hadoop-metrics2-hbase.properties
+2017-01-18 12:48:17,553 INFO  [main] impl.MetricsSourceAdapter: MBean for source MetricsSystem,sub=Stats registered.
+2017-01-18 12:48:17,553 INFO  [main] impl.MetricsSystemImpl: Scheduled snapshot period at 10 second(s).
+2017-01-18 12:48:17,554 INFO  [main] impl.MetricsSystemImpl: HBase metrics system started
+2017-01-18 12:48:17,557 INFO  [main] impl.MetricsSourceAdapter: MBean for source jvm registered.
+2017-01-18 12:48:17,560 INFO  [main] impl.MetricsSourceAdapter: MBean for source IPC,sub=IPC registered.
+2017-01-18 12:48:17,735 INFO  [main] impl.MetricsSourceAdapter: MBean for source ugi registered.
+2017-01-18 12:48:17,735 WARN  [main] impl.MetricsSystemImpl: Source name ugi already exists!
+2017-01-18 12:48:17,994 INFO  [main] master.HMaster: hbase.rootdir=hdfs://sue-master-1:54310/hbase, hbase.cluster.distributed=true
+2017-01-18 12:48:18,051 INFO  [main] zookeeper.ZooKeeper: Client environment:zookeeper.version=3.4.5--1, built on 10/05/2013 16:05 GMT
+2017-01-18 12:48:18,051 INFO  [main] zookeeper.ZooKeeper: Client environment:host.name=sue-master-1
+2017-01-18 12:48:18,051 INFO  [main] zookeeper.ZooKeeper: Client environment:java.version=1.8.0_111
+2017-01-18 12:48:18,051 INFO  [main] zookeeper.ZooKeeper: Client environment:java.vendor=Oracle Corporation
+2017-01-18 12:48:18,051 INFO  [main] zookeeper.ZooKeeper: Client environment:java.home=/usr/lib/jvm/java-8-openjdk-amd64/jre
+2017-01-18 12:48:18,052 INFO  [main] zookeeper.ZooKeeper: Client environment:java.class.path=/usr/local/hbase/bin/../conf:/usr/lib/jvm/java-8-openjdk-amd64/jre//lib/tools.jar:/usr/local/hbase/bin/..:/usr/local/hbase/bin/../lib/activation-1.1.jar:/usr/local/hbase/bin/../lib/asm-3.1.jar:/usr/local/hbase/bin/../lib/commons-beanutils-1.7.0.jar:/usr/local/hbase/bin/../lib/commons-beanutils-core-1.8.0.jar:/usr/local/hbase/bin/../lib/commons-cli-1.2.jar:/usr/local/hbase/bin/../lib/commons-codec-1.7.jar:/usr/local/hbase/bin/../lib/commons-collections-3.2.1.jar:/usr/local/hbase/bin/../lib/commons-configuration-1.6.jar:/usr/local/hbase/bin/../lib/commons-digester-1.8.jar:/usr/local/hbase/bin/../lib/commons-el-1.0.jar:/usr/local/hbase/bin/../lib/commons-httpclient-3.1.jar:/usr/local/hbase/bin/../lib/commons-io-2.4.jar:/usr/local/hbase/bin/../lib/commons-lang-2.6.jar:/usr/local/hbase/bin/../lib/commons-logging-1.1.1.jar:/usr/local/hbase/bin/../lib/commons-math-2.2.jar:/usr/local/hbase/bin/../lib/commons-net-1.4.1.jar:/usr/local/hbase/bin/../lib/core-3.1.1.jar:/usr/local/hbase/bin/../lib/findbugs-annotations-1.3.9-1.jar:/usr/local/hbase/bin/../lib/guava-12.0.1.jar:/usr/local/hbase/bin/../lib/hadoop-core-1.2.1.jar:/usr/local/hbase/bin/../lib/hamcrest-core-1.3.jar:/usr/local/hbase/bin/../lib/hbase-client-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-common-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-common-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-examples-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-hadoop1-compat-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-hadoop-compat-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-it-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-it-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-prefix-tree-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-protocol-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-server-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-server-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-shell-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-testing-util-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-thrift-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/high-scale-lib-1.1.1.jar:/usr/local/hbase/bin/../lib/htrace-core-2.04.jar:/usr/local/hbase/bin/../lib/httpclient-4.1.3.jar:/usr/local/hbase/bin/../lib/httpcore-4.1.3.jar:/usr/local/hbase/bin/../lib/jackson-core-asl-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-jaxrs-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-mapper-asl-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-xc-1.8.8.jar:/usr/local/hbase/bin/../lib/jamon-runtime-2.3.1.jar:/usr/local/hbase/bin/../lib/jasper-compiler-5.5.23.jar:/usr/local/hbase/bin/../lib/jasper-runtime-5.5.23.jar:/usr/local/hbase/bin/../lib/jaxb-api-2.2.2.jar:/usr/local/hbase/bin/../lib/jaxb-impl-2.2.3-1.jar:/usr/local/hbase/bin/../lib/jersey-core-1.8.jar:/usr/local/hbase/bin/../lib/jersey-json-1.8.jar:/usr/local/hbase/bin/../lib/jersey-server-1.8.jar:/usr/local/hbase/bin/../lib/jettison-1.3.1.jar:/usr/local/hbase/bin/../lib/jetty-6.1.26.jar:/usr/local/hbase/bin/../lib/jetty-sslengine-6.1.26.jar:/usr/local/hbase/bin/../lib/jetty-util-6.1.26.jar:/usr/local/hbase/bin/../lib/jruby-complete-1.6.8.jar:/usr/local/hbase/bin/../lib/jsp-2.1-6.1.14.jar:/usr/local/hbase/bin/../lib/jsp-api-2.1-6.1.14.jar:/usr/local/hbase/bin/../lib/jsr305-1.3.9.jar:/usr/local/hbase/bin/../lib/junit-4.11.jar:/usr/local/hbase/bin/../lib/libthrift-0.9.0.jar:/usr/local/hbase/bin/../lib/log4j-1.2.17.jar:/usr/local/hbase/bin/../lib/metrics-core-2.1.2.jar:/usr/local/hbase/bin/../lib/netty-3.6.6.Final.jar:/usr/local/hbase/bin/../lib/protobuf-java-2.5.0.jar:/usr/local/hbase/bin/../lib/servlet-api-2.5-6.1.14.jar:/usr/local/hbase/bin/../lib/slf4j-api-1.6.4.jar:/usr/local/hbase/bin/../lib/slf4j-log4j12-1.6.4.jar:/usr/local/hbase/bin/../lib/stax-api-1.0.1.jar:/usr/local/hbase/bin/../lib/xmlenc-0.52.jar:/usr/local/hbase/bin/../lib/zookeeper-3.4.5.jar:
+2017-01-18 12:48:18,052 INFO  [main] zookeeper.ZooKeeper: Client environment:java.library.path=/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+2017-01-18 12:48:18,052 INFO  [main] zookeeper.ZooKeeper: Client environment:java.io.tmpdir=/tmp
+2017-01-18 12:48:18,052 INFO  [main] zookeeper.ZooKeeper: Client environment:java.compiler=<NA>
+2017-01-18 12:48:18,052 INFO  [main] zookeeper.ZooKeeper: Client environment:os.name=Linux
+2017-01-18 12:48:18,052 INFO  [main] zookeeper.ZooKeeper: Client environment:os.arch=amd64
+2017-01-18 12:48:18,052 INFO  [main] zookeeper.ZooKeeper: Client environment:os.version=4.4.0-53-generic
+2017-01-18 12:48:18,052 INFO  [main] zookeeper.ZooKeeper: Client environment:user.name=ubuntu
+2017-01-18 12:48:18,052 INFO  [main] zookeeper.ZooKeeper: Client environment:user.home=/home/ubuntu
+2017-01-18 12:48:18,052 INFO  [main] zookeeper.ZooKeeper: Client environment:user.dir=/usr/local/hbase
+2017-01-18 12:48:18,053 INFO  [main] zookeeper.ZooKeeper: Initiating client connection, connectString=sue-data-2:2181,sue-data-1:2181,sue-master-2:2181,sue-master-1:2181,sue-data-4:2181,sue-data-3:2181 sessionTimeout=90000 watcher=master:60000, quorum=sue-data-2:2181,sue-data-1:2181,sue-master-2:2181,sue-master-1:2181,sue-data-4:2181,sue-data-3:2181, baseZNode=/hbase
+2017-01-18 12:48:18,067 INFO  [main-SendThread(sue-master-1:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-master-1/172.24.43.156:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 12:48:18,072 INFO  [main] zookeeper.RecoverableZooKeeper: Process identifier=master:60000 connecting to ZooKeeper ensemble=sue-data-2:2181,sue-data-1:2181,sue-master-2:2181,sue-master-1:2181,sue-data-4:2181,sue-data-3:2181
+2017-01-18 12:48:18,086 INFO  [main-SendThread(sue-master-1:2181)] zookeeper.ClientCnxn: Socket connection established to sue-master-1/172.24.43.156:2181, initiating session
+2017-01-18 12:48:18,171 INFO  [main-SendThread(sue-master-1:2181)] zookeeper.ClientCnxn: Session establishment complete on server sue-master-1/172.24.43.156:2181, sessionid = 0x59b19ed7070000, negotiated timeout = 90000
+2017-01-18 12:48:18,184 INFO  [main] zookeeper.RecoverableZooKeeper: Node /hbase already exists and this is not a retry
+2017-01-18 12:48:18,207 INFO  [RpcServer.responder] ipc.RpcServer: RpcServer.responder: starting
+2017-01-18 12:48:18,209 INFO  [RpcServer.listener,port=60000] ipc.RpcServer: RpcServer.listener,port=60000: starting
+2017-01-18 12:48:18,212 INFO  [main] impl.MetricsSourceAdapter: MBean for source Master,sub=Server registered.
+2017-01-18 12:48:18,274 INFO  [master:sue-master-1:60000] mortbay.log: Logging to org.slf4j.impl.Log4jLoggerAdapter(org.mortbay.log) via org.mortbay.log.Slf4jLog
+2017-01-18 12:48:18,311 INFO  [master:sue-master-1:60000] http.HttpServer: Added global filtersafety (class=org.apache.hadoop.http.HttpServer$QuotingInputFilter)
+2017-01-18 12:48:18,318 INFO  [master:sue-master-1:60000] http.HttpServer: Port returned by webServer.getConnectors()[0].getLocalPort() before open() is -1. Opening the listener on 60010
+2017-01-18 12:48:18,319 INFO  [master:sue-master-1:60000] http.HttpServer: listener.getLocalPort() returned 60010 webServer.getConnectors()[0].getLocalPort() returned 60010
+2017-01-18 12:48:18,319 INFO  [master:sue-master-1:60000] http.HttpServer: Jetty bound to port 60010
+2017-01-18 12:48:18,319 INFO  [master:sue-master-1:60000] mortbay.log: jetty-6.1.26
+2017-01-18 12:48:18,714 INFO  [master:sue-master-1:60000] mortbay.log: Started SelectChannelConnector@0.0.0.0:60010
+2017-01-18 12:48:18,714 DEBUG [master:sue-master-1:60000] master.HMaster: HMaster started in backup mode.  Stalling until master znode is written.
+2017-01-18 12:48:18,777 INFO  [master:sue-master-1:60000] zookeeper.RecoverableZooKeeper: Node /hbase/master already exists and this is not a retry
+2017-01-18 12:48:18,777 INFO  [master:sue-master-1:60000] master.ActiveMasterManager: Adding ZNode for /hbase/backup-masters/sue-master-1,60000,1484743697641 in backup master directory
+2017-01-18 12:48:18,784 INFO  [master:sue-master-1:60000] master.ActiveMasterManager: Another master is the active master, sue-master-2,60000,1484743694835; waiting to become the next active master
+2017-01-18 12:50:00,480 INFO  [main-SendThread(sue-master-1:2181)] zookeeper.ClientCnxn: Unable to read additional data from server sessionid 0x59b19ed7070000, likely server has closed socket, closing socket connection and attempting reconnect
+2017-01-18 12:50:01,283 INFO  [main-SendThread(sue-data-4:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-4/172.24.43.149:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 12:50:01,285 WARN  [main-SendThread(sue-data-4:2181)] zookeeper.ClientCnxn: Session 0x59b19ed7070000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1068)
+2017-01-18 12:50:02,180 INFO  [main-SendThread(sue-data-2:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-2/172.24.43.151:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 12:50:02,181 WARN  [main-SendThread(sue-data-2:2181)] zookeeper.ClientCnxn: Session 0x59b19ed7070000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1068)
+2017-01-18 12:50:02,636 INFO  [main-SendThread(sue-data-3:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-3/172.24.43.150:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 12:50:02,637 WARN  [main-SendThread(sue-data-3:2181)] zookeeper.ClientCnxn: Session 0x59b19ed7070000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1068)
+2017-01-18 12:50:02,795 INFO  [main-SendThread(sue-data-1:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-1/172.24.43.148:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 12:50:02,795 WARN  [main-SendThread(sue-data-1:2181)] zookeeper.ClientCnxn: Session 0x59b19ed7070000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1068)
+2017-01-18 12:50:03,192 INFO  [main-SendThread(sue-master-2:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-master-2/172.24.43.157:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 12:50:03,193 WARN  [main-SendThread(sue-master-2:2181)] zookeeper.ClientCnxn: Session 0x59b19ed7070000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1068)
+Wed Jan 18 12:50:32 UTC 2017 Starting master on sue-master-1
+core file size          (blocks, -c) 0
+data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
+file size               (blocks, -f) unlimited
+pending signals                 (-i) 514644
+max locked memory       (kbytes, -l) 64
+max memory size         (kbytes, -m) unlimited
+open files                      (-n) 1024
+pipe size            (512 bytes, -p) 8
+POSIX message queues     (bytes, -q) 819200
+real-time priority              (-r) 0
+stack size              (kbytes, -s) 8192
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) unlimited
+virtual memory          (kbytes, -v) unlimited
+file locks                      (-x) unlimited
+2017-01-18 12:50:32,464 INFO  [main] util.VersionInfo: HBase 0.98.0-hadoop1
+2017-01-18 12:50:32,464 INFO  [main] util.VersionInfo: Subversion https://svn.apache.org/repos/asf/hbase/tags/0.98.0RC2 -r 1565492
+2017-01-18 12:50:32,464 INFO  [main] util.VersionInfo: Compiled by apurtell on Thu Feb  6 16:20:15 PST 2014
+2017-01-18 12:50:32,564 INFO  [main] util.ServerCommandLine: env:HBASE_LOGFILE=hbase-ubuntu-master-sue-master-1.log
+2017-01-18 12:50:32,564 INFO  [main] util.ServerCommandLine: env:PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+2017-01-18 12:50:32,564 INFO  [main] util.ServerCommandLine: env:LC_MEASUREMENT=de_DE.UTF-8
+2017-01-18 12:50:32,564 INFO  [main] util.ServerCommandLine: env:LC_MONETARY=de_DE.UTF-8
+2017-01-18 12:50:32,564 INFO  [main] util.ServerCommandLine: env:LC_TELEPHONE=de_DE.UTF-8
+2017-01-18 12:50:32,564 INFO  [main] util.ServerCommandLine: env:LC_TIME=de_DE.UTF-8
+2017-01-18 12:50:32,564 INFO  [main] util.ServerCommandLine: env:JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre/
+2017-01-18 12:50:32,564 INFO  [main] util.ServerCommandLine: env:LANG=en_US.UTF-8
+2017-01-18 12:50:32,564 INFO  [main] util.ServerCommandLine: env:XDG_SESSION_ID=c76
+2017-01-18 12:50:32,564 INFO  [main] util.ServerCommandLine: env:MAIL=/var/mail/ubuntu
+2017-01-18 12:50:32,564 INFO  [main] util.ServerCommandLine: env:LC_PAPER=de_DE.UTF-8
+2017-01-18 12:50:32,564 INFO  [main] util.ServerCommandLine: env:LOGNAME=ubuntu
+2017-01-18 12:50:32,564 INFO  [main] util.ServerCommandLine: env:HBASE_REST_OPTS=
+2017-01-18 12:50:32,564 INFO  [main] util.ServerCommandLine: env:PWD=/usr/local/hbase
+2017-01-18 12:50:32,564 INFO  [main] util.ServerCommandLine: env:LC_NAME=de_DE.UTF-8
+2017-01-18 12:50:32,564 INFO  [main] util.ServerCommandLine: env:HBASE_ROOT_LOGGER=INFO,RFA
+2017-01-18 12:50:32,564 INFO  [main] util.ServerCommandLine: env:SHELL=/bin/bash
+2017-01-18 12:50:32,564 INFO  [main] util.ServerCommandLine: env:LC_ADDRESS=de_DE.UTF-8
+2017-01-18 12:50:32,564 INFO  [main] util.ServerCommandLine: env:HBASE_ENV_INIT=true
+2017-01-18 12:50:32,564 INFO  [main] util.ServerCommandLine: env:HBASE_IDENT_STRING=ubuntu
+2017-01-18 12:50:32,564 INFO  [main] util.ServerCommandLine: env:HBASE_ZNODE_FILE=/tmp/hbase-ubuntu-master.znode
+2017-01-18 12:50:32,564 INFO  [main] util.ServerCommandLine: env:SSH_CLIENT=172.24.43.157 39310 22
+2017-01-18 12:50:32,564 INFO  [main] util.ServerCommandLine: env:HBASE_LOG_PREFIX=hbase-ubuntu-master-sue-master-1
+2017-01-18 12:50:32,564 INFO  [main] util.ServerCommandLine: env:HBASE_LOG_DIR=/usr/local/hbase/bin/../logs
+2017-01-18 12:50:32,564 INFO  [main] util.ServerCommandLine: env:USER=ubuntu
+2017-01-18 12:50:32,567 INFO  [main] util.ServerCommandLine: env:CLASSPATH=/usr/local/hbase/bin/../conf:/usr/lib/jvm/java-8-openjdk-amd64/jre//lib/tools.jar:/usr/local/hbase/bin/..:/usr/local/hbase/bin/../lib/activation-1.1.jar:/usr/local/hbase/bin/../lib/asm-3.1.jar:/usr/local/hbase/bin/../lib/commons-beanutils-1.7.0.jar:/usr/local/hbase/bin/../lib/commons-beanutils-core-1.8.0.jar:/usr/local/hbase/bin/../lib/commons-cli-1.2.jar:/usr/local/hbase/bin/../lib/commons-codec-1.7.jar:/usr/local/hbase/bin/../lib/commons-collections-3.2.1.jar:/usr/local/hbase/bin/../lib/commons-configuration-1.6.jar:/usr/local/hbase/bin/../lib/commons-digester-1.8.jar:/usr/local/hbase/bin/../lib/commons-el-1.0.jar:/usr/local/hbase/bin/../lib/commons-httpclient-3.1.jar:/usr/local/hbase/bin/../lib/commons-io-2.4.jar:/usr/local/hbase/bin/../lib/commons-lang-2.6.jar:/usr/local/hbase/bin/../lib/commons-logging-1.1.1.jar:/usr/local/hbase/bin/../lib/commons-math-2.2.jar:/usr/local/hbase/bin/../lib/commons-net-1.4.1.jar:/usr/local/hbase/bin/../lib/core-3.1.1.jar:/usr/local/hbase/bin/../lib/findbugs-annotations-1.3.9-1.jar:/usr/local/hbase/bin/../lib/guava-12.0.1.jar:/usr/local/hbase/bin/../lib/hadoop-core-1.2.1.jar:/usr/local/hbase/bin/../lib/hamcrest-core-1.3.jar:/usr/local/hbase/bin/../lib/hbase-client-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-common-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-common-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-examples-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-hadoop1-compat-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-hadoop-compat-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-it-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-it-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-prefix-tree-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-protocol-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-server-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-server-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-shell-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-testing-util-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-thrift-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/high-scale-lib-1.1.1.jar:/usr/local/hbase/bin/../lib/htrace-core-2.04.jar:/usr/local/hbase/bin/../lib/httpclient-4.1.3.jar:/usr/local/hbase/bin/../lib/httpcore-4.1.3.jar:/usr/local/hbase/bin/../lib/jackson-core-asl-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-jaxrs-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-mapper-asl-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-xc-1.8.8.jar:/usr/local/hbase/bin/../lib/jamon-runtime-2.3.1.jar:/usr/local/hbase/bin/../lib/jasper-compiler-5.5.23.jar:/usr/local/hbase/bin/../lib/jasper-runtime-5.5.23.jar:/usr/local/hbase/bin/../lib/jaxb-api-2.2.2.jar:/usr/local/hbase/bin/../lib/jaxb-impl-2.2.3-1.jar:/usr/local/hbase/bin/../lib/jersey-core-1.8.jar:/usr/local/hbase/bin/../lib/jersey-json-1.8.jar:/usr/local/hbase/bin/../lib/jersey-server-1.8.jar:/usr/local/hbase/bin/../lib/jettison-1.3.1.jar:/usr/local/hbase/bin/../lib/jetty-6.1.26.jar:/usr/local/hbase/bin/../lib/jetty-sslengine-6.1.26.jar:/usr/local/hbase/bin/../lib/jetty-util-6.1.26.jar:/usr/local/hbase/bin/../lib/jruby-complete-1.6.8.jar:/usr/local/hbase/bin/../lib/jsp-2.1-6.1.14.jar:/usr/local/hbase/bin/../lib/jsp-api-2.1-6.1.14.jar:/usr/local/hbase/bin/../lib/jsr305-1.3.9.jar:/usr/local/hbase/bin/../lib/junit-4.11.jar:/usr/local/hbase/bin/../lib/libthrift-0.9.0.jar:/usr/local/hbase/bin/../lib/log4j-1.2.17.jar:/usr/local/hbase/bin/../lib/metrics-core-2.1.2.jar:/usr/local/hbase/bin/../lib/netty-3.6.6.Final.jar:/usr/local/hbase/bin/../lib/protobuf-java-2.5.0.jar:/usr/local/hbase/bin/../lib/servlet-api-2.5-6.1.14.jar:/usr/local/hbase/bin/../lib/slf4j-api-1.6.4.jar:/usr/local/hbase/bin/../lib/slf4j-log4j12-1.6.4.jar:/usr/local/hbase/bin/../lib/stax-api-1.0.1.jar:/usr/local/hbase/bin/../lib/xmlenc-0.52.jar:/usr/local/hbase/bin/../lib/zookeeper-3.4.5.jar:
+2017-01-18 12:50:32,567 INFO  [main] util.ServerCommandLine: env:HBASE_MANAGES_ZK=true
+2017-01-18 12:50:32,567 INFO  [main] util.ServerCommandLine: env:LC_NUMERIC=de_DE.UTF-8
+2017-01-18 12:50:32,567 INFO  [main] util.ServerCommandLine: env:SSH_CONNECTION=172.24.43.157 39310 172.24.43.156 22
+2017-01-18 12:50:32,567 INFO  [main] util.ServerCommandLine: env:HBASE_NICENESS=0
+2017-01-18 12:50:32,567 INFO  [main] util.ServerCommandLine: env:HBASE_OPTS=-XX:+UseConcMarkSweepGC   -Dhbase.log.dir=/usr/local/hbase/bin/../logs -Dhbase.log.file=hbase-ubuntu-master-sue-master-1.log -Dhbase.home.dir=/usr/local/hbase/bin/.. -Dhbase.id.str=ubuntu -Dhbase.root.logger=INFO,RFA -Dhbase.security.logger=INFO,RFAS
+2017-01-18 12:50:32,567 INFO  [main] util.ServerCommandLine: env:HBASE_START_FILE=/tmp/hbase-ubuntu-master.autorestart
+2017-01-18 12:50:32,567 INFO  [main] util.ServerCommandLine: env:HBASE_SECURITY_LOGGER=INFO,RFAS
+2017-01-18 12:50:32,567 INFO  [main] util.ServerCommandLine: env:XDG_RUNTIME_DIR=/run/user/1000
+2017-01-18 12:50:32,567 INFO  [main] util.ServerCommandLine: env:HBASE_THRIFT_OPTS=
+2017-01-18 12:50:32,568 INFO  [main] util.ServerCommandLine: env:HBASE_HOME=/usr/local/hbase/bin/..
+2017-01-18 12:50:32,568 INFO  [main] util.ServerCommandLine: env:SHLVL=3
+2017-01-18 12:50:32,568 INFO  [main] util.ServerCommandLine: env:HOME=/home/ubuntu
+2017-01-18 12:50:32,568 INFO  [main] util.ServerCommandLine: env:LC_IDENTIFICATION=de_DE.UTF-8
+2017-01-18 12:50:32,568 INFO  [main] util.ServerCommandLine: env:MALLOC_ARENA_MAX=4
+2017-01-18 12:50:32,569 INFO  [main] util.ServerCommandLine: vmName=OpenJDK 64-Bit Server VM, vmVendor=Oracle Corporation, vmVersion=25.111-b14
+2017-01-18 12:50:32,569 INFO  [main] util.ServerCommandLine: vmInputArguments=[-Dproc_master, -XX:OnOutOfMemoryError=kill -9 %p, -Xmx1000m, -XX:+UseConcMarkSweepGC, -Dhbase.log.dir=/usr/local/hbase/bin/../logs, -Dhbase.log.file=hbase-ubuntu-master-sue-master-1.log, -Dhbase.home.dir=/usr/local/hbase/bin/.., -Dhbase.id.str=ubuntu, -Dhbase.root.logger=INFO,RFA, -Dhbase.security.logger=INFO,RFAS]
+2017-01-18 12:50:32,643 DEBUG [main] master.HMaster: master/sue-master-1/172.24.43.156:60000 HConnection server-to-server retries=350
+2017-01-18 12:50:32,789 INFO  [main] ipc.RpcServer: master/sue-master-1/172.24.43.156:60000: started 10 reader(s).
+2017-01-18 12:50:32,839 INFO  [main] impl.MetricsConfig: loaded properties from hadoop-metrics2-hbase.properties
+2017-01-18 12:50:32,917 INFO  [main] impl.MetricsSourceAdapter: MBean for source MetricsSystem,sub=Stats registered.
+2017-01-18 12:50:32,917 INFO  [main] impl.MetricsSystemImpl: Scheduled snapshot period at 10 second(s).
+2017-01-18 12:50:32,917 INFO  [main] impl.MetricsSystemImpl: HBase metrics system started
+2017-01-18 12:50:32,920 INFO  [main] impl.MetricsSourceAdapter: MBean for source jvm registered.
+2017-01-18 12:50:32,923 INFO  [main] impl.MetricsSourceAdapter: MBean for source IPC,sub=IPC registered.
+2017-01-18 12:50:33,002 INFO  [main] impl.MetricsSourceAdapter: MBean for source ugi registered.
+2017-01-18 12:50:33,002 WARN  [main] impl.MetricsSystemImpl: Source name ugi already exists!
+2017-01-18 12:50:33,273 INFO  [main] master.HMaster: hbase.rootdir=hdfs://sue-master-1:54310/hbase, hbase.cluster.distributed=true
+2017-01-18 12:50:33,297 INFO  [main] zookeeper.ZooKeeper: Client environment:zookeeper.version=3.4.5--1, built on 10/05/2013 16:05 GMT
+2017-01-18 12:50:33,297 INFO  [main] zookeeper.ZooKeeper: Client environment:host.name=sue-master-1
+2017-01-18 12:50:33,297 INFO  [main] zookeeper.ZooKeeper: Client environment:java.version=1.8.0_111
+2017-01-18 12:50:33,297 INFO  [main] zookeeper.ZooKeeper: Client environment:java.vendor=Oracle Corporation
+2017-01-18 12:50:33,297 INFO  [main] zookeeper.ZooKeeper: Client environment:java.home=/usr/lib/jvm/java-8-openjdk-amd64/jre
+2017-01-18 12:50:33,297 INFO  [main] zookeeper.ZooKeeper: Client environment:java.class.path=/usr/local/hbase/bin/../conf:/usr/lib/jvm/java-8-openjdk-amd64/jre//lib/tools.jar:/usr/local/hbase/bin/..:/usr/local/hbase/bin/../lib/activation-1.1.jar:/usr/local/hbase/bin/../lib/asm-3.1.jar:/usr/local/hbase/bin/../lib/commons-beanutils-1.7.0.jar:/usr/local/hbase/bin/../lib/commons-beanutils-core-1.8.0.jar:/usr/local/hbase/bin/../lib/commons-cli-1.2.jar:/usr/local/hbase/bin/../lib/commons-codec-1.7.jar:/usr/local/hbase/bin/../lib/commons-collections-3.2.1.jar:/usr/local/hbase/bin/../lib/commons-configuration-1.6.jar:/usr/local/hbase/bin/../lib/commons-digester-1.8.jar:/usr/local/hbase/bin/../lib/commons-el-1.0.jar:/usr/local/hbase/bin/../lib/commons-httpclient-3.1.jar:/usr/local/hbase/bin/../lib/commons-io-2.4.jar:/usr/local/hbase/bin/../lib/commons-lang-2.6.jar:/usr/local/hbase/bin/../lib/commons-logging-1.1.1.jar:/usr/local/hbase/bin/../lib/commons-math-2.2.jar:/usr/local/hbase/bin/../lib/commons-net-1.4.1.jar:/usr/local/hbase/bin/../lib/core-3.1.1.jar:/usr/local/hbase/bin/../lib/findbugs-annotations-1.3.9-1.jar:/usr/local/hbase/bin/../lib/guava-12.0.1.jar:/usr/local/hbase/bin/../lib/hadoop-core-1.2.1.jar:/usr/local/hbase/bin/../lib/hamcrest-core-1.3.jar:/usr/local/hbase/bin/../lib/hbase-client-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-common-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-common-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-examples-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-hadoop1-compat-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-hadoop-compat-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-it-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-it-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-prefix-tree-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-protocol-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-server-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-server-0.98.0-hadoop1-tests.jar:/usr/local/hbase/bin/../lib/hbase-shell-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-testing-util-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/hbase-thrift-0.98.0-hadoop1.jar:/usr/local/hbase/bin/../lib/high-scale-lib-1.1.1.jar:/usr/local/hbase/bin/../lib/htrace-core-2.04.jar:/usr/local/hbase/bin/../lib/httpclient-4.1.3.jar:/usr/local/hbase/bin/../lib/httpcore-4.1.3.jar:/usr/local/hbase/bin/../lib/jackson-core-asl-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-jaxrs-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-mapper-asl-1.8.8.jar:/usr/local/hbase/bin/../lib/jackson-xc-1.8.8.jar:/usr/local/hbase/bin/../lib/jamon-runtime-2.3.1.jar:/usr/local/hbase/bin/../lib/jasper-compiler-5.5.23.jar:/usr/local/hbase/bin/../lib/jasper-runtime-5.5.23.jar:/usr/local/hbase/bin/../lib/jaxb-api-2.2.2.jar:/usr/local/hbase/bin/../lib/jaxb-impl-2.2.3-1.jar:/usr/local/hbase/bin/../lib/jersey-core-1.8.jar:/usr/local/hbase/bin/../lib/jersey-json-1.8.jar:/usr/local/hbase/bin/../lib/jersey-server-1.8.jar:/usr/local/hbase/bin/../lib/jettison-1.3.1.jar:/usr/local/hbase/bin/../lib/jetty-6.1.26.jar:/usr/local/hbase/bin/../lib/jetty-sslengine-6.1.26.jar:/usr/local/hbase/bin/../lib/jetty-util-6.1.26.jar:/usr/local/hbase/bin/../lib/jruby-complete-1.6.8.jar:/usr/local/hbase/bin/../lib/jsp-2.1-6.1.14.jar:/usr/local/hbase/bin/../lib/jsp-api-2.1-6.1.14.jar:/usr/local/hbase/bin/../lib/jsr305-1.3.9.jar:/usr/local/hbase/bin/../lib/junit-4.11.jar:/usr/local/hbase/bin/../lib/libthrift-0.9.0.jar:/usr/local/hbase/bin/../lib/log4j-1.2.17.jar:/usr/local/hbase/bin/../lib/metrics-core-2.1.2.jar:/usr/local/hbase/bin/../lib/netty-3.6.6.Final.jar:/usr/local/hbase/bin/../lib/protobuf-java-2.5.0.jar:/usr/local/hbase/bin/../lib/servlet-api-2.5-6.1.14.jar:/usr/local/hbase/bin/../lib/slf4j-api-1.6.4.jar:/usr/local/hbase/bin/../lib/slf4j-log4j12-1.6.4.jar:/usr/local/hbase/bin/../lib/stax-api-1.0.1.jar:/usr/local/hbase/bin/../lib/xmlenc-0.52.jar:/usr/local/hbase/bin/../lib/zookeeper-3.4.5.jar:
+2017-01-18 12:50:33,298 INFO  [main] zookeeper.ZooKeeper: Client environment:java.library.path=/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+2017-01-18 12:50:33,298 INFO  [main] zookeeper.ZooKeeper: Client environment:java.io.tmpdir=/tmp
+2017-01-18 12:50:33,298 INFO  [main] zookeeper.ZooKeeper: Client environment:java.compiler=<NA>
+2017-01-18 12:50:33,298 INFO  [main] zookeeper.ZooKeeper: Client environment:os.name=Linux
+2017-01-18 12:50:33,298 INFO  [main] zookeeper.ZooKeeper: Client environment:os.arch=amd64
+2017-01-18 12:50:33,298 INFO  [main] zookeeper.ZooKeeper: Client environment:os.version=4.4.0-53-generic
+2017-01-18 12:50:33,298 INFO  [main] zookeeper.ZooKeeper: Client environment:user.name=ubuntu
+2017-01-18 12:50:33,298 INFO  [main] zookeeper.ZooKeeper: Client environment:user.home=/home/ubuntu
+2017-01-18 12:50:33,298 INFO  [main] zookeeper.ZooKeeper: Client environment:user.dir=/usr/local/hbase
+2017-01-18 12:50:33,301 INFO  [main] zookeeper.ZooKeeper: Initiating client connection, connectString=sue-data-2:2181,sue-data-1:2181,sue-master-2:2181,sue-master-1:2181,sue-data-4:2181,sue-data-3:2181 sessionTimeout=90000 watcher=master:60000, quorum=sue-data-2:2181,sue-data-1:2181,sue-master-2:2181,sue-master-1:2181,sue-data-4:2181,sue-data-3:2181, baseZNode=/hbase
+2017-01-18 12:50:33,313 INFO  [main-SendThread(sue-data-1:2181)] zookeeper.ClientCnxn: Opening socket connection to server sue-data-1/172.24.43.148:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-18 12:50:33,314 INFO  [main] zookeeper.RecoverableZooKeeper: Process identifier=master:60000 connecting to ZooKeeper ensemble=sue-data-2:2181,sue-data-1:2181,sue-master-2:2181,sue-master-1:2181,sue-data-4:2181,sue-data-3:2181
+2017-01-18 12:50:33,323 INFO  [main-SendThread(sue-data-1:2181)] zookeeper.ClientCnxn: Socket connection established to sue-data-1/172.24.43.148:2181, initiating session
+2017-01-18 12:50:33,332 INFO  [main-SendThread(sue-data-1:2181)] zookeeper.ClientCnxn: Session establishment complete on server sue-data-1/172.24.43.148:2181, sessionid = 0x259b1a0e6ca0003, negotiated timeout = 90000
+2017-01-18 12:50:33,344 INFO  [main] zookeeper.RecoverableZooKeeper: Node /hbase already exists and this is not a retry
+2017-01-18 12:50:33,358 INFO  [RpcServer.responder] ipc.RpcServer: RpcServer.responder: starting
+2017-01-18 12:50:33,359 INFO  [RpcServer.listener,port=60000] ipc.RpcServer: RpcServer.listener,port=60000: starting
+2017-01-18 12:50:33,363 INFO  [main] impl.MetricsSourceAdapter: MBean for source Master,sub=Server registered.
+2017-01-18 12:50:33,409 INFO  [master:sue-master-1:60000] mortbay.log: Logging to org.slf4j.impl.Log4jLoggerAdapter(org.mortbay.log) via org.mortbay.log.Slf4jLog
+2017-01-18 12:50:33,446 INFO  [master:sue-master-1:60000] http.HttpServer: Added global filtersafety (class=org.apache.hadoop.http.HttpServer$QuotingInputFilter)
+2017-01-18 12:50:33,451 INFO  [master:sue-master-1:60000] http.HttpServer: Port returned by webServer.getConnectors()[0].getLocalPort() before open() is -1. Opening the listener on 60010
+2017-01-18 12:50:33,452 INFO  [master:sue-master-1:60000] http.HttpServer: listener.getLocalPort() returned 60010 webServer.getConnectors()[0].getLocalPort() returned 60010
+2017-01-18 12:50:33,452 INFO  [master:sue-master-1:60000] http.HttpServer: Jetty bound to port 60010
+2017-01-18 12:50:33,452 INFO  [master:sue-master-1:60000] mortbay.log: jetty-6.1.26
+2017-01-18 12:50:33,784 INFO  [master:sue-master-1:60000] mortbay.log: Started SelectChannelConnector@0.0.0.0:60010
+2017-01-18 12:50:33,784 DEBUG [master:sue-master-1:60000] master.HMaster: HMaster started in backup mode.  Stalling until master znode is written.
+2017-01-18 12:50:33,862 INFO  [master:sue-master-1:60000] zookeeper.RecoverableZooKeeper: Node /hbase/master already exists and this is not a retry
+2017-01-18 12:50:33,863 INFO  [master:sue-master-1:60000] master.ActiveMasterManager: Adding ZNode for /hbase/backup-masters/sue-master-1,60000,1484743832956 in backup master directory
+2017-01-18 12:50:33,880 INFO  [master:sue-master-1:60000] master.ActiveMasterManager: Another master is the active master, sue-master-2,60000,1484743830082; waiting to become the next active master

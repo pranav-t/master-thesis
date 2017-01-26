@@ -1,0 +1,330 @@
+package de.webdataplatform.scripts;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import de.webdataplatform.log.Log;
+import de.webdataplatform.settings.NetworkConfig;
+import de.webdataplatform.settings.SystemConfig;
+import de.webdataplatform.ssh.LocalCommandService;
+import de.webdataplatform.ssh.SSHConnection;
+import de.webdataplatform.ssh.SSHService;
+
+public class InstallNodes {
+
+	
+	private static Log log;
+	
+	
+	public static void main(String[] args) {
+
+		log= new Log("install-nodes.log");	
+		
+		SystemConfig.load(log);
+		NetworkConfig.load(log);
+		
+		List<SSHConnection> nodes = new ArrayList<SSHConnection>();
+//		nodes.add(new SSHConnection("jan-1", "172.24.36.217",22, "ubuntu", null));
+		nodes.add(new SSHConnection("jan-client", "172.24.34.133",22, "ubuntu", null));
+		nodes.add(new SSHConnection("jan-master", "172.24.34.108",22, "ubuntu", null));
+//////
+//////		
+//		nodes.add(new SSHConnection("jan-rs-1", "172.24.34.104",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-rs-2", "172.24.34.107",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-rs-3", "172.24.34.105",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-rs-4", "172.24.34.106",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-rs-5", "172.24.35.207",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-rs-6", "172.24.35.208",22, "ubuntu", null));	
+//		nodes.add(new SSHConnection("jan-rs-7", "172.24.35.231",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-rs-8", "172.24.35.232",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-rs-9", "172.24.36.207",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-rs-10", "172.24.36.208",22, "ubuntu", null));	
+//		nodes.add(new SSHConnection("jan-rs-11", "172.24.36.209",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-rs-12", "172.24.36.210",22, "ubuntu", null));	
+////		
+		nodes.add(new SSHConnection("jan-ds-1", "172.24.35.55",22, "ubuntu", null));
+		nodes.add(new SSHConnection("jan-ds-2", "172.24.35.56",22, "ubuntu", null));
+		nodes.add(new SSHConnection("jan-ds-3", "172.24.35.57",22, "ubuntu", null));
+		nodes.add(new SSHConnection("jan-ds-4", "172.24.35.58",22, "ubuntu", null));
+		nodes.add(new SSHConnection("jan-ds-5", "172.24.35.59",22, "ubuntu", null));
+		nodes.add(new SSHConnection("jan-ds-6", "172.24.35.60",22, "ubuntu", null));	
+		nodes.add(new SSHConnection("jan-ds-7", "172.24.35.61",22, "ubuntu", null));
+		nodes.add(new SSHConnection("jan-ds-8", "172.24.35.62",22, "ubuntu", null));	
+		nodes.add(new SSHConnection("jan-ds-9", "172.24.36.211",22, "ubuntu", null));
+		nodes.add(new SSHConnection("jan-ds-10", "172.24.36.212",22, "ubuntu", null));	
+		nodes.add(new SSHConnection("jan-ds-11", "172.24.36.213",22, "ubuntu", null));
+		nodes.add(new SSHConnection("jan-ds-12", "172.24.36.214",22, "ubuntu", null));	
+////		
+////////		
+//		nodes.add(new SSHConnection("jan-vm-1", "172.24.34.41",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-2", "172.24.34.38",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-3", "172.24.34.39",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-4", "172.24.34.40",22, "ubuntu", null));	
+//		nodes.add(new SSHConnection("jan-vm-5", "172.24.34.43",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-6", "172.24.34.44",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-7", "172.24.34.42",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-8", "172.24.34.45",22, "ubuntu", null));	
+//		nodes.add(new SSHConnection("jan-vm-9", "172.24.34.46",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-10", "172.24.34.49",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-11", "172.24.34.47",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-12", "172.24.34.48",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-13", "172.24.34.51",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-14", "172.24.34.50",22, "ubuntu", null));
+////		nodes.add(new SSHConnection("jan-vm-15", "172.24.34.52",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-16", "172.24.34.60",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-17", "172.24.34.55",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-18", "172.24.34.53",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-19", "172.24.34.56",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-20", "172.24.34.54",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-21", "172.24.34.58",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-22", "172.24.34.57",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-23", "172.24.34.59",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-24", "172.24.34.61",22, "ubuntu", null));	
+//		nodes.add(new SSHConnection("jan-vm-25", "172.24.34.62",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-26", "172.24.34.63",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-27", "172.24.34.65",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-28", "172.24.34.64",22, "ubuntu", null));	
+//		nodes.add(new SSHConnection("jan-vm-29", "172.24.34.66",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-30", "172.24.34.67",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-31", "172.24.34.68",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-32", "172.24.34.70",22, "ubuntu", null));
+////		nodes.add(new SSHConnection("jan-vm-33", "172.24.34.69",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-34", "172.24.34.71",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-35", "172.24.34.72",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-36", "172.24.34.73",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-37", "172.24.34.74",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-38", "172.24.34.75",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-39", "172.24.34.76",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-40", "172.24.34.79",22, "ubuntu", null));	
+//		nodes.add(new SSHConnection("jan-vm-41", "172.24.34.80",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-42", "172.24.34.77",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-43", "172.24.34.78",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-44", "172.24.34.81",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-45", "172.24.34.82",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-46", "172.24.34.84",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-47", "172.24.34.83",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-48", "172.24.34.85",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-49", "172.24.34.86",22, "ubuntu", null));
+////		nodes.add(new SSHConnection("jan-vm-50", "172.24.34.87",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-51", "172.24.34.89",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-52", "172.24.34.90",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-53", "172.24.34.91",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm-54", "172.24.34.95",22, "ubuntu", null));
+
+//		nodes.add(new SSHConnection("jan-vm2-1", "172.24.36.59",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-2", "172.24.36.84",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-3", "172.24.36.102",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-4", "172.24.36.77",22, "ubuntu", null));	
+//		nodes.add(new SSHConnection("jan-vm2-5", "172.24.36.60",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-6", "172.24.36.70",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-7", "172.24.36.61",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-8", "172.24.36.81",22, "ubuntu", null));	
+//		nodes.add(new SSHConnection("jan-vm2-9", "172.24.36.104",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-10", "172.24.36.65",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-11", "172.24.36.69",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-12", "172.24.36.99",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-13", "172.24.36.62",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-14", "172.24.36.63",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-15", "172.24.36.78",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-16", "172.24.36.64",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-17", "172.24.36.96",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-18", "172.24.36.105",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-19", "172.24.36.66",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-20", "172.24.36.72",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-21", "172.24.36.76",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-22", "172.24.36.103",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-23", "172.24.36.86",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-24", "172.24.36.100",22, "ubuntu", null));	
+//		nodes.add(new SSHConnection("jan-vm2-25", "172.24.36.82",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-26", "172.24.36.89",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-27", "172.24.36.101",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-28", "172.24.36.67",22, "ubuntu", null));	
+//		nodes.add(new SSHConnection("jan-vm2-29", "172.24.36.91",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-30", "172.24.36.106",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-31", "172.24.36.68",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-32", "172.24.36.93",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-33", "172.24.36.79",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-34", "172.24.36.107",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-35", "172.24.36.75",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-36", "172.24.36.74",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-37", "172.24.36.97",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-38", "172.24.36.71",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-39", "172.24.36.83",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-40", "172.24.36.94",22, "ubuntu", null));	
+//		nodes.add(new SSHConnection("jan-vm2-41", "172.24.36.80",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-42", "172.24.36.98",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-43", "172.24.36.108",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-44", "172.24.36.73",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-45", "172.24.36.85",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-46", "172.24.36.88",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-47", "172.24.36.87",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-48", "172.24.36.92",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-49", "172.24.36.90",22, "ubuntu", null));
+//		nodes.add(new SSHConnection("jan-vm2-50", "172.24.36.95",22, "ubuntu", null));
+
+		
+		
+//		nodes.add(sshConnection);
+		if(args.length== 0)log.info(InstallNodes.class, "Please supply arguments: install , update");
+		
+		
+		boolean installVM=false, installHadoop=false, installHBase=false;
+		
+		
+		for (String arg : args) {
+			
+			if(arg.equals("vm"))installVM=true;
+			if(arg.equals("hadoop"))installHadoop=true;
+			if(arg.equals("hbase"))installHBase=true;
+			
+		}
+		
+		
+		if(args[0].equals("install"))installNodes(nodes, installVM, installHBase, installHadoop);
+		if(args[0].equals("update"))updateNodes(nodes);
+//		killHBase(nodes);
+		
+
+		SSHService.closeSessions();
+		log.close();
+		
+		
+		
+		
+	}
+
+
+	
+
+	
+	public static void installNodes(List<SSHConnection> nodes, boolean installVM, boolean installHBase, boolean installHadoop) {
+		
+		
+		List<String> startupCommand;
+		
+		SSHConnection firstNode = nodes.get(0);
+		
+		for (SSHConnection node : nodes) {
+		
+//			if(!node.equals(firstNode)){
+				
+				log.info(InstallNodes.class, "setting hostname:"+node);
+				startupCommand = new ArrayList<String>();
+//				startupCommand.add("sudo  sh -c \"echo '"+node.getAddress()+"   "+node.getHostname()+ "' >> /etc/hosts\"");
+//				startupCommand.add("sudo  sh -c \"echo '"+firstNode.getAddress()+"   "+firstNode.getHostname()+ "' >> /etc/hosts\"");
+				
+				startupCommand.add("sudo  sh -c \"echo '172.24.34.133   jan-client' >> /etc/hosts\"");
+				startupCommand.add("sudo  sh -c \"echo '172.24.34.108   jan-master' >> /etc/hosts\"");
+				startupCommand.add("sudo  sh -c \"echo '172.24.34.104   jan-rs-1' >> /etc/hosts\"");
+				startupCommand.add("sudo  sh -c \"echo '172.24.34.107   jan-rs-2' >> /etc/hosts\"");
+				startupCommand.add("sudo  sh -c \"echo '172.24.34.105   jan-rs-3' >> /etc/hosts\"");
+				startupCommand.add("sudo  sh -c \"echo '172.24.34.106   jan-rs-4' >> /etc/hosts\"");
+				startupCommand.add("sudo  sh -c \"echo '172.24.35.207   jan-rs-5' >> /etc/hosts\"");
+				startupCommand.add("sudo  sh -c \"echo '172.24.35.208   jan-rs-6' >> /etc/hosts\"");
+				startupCommand.add("sudo  sh -c \"echo '172.24.35.231   jan-rs-7' >> /etc/hosts\"");
+				startupCommand.add("sudo  sh -c \"echo '172.24.35.232   jan-rs-8' >> /etc/hosts\"");
+				startupCommand.add("sudo  sh -c \"echo '172.24.36.207   jan-rs-9' >> /etc/hosts\"");
+				startupCommand.add("sudo  sh -c \"echo '172.24.36.208   jan-rs-10' >> /etc/hosts\"");	
+				startupCommand.add("sudo  sh -c \"echo '172.24.36.209   jan-rs-11' >> /etc/hosts\"");
+				startupCommand.add("sudo  sh -c \"echo '172.24.36.210   jan-rs-12' >> /etc/hosts\"");	
+				
+				startupCommand.add("sudo  sh -c \"echo '172.24.35.55   jan-ds-1' >> /etc/hosts\"");
+				startupCommand.add("sudo  sh -c \"echo '172.24.35.56   jan-ds-2' >> /etc/hosts\"");
+				startupCommand.add("sudo  sh -c \"echo '172.24.35.57   jan-ds-3' >> /etc/hosts\"");
+				startupCommand.add("sudo  sh -c \"echo '172.24.35.58   jan-ds-4' >> /etc/hosts\"");
+				startupCommand.add("sudo  sh -c \"echo '172.24.35.59   jan-ds-5' >> /etc/hosts\"");
+				startupCommand.add("sudo  sh -c \"echo '172.24.35.60   jan-ds-6' >> /etc/hosts\"");
+				startupCommand.add("sudo  sh -c \"echo '172.24.35.61   jan-ds-7' >> /etc/hosts\"");
+				startupCommand.add("sudo  sh -c \"echo '172.24.35.62   jan-ds-8' >> /etc/hosts\"");
+				startupCommand.add("sudo  sh -c \"echo '172.24.36.211   jan-ds-9' >> /etc/hosts\"");
+				startupCommand.add("sudo  sh -c \"echo '172.24.36.212   jan-ds-10' >> /etc/hosts\"");	
+				startupCommand.add("sudo  sh -c \"echo '172.24.36.213   jan-ds-11' >> /etc/hosts\"");
+				startupCommand.add("sudo  sh -c \"echo '172.24.36.214   jan-ds-12' >> /etc/hosts\"");					
+				
+				
+				SSHService.sendCommand(log, node, startupCommand,false);
+	
+				
+				log.info(InstallNodes.class, "setting environment variables:"+node);
+				startupCommand = new ArrayList<String>();
+				startupCommand.add("sudo  sh -c \"echo 'JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64/' >> /etc/environment\"");
+				SSHService.sendCommand(log, node, startupCommand,false);
+				
+			
+				log.info(InstallNodes.class, "updating system:"+node);
+				startupCommand = new ArrayList<String>();
+				startupCommand.add("yes | sudo  apt-get update");
+				SSHService.sendCommand(log, node, startupCommand,false);
+				
+				log.info(InstallNodes.class, "install java:"+node);
+				startupCommand = new ArrayList<String>();
+				startupCommand.add("yes | sudo apt-get install default-jre");
+				SSHService.sendCommand(log, node, startupCommand,false);
+				
+	//			startupCommand.add("sudo apt-get install openjdk-8-jdk");
+				
+				log.info(InstallNodes.class, "setting folder permission /usr/local");
+				startupCommand = new ArrayList<String>();
+				startupCommand.add("sudo chmod 777 /usr/local");
+				SSHService.sendCommand(log, node, startupCommand,false);
+				
+				
+				if(installHadoop){
+					log.info(InstallNodes.class, "making hadoop folder");
+					startupCommand = new ArrayList<String>();
+					startupCommand.add("sudo mkdir -m 777 /usr/local/hadoop");
+					SSHService.sendCommand(log, node, startupCommand,false);			
+					
+					log.info(InstallNodes.class, "transfering hadoop files");
+					LocalCommandService.transferDirectory(log, node, "/usr/local/hadoop-1.2.1", "/usr/local/hadoop-1.2.1");
+				}
+				
+				if(installHBase){
+					log.info(InstallNodes.class, "transfering hbase files");
+					LocalCommandService.transferDirectory(log, node, "/usr/local/hbase-0.98.6.1-hadoop1", "/usr/local/hbase-0.98.6.1-hadoop1");
+				}
+				
+				if(installVM){
+					log.info(InstallNodes.class, "transfering scalablevm files");
+					LocalCommandService.transferDirectory(log, node, "/usr/local/scalablevm", "/usr/local/scalablevm");
+				}
+//			}
+//			if(node.equals(firstNode)){
+//				log.info(InstallNodes.class, "transfering ssh files");
+//				LocalCommandService.transferFile(log, node, "/home/jan/.ssh/id_rsa", "/home/ubuntu/.ssh/");
+//				LocalCommandService.transferFile(log, node, "/home/jan/.ssh/id_rsa.pub", "/home/ubuntu/.ssh/");
+//			}
+		}
+		
+		SSHService.closeSessions();
+		
+	}
+	
+	public static void updateNodes(List<SSHConnection> nodes) {
+		
+		List<String> startupCommand;
+
+		for (SSHConnection node : nodes) {
+			
+		
+			log.info(InstallNodes.class, "Deleting scalablevm folder");
+			startupCommand = new ArrayList<String>();
+			startupCommand.add("sudo rm -r /usr/local/scalablevm");
+			SSHService.sendCommand(log, node, startupCommand, false);	
+			
+			log.info(InstallNodes.class, "transfering scalablevm files");
+			LocalCommandService.transferDirectory(log, node, "/usr/local/scalablevm", "/usr/local/scalablevm");
+		
+			
+			
+		}
+		
+		SSHService.closeSessions();
+
+	}
+	
+	
+	
+
+	
+}

@@ -1,0 +1,476 @@
+
+
+From RW:
+
+A lot of the mentioned papers, focus on pessimistic mechanisms, i.e., 
+they prevent update anomalies in the moment or even after they have 
+occurred. Instead, our approach tries to establish consistency by a more 
+optimistic concept. Correct ordering of base table operations is ensured 
+by consistent hashing right through the maintenance process. 
+Test-And-Set methods are used to retain the commit order, no explicit 
+locking or transactional mechanisms are need. In the end, this results 
+in a higher throughput and more up-to-date view computations. 
+
+
+...
+
+Versioning and time-stamp-based approaches have been used to defer view 
+maintenance and ensure data consistency~\cite{salem:how, zhou:lazy}. For 
+example, Zhou et al.~\cite{zhou:lazy} use a SQL version store to 
+categorize updates. That is, the database can be queried in the state, 
+it has been in, when the base table update was applied. Also, Zhou et 
+al.~\cite{zhou:lazy} introduced the scheduling of view maintenance 
+tasks. There, tasks can be run, when the update load in the system is 
+low, yet, the approach applies tasks always in the correct update order. 
+Unfortunately, as illustrated above, in a KV-store, we cannot rely on 
+time synchronization. While some KV-store provide mechanisms for row 
+versioning, the local time on each node could differ due to clock skew 
+and deriving a unique global time-based update order is not possible. 
+Experiments with the versioning feature yielded a big storage overhead 
+and complicated the maintenance process. 
+
+Similar to Jacobsen et al.~\cite{jacobsen:viewmaintenance}, Agrawal et
+al. can only rely on record time-line guarantees in view
+maintenance. Updates to a view record may involve one or more reads on
+base tables. View tables are replicated in the underlying PNUTS
+architecture. Moreover, it does not only provide a solution for
+special types of views and implementations, but a simple generic
+system of view modules, that are built on top of a generalized
+KV-store model.
+
+
+
+Jacobsen et al.~\cite{jacobsen:viewmaintenance } discuss view
+maintenance in the context of Web Data Platforms, i.e., large-scale
+storage systems, such as HBase, where view managers are independent
+components for updating views. Updates, issued to storage servers, are
+propagated to the view managers. View managers relieve the storage
+servers that run view update programs to update view tables. The
+authors identify and analyze data consistency issues in this context
+and define a number of consistency levels. These levels provide
+theoretical guarantees for different classes of views in the context
+of the abstract WDP assumed in the paper. Here, we use some of the
+foundations on view table consistency developed in
+~\cite{jacobsen:viewmaintenance}.
+
+%As described above, our approach completely goes without table scans and 
+%only applies operations to the view, locally. Existing approaches for 
+%batch-based view maintenance in warehouses, either compensate for 
+%changes in base tables as scans are in progress~\cite{zhuge:view}, 
+%version base data~\cite{zhang:parallel}, or outright reject that general 
+%join views can be maintained correctly in 
+%KV-stores~\cite{jacobsen:viewmaintenance}. Instead, in our approach, we 
+%materialize join views based on auxiliary views, internally maintained 
+%by the system. 
+
+
+
+Experiments
+%
+% aj - this section - if we can afford it space-wise, it would be better to
+%                              use 3 subsections for Impl., Setup, and Experiments
+%\subsection{Implementation} 
+%The integration of VMS and HBase involves
+%two simple steps.  First, we integrate the NX component in the HBase
+%architecture. Second, we let the VM component interact with HBase via
+%its client API. Figure~\ref{fig:system_overview} shows the
+%integration.
+%
+%In HBase parlance a \textit{region server} (i.e., a node) writes
+%client updates to a TL (HBase calls it write-ahead log), which the NX
+%simply reads via the file system API, as described in
+%Section~\ref{sec:kv_model}.  HBase uses the HDFS file system, where TL
+%and table files are persisted for every node.  We use the HBase
+%internal class \texttt{HLog.Reader} to interpret the log content and
+%retrieve entries in a readable form, as they are serialized and not
+%stored in plain text.  NX extracts the row key and routes the
+%operation to the appropriate VM. A single TL entry in HBase contains
+%exactly the information VMS expects, i.e., row key, table name,
+%etc. The difficulties of not being able to differentiate inserts from
+%updates and not having access to old column values via the log are the
+%as in our model.  An instance of NX is deployed with every node.
+%
+%As a VM starts processing operations and materializing views, it
+%connects to the HBase API to submit view table updates as prescribed
+%by our design.  A VM uses an abstract class \texttt{KVSTableService},
+%which contains all methods required to access the KV-store and to
+%materialize each view type. For each view type, these methods are:
+%\texttt{put()}, \texttt{get()}, \texttt{delete()},
+%\texttt{checkAndPut()} and \texttt{checkAndDelete()}. Now, the VM is
+%able to access HBase and update view tables.
+%
+%As can be seen from this discussion VMS and the underlying KV-store
+%are neatly decoupled, requiring only two integration points (client
+%API and TL).
+
+%
+% aj - below - can we justify the setup a bit; why that distribution of nodes?
+%                   - did we try out other distributions and this was the best?
+% This is minor.
+%
+
+
+...
+
+Also, running multiple VMs on the same machine is possible, since, as
+we observed, the limiting factor for a VM is the access latency to
+HBase (i.e., request processing latency).
+
+KV-store Model
+%
+% aj - for a future version of this paper - I think, we should extract the
+%       requirements of KV-stores as they are required by VMS, expose
+%       them as part of the discussion here and provide a summary table
+%       either here or in RW that shows which existing KVS has what
+%       feature we require (some do, others don't.)
+%
+
+...
+The section is organized as follows: we discuss
+the design of the KV-Store and its components; we depict the
+processing of a client operation through the KV-store architecture; we
+define a common data model for KV-stores; and we identify extension
+points that will later serve to connect KV-store to VMS.
+
+Table~\ref{tab:kvs_a_events} lists a set of universal events a
+\KVS\ generally supports.
+
+  
+  
+...
+As load increases, more nodes can be added to the system; likewise,
+nodes can be removed as load declines.
+
+The \KVS\ adapts to new situations and integrate, respectively drop
+the resource. \KVSs\ differ in how they accommodate; they also differ
+in how they perform load balancing and recovery (in face of node
+crashes).
+
+...
+%
+%Cassandra defines a table as a key space. A node only manages a single
+%key space, which may overlap with spaces of neighboring nodes.
+%
+%In these systems, key ranges can be either managed automatically or
+%predefined manually.
+
+Extension points are interfaces that used to interact with the
+\KVS. \VMS\ is designed to react to \KVS\ events and does not
+interfere with data processing.
+
+
+
+View Maintenance system
+
+%A \textit{view expression} defines the operations that are to be
+%applied to one or more base tables to materialize a \textit{view} over
+%the base data (e.g., selection, aggregation or join).  We refer to the
+%materialized view as the \textit{view table} as it simply is a table
+%in the KV-store, persisted like any another base table and potentially
+%split across a number of nodes. Base tables and derived view tables
+%can be hosted alone or together on the same or different nodes.  As
+%clients perform updates against base tables, derived view tables
+%become stale. It is the job of the \textit{view maintenance system}
+%(VMS) to update view tables as base tables change. VMS is represented
+%by the black blocks in the figure. It receives base table operations
+%and applies them in order to view tables. VMS decouples base table
+%management from view table materialization. If desired, view tables
+%could be stored at a completely different set of nodes or at another
+%system instance altogether. We now describe all components that make
+%up VMS.
+
+
+
+The \textit{coordinator} manages the component configuration of
+\VMS. It sends commands to the remaining components and induces certain
+actions.  For example, if a VM has to be assigned to a node, the
+coordinator sends an assignment command. Likewise, the coordinator
+reacts to system events and takes care of the system state. It
+monitors the VMS state by relying on the distributed configuration
+service \textit{Zookeeper}. Every VM instance is represented in
+Zookeeper by an \textit{ephemeral node}. In case of a VM crash, the
+ephemeral node is destroyed and the coordinator receives an event. It
+then performs different recovery steps to guarantee error recovery.
+
+..
+%This section details the inner workings of VMS.  We begin by detailing
+%the life of a client request as it passes from the a client to the
+%base table via the KV-store and to the view table via VMS. 
+
+%\subsubsection{Dynamics KV-Store}
+%\label{subsubsec:dynamics_kv_store} 
+%
+% In Table~\ref{tab:vms_events} all KV-store events are depicted. Again we
+% can exclude some of them from the consistency discussion. Adding a node to
+% KV-store is not critical. The VMS just creates a subsystem for the new
+% node and assigns view managers to it -- which start processing the client 
+% operations of the new node. Removing a node from KV-store is also not 
+% critical, as the key ranges on that node are either closed or moved to
+% another node. The VMS continues reading client operations until the end 
+% of the node's transaction log (as the file is still available) and then, 
+% securely reassigns the view managers to another subsystem. 
+%
+%\textit{Moving regions -- } Once in a while, the KV-store moves key 
+%ranges from one node to another node. This can be for load balancing or 
+%for recovery reasons. Independent of the reason, consistency might be violated 
+%in such cases. The operations of a key range can be processed by multiple view 
+%managers. If a key range is moved, operations can still linger in the queues 
+%of the old node's view managers. Now, the key range is opened again and the new
+%node's view managers start their work. In consequence new operations 
+%may overtake old operations and the timeline of individual records 
+%may be broken. 
+%
+%
+%\begin{algorithm}
+%\caption{Reaction to a closing key range at $Sub_{old}$}
+%\label{alg:onclosekr}
+%\begin{algorithmic}
+%\Procedure{$onCloseKeyRange$}{$VM_{sub}, kr$}
+%\State $setFlag(kr, false)$
+%\ForAll{$vm \in VM_{sub}$}	
+%\State $queueMarker(vm, m_c)$
+%\EndFor
+%\ForAll{$vm \in VM_{sub}$}\Comment{wait for answers}	
+%\State $receiveMessage(VM, m_c)$	
+%\EndFor
+%\State $setFlag(kr, true)$
+%\EndProcedure
+%\end{algorithmic}
+%\end{algorithm}
+%
+%Like the preceding scenarios, also this problem can be addressed by using
+%markers. However, in contrast to before, 
+%the transfer of a key range is executed by the KV-store itself. The KV-store 
+%closes the key range on the old node, moves 
+%the key range to the new node, and opens it again. The VMS needs 
+%to be informed about these steps by the corresponding events. If a \textit{key range closed} 
+%event is called on the subsystem of the old node, it reacts as follows:
+%it creates a flag in Zookeeper with the (hash-)name of the key range 
+%and sets its value to false. Then, the subsystem sends markers 
+%to all its view managers. After receiving the acknowledgements, it sets 
+%the value of the flag to true. 
+
+%\begin{algorithm}
+%\caption{React on open key range at $Sub_{new}$}
+%\label{alg:onopenkr}
+%\begin{algorithmic}[5]
+%\Procedure{$onOpenKeyRange$}{$VM_{sub}, kr$}
+%\If{$existsFlag(kr)$}
+%\ForAll{$vm \in VM_{sub}$}	
+%\State $deactivateQueue(vm)$
+%\EndFor
+%\While{$getFlag(kr) \neq true$}
+%\State $wait()$
+%\EndWhile
+%\ForAll{$vm \in VM$}	
+%\State $activateQueue(vm)$
+%\EndFor	
+%\EndIf
+%\EndProcedure
+%\end{algorithmic}
+%\end{algorithm}
+
+%\State $receiveMessage(Sub_{old}, kr_{closed})$	
+%The subsystem on the new node receives a \textit{key range opened} event 
+%and checks Zookeeper for the appropriate flag. If the flag does not exist,
+%the key range is opened for the first time. However, if the flag exists, 
+%the subsystem inserts a deactivate operation into the queue (instead of 
+%deactivating it directly). All existing operations are processed, until 
+%the sending thread encounters the deactivate operation. If the subsystem 
+%would deactivate the view manager queues directly, there would be the 
+%prospect of a deadlock. By moving two key ranges from 
+%old to new subsystem and v.v., the VMS would deactivate all sending 
+%queues and prevent the markers from being sent. The subsystem
+%continues checking the flag until it evaluates to true (or a time-out
+%expires). Then, it re-activates the queues and resumes normal operation 
+%mode.
+%
+%
+%\textit{Deleting transaction logs -- } Another dynamic that needs to be
+%discussed is the deletion of log files. Usually, the KV-store node runs 
+%a background process to merge or delete log files. Although the possibility
+%is small, there is a chance of a transaction log getting deleted 
+%before the VMS can read all the operations from it.  Then, convergence
+%fails, as some updates are missing. To solve the problem, the deletion 
+%mechanism of KV-store has to be overwritten (HBase e.g., offers plug-ins
+%for that purpose). Then, the log deletion can be delayed to a point where
+%all operations have been retrieved from transaction log. 
+
+%\subsection{View types} 
+%
+%Our approach supports the maintenance of the following basic view types:
+% \texttt{SELECTION}, \texttt{PROJECTION}, \texttt{INDEX}, aggregation (e.g., 
+% \texttt{COUNT}, \texttt{SUM}, \texttt{MIN} and \texttt{MAX}), and general 
+% \texttt{JOIN} views. More complex queries are translated into a DAG
+% of view expressions, where the output of one view is connected to the input
+% of the next one. 
+%
+%
+%We also introduce a number of auxiliary view types, such as the \texttt{DELTA}, 
+%\texttt{PRE-AGGREGATION} and \texttt{REVERSE-JOIN} view, which are 
+%designed to support fast and efficient view maintenance. The \texttt{DELTA}
+%view tracks base table changes between successive update operations. The
+%\texttt{PRE-AGGREGATION} view allows for materialization of multiple 
+%aggregation views without further cost; and it avoids table scans for 
+%\texttt{MIN} and \texttt{MAX} views (in case a minimum/maximum gets deleted).
+%The \texttt{REVERSE-JOIN} view pre-joins table entries by join-key and
+%allows for materialization of multiple join views(\texttt{INNER}, \texttt{LEFT},
+%\texttt{RIGHT}, \texttt{FULL}) without further cost; likewise, it avoids
+%table scans to find join partners.
+%
+%Our approach avoids table scans at all cost (even at the expense of
+%higher storage cost), as they bare the following drawbacks: (i) Scans 
+%require a disproportional amount of time, slowing down throughput of view
+%maintenance. (With increasing table size, the problem worsens.) (ii)
+%Scans keep the nodes occupied, slowing down client requests.  (iii)
+%While a scan is in progress, underlying base tables may change, thus,
+%destroying view data consistency for derived views.
+
+(it applies a hash-function to the view managers name to determine the
+place).  As the base table operations stream in, the subsystem
+extracts their row keys. Now, the subsystem applies the hash-function
+to the row key and determines the place on the hash-ring. Starting at
+this point, the subsystem travels clockwise until it hits the first
+node of a view manager -- meaning this view manager is responsible for
+processing. The subsystem sends the operation to this view manager and
+continues its work.
+
+
+Section 3 due to conflict
+
+
+
+%
+% aj - I don't think we have Ex'2 anymore, have we?
+%
+
+Revisiting Example~2, let $VM_2$ retrieve value $(x1, \{(col_1,
+a)\})$. Then, it computes $(x1,\{(col_1,a+c)\})$ trying to put the new
+value, while testing for the old value $a$. The test-and-set fails
+because the old record value changed concurrently to $a+b$. Thus,
+$VM_2$ fetches the updated value again and re-computes
+$(x1,\{(col_1,a+b+c)\})$. This time the test-and-set succeeds and the
+record is written.
+
+
+Introduction
+
+% Our approach integrates ``naturally'' with the 
+%KV-store: Materialized views are simply tables managed by the store. In 
+%spirit with the design philosophy of KV-stores, our approach resorts to 
+%incremental and asynchronous view maintenance~\cite{gupta:maintaining, 
+%lee:efficient, salem:how}. 
+
+%The VMS is based on the properties and architecture of a typical 
+%KV-store -- such as BigTable, HBase, Cassandra, and PNUTS.  
+
+
+
+%The correct materialization of views, despite asynchronous and
+%concurrent operation processing, is a major concern in the design of VMS.
+
+
+
+%That is, only those parts of view tables that 
+%are effected as base data changes, are updated. Base updates are 
+%propagated asynchronously, not introducing new, costly control 
+%dependences into the system. design of our view.  
+
+
+%We develop a general KV-model in Section~\ref{sec:kv_model}. We adapt
+%an existing consistency model in Section~\ref{sec:consistency}. We describe
+%the design and behaviour of our View Maintenance System in 
+%Section~\ref{sec:view_maintenance_system}.
+%our approach.
+
+%Update schema
+%Furthermore, we develop a view materialization scheme that avoids 
+%expensive table scans and related consistency issues in 
+%Section~\ref{sec:view_maintenance}. Our approach supports the 
+%maintenance of \texttt{SELECTION}, \texttt{PROJECTION}, \texttt{INDEX}, 
+%aggregation (e.g., \texttt{COUNT}, \texttt{SUM}, \texttt{MIN} and 
+%\texttt{MAX}), and general \texttt{JOIN} views. To achieve this, we 
+%introduce a number of auxiliary view types, such as the \texttt{DELTA}, 
+%\texttt{PRE-AGGREGATION} and \texttt{REVERSE-JOIN} view, which are 
+%designed to support fast and efficient view maintenance. 
+
+
+
+%The correct materialization of views, despite asynchronous and
+%concurrent update processing, is a major concern in the design of VMS.
+%As is common in the literature on view maintenance, we are using a
+%consistency model to ensure materialized views remain consistent with
+%base data.  But unlike the existing models\cite{zhuge:view,
+%  wang:efficient, zhang:parallel} --- which where mainly applied to
+%centralized data warehouse environments --- we design our own consistency
+%model in Section~\ref{sec:consistency}, which matches the needs of a 
+%highly distributed environment (i.e.  KV-stores). Subsequently, we
+%analyse our VMS with regard to the model. While scaling up to hundreds 
+%of nodes, fault tolerance becomes a big issue in any distributed system. 
+%Thus, we discuss the steps of automatic recovery after crashed components 
+%in Section~\ref{sec:fault_tolerance}. Finally, we evaluate our work in 
+%Section~\ref{sec:evaluation}, given a 
+%full-fledged implementation of the presented concepts based on Apache 
+%HBase.  We conduct a comprehensive experimental study that evaluates 
+%our approach.
+
+To handle 
+this load, major internet companies have developed distributed 
+databases called KV-stores such as
+
+Many existing approaches separate transactional and analytical 
+processing. A complete snapshot of the data base is copied or loaded to 
+an \textit{external} data warehouse and then, processed in a batch-wise 
+fashion. Therefore, numerous existing frameworks with varying 
+abstraction levels are available, e.g. Map Reduce \cite{dean:mapreduce}, 
+Apache Spark \cite{zaharia:spark}, Apache Hive \cite{thusoo:hive}, etc. 
+While this approach exploits the benefits of high performance parallel 
+processing, it always requires an initial load overhead. Further it is 
+not capable of providing up-to-date results -- as frequent changes in 
+the base data occur. 
+
+
+%
+% aj - next sentence - should qualify further, be more precise
+%
+Although, some \KVSs\ provide additional features to support
+higher-level query processing, such as range scans realized as
+individual gets~\cite{cooper:pnuts}, these features are often
+rudimentary and impose additional bottlenecks.
+
+
+
+First, we examine a set of KV-store implementations\cite{george:hbase,
+  hewitt:cassandra, chang:bigtable, cooper:pnuts} and derive the
+common key characteristics from their architectures and their data
+models (Section~\ref{sec:kv_model}). As is common in the literature on
+view maintenance, we use a consistency model
+(Section~\ref{sec:consistency}) to ensure materialized views remain
+consistent with base data. But unlike the existing
+models\cite{zhuge:view, wang:efficient, zhang:parallel} -- which where
+mainly applied to centralized data warehouse environments -- we design
+our own consistency model to match the needs of a highly distributed
+environment (i.e. \KVSs\). Based on the KV-store model and the
+requirements of the consistency model, we describe the design of the
+scalable VMS (Section~\ref{sec:view_maintenance_system}).  We design
+our VMS to scale in view update load and number of views
+maintained. Our design does not interfere with the read/write
+processing against tables in the KV-store, thus, leaving base table
+processing latencies unaffected. Finally, we conduct a comprehensive
+experimental study (Section~\ref{sec:evaluation}).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
+
+Another way of solving the problem is the use of \textit{internal} 
+KV-store mechanisms that directly operate on the KV-store data. Apache 
+Pheonix \cite{phoenix:apache} enables rich SQL 
+semantics by using the coprocessor functionality (little code snippets, 
+deployed on the KV-store nodes) of HBase. While this approach is 
+implementation bound to a specific KV-store, we strive for a more general 
+solution. 
+ 
+
+
+
+

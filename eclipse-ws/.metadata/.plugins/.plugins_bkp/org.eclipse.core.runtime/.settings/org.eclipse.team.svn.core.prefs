@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+externalMigrateFromAuthorizationDatabase/isMigrated=true
+migrateFromAuthorizationDatabase/isMigrated=true
+repositories/80d232fd728100161c099e36a88143e2=80d232fd728100161c099e36a88143e2;https\://vmjacobsen7.informatik.tu-muenchen.de/svn/ViewMaintenanceInWDP;https\://vmjacobsen7.informatik.tu-muenchen.de/svn/ViewMaintenanceInWDP;branches;tags;trunk;true;587200ea-e274-461a-9daf-7214b96c4cdd;https\://vmjacobsen7.informatik.tu-muenchen.de/svn/ViewMaintenanceInWDP;;false;<https\://vmjacobsen7.informatik.tu-muenchen.de\:443> Subversion Repository;;0
+repositories/c091068a728100161c099e36a88143e2=c091068a728100161c099e36a88143e2;https\://vmjacobsen7.informatik.tu-muenchen.de/svn/ViewMaintenance;https\://vmjacobsen7.informatik.tu-muenchen.de/svn/ViewMaintenance;branches;tags;trunk;true;116e25e0-8e47-4412-9b76-29a8ceaf0077;https\://vmjacobsen7.informatik.tu-muenchen.de/svn/ViewMaintenance;;false;;;0

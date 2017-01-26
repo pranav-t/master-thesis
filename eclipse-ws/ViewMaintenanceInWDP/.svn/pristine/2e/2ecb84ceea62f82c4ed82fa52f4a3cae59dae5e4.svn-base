@@ -1,0 +1,7 @@
+de.webdataplatform.settings.EvaluationConfig: bt1
+de.webdataplatform.settings.EvaluationConfig: bt2
+de.webdataplatform.settings.EvaluationConfig: task1
+de.webdataplatform.settings.EvaluationConfig: task2
+de.webdataplatform.settings.EvaluationConfig: select bt1.c1 from bt1 where bt1.c2 < 20
+de.webdataplatform.settings.EvaluationConfig: select bt1.c1, sum(bt1.c3) as sum1, count(bt1.c3) as count1 from bt1 pre group by bt1.c1, bt1.c2
+de.webdataplatform.settings.EvaluationConfig: select * from bt1, bt2, bt3 where bt1.c1 = bt2.d1 and bt2.d2 = bt3.e1

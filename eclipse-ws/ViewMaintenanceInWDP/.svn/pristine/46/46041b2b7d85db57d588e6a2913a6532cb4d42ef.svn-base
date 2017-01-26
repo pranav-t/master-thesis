@@ -1,0 +1,707 @@
+de.webdataplatform.client.HbaseClient: -----------------------
+de.webdataplatform.client.HbaseClient: create table bt1
+de.webdataplatform.client.HbaseClient: -----------------------
+de.webdataplatform.client.HbaseClient: -----------------------
+de.webdataplatform.client.HbaseClient: fill table:bt1
+de.webdataplatform.client.HbaseClient: -----------------------
+de.webdataplatform.client.HbaseClient: distribution: zipf
+de.webdataplatform.client.HbaseClient: numOfOperations: 50000
+de.webdataplatform.client.HbaseClient: iteration: 99, key: k042, exists:false
+de.webdataplatform.client.HbaseClient: took: 834 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 199, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 751 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 299, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 716 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 399, key: k053, exists:true
+de.webdataplatform.client.HbaseClient: took: 714 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 499, key: k004, exists:true
+de.webdataplatform.client.HbaseClient: took: 734 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 599, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 720 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 699, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 868 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 799, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 750 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 899, key: k032, exists:true
+de.webdataplatform.client.HbaseClient: took: 725 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 999, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 699 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 1099, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 715 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 1199, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 754 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 1299, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 819 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 1399, key: k064, exists:true
+de.webdataplatform.client.HbaseClient: took: 710 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 1499, key: k010, exists:true
+de.webdataplatform.client.HbaseClient: took: 692 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 1599, key: k009, exists:false
+de.webdataplatform.client.HbaseClient: took: 720 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 1699, key: k024, exists:true
+de.webdataplatform.client.HbaseClient: took: 699 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 1799, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 719 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 1899, key: k084, exists:false
+de.webdataplatform.client.HbaseClient: took: 694 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 1999, key: k059, exists:true
+de.webdataplatform.client.HbaseClient: took: 714 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 2099, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 714 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 2199, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 698 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 2299, key: k002, exists:true
+de.webdataplatform.client.HbaseClient: took: 691 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 2399, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 695 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 2499, key: k017, exists:true
+de.webdataplatform.client.HbaseClient: took: 752 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 2599, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 729 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 2699, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 818 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 2799, key: k002, exists:false
+de.webdataplatform.client.HbaseClient: took: 729 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 2899, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 718 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 2999, key: k002, exists:true
+de.webdataplatform.client.HbaseClient: took: 748 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 3099, key: k009, exists:true
+de.webdataplatform.client.HbaseClient: took: 676 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 3199, key: k019, exists:true
+de.webdataplatform.client.HbaseClient: took: 667 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 3299, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 662 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 3399, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 687 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 3499, key: k002, exists:false
+de.webdataplatform.client.HbaseClient: took: 684 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 3599, key: k048, exists:true
+de.webdataplatform.client.HbaseClient: took: 692 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 3699, key: k004, exists:false
+de.webdataplatform.client.HbaseClient: took: 722 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 3799, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 700 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 3899, key: k007, exists:true
+de.webdataplatform.client.HbaseClient: took: 678 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 3999, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 681 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 4099, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 683 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 4199, key: k019, exists:false
+de.webdataplatform.client.HbaseClient: took: 684 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 4299, key: k008, exists:true
+de.webdataplatform.client.HbaseClient: took: 680 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 4399, key: k009, exists:false
+de.webdataplatform.client.HbaseClient: took: 671 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 4499, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 733 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 4599, key: k064, exists:true
+de.webdataplatform.client.HbaseClient: took: 763 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 4699, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 799 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 4799, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 790 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 4899, key: k002, exists:true
+de.webdataplatform.client.HbaseClient: took: 768 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 4999, key: k082, exists:true
+de.webdataplatform.client.HbaseClient: took: 753 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 5099, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 737 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 5199, key: k014, exists:false
+de.webdataplatform.client.HbaseClient: took: 722 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 5299, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 672 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 5399, key: k002, exists:false
+de.webdataplatform.client.HbaseClient: took: 679 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 5499, key: k002, exists:false
+de.webdataplatform.client.HbaseClient: took: 716 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 5599, key: k002, exists:true
+de.webdataplatform.client.HbaseClient: took: 652 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 5699, key: k018, exists:false
+de.webdataplatform.client.HbaseClient: took: 655 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 5799, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 732 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 5899, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 714 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 5999, key: k003, exists:true
+de.webdataplatform.client.HbaseClient: took: 636 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 6099, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 660 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 6199, key: k011, exists:true
+de.webdataplatform.client.HbaseClient: took: 728 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 6299, key: k003, exists:true
+de.webdataplatform.client.HbaseClient: took: 719 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 6399, key: k004, exists:false
+de.webdataplatform.client.HbaseClient: took: 686 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 6499, key: k019, exists:true
+de.webdataplatform.client.HbaseClient: took: 696 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 6599, key: k017, exists:false
+de.webdataplatform.client.HbaseClient: took: 693 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 6699, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 671 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 6799, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 694 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 6899, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 703 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 6999, key: k002, exists:true
+de.webdataplatform.client.HbaseClient: took: 709 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 7099, key: k005, exists:true
+de.webdataplatform.client.HbaseClient: took: 1008 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 7199, key: k055, exists:true
+de.webdataplatform.client.HbaseClient: took: 662 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 7299, key: k007, exists:true
+de.webdataplatform.client.HbaseClient: took: 672 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 7399, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 689 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 7499, key: k002, exists:false
+de.webdataplatform.client.HbaseClient: took: 715 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 7599, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 672 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 7699, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 668 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 7799, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 728 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 7899, key: k002, exists:true
+de.webdataplatform.client.HbaseClient: took: 716 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 7999, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 689 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 8099, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 705 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 8199, key: k003, exists:false
+de.webdataplatform.client.HbaseClient: took: 694 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 8299, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 771 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 8399, key: k038, exists:true
+de.webdataplatform.client.HbaseClient: took: 732 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 8499, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 649 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 8599, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 692 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 8699, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 680 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 8799, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 721 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 8899, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 717 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 8999, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 716 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 9099, key: k005, exists:true
+de.webdataplatform.client.HbaseClient: took: 745 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 9199, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 679 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 9299, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 650 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 9399, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 765 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 9499, key: k005, exists:true
+de.webdataplatform.client.HbaseClient: took: 719 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 9599, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 696 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 9699, key: k003, exists:true
+de.webdataplatform.client.HbaseClient: took: 720 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 9799, key: k011, exists:true
+de.webdataplatform.client.HbaseClient: took: 695 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 9899, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 725 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 9999, key: k002, exists:true
+de.webdataplatform.client.HbaseClient: took: 709 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 10099, key: k026, exists:true
+de.webdataplatform.client.HbaseClient: took: 688 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 10199, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 669 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 10299, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 704 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 10399, key: k046, exists:true
+de.webdataplatform.client.HbaseClient: took: 642 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 10499, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 681 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 10599, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 725 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 10699, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 717 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 10799, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 716 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 10899, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 693 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 10999, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 682 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 11099, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 706 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 11199, key: k098, exists:true
+de.webdataplatform.client.HbaseClient: took: 710 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 11299, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 743 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 11399, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 733 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 11499, key: k004, exists:true
+de.webdataplatform.client.HbaseClient: took: 713 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 11599, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 698 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 11699, key: k002, exists:true
+de.webdataplatform.client.HbaseClient: took: 660 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 11799, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 666 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 11899, key: k006, exists:true
+de.webdataplatform.client.HbaseClient: took: 689 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 11999, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 692 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 12099, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 630 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 12199, key: k002, exists:true
+de.webdataplatform.client.HbaseClient: took: 672 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 12299, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 654 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 12399, key: k006, exists:true
+de.webdataplatform.client.HbaseClient: took: 667 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 12499, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 666 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 12599, key: k003, exists:true
+de.webdataplatform.client.HbaseClient: took: 658 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 12699, key: k004, exists:false
+de.webdataplatform.client.HbaseClient: took: 703 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 12799, key: k002, exists:false
+de.webdataplatform.client.HbaseClient: took: 717 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 12899, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 706 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 12999, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 713 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 13099, key: k018, exists:true
+de.webdataplatform.client.HbaseClient: took: 673 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 13199, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 682 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 13299, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 687 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 13399, key: k010, exists:true
+de.webdataplatform.client.HbaseClient: took: 693 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 13499, key: k002, exists:true
+de.webdataplatform.client.HbaseClient: took: 727 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 13599, key: k068, exists:true
+de.webdataplatform.client.HbaseClient: took: 695 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 13699, key: k002, exists:false
+de.webdataplatform.client.HbaseClient: took: 664 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 13799, key: k052, exists:true
+de.webdataplatform.client.HbaseClient: took: 667 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 13899, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 636 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 13999, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 683 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 14099, key: k005, exists:true
+de.webdataplatform.client.HbaseClient: took: 704 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 14199, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 702 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 14299, key: k007, exists:false
+de.webdataplatform.client.HbaseClient: took: 680 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 14399, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 692 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 14499, key: k006, exists:false
+de.webdataplatform.client.HbaseClient: took: 667 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 14599, key: k004, exists:true
+de.webdataplatform.client.HbaseClient: took: 682 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 14699, key: k002, exists:true
+de.webdataplatform.client.HbaseClient: took: 659 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 14799, key: k051, exists:true
+de.webdataplatform.client.HbaseClient: took: 667 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 14899, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 642 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 14999, key: k015, exists:false
+de.webdataplatform.client.HbaseClient: took: 659 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 15099, key: k030, exists:true
+de.webdataplatform.client.HbaseClient: took: 698 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 15199, key: k072, exists:true
+de.webdataplatform.client.HbaseClient: took: 696 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 15299, key: k082, exists:true
+de.webdataplatform.client.HbaseClient: took: 710 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 15399, key: k004, exists:true
+de.webdataplatform.client.HbaseClient: took: 703 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 15499, key: k006, exists:true
+de.webdataplatform.client.HbaseClient: took: 734 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 15599, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 650 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 15699, key: k005, exists:false
+de.webdataplatform.client.HbaseClient: took: 659 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 15799, key: k094, exists:true
+de.webdataplatform.client.HbaseClient: took: 666 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 15899, key: k002, exists:true
+de.webdataplatform.client.HbaseClient: took: 671 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 15999, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 693 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 16099, key: k057, exists:true
+de.webdataplatform.client.HbaseClient: took: 678 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 16199, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 722 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 16299, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 686 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 16399, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 708 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 16499, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 687 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 16599, key: k007, exists:true
+de.webdataplatform.client.HbaseClient: took: 666 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 16699, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 707 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 16799, key: k010, exists:true
+de.webdataplatform.client.HbaseClient: took: 708 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 16899, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 695 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 16999, key: k003, exists:true
+de.webdataplatform.client.HbaseClient: took: 691 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 17099, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 676 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 17199, key: k037, exists:true
+de.webdataplatform.client.HbaseClient: took: 684 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 17299, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 760 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 17399, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 709 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 17499, key: k018, exists:false
+de.webdataplatform.client.HbaseClient: took: 724 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 17599, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 700 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 17699, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 713 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 17799, key: k004, exists:true
+de.webdataplatform.client.HbaseClient: took: 746 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 17899, key: k005, exists:false
+de.webdataplatform.client.HbaseClient: took: 719 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 17999, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 734 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 18099, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 744 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 18199, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 701 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 18299, key: k031, exists:true
+de.webdataplatform.client.HbaseClient: took: 675 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 18399, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 707 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 18499, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 710 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 18599, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 660 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 18699, key: k031, exists:false
+de.webdataplatform.client.HbaseClient: took: 680 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 18799, key: k010, exists:true
+de.webdataplatform.client.HbaseClient: took: 690 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 18899, key: k028, exists:false
+de.webdataplatform.client.HbaseClient: took: 689 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 18999, key: k034, exists:false
+de.webdataplatform.client.HbaseClient: took: 657 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 19099, key: k098, exists:false
+de.webdataplatform.client.HbaseClient: took: 675 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 19199, key: k006, exists:true
+de.webdataplatform.client.HbaseClient: took: 669 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 19299, key: k006, exists:true
+de.webdataplatform.client.HbaseClient: took: 693 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 19399, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 655 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 19499, key: k002, exists:true
+de.webdataplatform.client.HbaseClient: took: 661 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 19599, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 685 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 19699, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 650 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 19799, key: k056, exists:false
+de.webdataplatform.client.HbaseClient: took: 693 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 19899, key: k005, exists:false
+de.webdataplatform.client.HbaseClient: took: 659 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 19999, key: k004, exists:true
+de.webdataplatform.client.HbaseClient: took: 701 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 20099, key: k016, exists:true
+de.webdataplatform.client.HbaseClient: took: 677 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 20199, key: k040, exists:true
+de.webdataplatform.client.HbaseClient: took: 679 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 20299, key: k005, exists:true
+de.webdataplatform.client.HbaseClient: took: 668 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 20399, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 748 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 20499, key: k012, exists:true
+de.webdataplatform.client.HbaseClient: took: 675 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 20599, key: k015, exists:true
+de.webdataplatform.client.HbaseClient: took: 684 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 20699, key: k003, exists:true
+de.webdataplatform.client.HbaseClient: took: 715 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 20799, key: k075, exists:true
+de.webdataplatform.client.HbaseClient: took: 670 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 20899, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 730 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 20999, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 727 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 21099, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 646 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 21199, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 654 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 21299, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 688 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 21399, key: k078, exists:true
+de.webdataplatform.client.HbaseClient: took: 690 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 21499, key: k002, exists:true
+de.webdataplatform.client.HbaseClient: took: 718 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 21599, key: k036, exists:true
+de.webdataplatform.client.HbaseClient: took: 687 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 21699, key: k038, exists:true
+de.webdataplatform.client.HbaseClient: took: 693 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 21799, key: k005, exists:false
+de.webdataplatform.client.HbaseClient: took: 688 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 21899, key: k018, exists:true
+de.webdataplatform.client.HbaseClient: took: 710 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 21999, key: k011, exists:true
+de.webdataplatform.client.HbaseClient: took: 636 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 22099, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 693 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 22199, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 665 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 22299, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 670 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 22399, key: k005, exists:false
+de.webdataplatform.client.HbaseClient: took: 720 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 22499, key: k014, exists:false
+de.webdataplatform.client.HbaseClient: took: 714 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 22599, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 679 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 22699, key: k001, exists:false
+de.webdataplatform.client.HbaseClient: took: 694 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 22799, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 699 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 22899, key: k001, exists:true
+de.webdataplatform.client.HbaseClient: took: 749 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 22999, key: k002, exists:true
+de.webdataplatform.client.HbaseClient: took: 676 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 23099, key: k003, exists:false
+de.webdataplatform.client.HbaseClient: took: 731 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 23199, key: k012, exists:true
+de.webdataplatform.client.HbaseClient: took: 718 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms
+de.webdataplatform.client.HbaseClient: iteration: 23299, key: k019, exists:true
+de.webdataplatform.client.HbaseClient: took: 733 ms
+de.webdataplatform.client.HbaseClient: generation: 0 ms

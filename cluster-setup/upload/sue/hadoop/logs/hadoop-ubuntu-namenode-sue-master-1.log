@@ -1,0 +1,861 @@
+2017-01-20 00:00:33,733 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 00:00:33,734 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 00:01:33,190 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1401 Total time for transactions(ms): 15 Number of transactions batched in Syncs: 4 Number of syncs: 875 SyncTimes(ms): 22054 
+2017-01-20 00:01:33,190 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_3861277527761307216 to 172.24.43.151:50010 172.24.43.149:50010 172.24.43.148:50010 
+2017-01-20 00:01:33,191 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_-1018942976542106417 to 172.24.43.150:50010 172.24.43.151:50010 172.24.43.148:50010 
+2017-01-20 00:01:33,193 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_-6591255985453984062 to 172.24.43.150:50010 172.24.43.148:50010 172.24.43.149:50010 
+2017-01-20 00:01:34,512 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.148:50010 to delete  blk_-6591255985453984062_1185 blk_3861277527761307216_1186 blk_-1018942976542106417_1184
+2017-01-20 00:01:34,512 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.150:50010 to delete  blk_-6591255985453984062_1185 blk_-1018942976542106417_1184
+2017-01-20 00:01:37,512 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.149:50010 to delete  blk_-6591255985453984062_1185 blk_3861277527761307216_1186
+2017-01-20 00:01:37,512 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.151:50010 to delete  blk_3861277527761307216_1186 blk_-1018942976542106417_1184
+2017-01-20 00:05:33,752 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 00:05:33,752 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 00:10:33,768 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 00:10:33,768 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 00:12:56,334 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.149:50010, blocks: 7, processing time: 0 msecs
+2017-01-20 00:15:33,785 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 00:15:33,785 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 00:15:44,624 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.148:50010, blocks: 6, processing time: 0 msecs
+2017-01-20 00:20:33,802 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 00:20:33,803 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 00:25:33,820 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 00:25:33,821 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 00:27:50,545 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1405 Total time for transactions(ms): 16 Number of transactions batched in Syncs: 4 Number of syncs: 878 SyncTimes(ms): 22054 
+2017-01-20 00:27:50,547 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484872070542.meta. blk_-492820217347616205_1191
+2017-01-20 00:27:50,555 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484872070542.meta for DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 00:27:50,558 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.150:50010 is added to blk_-3447990738543169396_1187 size 17
+2017-01-20 00:27:50,559 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.151:50010 is added to blk_-3447990738543169396_1187 size 17
+2017-01-20 00:27:50,560 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_-3447990738543169396_1187 size 17
+2017-01-20 00:27:50,561 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484868470479.meta from client DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 00:27:50,561 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484868470479.meta is closed by DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 00:30:33,837 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 00:30:33,837 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 00:35:33,854 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 00:35:33,854 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 00:38:33,196 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1411 Total time for transactions(ms): 16 Number of transactions batched in Syncs: 4 Number of syncs: 882 SyncTimes(ms): 22054 
+2017-01-20 00:38:33,196 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_-3447990738543169396 to 172.24.43.150:50010 172.24.43.151:50010 172.24.43.149:50010 
+2017-01-20 00:38:34,588 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.150:50010 to delete  blk_-3447990738543169396_1187
+2017-01-20 00:38:34,588 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.149:50010 to delete  blk_-3447990738543169396_1187
+2017-01-20 00:38:37,588 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.151:50010 to delete  blk_-3447990738543169396_1187
+2017-01-20 00:40:33,871 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 00:40:33,871 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 00:43:49,843 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.150:50010, blocks: 5, processing time: 0 msecs
+2017-01-20 00:45:33,888 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 00:45:33,888 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 00:48:06,059 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.151:50010, blocks: 9, processing time: 0 msecs
+2017-01-20 00:50:33,905 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 00:50:33,905 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 00:50:36,292 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1413 Total time for transactions(ms): 16 Number of transactions batched in Syncs: 4 Number of syncs: 883 SyncTimes(ms): 22054 
+2017-01-20 00:50:36,294 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484873436275. blk_-2445813618906694603_1192
+2017-01-20 00:50:36,303 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484873436275 for DFSClient_hb_rs_sue-data-2,60020,1484743831617_-805384997_43
+2017-01-20 00:50:36,307 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.148:50010 is added to blk_2449635437275568658_1188 size 17
+2017-01-20 00:50:36,308 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.150:50010 is added to blk_2449635437275568658_1188 size 17
+2017-01-20 00:50:36,309 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.151:50010 is added to blk_2449635437275568658_1188 size 17
+2017-01-20 00:50:36,310 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484869836211 from client DFSClient_hb_rs_sue-data-2,60020,1484743831617_-805384997_43
+2017-01-20 00:50:36,310 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484869836211 is closed by DFSClient_hb_rs_sue-data-2,60020,1484743831617_-805384997_43
+2017-01-20 00:50:36,479 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484873436472. blk_-3581329043378757289_1193
+2017-01-20 00:50:36,488 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484873436472 for DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 00:50:36,491 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.151:50010 is added to blk_8011270827610758313_1189 size 17
+2017-01-20 00:50:36,492 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.148:50010 is added to blk_8011270827610758313_1189 size 17
+2017-01-20 00:50:36,492 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_8011270827610758313_1189 size 17
+2017-01-20 00:50:36,494 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484869836407 from client DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 00:50:36,494 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484869836407 is closed by DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 00:50:36,617 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484873436611. blk_397543757880333194_1194
+2017-01-20 00:50:36,626 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484873436611 for DFSClient_hb_rs_sue-data-1,60020,1484743831720_-1751481248_43
+2017-01-20 00:50:36,628 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.150:50010 is added to blk_-1368997659138467200_1190 size 17
+2017-01-20 00:50:36,629 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.151:50010 is added to blk_-1368997659138467200_1190 size 17
+2017-01-20 00:50:36,630 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.148:50010 is added to blk_-1368997659138467200_1190 size 17
+2017-01-20 00:50:36,632 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484869836539 from client DFSClient_hb_rs_sue-data-1,60020,1484743831720_-1751481248_43
+2017-01-20 00:50:36,632 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484869836539 is closed by DFSClient_hb_rs_sue-data-1,60020,1484743831720_-1751481248_43
+2017-01-20 00:55:33,919 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 00:55:33,919 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 01:00:33,937 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 01:00:33,937 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 01:01:33,216 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1433 Total time for transactions(ms): 16 Number of transactions batched in Syncs: 4 Number of syncs: 895 SyncTimes(ms): 22055 
+2017-01-20 01:01:33,217 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_-1368997659138467200 to 172.24.43.150:50010 172.24.43.151:50010 172.24.43.148:50010 
+2017-01-20 01:01:33,218 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_2449635437275568658 to 172.24.43.148:50010 172.24.43.150:50010 172.24.43.151:50010 
+2017-01-20 01:01:33,219 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_8011270827610758313 to 172.24.43.151:50010 172.24.43.148:50010 172.24.43.149:50010 
+2017-01-20 01:01:34,636 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.148:50010 to delete  blk_-1368997659138467200_1190 blk_8011270827610758313_1189 blk_2449635437275568658_1188
+2017-01-20 01:01:34,636 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.150:50010 to delete  blk_-1368997659138467200_1190 blk_2449635437275568658_1188
+2017-01-20 01:01:37,636 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.149:50010 to delete  blk_8011270827610758313_1189
+2017-01-20 01:01:37,636 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.151:50010 to delete  blk_-1368997659138467200_1190 blk_8011270827610758313_1189 blk_2449635437275568658_1188
+2017-01-20 01:05:33,954 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 01:05:33,954 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 01:10:33,971 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 01:10:33,971 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 01:12:57,535 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.149:50010, blocks: 7, processing time: 0 msecs
+2017-01-20 01:15:33,988 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 01:15:33,988 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 01:15:42,823 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.148:50010, blocks: 6, processing time: 1 msecs
+2017-01-20 01:20:34,005 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 01:20:34,005 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 01:25:34,022 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 01:25:34,023 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 01:27:50,604 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1437 Total time for transactions(ms): 16 Number of transactions batched in Syncs: 4 Number of syncs: 898 SyncTimes(ms): 22055 
+2017-01-20 01:27:50,607 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484875670602.meta. blk_1638387402447580419_1195
+2017-01-20 01:27:50,625 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484875670602.meta for DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 01:27:50,628 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.150:50010 is added to blk_-492820217347616205_1191 size 17
+2017-01-20 01:27:50,629 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.151:50010 is added to blk_-492820217347616205_1191 size 17
+2017-01-20 01:27:50,631 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_-492820217347616205_1191 size 17
+2017-01-20 01:27:50,631 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484872070542.meta from client DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 01:27:50,631 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484872070542.meta is closed by DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 01:30:34,040 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 01:30:34,040 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 01:35:34,058 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 01:35:34,058 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 01:38:33,203 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1443 Total time for transactions(ms): 16 Number of transactions batched in Syncs: 4 Number of syncs: 902 SyncTimes(ms): 22055 
+2017-01-20 01:38:33,203 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_-492820217347616205 to 172.24.43.150:50010 172.24.43.151:50010 172.24.43.149:50010 
+2017-01-20 01:38:34,710 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.150:50010 to delete  blk_-492820217347616205_1191
+2017-01-20 01:38:34,710 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.149:50010 to delete  blk_-492820217347616205_1191
+2017-01-20 01:38:37,710 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.151:50010 to delete  blk_-492820217347616205_1191
+2017-01-20 01:40:34,075 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 01:40:34,075 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 01:43:51,044 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.150:50010, blocks: 5, processing time: 0 msecs
+2017-01-20 01:45:34,085 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 01:45:34,085 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 01:48:04,259 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.151:50010, blocks: 9, processing time: 1 msecs
+2017-01-20 01:50:34,100 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 01:50:34,100 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 01:50:36,363 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1445 Total time for transactions(ms): 16 Number of transactions batched in Syncs: 4 Number of syncs: 903 SyncTimes(ms): 22055 
+2017-01-20 01:50:36,365 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484877036359. blk_8356152739254978415_1196
+2017-01-20 01:50:36,376 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484877036359 for DFSClient_hb_rs_sue-data-2,60020,1484743831617_-805384997_43
+2017-01-20 01:50:36,379 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_-2445813618906694603_1192 size 17
+2017-01-20 01:50:36,381 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.148:50010 is added to blk_-2445813618906694603_1192 size 17
+2017-01-20 01:50:36,382 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.151:50010 is added to blk_-2445813618906694603_1192 size 17
+2017-01-20 01:50:36,383 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484873436275 from client DFSClient_hb_rs_sue-data-2,60020,1484743831617_-805384997_43
+2017-01-20 01:50:36,383 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484873436275 is closed by DFSClient_hb_rs_sue-data-2,60020,1484743831617_-805384997_43
+2017-01-20 01:50:36,540 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484877036534. blk_-5266224674958439459_1197
+2017-01-20 01:50:36,546 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484877036534 for DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 01:50:36,548 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.151:50010 is added to blk_-3581329043378757289_1193 size 17
+2017-01-20 01:50:36,550 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.148:50010 is added to blk_-3581329043378757289_1193 size 17
+2017-01-20 01:50:36,550 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_-3581329043378757289_1193 size 17
+2017-01-20 01:50:36,551 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484873436472 from client DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 01:50:36,551 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484873436472 is closed by DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 01:50:36,682 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484877036677. blk_8171114624893295998_1198
+2017-01-20 01:50:36,692 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484877036677 for DFSClient_hb_rs_sue-data-1,60020,1484743831720_-1751481248_43
+2017-01-20 01:50:36,694 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_397543757880333194_1194 size 17
+2017-01-20 01:50:36,695 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.150:50010 is added to blk_397543757880333194_1194 size 17
+2017-01-20 01:50:36,697 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.148:50010 is added to blk_397543757880333194_1194 size 17
+2017-01-20 01:50:36,698 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484873436611 from client DFSClient_hb_rs_sue-data-1,60020,1484743831720_-1751481248_43
+2017-01-20 01:50:36,698 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484873436611 is closed by DFSClient_hb_rs_sue-data-1,60020,1484743831720_-1751481248_43
+2017-01-20 01:55:34,115 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 01:55:34,115 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 02:00:34,157 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 02:00:34,157 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 02:01:33,202 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1465 Total time for transactions(ms): 16 Number of transactions batched in Syncs: 4 Number of syncs: 915 SyncTimes(ms): 22063 
+2017-01-20 02:01:33,203 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_397543757880333194 to 172.24.43.149:50010 172.24.43.150:50010 172.24.43.148:50010 
+2017-01-20 02:01:33,204 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_-2445813618906694603 to 172.24.43.149:50010 172.24.43.148:50010 172.24.43.151:50010 
+2017-01-20 02:01:33,205 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_-3581329043378757289 to 172.24.43.151:50010 172.24.43.148:50010 172.24.43.149:50010 
+2017-01-20 02:01:34,753 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.148:50010 to delete  blk_397543757880333194_1194 blk_-3581329043378757289_1193 blk_-2445813618906694603_1192
+2017-01-20 02:01:34,753 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.149:50010 to delete  blk_397543757880333194_1194 blk_-3581329043378757289_1193 blk_-2445813618906694603_1192
+2017-01-20 02:01:37,753 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.150:50010 to delete  blk_397543757880333194_1194
+2017-01-20 02:01:37,753 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.151:50010 to delete  blk_-3581329043378757289_1193 blk_-2445813618906694603_1192
+2017-01-20 02:05:34,166 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 02:05:34,166 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 02:10:34,181 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 02:10:34,181 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 02:12:58,735 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.149:50010, blocks: 7, processing time: 0 msecs
+2017-01-20 02:15:34,196 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 02:15:34,196 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 02:15:44,022 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.148:50010, blocks: 6, processing time: 0 msecs
+2017-01-20 02:20:34,211 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 02:20:34,211 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 02:25:34,223 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 02:25:34,223 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 02:27:50,674 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1469 Total time for transactions(ms): 16 Number of transactions batched in Syncs: 4 Number of syncs: 918 SyncTimes(ms): 22065 
+2017-01-20 02:27:50,676 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484879270672.meta. blk_24231093039318134_1199
+2017-01-20 02:27:50,684 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484879270672.meta for DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 02:27:50,686 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.150:50010 is added to blk_1638387402447580419_1195 size 17
+2017-01-20 02:27:50,687 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.148:50010 is added to blk_1638387402447580419_1195 size 17
+2017-01-20 02:27:50,688 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_1638387402447580419_1195 size 17
+2017-01-20 02:27:50,689 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484875670602.meta from client DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 02:27:50,689 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484875670602.meta is closed by DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 02:30:34,238 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 02:30:34,238 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 02:35:34,253 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 02:35:34,253 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 02:38:33,207 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1475 Total time for transactions(ms): 16 Number of transactions batched in Syncs: 4 Number of syncs: 922 SyncTimes(ms): 22065 
+2017-01-20 02:38:33,208 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_1638387402447580419 to 172.24.43.150:50010 172.24.43.148:50010 172.24.43.149:50010 
+2017-01-20 02:38:34,824 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.148:50010 to delete  blk_1638387402447580419_1195
+2017-01-20 02:38:34,824 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.149:50010 to delete  blk_1638387402447580419_1195
+2017-01-20 02:38:37,825 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.150:50010 to delete  blk_1638387402447580419_1195
+2017-01-20 02:40:34,262 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 02:40:34,262 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 02:43:52,244 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.150:50010, blocks: 5, processing time: 0 msecs
+2017-01-20 02:45:34,273 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 02:45:34,273 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 02:48:05,458 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.151:50010, blocks: 9, processing time: 0 msecs
+2017-01-20 02:50:34,285 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 02:50:34,285 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 02:50:36,429 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1477 Total time for transactions(ms): 16 Number of transactions batched in Syncs: 4 Number of syncs: 923 SyncTimes(ms): 22066 
+2017-01-20 02:50:36,431 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484880636425. blk_1776567718223786829_1200
+2017-01-20 02:50:36,438 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484880636425 for DFSClient_hb_rs_sue-data-2,60020,1484743831617_-805384997_43
+2017-01-20 02:50:36,441 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.148:50010 is added to blk_8356152739254978415_1196 size 17
+2017-01-20 02:50:36,442 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.150:50010 is added to blk_8356152739254978415_1196 size 17
+2017-01-20 02:50:36,444 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.151:50010 is added to blk_8356152739254978415_1196 size 17
+2017-01-20 02:50:36,445 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484877036359 from client DFSClient_hb_rs_sue-data-2,60020,1484743831617_-805384997_43
+2017-01-20 02:50:36,445 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484877036359 is closed by DFSClient_hb_rs_sue-data-2,60020,1484743831617_-805384997_43
+2017-01-20 02:50:36,597 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484880636592. blk_-1639523995069835073_1201
+2017-01-20 02:50:36,604 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484880636592 for DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 02:50:36,606 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.148:50010 is added to blk_-5266224674958439459_1197 size 17
+2017-01-20 02:50:36,607 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.150:50010 is added to blk_-5266224674958439459_1197 size 17
+2017-01-20 02:50:36,608 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_-5266224674958439459_1197 size 17
+2017-01-20 02:50:36,610 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484877036534 from client DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 02:50:36,610 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484877036534 is closed by DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 02:50:36,762 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484880636750. blk_3924135720954083587_1202
+2017-01-20 02:50:36,768 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484880636750 for DFSClient_hb_rs_sue-data-1,60020,1484743831720_-1751481248_43
+2017-01-20 02:50:36,770 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_8171114624893295998_1198 size 17
+2017-01-20 02:50:36,771 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.150:50010 is added to blk_8171114624893295998_1198 size 17
+2017-01-20 02:50:36,772 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.148:50010 is added to blk_8171114624893295998_1198 size 17
+2017-01-20 02:50:36,773 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484877036677 from client DFSClient_hb_rs_sue-data-1,60020,1484743831720_-1751481248_43
+2017-01-20 02:50:36,773 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484877036677 is closed by DFSClient_hb_rs_sue-data-1,60020,1484743831720_-1751481248_43
+2017-01-20 02:55:34,300 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 02:55:34,300 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 03:00:34,316 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 03:00:34,317 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 03:01:33,208 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1497 Total time for transactions(ms): 16 Number of transactions batched in Syncs: 4 Number of syncs: 935 SyncTimes(ms): 22068 
+2017-01-20 03:01:33,209 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_8171114624893295998 to 172.24.43.149:50010 172.24.43.150:50010 172.24.43.148:50010 
+2017-01-20 03:01:33,210 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_8356152739254978415 to 172.24.43.148:50010 172.24.43.150:50010 172.24.43.151:50010 
+2017-01-20 03:01:33,211 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_-5266224674958439459 to 172.24.43.148:50010 172.24.43.150:50010 172.24.43.149:50010 
+2017-01-20 03:01:34,869 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.148:50010 to delete  blk_8356152739254978415_1196 blk_8171114624893295998_1198 blk_-5266224674958439459_1197
+2017-01-20 03:01:34,869 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.149:50010 to delete  blk_8171114624893295998_1198 blk_-5266224674958439459_1197
+2017-01-20 03:01:37,869 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.150:50010 to delete  blk_8356152739254978415_1196 blk_8171114624893295998_1198 blk_-5266224674958439459_1197
+2017-01-20 03:01:37,870 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.151:50010 to delete  blk_8356152739254978415_1196
+2017-01-20 03:05:34,331 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 03:05:34,331 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 03:10:34,341 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 03:10:34,341 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 03:12:56,934 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.149:50010, blocks: 7, processing time: 0 msecs
+2017-01-20 03:15:34,353 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 03:15:34,353 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 03:15:45,233 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.148:50010, blocks: 6, processing time: 0 msecs
+2017-01-20 03:20:34,365 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 03:20:34,365 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 03:25:34,382 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 03:25:34,382 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 03:27:50,733 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1501 Total time for transactions(ms): 16 Number of transactions batched in Syncs: 4 Number of syncs: 938 SyncTimes(ms): 22069 
+2017-01-20 03:27:50,735 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484882870730.meta. blk_5766458072318432443_1203
+2017-01-20 03:27:50,743 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484882870730.meta for DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 03:27:50,746 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.148:50010 is added to blk_24231093039318134_1199 size 17
+2017-01-20 03:27:50,747 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.150:50010 is added to blk_24231093039318134_1199 size 17
+2017-01-20 03:27:50,748 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_24231093039318134_1199 size 17
+2017-01-20 03:27:50,749 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484879270672.meta from client DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 03:27:50,749 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484879270672.meta is closed by DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 03:30:34,393 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 03:30:34,393 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 03:35:34,405 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 03:35:34,405 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 03:38:33,210 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1507 Total time for transactions(ms): 16 Number of transactions batched in Syncs: 4 Number of syncs: 942 SyncTimes(ms): 22070 
+2017-01-20 03:38:33,211 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_24231093039318134 to 172.24.43.148:50010 172.24.43.150:50010 172.24.43.149:50010 
+2017-01-20 03:38:34,944 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.149:50010 to delete  blk_24231093039318134_1199
+2017-01-20 03:38:34,944 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.150:50010 to delete  blk_24231093039318134_1199
+2017-01-20 03:38:37,944 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.148:50010 to delete  blk_24231093039318134_1199
+2017-01-20 03:40:34,422 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 03:40:34,422 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 03:43:50,443 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.150:50010, blocks: 5, processing time: 0 msecs
+2017-01-20 03:45:34,433 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 03:45:34,434 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 03:48:06,659 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.151:50010, blocks: 9, processing time: 0 msecs
+2017-01-20 03:50:34,445 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 03:50:34,445 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 03:50:36,490 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1509 Total time for transactions(ms): 16 Number of transactions batched in Syncs: 4 Number of syncs: 943 SyncTimes(ms): 22070 
+2017-01-20 03:50:36,492 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484884236487. blk_-2381603843839950547_1204
+2017-01-20 03:50:36,500 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484884236487 for DFSClient_hb_rs_sue-data-2,60020,1484743831617_-805384997_43
+2017-01-20 03:50:36,502 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.150:50010 is added to blk_1776567718223786829_1200 size 17
+2017-01-20 03:50:36,504 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_1776567718223786829_1200 size 17
+2017-01-20 03:50:36,505 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.151:50010 is added to blk_1776567718223786829_1200 size 17
+2017-01-20 03:50:36,506 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484880636425 from client DFSClient_hb_rs_sue-data-2,60020,1484743831617_-805384997_43
+2017-01-20 03:50:36,506 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484880636425 is closed by DFSClient_hb_rs_sue-data-2,60020,1484743831617_-805384997_43
+2017-01-20 03:50:36,655 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484884236649. blk_898524026068554870_1205
+2017-01-20 03:50:36,670 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484884236649 for DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 03:50:36,672 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.150:50010 is added to blk_-1639523995069835073_1201 size 17
+2017-01-20 03:50:36,673 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.148:50010 is added to blk_-1639523995069835073_1201 size 17
+2017-01-20 03:50:36,674 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_-1639523995069835073_1201 size 17
+2017-01-20 03:50:36,676 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484880636592 from client DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 03:50:36,676 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484880636592 is closed by DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 03:50:36,826 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484884236818. blk_4547972211465042386_1206
+2017-01-20 03:50:36,833 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484884236818 for DFSClient_hb_rs_sue-data-1,60020,1484743831720_-1751481248_43
+2017-01-20 03:50:36,835 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.151:50010 is added to blk_3924135720954083587_1202 size 17
+2017-01-20 03:50:36,837 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_3924135720954083587_1202 size 17
+2017-01-20 03:50:36,838 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.148:50010 is added to blk_3924135720954083587_1202 size 17
+2017-01-20 03:50:36,840 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484880636750 from client DFSClient_hb_rs_sue-data-1,60020,1484743831720_-1751481248_43
+2017-01-20 03:50:36,840 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484880636750 is closed by DFSClient_hb_rs_sue-data-1,60020,1484743831720_-1751481248_43
+2017-01-20 03:55:34,457 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 03:55:34,457 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 04:00:34,469 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 04:00:34,469 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 04:01:33,212 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1529 Total time for transactions(ms): 16 Number of transactions batched in Syncs: 4 Number of syncs: 955 SyncTimes(ms): 22071 
+2017-01-20 04:01:33,212 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_3924135720954083587 to 172.24.43.151:50010 172.24.43.149:50010 172.24.43.148:50010 
+2017-01-20 04:01:33,213 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_1776567718223786829 to 172.24.43.150:50010 172.24.43.149:50010 172.24.43.151:50010 
+2017-01-20 04:01:33,214 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_-1639523995069835073 to 172.24.43.150:50010 172.24.43.148:50010 172.24.43.149:50010 
+2017-01-20 04:01:34,990 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.148:50010 to delete  blk_-1639523995069835073_1201 blk_3924135720954083587_1202
+2017-01-20 04:01:34,990 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.150:50010 to delete  blk_1776567718223786829_1200 blk_-1639523995069835073_1201
+2017-01-20 04:01:37,990 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.149:50010 to delete  blk_1776567718223786829_1200 blk_-1639523995069835073_1201 blk_3924135720954083587_1202
+2017-01-20 04:01:37,990 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.151:50010 to delete  blk_1776567718223786829_1200 blk_3924135720954083587_1202
+2017-01-20 04:05:34,481 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 04:05:34,481 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 04:10:34,496 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 04:10:34,496 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 04:12:58,133 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.149:50010, blocks: 7, processing time: 0 msecs
+2017-01-20 04:15:34,511 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 04:15:34,511 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 04:15:43,432 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.148:50010, blocks: 6, processing time: 0 msecs
+2017-01-20 04:20:34,521 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 04:20:34,521 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 04:25:34,533 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 04:25:34,533 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 04:27:50,793 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1533 Total time for transactions(ms): 16 Number of transactions batched in Syncs: 4 Number of syncs: 958 SyncTimes(ms): 22071 
+2017-01-20 04:27:50,795 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484886470791.meta. blk_-4449948421125262027_1207
+2017-01-20 04:27:50,802 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484886470791.meta for DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 04:27:50,805 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.151:50010 is added to blk_5766458072318432443_1203 size 17
+2017-01-20 04:27:50,806 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.148:50010 is added to blk_5766458072318432443_1203 size 17
+2017-01-20 04:27:50,806 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_5766458072318432443_1203 size 17
+2017-01-20 04:27:50,807 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484882870730.meta from client DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 04:27:50,808 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484882870730.meta is closed by DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 04:30:34,548 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 04:30:34,548 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 04:35:34,561 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 04:35:34,561 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 04:38:33,216 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1539 Total time for transactions(ms): 16 Number of transactions batched in Syncs: 4 Number of syncs: 962 SyncTimes(ms): 22071 
+2017-01-20 04:38:33,216 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_5766458072318432443 to 172.24.43.151:50010 172.24.43.148:50010 172.24.43.149:50010 
+2017-01-20 04:38:35,063 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.148:50010 to delete  blk_5766458072318432443_1203
+2017-01-20 04:38:35,063 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.151:50010 to delete  blk_5766458072318432443_1203
+2017-01-20 04:38:38,063 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.149:50010 to delete  blk_5766458072318432443_1203
+2017-01-20 04:40:34,573 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 04:40:34,573 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 04:43:51,642 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.150:50010, blocks: 5, processing time: 0 msecs
+2017-01-20 04:45:34,585 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 04:45:34,585 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 04:48:04,857 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.151:50010, blocks: 9, processing time: 0 msecs
+2017-01-20 04:50:34,597 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 04:50:34,597 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 04:50:36,552 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1541 Total time for transactions(ms): 16 Number of transactions batched in Syncs: 4 Number of syncs: 963 SyncTimes(ms): 22071 
+2017-01-20 04:50:36,554 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484887836549. blk_5410710327159333572_1208
+2017-01-20 04:50:36,561 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484887836549 for DFSClient_hb_rs_sue-data-2,60020,1484743831617_-805384997_43
+2017-01-20 04:50:36,564 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_-2381603843839950547_1204 size 17
+2017-01-20 04:50:36,573 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484884236487 from client DFSClient_hb_rs_sue-data-2,60020,1484743831617_-805384997_43
+2017-01-20 04:50:36,573 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484884236487 is closed by DFSClient_hb_rs_sue-data-2,60020,1484743831617_-805384997_43
+2017-01-20 04:50:36,573 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.148:50010 is added to blk_-2381603843839950547_1204 size 17
+2017-01-20 04:50:36,573 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.151:50010 is added to blk_-2381603843839950547_1204 size 17
+2017-01-20 04:50:36,718 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484887836713. blk_-4576282330276567570_1209
+2017-01-20 04:50:36,726 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484887836713 for DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 04:50:36,729 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.148:50010 is added to blk_898524026068554870_1205 size 17
+2017-01-20 04:50:36,730 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.150:50010 is added to blk_898524026068554870_1205 size 17
+2017-01-20 04:50:36,731 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_898524026068554870_1205 size 17
+2017-01-20 04:50:36,732 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484884236649 from client DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 04:50:36,732 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484884236649 is closed by DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 04:50:36,889 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484887836885. blk_-197670317076228808_1210
+2017-01-20 04:50:36,905 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484887836885 for DFSClient_hb_rs_sue-data-1,60020,1484743831720_-1751481248_43
+2017-01-20 04:50:36,907 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_4547972211465042386_1206 size 17
+2017-01-20 04:50:36,908 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.150:50010 is added to blk_4547972211465042386_1206 size 17
+2017-01-20 04:50:36,909 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.148:50010 is added to blk_4547972211465042386_1206 size 17
+2017-01-20 04:50:36,910 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484884236818 from client DFSClient_hb_rs_sue-data-1,60020,1484743831720_-1751481248_43
+2017-01-20 04:50:36,911 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484884236818 is closed by DFSClient_hb_rs_sue-data-1,60020,1484743831720_-1751481248_43
+2017-01-20 04:55:34,609 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 04:55:34,609 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 05:00:34,624 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 05:00:34,624 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 05:01:33,216 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1561 Total time for transactions(ms): 17 Number of transactions batched in Syncs: 4 Number of syncs: 975 SyncTimes(ms): 22073 
+2017-01-20 05:01:33,216 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_4547972211465042386 to 172.24.43.149:50010 172.24.43.150:50010 172.24.43.148:50010 
+2017-01-20 05:01:33,217 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_-2381603843839950547 to 172.24.43.149:50010 172.24.43.148:50010 172.24.43.151:50010 
+2017-01-20 05:01:33,218 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_898524026068554870 to 172.24.43.148:50010 172.24.43.150:50010 172.24.43.149:50010 
+2017-01-20 05:01:35,109 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.148:50010 to delete  blk_-2381603843839950547_1204 blk_898524026068554870_1205 blk_4547972211465042386_1206
+2017-01-20 05:01:35,109 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.151:50010 to delete  blk_-2381603843839950547_1204
+2017-01-20 05:01:38,109 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.150:50010 to delete  blk_898524026068554870_1205 blk_4547972211465042386_1206
+2017-01-20 05:01:38,109 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.149:50010 to delete  blk_-2381603843839950547_1204 blk_898524026068554870_1205 blk_4547972211465042386_1206
+2017-01-20 05:05:34,639 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 05:05:34,639 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 05:10:34,656 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 05:10:34,656 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 05:12:56,332 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.149:50010, blocks: 7, processing time: 0 msecs
+2017-01-20 05:15:34,669 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 05:15:34,669 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 05:15:44,633 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.148:50010, blocks: 6, processing time: 0 msecs
+2017-01-20 05:20:34,684 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 05:20:34,684 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 05:25:34,698 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 05:25:34,698 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 05:27:50,850 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1565 Total time for transactions(ms): 17 Number of transactions batched in Syncs: 4 Number of syncs: 978 SyncTimes(ms): 22073 
+2017-01-20 05:27:50,852 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484890070848.meta. blk_-909833641666065670_1211
+2017-01-20 05:27:50,859 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484890070848.meta for DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 05:27:50,862 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.151:50010 is added to blk_-4449948421125262027_1207 size 17
+2017-01-20 05:27:50,865 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_-4449948421125262027_1207 size 17
+2017-01-20 05:27:50,865 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.148:50010 is added to blk_-4449948421125262027_1207 size 17
+2017-01-20 05:27:50,866 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484886470791.meta from client DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 05:27:50,866 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484886470791.meta is closed by DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 05:30:34,709 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 05:30:34,709 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 05:35:34,724 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 05:35:34,724 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 05:38:33,220 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1571 Total time for transactions(ms): 17 Number of transactions batched in Syncs: 4 Number of syncs: 982 SyncTimes(ms): 22073 
+2017-01-20 05:38:33,220 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_-4449948421125262027 to 172.24.43.151:50010 172.24.43.149:50010 172.24.43.148:50010 
+2017-01-20 05:38:35,182 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.151:50010 to delete  blk_-4449948421125262027_1207
+2017-01-20 05:38:35,183 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.149:50010 to delete  blk_-4449948421125262027_1207
+2017-01-20 05:38:38,183 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.148:50010 to delete  blk_-4449948421125262027_1207
+2017-01-20 05:40:34,739 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 05:40:34,739 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 05:43:49,841 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.150:50010, blocks: 5, processing time: 0 msecs
+2017-01-20 05:45:34,749 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 05:45:34,749 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 05:48:06,057 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.151:50010, blocks: 9, processing time: 0 msecs
+2017-01-20 05:50:34,761 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 05:50:34,761 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 05:50:36,618 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1573 Total time for transactions(ms): 17 Number of transactions batched in Syncs: 4 Number of syncs: 983 SyncTimes(ms): 22073 
+2017-01-20 05:50:36,620 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484891436615. blk_8562493716361572504_1212
+2017-01-20 05:50:36,626 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484891436615 for DFSClient_hb_rs_sue-data-2,60020,1484743831617_-805384997_43
+2017-01-20 05:50:36,629 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.148:50010 is added to blk_5410710327159333572_1208 size 17
+2017-01-20 05:50:36,629 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_5410710327159333572_1208 size 17
+2017-01-20 05:50:36,631 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.151:50010 is added to blk_5410710327159333572_1208 size 17
+2017-01-20 05:50:36,631 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484887836549 from client DFSClient_hb_rs_sue-data-2,60020,1484743831617_-805384997_43
+2017-01-20 05:50:36,632 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484887836549 is closed by DFSClient_hb_rs_sue-data-2,60020,1484743831617_-805384997_43
+2017-01-20 05:50:36,775 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484891436771. blk_-9122314830240913144_1213
+2017-01-20 05:50:36,781 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484891436771 for DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 05:50:36,784 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.148:50010 is added to blk_-4576282330276567570_1209 size 17
+2017-01-20 05:50:36,785 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.151:50010 is added to blk_-4576282330276567570_1209 size 17
+2017-01-20 05:50:36,786 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_-4576282330276567570_1209 size 17
+2017-01-20 05:50:36,787 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484887836713 from client DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 05:50:36,787 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484887836713 is closed by DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 05:50:36,964 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484891436959. blk_-1228276714564337512_1214
+2017-01-20 05:50:36,972 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484891436959 for DFSClient_hb_rs_sue-data-1,60020,1484743831720_-1751481248_43
+2017-01-20 05:50:36,974 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.151:50010 is added to blk_-197670317076228808_1210 size 17
+2017-01-20 05:50:36,975 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_-197670317076228808_1210 size 17
+2017-01-20 05:50:36,977 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.148:50010 is added to blk_-197670317076228808_1210 size 17
+2017-01-20 05:50:36,978 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484887836885 from client DFSClient_hb_rs_sue-data-1,60020,1484743831720_-1751481248_43
+2017-01-20 05:50:36,978 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484887836885 is closed by DFSClient_hb_rs_sue-data-1,60020,1484743831720_-1751481248_43
+2017-01-20 05:55:34,773 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 05:55:34,773 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 06:00:34,790 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 06:00:34,790 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 06:01:33,224 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1593 Total time for transactions(ms): 17 Number of transactions batched in Syncs: 4 Number of syncs: 995 SyncTimes(ms): 22077 
+2017-01-20 06:01:33,224 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_-197670317076228808 to 172.24.43.151:50010 172.24.43.149:50010 172.24.43.148:50010 
+2017-01-20 06:01:33,225 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_5410710327159333572 to 172.24.43.148:50010 172.24.43.149:50010 172.24.43.151:50010 
+2017-01-20 06:01:33,226 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_-4576282330276567570 to 172.24.43.148:50010 172.24.43.151:50010 172.24.43.149:50010 
+2017-01-20 06:01:35,226 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.151:50010 to delete  blk_5410710327159333572_1208 blk_-4576282330276567570_1209 blk_-197670317076228808_1210
+2017-01-20 06:01:35,226 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.149:50010 to delete  blk_5410710327159333572_1208 blk_-4576282330276567570_1209 blk_-197670317076228808_1210
+2017-01-20 06:01:38,226 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.148:50010 to delete  blk_5410710327159333572_1208 blk_-4576282330276567570_1209 blk_-197670317076228808_1210
+2017-01-20 06:05:34,807 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 06:05:34,807 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 06:10:34,822 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 06:10:34,822 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 06:12:57,532 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.149:50010, blocks: 7, processing time: 0 msecs
+2017-01-20 06:15:34,838 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 06:15:34,838 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 06:15:42,836 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.148:50010, blocks: 6, processing time: 1 msecs
+2017-01-20 06:20:34,853 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 06:20:34,853 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 06:25:34,869 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 06:25:34,869 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 06:27:50,908 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1597 Total time for transactions(ms): 17 Number of transactions batched in Syncs: 4 Number of syncs: 998 SyncTimes(ms): 22077 
+2017-01-20 06:27:50,910 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484893670905.meta. blk_2301073645101927252_1215
+2017-01-20 06:27:50,955 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484893670905.meta for DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 06:27:50,958 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.150:50010 is added to blk_-909833641666065670_1211 size 17
+2017-01-20 06:27:50,959 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.151:50010 is added to blk_-909833641666065670_1211 size 17
+2017-01-20 06:27:50,960 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_-909833641666065670_1211 size 17
+2017-01-20 06:27:50,961 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484890070848.meta from client DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 06:27:50,961 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484890070848.meta is closed by DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 06:30:34,881 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 06:30:34,881 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 06:35:34,893 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 06:35:34,893 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 06:38:33,231 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1603 Total time for transactions(ms): 17 Number of transactions batched in Syncs: 4 Number of syncs: 1002 SyncTimes(ms): 22078 
+2017-01-20 06:38:33,231 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_-909833641666065670 to 172.24.43.150:50010 172.24.43.151:50010 172.24.43.149:50010 
+2017-01-20 06:38:35,296 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.150:50010 to delete  blk_-909833641666065670_1211
+2017-01-20 06:38:35,296 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.149:50010 to delete  blk_-909833641666065670_1211
+2017-01-20 06:38:38,296 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.151:50010 to delete  blk_-909833641666065670_1211
+2017-01-20 06:40:34,997 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 06:40:34,997 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 06:43:51,041 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.150:50010, blocks: 5, processing time: 0 msecs
+2017-01-20 06:45:35,006 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 06:45:35,006 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 06:48:04,256 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.151:50010, blocks: 9, processing time: 0 msecs
+2017-01-20 06:50:35,017 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 06:50:35,017 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 06:50:36,678 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1605 Total time for transactions(ms): 17 Number of transactions batched in Syncs: 4 Number of syncs: 1003 SyncTimes(ms): 22078 
+2017-01-20 06:50:36,680 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484895036675. blk_-7767236755342118777_1216
+2017-01-20 06:50:36,687 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484895036675 for DFSClient_hb_rs_sue-data-2,60020,1484743831617_-805384997_43
+2017-01-20 06:50:36,691 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_8562493716361572504_1212 size 17
+2017-01-20 06:50:36,691 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.148:50010 is added to blk_8562493716361572504_1212 size 17
+2017-01-20 06:50:36,694 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.151:50010 is added to blk_8562493716361572504_1212 size 17
+2017-01-20 06:50:36,696 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484891436615 from client DFSClient_hb_rs_sue-data-2,60020,1484743831617_-805384997_43
+2017-01-20 06:50:36,696 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484891436615 is closed by DFSClient_hb_rs_sue-data-2,60020,1484743831617_-805384997_43
+2017-01-20 06:50:36,829 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484895036825. blk_4363989884971817241_1217
+2017-01-20 06:50:36,852 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484895036825 for DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 06:50:36,855 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.148:50010 is added to blk_-9122314830240913144_1213 size 17
+2017-01-20 06:50:36,856 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.150:50010 is added to blk_-9122314830240913144_1213 size 17
+2017-01-20 06:50:36,857 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_-9122314830240913144_1213 size 17
+2017-01-20 06:50:36,861 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484891436771 from client DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 06:50:36,861 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484891436771 is closed by DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 06:50:37,032 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484895037027. blk_6000648742992125927_1218
+2017-01-20 06:50:37,040 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484895037027 for DFSClient_hb_rs_sue-data-1,60020,1484743831720_-1751481248_43
+2017-01-20 06:50:37,043 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_-1228276714564337512_1214 size 17
+2017-01-20 06:50:37,044 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.151:50010 is added to blk_-1228276714564337512_1214 size 17
+2017-01-20 06:50:37,045 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.148:50010 is added to blk_-1228276714564337512_1214 size 17
+2017-01-20 06:50:37,047 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484891436959 from client DFSClient_hb_rs_sue-data-1,60020,1484743831720_-1751481248_43
+2017-01-20 06:50:37,047 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484891436959 is closed by DFSClient_hb_rs_sue-data-1,60020,1484743831720_-1751481248_43
+2017-01-20 06:55:35,032 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 06:55:35,032 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 07:00:35,047 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 07:00:35,047 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 07:01:33,233 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1625 Total time for transactions(ms): 17 Number of transactions batched in Syncs: 4 Number of syncs: 1015 SyncTimes(ms): 22081 
+2017-01-20 07:01:33,233 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_-1228276714564337512 to 172.24.43.149:50010 172.24.43.151:50010 172.24.43.148:50010 
+2017-01-20 07:01:33,234 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_8562493716361572504 to 172.24.43.149:50010 172.24.43.148:50010 172.24.43.151:50010 
+2017-01-20 07:01:33,235 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_-9122314830240913144 to 172.24.43.148:50010 172.24.43.150:50010 172.24.43.149:50010 
+2017-01-20 07:01:35,340 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.149:50010 to delete  blk_8562493716361572504_1212 blk_-1228276714564337512_1214 blk_-9122314830240913144_1213
+2017-01-20 07:01:35,340 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.150:50010 to delete  blk_-9122314830240913144_1213
+2017-01-20 07:01:38,340 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.148:50010 to delete  blk_8562493716361572504_1212 blk_-1228276714564337512_1214 blk_-9122314830240913144_1213
+2017-01-20 07:01:38,340 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.151:50010 to delete  blk_8562493716361572504_1212 blk_-1228276714564337512_1214
+2017-01-20 07:05:35,062 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 07:05:35,062 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 07:10:35,073 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 07:10:35,073 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 07:12:58,733 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.149:50010, blocks: 7, processing time: 0 msecs
+2017-01-20 07:15:35,085 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 07:15:35,085 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 07:15:44,038 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.148:50010, blocks: 6, processing time: 0 msecs
+2017-01-20 07:20:35,098 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 07:20:35,098 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 07:25:35,109 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 07:25:35,109 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 07:27:51,004 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1629 Total time for transactions(ms): 17 Number of transactions batched in Syncs: 4 Number of syncs: 1018 SyncTimes(ms): 22081 
+2017-01-20 07:27:51,012 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484897271001.meta. blk_-7747204764101767612_1219
+2017-01-20 07:27:51,019 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484897271001.meta for DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 07:27:51,022 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.150:50010 is added to blk_2301073645101927252_1215 size 17
+2017-01-20 07:27:51,023 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.151:50010 is added to blk_2301073645101927252_1215 size 17
+2017-01-20 07:27:51,024 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_2301073645101927252_1215 size 17
+2017-01-20 07:27:51,027 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484893670905.meta from client DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 07:27:51,027 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484893670905.meta is closed by DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 07:30:35,121 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 07:30:35,121 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 07:35:35,137 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 07:35:35,137 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 07:38:33,237 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1635 Total time for transactions(ms): 17 Number of transactions batched in Syncs: 4 Number of syncs: 1022 SyncTimes(ms): 22083 
+2017-01-20 07:38:33,238 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_2301073645101927252 to 172.24.43.150:50010 172.24.43.151:50010 172.24.43.149:50010 
+2017-01-20 07:38:35,410 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.150:50010 to delete  blk_2301073645101927252_1215
+2017-01-20 07:38:35,410 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.151:50010 to delete  blk_2301073645101927252_1215
+2017-01-20 07:38:38,410 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.149:50010 to delete  blk_2301073645101927252_1215
+2017-01-20 07:40:35,149 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 07:40:35,149 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 07:43:52,242 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.150:50010, blocks: 5, processing time: 0 msecs
+2017-01-20 07:45:35,157 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 07:45:35,157 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 07:48:05,456 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.151:50010, blocks: 9, processing time: 0 msecs
+2017-01-20 07:50:35,169 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 07:50:35,169 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 07:50:36,743 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1637 Total time for transactions(ms): 17 Number of transactions batched in Syncs: 4 Number of syncs: 1023 SyncTimes(ms): 22084 
+2017-01-20 07:50:36,745 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484898636740. blk_9179986964016458815_1220
+2017-01-20 07:50:36,752 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484898636740 for DFSClient_hb_rs_sue-data-2,60020,1484743831617_-805384997_43
+2017-01-20 07:50:36,754 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_-7767236755342118777_1216 size 17
+2017-01-20 07:50:36,757 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.148:50010 is added to blk_-7767236755342118777_1216 size 17
+2017-01-20 07:50:36,757 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.151:50010 is added to blk_-7767236755342118777_1216 size 17
+2017-01-20 07:50:36,758 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484895036675 from client DFSClient_hb_rs_sue-data-2,60020,1484743831617_-805384997_43
+2017-01-20 07:50:36,758 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484895036675 is closed by DFSClient_hb_rs_sue-data-2,60020,1484743831617_-805384997_43
+2017-01-20 07:50:36,906 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484898636901. blk_-4358322194833519767_1221
+2017-01-20 07:50:36,912 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484898636901 for DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 07:50:36,915 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.150:50010 is added to blk_4363989884971817241_1217 size 17
+2017-01-20 07:50:36,917 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.151:50010 is added to blk_4363989884971817241_1217 size 17
+2017-01-20 07:50:36,918 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_4363989884971817241_1217 size 17
+2017-01-20 07:50:36,918 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484895036825 from client DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 07:50:36,919 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484895036825 is closed by DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 07:50:37,097 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484898637092. blk_2572175263728649262_1222
+2017-01-20 07:50:37,104 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484898637092 for DFSClient_hb_rs_sue-data-1,60020,1484743831720_-1751481248_43
+2017-01-20 07:50:37,106 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.150:50010 is added to blk_6000648742992125927_1218 size 17
+2017-01-20 07:50:37,107 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_6000648742992125927_1218 size 17
+2017-01-20 07:50:37,108 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.148:50010 is added to blk_6000648742992125927_1218 size 17
+2017-01-20 07:50:37,110 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484895037027 from client DFSClient_hb_rs_sue-data-1,60020,1484743831720_-1751481248_43
+2017-01-20 07:50:37,110 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484895037027 is closed by DFSClient_hb_rs_sue-data-1,60020,1484743831720_-1751481248_43
+2017-01-20 07:55:35,181 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 07:55:35,181 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 08:00:35,193 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 08:00:35,193 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 08:01:33,242 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1657 Total time for transactions(ms): 17 Number of transactions batched in Syncs: 4 Number of syncs: 1035 SyncTimes(ms): 22085 
+2017-01-20 08:01:33,242 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_6000648742992125927 to 172.24.43.150:50010 172.24.43.149:50010 172.24.43.148:50010 
+2017-01-20 08:01:33,243 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_-7767236755342118777 to 172.24.43.149:50010 172.24.43.148:50010 172.24.43.151:50010 
+2017-01-20 08:01:33,244 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_4363989884971817241 to 172.24.43.150:50010 172.24.43.151:50010 172.24.43.149:50010 
+2017-01-20 08:01:35,454 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.148:50010 to delete  blk_-7767236755342118777_1216 blk_6000648742992125927_1218
+2017-01-20 08:01:35,454 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.150:50010 to delete  blk_6000648742992125927_1218 blk_4363989884971817241_1217
+2017-01-20 08:01:38,454 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.149:50010 to delete  blk_-7767236755342118777_1216 blk_6000648742992125927_1218 blk_4363989884971817241_1217
+2017-01-20 08:01:38,454 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.151:50010 to delete  blk_-7767236755342118777_1216 blk_4363989884971817241_1217
+2017-01-20 08:05:35,211 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 08:05:35,211 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 08:10:35,221 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 08:10:35,221 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 08:12:56,933 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.149:50010, blocks: 7, processing time: 0 msecs
+2017-01-20 08:15:35,236 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 08:15:35,236 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 08:15:45,236 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.148:50010, blocks: 6, processing time: 0 msecs
+2017-01-20 08:20:35,246 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 08:20:35,246 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 08:25:35,257 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 08:25:35,257 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 08:27:51,078 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1661 Total time for transactions(ms): 17 Number of transactions batched in Syncs: 4 Number of syncs: 1038 SyncTimes(ms): 22085 
+2017-01-20 08:27:51,083 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484900871066.meta. blk_5371754264071123194_1223
+2017-01-20 08:27:51,090 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484900871066.meta for DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 08:27:51,092 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.151:50010 is added to blk_-7747204764101767612_1219 size 17
+2017-01-20 08:27:51,094 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.150:50010 is added to blk_-7747204764101767612_1219 size 17
+2017-01-20 08:27:51,095 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_-7747204764101767612_1219 size 17
+2017-01-20 08:27:51,096 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484897271001.meta from client DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 08:27:51,096 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484897271001.meta is closed by DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 08:30:35,269 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 08:30:35,269 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 08:35:35,281 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 08:35:35,281 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 08:38:33,246 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1667 Total time for transactions(ms): 17 Number of transactions batched in Syncs: 4 Number of syncs: 1042 SyncTimes(ms): 22085 
+2017-01-20 08:38:33,246 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_-7747204764101767612 to 172.24.43.151:50010 172.24.43.150:50010 172.24.43.149:50010 
+2017-01-20 08:38:35,526 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.150:50010 to delete  blk_-7747204764101767612_1219
+2017-01-20 08:38:35,526 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.149:50010 to delete  blk_-7747204764101767612_1219
+2017-01-20 08:38:38,527 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.151:50010 to delete  blk_-7747204764101767612_1219
+2017-01-20 08:40:35,293 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 08:40:35,293 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 08:43:50,442 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.150:50010, blocks: 5, processing time: 0 msecs
+2017-01-20 08:45:35,305 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 08:45:35,305 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 08:48:06,656 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.151:50010, blocks: 9, processing time: 0 msecs
+2017-01-20 08:50:35,317 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 08:50:35,317 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 08:50:36,803 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1669 Total time for transactions(ms): 17 Number of transactions batched in Syncs: 4 Number of syncs: 1043 SyncTimes(ms): 22085 
+2017-01-20 08:50:36,804 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484902236800. blk_-414639551966472253_1224
+2017-01-20 08:50:36,814 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484902236800 for DFSClient_hb_rs_sue-data-2,60020,1484743831617_-805384997_43
+2017-01-20 08:50:36,816 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_9179986964016458815_1220 size 17
+2017-01-20 08:50:36,819 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.148:50010 is added to blk_9179986964016458815_1220 size 17
+2017-01-20 08:50:36,819 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.151:50010 is added to blk_9179986964016458815_1220 size 17
+2017-01-20 08:50:36,819 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484898636740 from client DFSClient_hb_rs_sue-data-2,60020,1484743831617_-805384997_43
+2017-01-20 08:50:36,819 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484898636740 is closed by DFSClient_hb_rs_sue-data-2,60020,1484743831617_-805384997_43
+2017-01-20 08:50:36,962 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484902236956. blk_-2508913553995122250_1225
+2017-01-20 08:50:36,968 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484902236956 for DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 08:50:36,970 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.151:50010 is added to blk_-4358322194833519767_1221 size 17
+2017-01-20 08:50:36,972 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.148:50010 is added to blk_-4358322194833519767_1221 size 17
+2017-01-20 08:50:36,973 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_-4358322194833519767_1221 size 17
+2017-01-20 08:50:36,974 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484898636901 from client DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 08:50:36,974 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484898636901 is closed by DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 08:50:37,165 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484902237161. blk_-5413557100383094260_1226
+2017-01-20 08:50:37,173 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484902237161 for DFSClient_hb_rs_sue-data-1,60020,1484743831720_-1751481248_43
+2017-01-20 08:50:37,176 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.151:50010 is added to blk_2572175263728649262_1222 size 17
+2017-01-20 08:50:37,177 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.150:50010 is added to blk_2572175263728649262_1222 size 17
+2017-01-20 08:50:37,179 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.148:50010 is added to blk_2572175263728649262_1222 size 17
+2017-01-20 08:50:37,180 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484898637092 from client DFSClient_hb_rs_sue-data-1,60020,1484743831720_-1751481248_43
+2017-01-20 08:50:37,180 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484898637092 is closed by DFSClient_hb_rs_sue-data-1,60020,1484743831720_-1751481248_43
+2017-01-20 08:55:35,329 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 08:55:35,329 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 09:00:35,342 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 09:00:35,342 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 09:01:33,247 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1689 Total time for transactions(ms): 17 Number of transactions batched in Syncs: 4 Number of syncs: 1055 SyncTimes(ms): 22087 
+2017-01-20 09:01:33,248 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_2572175263728649262 to 172.24.43.151:50010 172.24.43.150:50010 172.24.43.148:50010 
+2017-01-20 09:01:33,249 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_9179986964016458815 to 172.24.43.149:50010 172.24.43.148:50010 172.24.43.151:50010 
+2017-01-20 09:01:33,250 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_-4358322194833519767 to 172.24.43.151:50010 172.24.43.148:50010 172.24.43.149:50010 
+2017-01-20 09:01:35,572 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.149:50010 to delete  blk_-4358322194833519767_1221 blk_9179986964016458815_1220
+2017-01-20 09:01:35,572 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.151:50010 to delete  blk_-4358322194833519767_1221 blk_2572175263728649262_1222 blk_9179986964016458815_1220
+2017-01-20 09:01:38,572 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.148:50010 to delete  blk_-4358322194833519767_1221 blk_2572175263728649262_1222 blk_9179986964016458815_1220
+2017-01-20 09:01:38,573 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.150:50010 to delete  blk_2572175263728649262_1222
+2017-01-20 09:05:35,359 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 09:05:35,359 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 09:10:35,374 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 09:10:35,374 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 09:12:58,134 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.149:50010, blocks: 7, processing time: 0 msecs
+2017-01-20 09:15:35,385 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 09:15:35,385 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 09:15:43,435 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.148:50010, blocks: 6, processing time: 0 msecs
+2017-01-20 09:20:35,397 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 09:20:35,397 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 09:25:35,415 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 09:25:35,415 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 09:27:51,137 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1693 Total time for transactions(ms): 17 Number of transactions batched in Syncs: 4 Number of syncs: 1058 SyncTimes(ms): 22087 
+2017-01-20 09:27:51,139 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484904471133.meta. blk_-4027693230885336994_1227
+2017-01-20 09:27:51,146 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484904471133.meta for DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 09:27:51,149 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.150:50010 is added to blk_5371754264071123194_1223 size 17
+2017-01-20 09:27:51,151 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.151:50010 is added to blk_5371754264071123194_1223 size 17
+2017-01-20 09:27:51,152 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_5371754264071123194_1223 size 17
+2017-01-20 09:27:51,153 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484900871066.meta from client DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 09:27:51,153 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484900871066.meta is closed by DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 09:30:35,430 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 09:30:35,430 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 09:35:35,441 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 09:35:35,441 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 09:38:33,255 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1699 Total time for transactions(ms): 17 Number of transactions batched in Syncs: 4 Number of syncs: 1062 SyncTimes(ms): 22089 
+2017-01-20 09:38:33,255 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_5371754264071123194 to 172.24.43.150:50010 172.24.43.151:50010 172.24.43.149:50010 
+2017-01-20 09:38:35,644 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.151:50010 to delete  blk_5371754264071123194_1223
+2017-01-20 09:38:35,644 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.149:50010 to delete  blk_5371754264071123194_1223
+2017-01-20 09:38:38,645 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.150:50010 to delete  blk_5371754264071123194_1223
+2017-01-20 09:40:35,453 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 09:40:35,453 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 09:43:51,642 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.150:50010, blocks: 5, processing time: 0 msecs
+2017-01-20 09:45:35,465 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 09:45:35,465 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 09:48:04,855 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.151:50010, blocks: 9, processing time: 0 msecs
+2017-01-20 09:50:35,476 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 09:50:35,476 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 09:50:36,864 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1701 Total time for transactions(ms): 17 Number of transactions batched in Syncs: 4 Number of syncs: 1063 SyncTimes(ms): 22089 
+2017-01-20 09:50:36,866 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484905836861. blk_2190916906903504876_1228
+2017-01-20 09:50:36,881 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484905836861 for DFSClient_hb_rs_sue-data-2,60020,1484743831617_-805384997_43
+2017-01-20 09:50:36,883 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_-414639551966472253_1224 size 17
+2017-01-20 09:50:36,885 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.148:50010 is added to blk_-414639551966472253_1224 size 17
+2017-01-20 09:50:36,886 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.151:50010 is added to blk_-414639551966472253_1224 size 17
+2017-01-20 09:50:36,887 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484902236800 from client DFSClient_hb_rs_sue-data-2,60020,1484743831617_-805384997_43
+2017-01-20 09:50:36,887 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-2,60020,1484743831617/sue-data-2%2C60020%2C1484743831617.1484902236800 is closed by DFSClient_hb_rs_sue-data-2,60020,1484743831617_-805384997_43
+2017-01-20 09:50:37,015 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484905837010. blk_-7925599422874149714_1229
+2017-01-20 09:50:37,022 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484905837010 for DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 09:50:37,024 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.150:50010 is added to blk_-2508913553995122250_1225 size 17
+2017-01-20 09:50:37,026 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.148:50010 is added to blk_-2508913553995122250_1225 size 17
+2017-01-20 09:50:37,026 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_-2508913553995122250_1225 size 17
+2017-01-20 09:50:37,027 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484902236956 from client DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 09:50:37,027 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-4,60020,1484743831552/sue-data-4%2C60020%2C1484743831552.1484902236956 is closed by DFSClient_hb_rs_sue-data-4,60020,1484743831552_-1986254221_43
+2017-01-20 09:50:37,227 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocateBlock: /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484905837223. blk_4019701680103630897_1230
+2017-01-20 09:50:37,237 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* fsync: /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484905837223 for DFSClient_hb_rs_sue-data-1,60020,1484743831720_-1751481248_43
+2017-01-20 09:50:37,239 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.149:50010 is added to blk_-5413557100383094260_1226 size 17
+2017-01-20 09:50:37,239 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.151:50010 is added to blk_-5413557100383094260_1226 size 17
+2017-01-20 09:50:37,241 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addStoredBlock: blockMap updated: 172.24.43.148:50010 is added to blk_-5413557100383094260_1226 size 17
+2017-01-20 09:50:37,242 INFO org.apache.hadoop.hdfs.StateChange: Removing lease on  /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484902237161 from client DFSClient_hb_rs_sue-data-1,60020,1484743831720_-1751481248_43
+2017-01-20 09:50:37,242 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /hbase/WALs/sue-data-1,60020,1484743831720/sue-data-1%2C60020%2C1484743831720.1484902237161 is closed by DFSClient_hb_rs_sue-data-1,60020,1484743831720_-1751481248_43
+2017-01-20 09:55:35,492 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 09:55:35,492 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 10:00:35,501 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 10:00:35,501 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 10:01:33,256 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 1721 Total time for transactions(ms): 17 Number of transactions batched in Syncs: 4 Number of syncs: 1075 SyncTimes(ms): 22090 
+2017-01-20 10:01:33,256 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_-5413557100383094260 to 172.24.43.149:50010 172.24.43.151:50010 172.24.43.148:50010 
+2017-01-20 10:01:33,257 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_-414639551966472253 to 172.24.43.149:50010 172.24.43.148:50010 172.24.43.151:50010 
+2017-01-20 10:01:33,258 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* addToInvalidates: blk_-2508913553995122250 to 172.24.43.150:50010 172.24.43.148:50010 172.24.43.149:50010 
+2017-01-20 10:01:35,689 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.151:50010 to delete  blk_-414639551966472253_1224 blk_-5413557100383094260_1226
+2017-01-20 10:01:35,689 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.150:50010 to delete  blk_-2508913553995122250_1225
+2017-01-20 10:01:38,689 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.148:50010 to delete  blk_-414639551966472253_1224 blk_-5413557100383094260_1226 blk_-2508913553995122250_1225
+2017-01-20 10:01:38,689 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* ask 172.24.43.149:50010 to delete  blk_-414639551966472253_1224 blk_-5413557100383094260_1226 blk_-2508913553995122250_1225
+2017-01-20 10:05:35,513 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 10:05:35,513 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 10:10:35,525 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 10:10:35,525 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 10:12:56,332 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.149:50010, blocks: 7, processing time: 0 msecs
+2017-01-20 10:15:35,549 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 10:15:35,549 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 10:15:44,634 INFO org.apache.hadoop.hdfs.StateChange: *BLOCK* processReport: from 172.24.43.148:50010, blocks: 6, processing time: 0 msecs
+2017-01-20 10:20:35,564 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 10:20:35,565 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 10:25:35,573 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 172.24.43.157
+2017-01-20 10:25:35,573 WARN org.apache.hadoop.hdfs.server.namenode.FSEditLog: Cannot roll edit log, edits.new files already exists in all healthy directories:
+  /app/hadoop/tmp/dfs/name/current/edits.new
+2017-01-20 10:26:24,946 INFO org.apache.hadoop.hdfs.server.namenode.NameNode: SHUTDOWN_MSG: 
+/************************************************************
+SHUTDOWN_MSG: Shutting down NameNode at sue-master-1/172.24.43.156
+************************************************************/

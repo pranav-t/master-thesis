@@ -1,0 +1,25 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: vldb_sample.aux
+The style file: unsrt.bst
+Illegal, another \bibstyle command---line 109 of file vldb_sample.aux
+ : \bibstyle
+ :          {abbrv}
+I'm skipping whatever remains of this command
+Database file #1: vldb_sample.bib
+Warning--entry type for "parikh:facebook" isn't style-file defined
+--line 185 of file vldb_sample.bib
+Warning--entry type for "phoenix:apache" isn't style-file defined
+--line 227 of file vldb_sample.bib
+Warning--entry type for "foundationdb" isn't style-file defined
+--line 232 of file vldb_sample.bib
+Warning--I didn't find a database entry for "extended:version"
+Warning--empty booktitle in decandia:dynamo
+Warning--empty booktitle in agrawal:asynchronous
+Warning--empty booktitle in silberstein:feeding
+Warning--empty year in silberstein:feeding
+Warning--empty booktitle in kejriwal:slik
+Warning--empty booktitle in wang:efficient
+Warning--empty booktitle in zhuge:strobe
+Warning--empty booktitle in salem:how
+Warning--empty booktitle in murray:naiad
+Warning--empty booktitle in jin:materialized
+(There was 1 error message)

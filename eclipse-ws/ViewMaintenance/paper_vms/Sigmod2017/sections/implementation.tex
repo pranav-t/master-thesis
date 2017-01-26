@@ -1,0 +1,44 @@
+\section{Implementation}
+\label{implementation}
+
+
+In the following, we explain how we integrate the VMS with HBase. We 
+need to conduct two steps. First, we integrate the NX component with the 
+the HBase architecture. Second, we integrate the VM component with the 
+HBase API. The components, shown in Figure~\ref{fig:system_overview} 
+serve as a blueprint for the integration. 
+
+\noindent
+\textit{(i):} The nodes in HBase are called region servers. The region 
+server writes the client updates to the write-ahead log (i.e. the 
+transaction log). Now, the NX component needs to access the write-ahead 
+log and retrieve the operations from it. As stated above HBase uses HDFS 
+as underlying file system. All of the database files are stored here, 
+including the write-ahead log. We can use the HDFS API to directly 
+access a file and read from it sequentially. However, the data objects 
+in the write-ahead logs are stored in a serialized and compressed form. 
+Thus, we have to use an internal class of HBase called 
+\texttt{HLog.Reader}. The reader class iterates over the log and 
+retrieves the entries in a readable form, as described in 
+Section~\ref{sec:kv_model}. This form is used by the NX component to 
+extract the row key and route the operation to the appropriate view 
+manager. We could extend different KV-store implementations. The 
+KV-store model usually includes a operation log, used for recovery or 
+replication reasons. The challenge here is to deserialize or decompress 
+the data. Once, the operations are received they can be applied to our 
+data model and processed by the NX components. Note, that an instance of 
+the NX component is always deployed together with one node. 
+
+\noindent
+\textit{(ii):}As the view manager starts processing the operations and 
+materializing the views, it connects to the KV-store API. The view 
+manager uses an abstract class \texttt{KVSTableService}, which contains 
+all of the methods, that are required to access the KV-store and build 
+up the materialized views. These methods need to be implemented: 
+\texttt{put()}, \texttt{get()}, \texttt{delete()}, 
+\texttt{checkAndPut()} and \texttt{checkAndDelete()}. The view manager 
+is then able to access HBase and update the view tables. We could 
+implement the class to access every type of database. The view manager 
+could also be adapted to persist and update the materialized views in a 
+SQL-based storage. 
+

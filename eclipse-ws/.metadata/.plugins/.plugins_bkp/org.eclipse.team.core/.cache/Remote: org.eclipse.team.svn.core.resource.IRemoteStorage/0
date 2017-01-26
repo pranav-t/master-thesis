@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<setup>
+    
+  <systemconfig>  
+      
+
+     <hdfs>
+   	  <username>jan</username>
+   	  <password></password>
+     </hdfs>
+     
+     <ssh>
+      <user>jan</user>
+	  <password>MTVdvrDV$15</password>
+	  <passwordlessLogin>true</passwordlessLogin>
+	  <privateKeyFile>d://id_rsa</privateKeyFile>
+	  <knownHostsFile>d://known_hosts</knownHostsFile>
+     </ssh>
+
+     <directories>
+         <hadoop>/usr/local/hadoop-1.2.1/</hadoop>
+	  <hadoopStorage>/usr/local/hadoop/</hadoopStorage>
+         <hbase>/usr/local/hbase-0.98.6.1-hadoop1/</hbase>
+         <vmsystem>/usr/local/scalablevm/</vmsystem>	
+	  <zookeeperStorage>/usr/local/zookeeper/</zookeeperStorage>
+     </directories>
+   
+    <master>
+        <zookeeperPath>/hbase/vmaster</zookeeperPath>
+<!--         <loadbalancingInterval></loadbalancingInterval> -->
+    </master>
+    
+    <viewManager>
+        <zookeeperPath>/hbase/vm</zookeeperPath>
+        <hdfsPath>/viewmanager/</hdfsPath>
+        <statusInterval>10000</statusInterval>
+        <calcStatisticsInterval>1000</calcStatisticsInterval>
+        <displayInterval>10000</displayInterval>
+        <crudOperationsAlarmThreshold>10000</crudOperationsAlarmThreshold>
+	 	<updatePollingInterval>200</updatePollingInterval>
+	 	<logUpdates>true</logUpdates>
+    </viewManager>
+
+    <regionServer>
+         <zookeeperPath>/hbase/rstest</zookeeperPath>
+         <statusInterval>5000</statusInterval>
+         <calcStatisticsInterval>1000</calcStatisticsInterval>
+         <maxReplicasHashring>500</maxReplicasHashring>
+         <displayInterval>10000</displayInterval>
+         <walPollingInterval>1000</walPollingInterval>
+         <readWALDelay>20000</readWALDelay>
+	  	 <logWal>true</logWal>
+	  	 <sendingThreads>4</sendingThreads>
+    </regionServer>
+
+    <client>
+        <logInterval>10000</logInterval>
+        <tpchDirectory>E:/Masterpraktikum/ViewMaintenanceInWDP</tpchDirectory>
+    </client>   
+    
+	<messages>
+	       <startSequence>→</startSequence>
+           <endSequence>←</endSequence>
+           <splitSequence>ŧ</splitSequence>  
+           <splitContentSequence>þ</splitContentSequence> 
+	       <splitContentSequence2>æ</splitContentSequence2>   
+           <splitIDSequence>ņ</splitIDSequence>  
+           <markerPrefix>marker:</markerPrefix>
+	    	<pollingInterval>100</pollingInterval>
+	    	<length>250</length>
+	    	<retryInterval>3000</retryInterval>
+           <numOfRetries>3</numOfRetries>
+	</messages>
+		
+	<records>
+	     <splitRowkeyKVPairs>:</splitRowkeyKVPairs>
+	     <splitKVPairs>,</splitKVPairs>
+	     <splitKV>=</splitKV>
+	     <splitDelta>;</splitDelta>
+	     <splitPreAggregation>;</splitPreAggregation>
+	     <splitReverseJoin>;</splitReverseJoin>
+	     <dateFormat>yyyy-MM-dd</dateFormat>
+	</records>
+	
+	
+	<logging>
+	    <console>false</console>
+	    <file>false</file>
+	    <statistics>true</statistics>
+	    <statisticsLineSeparator>;</statisticsLineSeparator>
+   	    <logUpdates>false</logUpdates>
+	</logging>
+	
+	<faulttolerance>
+		<signatures>false</signatures>
+		<commitlog>false</commitlog>
+		<testandset>true</testandset>
+	</faulttolerance>
+
+	  
+  </systemconfig>
+
+  
+</setup>

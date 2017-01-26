@@ -1,0 +1,205 @@
+package de.webdataplatform.regionserver;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import org.apache.commons.math3.distribution.ZipfDistribution;
+
+
+import de.webdataplatform.test.ZipfGenerator;
+import de.webdataplatform.viewmanager.ViewManager;
+
+public class TestHashFunction {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+
+		ArrayList<ViewManager> al = new ArrayList<ViewManager>(); 
+        
+		al.add(new ViewManager("vm1", "deltaserver1",4433, 4533));
+        al.add(new ViewManager("vm2", "deltaserver1",5211, 5311));
+		al.add(new ViewManager("vm3", "deltaserver1",4433, 4533));
+        al.add(new ViewManager("vm4", "deltaserver1",5211, 5311));
+		al.add(new ViewManager("vm5", "deltaserver1",4433, 4533));
+        al.add(new ViewManager("vm6", "deltaserver1",5211, 5311));
+		al.add(new ViewManager("vm7", "deltaserver1",4433, 4533));
+        al.add(new ViewManager("vm8", "deltaserver1",5211, 5311));
+		al.add(new ViewManager("vm9", "deltaserver1",4433, 4533));
+        al.add(new ViewManager("vm10", "deltaserver1",5211, 5311));
+		al.add(new ViewManager("vm11", "deltaserver1",4433, 4533));
+        al.add(new ViewManager("vm12", "deltaserver1",5211, 5311));
+		al.add(new ViewManager("vm13", "deltaserver1",4433, 4533));
+        al.add(new ViewManager("vm14", "deltaserver1",5211, 5311));
+		al.add(new ViewManager("vm15", "deltaserver1",4433, 4533));
+        al.add(new ViewManager("vm16", "deltaserver1",5211, 5311));
+		al.add(new ViewManager("vm17", "deltaserver1",4433, 4533));
+        al.add(new ViewManager("vm18", "deltaserver1",5211, 5311));
+		al.add(new ViewManager("vm19", "deltaserver1",4433, 4533));
+        al.add(new ViewManager("vm20", "deltaserver1",5211, 5311));
+		al.add(new ViewManager("vm21", "deltaserver1",4433, 4533));
+        al.add(new ViewManager("vm22", "deltaserver1",5211, 5311));
+		al.add(new ViewManager("vm23", "deltaserver1",4433, 4533));
+        al.add(new ViewManager("vm24", "deltaserver1",5211, 5311));
+		al.add(new ViewManager("vm25", "deltaserver1",4433, 4533));
+		al.add(new ViewManager("vm26", "deltaserver1",4433, 4533));
+		al.add(new ViewManager("vm27", "deltaserver1",4433, 4533));
+		al.add(new ViewManager("vm28", "deltaserver1",4433, 4533));
+		al.add(new ViewManager("vm29", "deltaserver1",4433, 4533));
+		al.add(new ViewManager("vm30", "deltaserver1",4433, 4533));
+
+//        al.add("vm3");
+//        al.add("vm4");
+
+        
+        List<String> keys = new ArrayList<String>();
+        
+        int x=0;
+        for (int i = 0; i < 10000; i++) {
+			keys.add(generateRowKey());
+		}
+
+        
+        
+		HashFunction hf = new SHA();
+//		357297
+//		661785
+		
+		ConsistentHash<ViewManager> consistentHash = new ConsistentHash<ViewManager>(hf, 10000, al);
+		
+		int v1 = 0, v2 = 0, v3 = 0, v4 = 0, v5 = 0, v6 = 0, v7 = 0, v8 = 0, v9 = 0, v10 = 0, v11 = 0,
+				v12=0, v13 = 0, v14 = 0, v15 = 0, v16 = 0, v17 = 0, v18 = 0, v19 = 0, v20 = 0, v21 = 0, 
+				v22 = 0, v23 = 0, v24 = 0, v25 = 0, v26 = 0, v27 = 0, v28 = 0, v29 = 0, v30 = 0, firstKey=0;
+
+		
+//		consistentHash.remove("viewmanager4", 250);
+		
+		for(Integer key : consistentHash.getCircle().keySet()){
+			
+//			System.out.println("key: "+key+", value: "+consistentHash.getCircle().get(key));
+		}
+		
+		
+		for (String key : keys) {
+			
+			ViewManager vm = consistentHash.get(key);
+			
+			if(key.equals("k00000"))firstKey++;
+			
+			if(vm.getSystemID().getName().equals("vm1"))v1++;
+			if(vm.getSystemID().getName().equals("vm2"))v2++;
+			if(vm.getSystemID().getName().equals("vm3"))v3++;
+			if(vm.getSystemID().getName().equals("vm4")){
+				System.out.println("key: "+key);
+				v4++;
+			}
+			if(vm.getSystemID().getName().equals("vm5"))v5++;
+			if(vm.getSystemID().getName().equals("vm6"))v6++;
+			if(vm.getSystemID().getName().equals("vm7"))v7++;
+			if(vm.getSystemID().getName().equals("vm8"))v8++;
+			if(vm.getSystemID().getName().equals("vm9")){
+//				System.out.println("key: "+key);
+				v9++;
+			}
+			if(vm.getSystemID().getName().equals("vm10"))v10++;
+			if(vm.getSystemID().getName().equals("vm11"))v11++;
+			if(vm.getSystemID().getName().equals("vm12"))v12++;
+			if(vm.getSystemID().getName().equals("vm13"))v13++;
+			if(vm.getSystemID().getName().equals("vm14"))v14++;
+			if(vm.getSystemID().getName().equals("vm15"))v15++;
+			if(vm.getSystemID().getName().equals("vm16"))v16++;
+			if(vm.getSystemID().getName().equals("vm17"))v17++;
+			if(vm.getSystemID().getName().equals("vm18"))v18++;
+			if(vm.getSystemID().getName().equals("vm19"))v19++;
+			if(vm.getSystemID().getName().equals("vm20"))v20++;
+			if(vm.getSystemID().getName().equals("vm21"))v21++;
+			if(vm.getSystemID().getName().equals("vm22"))v22++;
+			if(vm.getSystemID().getName().equals("vm23"))v23++;
+			if(vm.getSystemID().getName().equals("vm24"))v24++;
+			if(vm.getSystemID().getName().equals("vm25"))v25++;
+			if(vm.getSystemID().getName().equals("vm26"))v26++;
+			if(vm.getSystemID().getName().equals("vm27"))v27++;
+			if(vm.getSystemID().getName().equals("vm28"))v28++;
+			if(vm.getSystemID().getName().equals("vm29"))v29++;
+			if(vm.getSystemID().getName().equals("vm30"))v30++;
+			
+//            System.out.println(hash);
+        }
+		
+		System.out.println("---------");
+//		
+//		System.out.println(consistentHash.get("k01"));
+//		System.out.println(consistentHash.get("k10"));
+//		System.out.println(consistentHash.get("k20"));
+//		System.out.println(consistentHash.get("k30"));
+//		System.out.println(consistentHash.get("k40"));
+//		System.out.println(consistentHash.get("k50"));
+//		System.out.println(consistentHash.get("k60"));
+//		System.out.println(consistentHash.get("k70"));
+//		System.out.println(consistentHash.get("k80"));
+//		System.out.println(consistentHash.get("k90"));
+		
+		
+		System.out.println("---------------------");
+		System.out.println("viewmanager1: "+v1);
+		System.out.println("viewmanager2: "+v2);
+		System.out.println("viewmanager3: "+v3);
+		System.out.println("viewmanager4: "+v4);
+		System.out.println("viewmanager5: "+v5);
+		System.out.println("viewmanager6: "+v6);
+		System.out.println("viewmanager7: "+v7);
+		System.out.println("viewmanager8: "+v8);
+		System.out.println("viewmanager9: "+v9);
+		System.out.println("viewmanager10: "+v10);
+		System.out.println("viewmanager11: "+v11);
+		System.out.println("viewmanager12: "+v12);
+		System.out.println("viewmanager13: "+v13);
+		System.out.println("viewmanager14: "+v14);
+		System.out.println("viewmanager15: "+v15);
+		System.out.println("viewmanager16: "+v16);
+		System.out.println("viewmanager17: "+v17);
+		System.out.println("viewmanager18: "+v18);
+		System.out.println("viewmanager19: "+v19);
+		System.out.println("viewmanager20: "+v20);
+		System.out.println("viewmanager21: "+v21);
+		System.out.println("viewmanager22: "+v22);
+		System.out.println("viewmanager23: "+v23);
+		System.out.println("viewmanager24: "+v24);
+		System.out.println("viewmanager25: "+v25);
+		System.out.println("viewmanager26: "+v26);
+		System.out.println("viewmanager27: "+v27);
+		System.out.println("viewmanager28: "+v28);
+		System.out.println("viewmanager29: "+v29);
+		System.out.println("viewmanager30: "+v30);
+		
+		System.out.println("firstKey: "+firstKey);
+		
+	}
+	
+	static long keyRange = 10001;
+	static Random random=new Random(keyRange);
+	static ZipfGenerator zipf = new ZipfGenerator(10001, 0.1d);
+	static ZipfDistribution zd = new ZipfDistribution(10001, 1); 
+	
+	private static String generateRowKey() {
+		String rowKey="";
+
+		long k = 0;
+		
+//		k+=random.nextInt(new Long(keyRange).intValue());
+		
+		k+=zipf.next();
+		
+		int digits = String.valueOf(keyRange).length();
+		
+		
+		rowKey = "k";
+		
+		for(int x = 0; x < (digits - String.valueOf(k).length());x++)rowKey+="0";
+		rowKey += k;
+		return rowKey;
+	}
+
+}

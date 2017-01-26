@@ -1,0 +1,75 @@
+Scale Factors:
+1, 10, 30, 100, 300, 1000, 3000, 10000, 30000, 100000
+
+Database Sizes:
+1 GB, 10 GB, 30 GB, 100 GB, 300 GB, 1 TB, 3 TB, 10 TB, 30 TB, 100 TB
+
+
+PART: 				SF * 200,000		025.00 MB		25 / 1107	02.25 % 
+PARTSUPP: 			SF * 800,000		120.00 MB		120/ 1107	10.80 %	
+LINEITEM: 			SF * 6,000,000		760.00 MB		760/ 1107	68.70 %
+ORDERS:				SF * 1,500,000		175.00 MB		175/ 1107	15.80 %	
+SUPPLIER:			SF * 10,000			001.50 MB		1.5/ 1107	00.20 %
+CUSTOMER:			SF * 150,000		025.00 MB		25/ 1107	02.25 %
+----------------------------------
+NATION:					 25
+REGION:					 5
+
+
+@1 column family per table we have 6 column families in all
+
+--> General observation/note: In general, HBase is designed to run with a small (20-200) number of relatively large (5-20Gb) regions per server.
+
+Understanding the block cache:
+------------------------------
+(http://hortonworks.com/blog/hbase-blockcache-101/)
+(http://blog.asquareb.com/blog/2014/11/21/leverage-hbase-cache-and-improve-read-performance/)
+(http://blog.asquareb.com/blog/2014/11/24/how-to-leverage-large-physical-memory-to-improve-hbase-read-performance/)
+one per region server
+40% of heap size
+heap size upper limit ~ 15GB
+So if you have a lot of RAM on you nodes then run multiple VMs to increase total VM utilization
+lrublockcache(default) uses part of jvm heap(and therefore exerts pressure on jvm GC)
+if you want to go outside the heap use BucketCache(http://blog.asquareb.com/blog/2014/11/24/how-to-leverage-large-physical-memory-to-improve-hbase-read-performance/)
+
+
+Table Pre-Splitting Logic for the initial bulk load:
+----------------------------------------------------
+(This would both avoid some costly splitting as the table starts to fill up, and ensure that the table starts out already distributed across many servers)
+(http://archive.cloudera.com/cdh5/cdh/5/hbase-0.98.1-cdh5.1.5/book/ops.capacity.html)
+
+	-- table size
+	-- target number of the regions per RS		((RS memory)*(total memstore fraction)/((memstore size)*(# column families)))
+	-- number of RSs (= number of nodes in the cluster)
+
+--------
+create 'usertable', 'family', {SPLITS => (1..200).map {|i| "user#{1000+i*(9999-1000)/200}"}, MAX_FILESIZE => 4*1024**3}
+(https://issues.apache.org/jira/browse/HBASE-4163)
+
+
+To calculate optimal region size and count we assume all data is in one big table with 1 column family.
+(This assumption works because each table has 1 column family each AND because we want to spread all the data out with equal density since we do not know anything about table read-usage)
+
+
+NODE_COUNT = 10
+HDFS_R_FACTOR = 3
+
+TPCH-SCALE = 1
+JVM_HEAP_SIZE ( < 16 GB && < 0.9 * MEMORY_SIZE) --> can be configured in hbase-env.sh (http://www.ibm.com/support/knowledgecenter/SSPT3X_3.0.0/com.ibm.swg.im.infosphere.biginsights.analyze.doc/doc/bigsql_gentune.html)
+DISK_SIZE = 1 TB
+TOTAL_DATA = 1024 * TPCH-SCALE-X MB
+MEMSTORE_SIZE = 128 MB
+MEMSTORE_FACTOR = 0.4
+BLOCK_CACHE_FACTOR = 0.4
+
+---------------------------------------------
+memory per node(m) = JVM_HEAP_SIZE
+block cache per node(rc) = BLOCK_CACHE_FACTOR * m
+disk per node(M) = DISK_SIZE / HDFS_R_FACTOR
+data per node(d) = D/N <= M (if not then you need to add more nodes or reduce hdfs replicatoin factor!)
+regions per node(r)	= 0.4 * m / MEMSTORE_SIZE
+region size = d/r
+read cache factor = rc/d
+---------------------------------------------
+
+

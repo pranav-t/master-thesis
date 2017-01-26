@@ -1,0 +1,132 @@
+\begin{thebibliography}{10}
+
+\bibitem{parikh:facebook}
+Jay Parikh.
+\newblock {Data Infrastructure at Web Scale}.
+\newblock \url{http://www.vldb.org/2013/keynotes.html}.
+
+\bibitem{chang:bigtable}
+F.~Chang et~al.
+\newblock {Bigtable: A Distributed Storage System for Structured Data}.
+\newblock {\em ACM Trans. Comput. Syst.}, 2008.
+
+\bibitem{decandia:dynamo}
+G.~DeCandia et~al.
+\newblock {Dynamo: Amazon's Highly Available Key-value Store}.
+\newblock SOSP, 2007.
+
+\bibitem{cooper:pnuts}
+B.{\ }F. Cooper et~al.
+\newblock {PNUTS: Yahoo!'s Hosted Data Serving Platform}.
+\newblock {\em Proc. VLDB Endow.}, 2008.
+
+\bibitem{george:hbase}
+Lars George.
+\newblock {\em {HBase: The Definitive Guide}}.
+\newblock O'Reilly Media, Inc., 2011.
+
+\bibitem{hewitt:cassandra}
+Eben Hewitt.
+\newblock {\em {Cassandra: The Definitive Guide}}.
+\newblock O'Reilly Media, Inc., 2010.
+
+\bibitem{agrawal:asynchronous}
+P.~Agrawal et~al.
+\newblock {Asynchronous View Maintenance for VLSD Databases}.
+\newblock SIGMOD, 2009.
+
+\bibitem{silberstein:feeding}
+Adam Silberstein et~al.
+\newblock Feeding frenzy: Selectively materializing users' event feeds.
+\newblock SIGMOD '10. ACM.
+
+\bibitem{phoenix:apache}
+Apache{\ }Phoenix.
+\newblock \url{https://phoenix.apache.org/}.
+
+\bibitem{kejriwal:slik}
+Ankita Kejriwal et~al.
+\newblock Slik: Scalable low latency indexes for a key value store.
+\newblock In Memory Database Management Workshop, VLDB, pages 439--455. ACM,
+  2015.
+
+\bibitem{kate:easy}
+Bryan Kate et~al.
+\newblock Easy freshness with pequod cache joins.
+\newblock In {\em 11th USENIX Symposium on Networked Systems Design and
+  Implementation (NSDI 14)}, pages 415--428. USENIX Association, 2014.
+
+\bibitem{zhuge:view}
+Y.~Zhuge et~al.
+\newblock {View Maintenance in a Warehousing Environment}.
+\newblock {\em SIGMOD Rec.}, 1995.
+
+\bibitem{wang:efficient}
+H.~Wang and M.~Orlowska.
+\newblock {Efficient Refreshment of Materialized Views with Multiple Sources}.
+\newblock CIKM, 1999.
+
+\bibitem{zhang:parallel}
+X.~Zhang et~al.
+\newblock {Parallel Multisource View Maintenance}.
+\newblock {\em The VLDB Journal}, 2004.
+
+\bibitem{zhuge:strobe}
+Y.~Zhuge et~al.
+\newblock {The Strobe Algorithms for Multi-source Warehouse Consistency}.
+\newblock DIS, 1996.
+
+\bibitem{jacobsen:viewmaintenance}
+H.-A. Jacobsen, Patric Lee, and Ramana Yerneni.
+\newblock {View Maintenance in Web Data Platforms}.
+\newblock {\em Technical Report, University of Toronto}, 2009.
+
+\bibitem{blakeley:efficiently}
+J.~Blakeley et~al.
+\newblock {Efficiently Updating Materialized Views}.
+\newblock {\em SIGMOD Rec.}, 1986.
+
+\bibitem{gupta:maintaining}
+A.~Gupta et~al.
+\newblock {Maintaining Views Incrementally}.
+\newblock {\em SIGMOD Rec.}, 1993.
+
+\bibitem{colby:algorithms}
+L.~Colby et~al.
+\newblock {Algorithms for Deferred View Maintenance}.
+\newblock {\em SIGMOD Rec.}, 1996.
+
+\bibitem{salem:how}
+K.~Salem et~al.
+\newblock {How to Roll a Join: Asynchronous Incremental View Maintenance}.
+\newblock SIGMOD, 2000.
+
+\bibitem{peng:percolator}
+Daniel Peng and Frank Dabek.
+\newblock Large-scale incremental processing using distributed transactions and
+  notifications.
+\newblock In {\em Proceedings of the 9th USENIX Symposium on Operating Systems
+  Design and Implementation}, 2010.
+
+\bibitem{murray:naiad}
+Derek Murray et~al.
+\newblock Naiad: A timely dataflow system.
+\newblock SOSP '13, pages 439--455. ACM, 2013.
+
+\bibitem{foundationdb}
+FoundationDB.
+\newblock \url{https://en.wikipedia.org/wiki/FoundationDB}.
+
+\bibitem{jin:materialized}
+Changjiu Jin et~al.
+\newblock Materialized views for eventually consistent record stores.
+\newblock ICDE Workshops '10, pages 250--257. IEEE Computer Society,, 2013.
+
+\bibitem{rabl:materialized}
+Tilmann Rabl and H.-A. Jacobsen.
+\newblock Materialized views in cassandra.
+\newblock In {\em Proceedings of 24th Annual International Conference on
+  Computer Science and Software Engineering}, CASCON '14, pages 351--354. IBM
+  Corp., 2014.
+
+\end{thebibliography}

@@ -1,0 +1,349 @@
+%
+% aj - We need to think hard about this.
+%       Originally, we had defined these consistency levels on the basis of
+%        records; we now seem to talk about entire views. I couldn't quickly
+%        convince myself that this is the same.
+%
+\section{Consistency Model}
+\label{sec:consistency}
+
+Since consistency is a major concern during incremental view
+maintenance -- additionally, we introduce a high degree of concurrency --
+we define a consistency model before building the VMS. 
+In data warehouse environments, for batch-based view update
+processing, consistency models have been extensively explored (e.g.,
+~\cite{zhuge:view, wang:efficient, zhang:parallel, zhuge:strobe}. For
+view maintenance in KV-stores a model has been proposed
+in~\cite{jacobsen:viewmaintenance}. First, we adapt this model and the
+corresponding consistency levels to match the characteristics of 
+KV-stores (defined in the previous section). Second, we define a theorem, 
+capturing the requirements against our VMS, in order to achieve strong
+consistency.
+
+%
+%As defined in the previous section, the KV-store provides the VMS with
+%multiple streams of client operations in parallel () 
+%
+%In VMS, base table update operations initiated by clients are streamed 
+%from multiple system nodes and are processed in parallel, which 
+%apply resulting streams of updates across the entire system. This design 
+%was chosen to maximize the processing capabilities for view update processing. 
+%Thus, the consistency model is based on the assumption that a sequence of 
+%operations, applied to the same row 
+%key, is not re-ordered, which is a guarantee given by all the KV-stores 
+%we considered. This is a property referred to as \textit{record timeline} 
+%semantics~\cite{cooper:pnuts}.
+
+\subsection{Definition} 
+\label{subsec:definition} 
+
+A view data consistency model for incremental, deferred view
+maintenance explains whether the view state eventually converges,
+whether all intermediate view states are valid, and whether the
+sequence of view states produced by base table operations corresponds to
+the sequence of operations applied to base data~\cite{zhuge:view,
+  wang:efficient, zhang:parallel, zhuge:strobe,
+  jacobsen:viewmaintenance}. Generally speaking, depending on view
+types, view maintenance strategies, and view update programs, none,
+some, or all of the listed properties are attainable~\cite{zhuge:view,
+  wang:efficient, zhang:parallel, zhuge:strobe,
+  jacobsen:viewmaintenance}.
+
+
+
+
+In our context, we stream operations from multiple 
+sources (i.e. nodes) and apply them to different parts of the view 
+table, located on different nodes. We want to parallelize view 
+maintenance and improve performance to a great extent, we further relax 
+the consistency model. We do not claim the stream of a local source to 
+be in sequence. Instead, we define consistency on a record base level. 
+Every sequence of operations, that is applied to a specific row key has 
+to be in sequence. A base state $B_j$ is said to be greater than $B_i$ 
+if all operations to a specific row key in $B_i$ are included in $B_j$ 
+plus a number of subsequent operations. Formally we write $(\exists t_k 
+\in B_j)(\forall t_l \in B_i)\;k > l\;\land\; r(t_k)=r(t_l)$. Function 
+$r()$ delivers, when applied to an operation, the row key of that 
+operation. Now, we define consistency levels in agreement to the 
+model. Formally, the consistency levels of the model are 
+defined as follows:
+
+
+\begin{enumerate}
+ \setlength{\itemsep}{5pt}
+\item[]\textit{Convergence:} A view table converges, if after the system
+  quiesces, the last view state $V_f$ is computed correctly. This
+  means it corresponds to the evaluation of the view expression over
+  the final base state $V_f=View(B_f)$. View convergence is a minimal 
+  requirement, as an incorrectly calculated view is of no use.
+
+\item[]\textit{Weak consistency:} Weak consistency is given if the view
+  converges and all intermediate view states are valid, meaning that
+  there exists a base table state in the sequence of base table states
+  produced by the operation sequence from which they can be derived
+  %$V_j=View(B_i)$.
+
+\item[]\textit{Strong consistency:} Weak consistency is achieved and the
+  following condition is true. All pairs of view states $V_i$ and
+  $V_j$ that are in a relation $V_i \leq V_j$ are derived from base
+  states $B_i$ and $B_j$ that are also in a relation $B_i \leq B_j$.
+
+\item[]\textit{Complete consistency:} Strong consistency is achieved
+  and every base state $B_i$ of a valid base state sequence is
+  reflected in a view state $V_i$. Valid base state sequence means
+  $B_0 \leq B_i \leq B_{i+1}\leq B_f$.
+\end{enumerate}
+
+
+%\begin{enumerate}
+%\item \textit{Convergence}: A view converges, if after the system
+%  quiesces, the final view state \textit{corresponds} to the final
+%  base state.  By corresponds we mean that the evaluation of the view
+%  expression over the base state results in the view state. We say the
+%  final view state is correct.
+%%  
+%\item \textit{Weak consistency} Weak consistency is given, if the view
+%  converges and all intermediate view states are valid. Informally,
+%  this means that for every view state there exists a base table state
+%  which corresponds to the view state. In particular, this means that
+%  there never is an invalid view state.
+%%
+%\item \textit{Strong consistency}: Weak consistency is achieved and
+%  and every pair of view states are correctly ordered (i.e.,
+%  correspond to two base states in the same order.)
+%%
+%\item \textit{Complete consistency}: Strong consistency is achieved
+%  and every base state is reflected in some view state.
+%\end{enumerate}
+%%
+
+
+\subsection{VMS requirements} 
+\label{subsec:vms_requirements} 
+
+A system that is to achieve a given consistency level has to offer
+certain guarantees based on which the consistent and correct
+materialization of views can be based.  We show that our approach can
+attain strong consistency for the views it maintains, which we capture
+in the following theorem.\\
+
+
+\newtheorem{theorem}{Theorem}
+\begin{theorem}
+\label{theo:strong_consistency}
+The following requirements are sufficient to guarantee that views are
+maintained \textit{strongly} consistent in a VMS.
+
+\begin{enumerate}
+	\item  View updates are applied \textit{exactly once}
+	\item  view record updates are \textit{atomic}
+	\item  record \textit{timeline} is always preserved
+%	\item  View records are processed \textit{locally}
+\end{enumerate}
+\end{theorem}
+\hfill \newline
+Due to the space constraints, we present the theorem without proof.
+We refer the reader to \cite{extended:version} for the complete proof. 
+Now, we explain every requirements and its implications in detail. 
+
+\subsubsection{Exactly once property}
+\label{subsubsec:exactly_once}  
+Updating a view exactly once for every client operation is critical, 
+as views can be non-idempotent. There are two possible incidents that 
+violate the exactly once requirement: an operation is lost (maybe due to 
+node crash, or transmission errors); an operation is applied 
+more than once (in consequence of a log replay after a node crash). 
+In either case, the view would be incorrect (i.e., does not converge).
+ 
+
+
+%The remedy involves log replaying, 
+%which may lead to an update being applied more than once.  Transmission 
+%errors are prevented by using reliable communication channels (in our 
+%cases realized as TCP sockets.)
+%
+%Update applied more than once} -- If the same update is
+%applied more than once to a non-idempotent view, the result is
+%incorrect. Here, we adopt the idea of a \textit{signature} to address
+%this problem ~\cite{jacobsen:viewmaintenance}.  The signature uniquely
+%identifies updates.  Every time a base table update is propagated to a
+%view, its signature is evaluated to ensure the update has not already
+%been propagated to the view.
+
+%In our implementation we construct a globally unique
+%\textit{sequence-ID} for base table operations: Every node orders base
+%table operations using a locally unique \textit{sequence number}. When
+%an operation is written to the write-ahead log, the sequence number is
+%incremented by one. We combine the sequence number with the region
+%server ID to obtain a globally unique identifier, which uniquely
+%identifies whether a base table operation has already been applied to
+%the view record or not.
+
+\subsubsection{Atomic view record update}
+\label{subsubsec:atomic_update} 
+
+Most view types define a mapping from multiple base table records to 
+a single view table record. Different base table records may be 
+propagated to different VMs. When a view is updated it is possible that 
+multiple VMs are concurrently updating the same view record The following 
+example illustrates this situation.
+
+\noindent
+\textit{Example~1:} Given base table $A(\underline{K}, F)$ and a \texttt{SUM} 
+view $S(\underline{X}, F)$, defined as $S=\gamma_{c_1,Sum(c_2)}(A)$. 
+Assume a client inserts two records into base table $A$. The KV-store writes the following 
+operations into the transaction log: $t_1=put(k_1,\{\langle 
+c_1,x_1\rangle,\langle c_2,a\rangle\})$ and $t_2=put(k_2, \{\langle 
+c_1,x_1 \rangle,\linebreak \langle c_2,b\rangle\})$. Let the VMS receive both 
+operations and process them in parallel. To perform view maintenance, 
+the VMS retrieves the corresponding old view records from the view 
+table. Since $S$ is a \texttt{SUM} view -- and $t_1$ and $t_2$ refer to 
+the same aggregation key $x_1$ -- the VMS retrieves the same view record 
+twice, e.g. $(x_1, \{\langle c_s, v_s\rangle\})$. In case of $t_1$ VMS 
+adds the delta $a$ to the view record; in case of $t_2$ VMS adds the 
+delta $b$. Then, the VMS writes the updated view records back to the 
+view table. Depending on which record is written first, the VMS 
+overwrites one update with the other. Say, VMS writes $(x_1, \{\langle 
+c_s, v_s+a \rangle\})$ to $S$; then it overwrites the result with 
+$(x_1,\{\langle c_s, v_c+b\rangle\})$. In consequence the delta $a$ is 
+missing in the view. The correct result should be $(x_1,\{\langle c_s, 
+v_s+a+b \rangle\})$. Therefore, atomic view updates are essential. 
+
+
+
+%In our implementation, we use a test-and-set mechanism to solve this
+%problem.~\footnote{In HBase a \texttt{checkAndPut} method is provided
+%  to realize this mechanism. Most KV-stores offer a similar
+%  abstraction.} When updating a table record, a caller sees (tests)
+%whether a record has been concurrently modified between a read and an
+%update.
+%
+%Revisiting Example~2, let $VM_2$ retrieve value $(x1, \{(col_1,
+%a)\})$. Then, it computes $(x1,\{(col_1,a+c)\})$ trying to put the new
+%value, while testing for the old value $a$. The test-and-set fails
+%because the old record value changed concurrently to $a+b$. Thus,
+%$VM_2$ fetches the updated value again and re-computes
+%$(x1,\{(col_1,a+b+c)\})$. This time the test-and-set succeeds and the
+%record is written.
+
+\subsubsection{Record timeline}
+\label{subsubsec:record_timeline} 
+
+Record timeline means that sequences of operations on the same row key are not re-ordered 
+when processed by VMS.  Again, a little example demonstrates the
+importance of record timeline semantics.
+
+\noindent
+\textit{Example~2:} Given base table $A(\underline{K}, F)$ and a 
+\texttt{SELECTION} view $S(\underline{K}, F)$, defined as 
+$S=\sigma_{c_2 < x}(A)$. A client 
+executes two operations on base table $A$. Operation $t_1$ inserts key 
+$k_1$ to the table; operation $t_2$ updates key $k_1$. Since both operations
+touch the same key, KV-store writes them into the TL in sequence: 
+$t_1=put(k_1,\{\langle c_1,x_1\rangle, \linebreak\langle c_2,a\rangle\})$ and 
+$t_2=put(k_1, \{\langle c_1,x_1 \rangle, \langle c_2,b\rangle\})$. Assume 
+that both operations match the selection condition (i.e. $(a < x)$ and $(b < x)$) 
+such that both operations trigger an update on the view table. Let 
+the VMS receive both operations and process them in parallel. Due to  
+concurrency, the order of both operations could be reversed. First, the
+view record $k_1$ is updated with $t_2$, second with $t_1$. Then final
+state of the view record will be  $(k_1, \{\langle c_1,x_1 \rangle,\langle 
+c_2,a\rangle\})$ while the base table contains $(k_1, \{\langle c_1,x_1 \rangle,\langle 
+c_2,b\rangle\})$. As we observe, breaking the record timeline may also 
+violate convergence -- which is a minimal requirement for view maintenance. 
+
+
+%\input{sections/proof}
+
+%
+%\subsubsection{Local processing}
+%
+%Record timeline means that updates of the same row key are not re-ordered 
+%when processed by the system. 
+
+
+%We consider the following scenarios. Execution of two operations on
+%the same row key, $k_1$ and two operations on different row keys,
+%$k_1$ and $k_2$. We distinguish between one client $c_1$ sending both
+%operations in sequence versus two clients $c_1$ and $c_2$ concurrently
+%sending one each. This gives rise to four cases, covering all possible
+%input orderings of two operations (i.e., possible base table update
+%sequences). Let the base table be defined as $A(\underline{K},\{F\})$.
+%
+%\noindent
+%Client $\boldsymbol{c_1}$ updates $\boldsymbol{k_1}$,
+%$\boldsymbol{k_1}$ (1): The client performs two operations
+%$t_1=put(A(k_1,\allowbreak\{\langle c_1,v_1\rangle\}))$ followed by
+%$t_2=put(A(k_1,\{\langle c_2,v_2\rangle\}))$ to the same base table
+%record. Client operations via the KV-API are synchronous and happen in
+%order. For that reason, the node writes $t_1$ to its TL followed by
+%$t_2$. Given that the NX reads the TL sequentially, it processes both
+%operations in order. For each $t_i$ ($i = 1, 2$), NX selects a VM$_1$
+%by computing the hash $h(k_i)$, where it queues the operation.  As
+%assumed, the row keys of $t_1$ and $t_2$ are the same, so for both
+%operations the same VM is selected, where the view updates are
+%processed in order by calling on the synchronous KV-API for view table
+%updates.
+%
+% 
+%
+%\noindent
+%Clients $\boldsymbol{c_1}$, $\boldsymbol{c_2}$ update
+%$\boldsymbol{k_1}$ (2): Let client $c_1$ perform $t_1$ and client
+%$c_2$ perform $t_2$ (both operations on the same row key). Both
+%clients connect to the KV-API and are routed to the same node. Since
+%the KV-store executes put operations atomically, and locks a record
+%during the operation, one client operation always precedes the
+%other. Therefore, the order of $t_1$ and $t_2$ is determined by
+%whichever operation happens to be processed first, leading to its
+%insertion into the TL. When retrieving $t_1$ and $t_2$, the NX
+%computes the hash of the corresponding keys, as above.  Thus, the same
+%VM is selected in both cases. Therefore, the order of two updates, on
+%the same record, by different clients, is determined by the KV-store;
+%subsequently, the order is not changed by VMS.
+%
+%Based on this analysis, we conclude that VMS maintains record timeline
+%consistency for view updates. However, we analysed timeline 
+%consistency with regard to a static set-up of view managers. We 
+%assumed that the number of VMs per node remains fix during the 
+%maintenance process. If we introduce load balancing mechanisms or 
+%add new view managers to the system on-the-fly, then we need to review 
+%the guarantee of timeline consistency. This is done in the appendix, 
+%Section~\ref{sec:dynamic_scalability}.
+%
+%\begin{algorithm}
+%\caption{Operation processing at VM}
+%\label{alg:processing}
+%\begin{algorithmic}[5]
+%\Procedure{$processOperation$}{$t \in T$}%\Comment{$t$ received from NX}
+%\State $bt \leftarrow getBaseTable(t)$%\Comment{lookup meta table}	
+%\State $V \leftarrow resolveViewDefinitions(bt)$%\Comment{lookup meta table}		
+%\ForAll{$v \in V$}
+%\While{$\neg succeed$}	
+%\State $vt \leftarrow getViewTable(v)$
+%\State $vk \leftarrow getViewKey(t, v)$	%\Comment{extract view key}	
+%\State $vr' \leftarrow KVStore.get(vt, vk)$
+%\State $sig \leftarrow getSignature(t)$%\Comment{retrieve signature}
+%\If{$vr' \neq null\wedge hasProcessed(vr', sig)$}
+%\State $break$%\Comment{leave if $t$ already processed}	
+%\EndIf
+%\State $vr \leftarrow computeUpdate(vr', t)$\label{line:compute_update}
+%\State $suceed \leftarrow KVStore.checkAndPut(vt, vk, vr', vr)$\label{line:check_and_put}
+%\EndWhile %\Comment{retry until view updated}
+%\State $writeCommitLog(vt)$
+%\EndFor
+%\EndProcedure
+%\end{algorithmic}
+%\end{algorithm}
+%%
+%
+%Algorithm~\ref{alg:processing} shows the general steps a VM executes as
+%it propagates updates.  It includes the test-and-set and the signature
+%mechanism described above.  The former is realized via the
+%\texttt{checkAndPut} method available in HBase, for example.  Thus,
+%Algorithm~\ref{alg:processing} enforces the exactly once and the
+%atomic update propagation requirements. However, preservance of view record
+%timeline semantic is enforced by the design of VMS.
+
+
+

@@ -1,0 +1,474 @@
+package de.webdataplatform.regionserver;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Queue;
+import java.util.concurrent.atomic.AtomicLong;
+
+import de.webdataplatform.basetable.BaseTableOperation;
+import de.webdataplatform.log.Log;
+import de.webdataplatform.settings.SystemConfig;
+import de.webdataplatform.system.StatisticsElement;
+
+public class DummyWALReader implements Runnable, IWALReader {
+
+
+	private Queue<String> btupdates;
+	
+//	private ViewDefinitions viewDefinition;
+	
+	private String serverAddress;
+	
+	private String rsName;
+
+
+	
+	private Log log;
+	
+	public Map<String, Long> highestKeys=new HashMap<String,Long>();
+	public Long updatesCounted;
+
+	private AtomicLong updatesRetrieved;
+	private AtomicLong updatesEnteredSystem;
+
+	
+	private AtomicLong updatesIterated=new AtomicLong();
+	
+	
+	
+	public DummyWALReader(Log log, String serverAddress, String rsName, Queue<String> btupdates){
+		
+		this.rsName = rsName;
+		this.serverAddress = serverAddress;
+		this.btupdates = btupdates;
+//		this.viewDefinition = viewDefinition;
+		this.updatesRetrieved = new AtomicLong();
+//		this.updatesEnteredSystem = updatesEnteredSystem;
+		this.updatesEnteredSystem = new AtomicLong();
+		
+		this.log = log;
+	}
+	
+	
+	
+
+	
+	
+	
+	@Override
+	public void run() {
+
+
+			log.wal(this.getClass(), "update iterated: "+updatesIterated);
+			log.wal(this.getClass(), "polling WAL with interval:"+SystemConfig.REGIONSERVER_WALPOLLINGINTERVAL);
+
+			
+			try {
+				Thread.sleep(50000);
+			} catch (InterruptedException e1) {
+
+				e1.printStackTrace();
+			}
+			
+			
+//			while(true){
+
+			log.info(this.getClass(), "creating updates ");
+				
+//			btupdates.add(generateBtu("bt1", "k1", "c1", "x1", "c2", "5", "c3", "10").convertToString());
+//			btupdates.add(generateBtu("bt1", "k2", "c1", "x2", "c2", "6", "c3", "15").convertToString());
+//			btupdates.add(generateBtu("bt1", "k3", "c1", "x1", "c2", "7", "c3", "20").convertToString());
+//			btupdates.add(generateBtu("bt1", "k4", "c1", "x1", "c2", "5", "c3", "10").convertToString());
+//			btupdates.add(generateBtu("bt1", "k5", "c1", "x2", "c2", "6", "c3", "15").convertToString());
+//			btupdates.add(generateBtu("bt1", "k6", "c1", "x1", "c2", "7", "c3", "20").convertToString());
+
+			
+			btupdates.add(generateBtu("orders", "1","o_orderkey", "1", "o_custkey", "36901", "o_orderstatus", "O", "o_totalprice", "173665.47", "o_orderdate", "1996-01-02", "o_orderpriority", "5-LOW", "o_clerk", "Clerk#000000951", "o_shippriority", "0", "o_comment", "nstructions sleep furiously among").convertToString());
+			btupdates.add(generateBtu("orders", "2","o_orderkey", "2", "o_custkey", "78002", "o_orderstatus", "O", "o_totalprice", "46929.18", "o_orderdate", "1996-12-01", "o_orderpriority", "1-URGENT", "o_clerk", "Clerk#000000880", "o_shippriority", "0", "o_comment", "foxes. pending accounts at the pending, silent asymptot").convertToString());
+			btupdates.add(generateBtu("orders", "3","o_orderkey", "3", "o_custkey", "123314", "o_orderstatus", "F", "o_totalprice", "193846.25", "o_orderdate", "1993-10-14", "o_orderpriority", "5-LOW", "o_clerk", "Clerk#000000951", "o_shippriority", "0", "o_comment", "sly final accounts boost. carefully regular ideas cajole carefully. depos").convertToString());
+			btupdates.add(generateBtu("orders", "4","o_orderkey", "4", "o_custkey", "136777", "o_orderstatus", "O", "o_totalprice", "32151.78", "o_orderdate", "1995-10-11", "o_orderpriority", "5-LOW", "o_clerk", "Clerk#000000124", "o_shippriority", "0", "o_comment", "sits. slyly regular warthogs cajole. regular, regular theodolites acro").convertToString());
+			btupdates.add(generateBtu("orders", "5","o_orderkey", "5", "o_custkey", "36901", "o_orderstatus", "F", "o_totalprice", "144659.20", "o_orderdate", "1994-07-30", "o_orderpriority", "5-LOW", "o_clerk", "Clerk#000000951", "o_shippriority", "0", "o_comment", "quickly. bold deposits sleep slyly. packages use slyly").convertToString());
+			btupdates.add(generateBtu("orders", "6","o_orderkey", "6", "o_custkey", "78002", "o_orderstatus", "F", "o_totalprice", "58749.59", "o_orderdate", "1992-02-21", "o_orderpriority", "4-NOT SPECIFIED", "o_clerk", "Clerk#000000058", "o_shippriority", "0", "o_comment", "ggle. special, final requests are against the furiously specia").convertToString());			
+
+//			btupdates.add(generateBtuDelete("orders", "2").convertToString());
+//			btupdates.add(generateBtuDelete("orders", "3").convertToString());
+//			btupdates.add(generateBtuDelete("orders", "4").convertToString());
+			
+			
+			btupdates.add(generateBtu("customer", "36901","c_custkey", "36901", "c_name", "Customer#000000001", "c_address", "IVhzIApeRb ot,c,E", "c_nationkey", "15", "c_phone", "25-989-741-2988", "c_acctbal", "711.56", "c_mktsegment", "BUILDING", "c_comment", "to the even, regular platelets. regular, ironic epitaphs nag e").convertToString());
+			btupdates.add(generateBtu("customer", "78002","c_custkey", "78002", "c_name", "Customer#000000002", "c_address", "XSTf4,NCwDVaWNe6tEgvwfmRchLXak", "c_nationkey", "13", "c_phone", "23-768-687-3665", "c_acctbal", "121.65", "c_mktsegment", "AUTOMOBILE", "c_comment", "l accounts. blithely ironic theodolites integrate boldly: caref").convertToString());
+			btupdates.add(generateBtu("customer", "123314","c_custkey", "123314", "c_name", "Customer#000000003", "c_address", "MG9kdTD2WBHm", "c_nationkey", "1", "c_phone", "11-719-748-3364", "c_acctbal", "7498.12", "c_mktsegment", "AUTOMOBILE", "c_comment", "deposits eat slyly ironic, even instructions. express foxes detect slyly. blithely even accounts abov").convertToString());
+			btupdates.add(generateBtu("customer", "15001","c_custkey", "15001", "c_name", "Customer#000000004", "c_address", "XxVSJsLAGtn", "c_nationkey", "4", "c_phone", "14-128-190-5944", "c_acctbal", "2866.83", "c_mktsegment", "MACHINERY", "c_comment", "requests. final, regular ideas sleep final accou").convertToString());
+			btupdates.add(generateBtu("customer", "78002","c_custkey", "78002", "c_name", "Customer#000000005", "c_address", "KvpyuHCplrB84WgAiGV6sYpZq7Tj", "c_nationkey", "3", "c_phone", "13-750-942-6364", "c_acctbal", "794.47", "c_mktsegment", "HOUSEHOLD", "c_comment", "n accounts will have to unwind. foxes cajole accor").convertToString());
+			btupdates.add(generateBtu("customer", "12000","c_custkey", "12000", "c_name", "Customer#000000006", "c_address", "sKZz0CsnMD7mp4Xd0YrBvx,LREYKUWAh yVn", "c_nationkey", "20", "c_phone", "30-114-968-4951", "c_acctbal", "7638.57", "c_mktsegment", "AUTOMOBILE", "c_comment", "tions. even deposits boost according to the slyly bold packages. final accounts cajole requests. furious").convertToString());
+
+			btupdates.add(generateBtu("lineitem", "1_1","l_orderkey", "1", "l_partkey", "155190", "l_suppkey", "7706", "l_linenumber", "1", "l_quantity", "17", "l_extendedprice", "21168.23", "l_discount", "0.04", "l_tax", "0.02", "l_returnflag", "N", "l_linestatus", "O","l_shipdate", "1996-03-13", "l_commitdate", "1996-02-12", "l_receiptdate", "1996-03-22", "l_shipinstruct", "DELIVER IN PERSON", "l_shipmode", "TRUCK", "l_comment", "egular courts above the").convertToString());
+			btupdates.add(generateBtu("lineitem", "1_2","l_orderkey", "1", "l_partkey", "67310", "l_suppkey", "7311", "l_linenumber", "2", "l_quantity", "36", "l_extendedprice", "45983.16", "l_discount", "0.09", "l_tax", "0.06", "l_returnflag", "N", "l_linestatus", "O","l_shipdate", "1996-04-12", "l_commitdate", "1996-02-28", "l_receiptdate", "1996-04-20", "l_shipinstruct", "TAKE BACK RETURN", "l_shipmode", "MAIL", "l_comment", "ly final dependencies: slyly bold ").convertToString());
+			btupdates.add(generateBtu("lineitem", "1_3","l_orderkey", "1", "l_partkey", "63700", "l_suppkey", "3701", "l_linenumber", "3", "l_quantity", "8", "l_extendedprice", "13309.60", "l_discount", "0.10", "l_tax", "0.02", "l_returnflag", "N", "l_linestatus", "O","l_shipdate", "1996-01-29", "l_commitdate", "1997-01-14", "l_receiptdate", "1996-01-31", "l_shipinstruct", "TAKE BACK RETURN", "l_shipmode", "REG AIR", "l_comment", "riously. regular, express dep").convertToString());
+			btupdates.add(generateBtu("lineitem", "2_1","l_orderkey", "2", "l_partkey", "106170", "l_suppkey", "1191", "l_linenumber", "1", "l_quantity", "38", "l_extendedprice", "44694.46", "l_discount", "0.00", "l_tax", "0.05", "l_returnflag", "N", "l_linestatus", "O","l_shipdate", "1997-01-28", "l_commitdate", "1997-01-14", "l_receiptdate", "1997-02-02", "l_shipinstruct", "TAKE BACK RETURN", "l_shipmode", "RAIL", "l_comment", "ven requests. deposits breach a").convertToString());
+			btupdates.add(generateBtu("lineitem", "3_1","l_orderkey", "3", "l_partkey", "4297", "l_suppkey", "1798", "l_linenumber", "1", "l_quantity", "45", "l_extendedprice", "54058.05", "l_discount", "0.06", "l_tax", "0.00", "l_returnflag", "R", "l_linestatus", "F","l_shipdate", "1994-02-02", "l_commitdate", "1994-01-04", "l_receiptdate", "1994-02-23", "l_shipinstruct", "NONE", "l_shipmode", "AIR", "l_comment", "ongside of the furiously brave acco").convertToString());
+			btupdates.add(generateBtu("lineitem", "3_2","l_orderkey", "3", "l_partkey", "19036", "l_suppkey", "6540", "l_linenumber", "2", "l_quantity", "49", "l_extendedprice", "46796.47", "l_discount", "0.10", "l_tax", "0.00", "l_returnflag", "R", "l_linestatus", "F","l_shipdate", "1993-11-09", "l_commitdate", "1993-12-20", "l_receiptdate", "1993-11-24", "l_shipinstruct", "TAKE BACK RETURN", "l_shipmode", "RAIL", "l_comment", "unusual accounts. eve").convertToString());
+			
+			
+
+			
+
+//			btupdates.add(generateBtu("bt1", "k1", "c1", "x1", "c2", "5", "c3", "10"));
+//			btupdates.add(generateBtu("bt1", "k2", "c1", "x2", "c2", "6", "c3", "15"));
+//			btupdates.add(generateBtu("bt1", "k1", "c1", "x1", "c2", "7", "c3", "20"));
+//			btupdates.add(generateBtu("bt1", "k4", "c1", "x1", "c2", "5", "c3", "10"));
+//			btupdates.add(generateBtuDelete("bt1", "k2"));
+//			btupdates.add(generateBtu("bt1", "k6", "c1", "x1", "c2", "7", "c3", "20"));
+				
+//			}
+		
+//			btupdates.add(generateBtu("bt1", "k1", "c1", "x1", "c2", "5", "c3", "10"));
+//			btupdates.add(generateBtu("bt1", "k2", "c1", "x2", "c2", "6", "c3", "15"));
+//			btupdates.add(generateBtu("bt1", "k3", "c1", "x3", "c2", "7", "c3", "20"));
+//			btupdates.add(generateBtu("bt1", "k4", "c1", "x4", "c2", "8", "c3", "35"));
+//			btupdates.add(generateBtu("bt1", "k5", "c1", "x5", "c2", "9", "c3", "20"));
+//			btupdates.add(generateBtu("bt1", "k6", "c1", "x6", "c2", "10", "c3", "23"));
+//			btupdates.add(generateBtu("bt1", "k7", "c1", "x7", "c2", "10", "c3", "23"));
+			
+//			btupdates.add(generateBtu("bt1", "k1", "c1", "x2", "c2", "5", "c3", "10").convertToString());
+//			btupdates.add(generateBtu("bt1", "k2", "c1", "x2", "c2", "6", "c3", "15").convertToString());
+//			btupdates.add(generateBtu("bt1", "k3", "c1", "x2", "c2", "7", "c3", "20").convertToString());
+//			
+//			btupdates.add(generateBtuDelete("bt1", "k1").convertToString());
+//			btupdates.add(generateBtuDelete("bt1", "k2").convertToString());
+//			btupdates.add(generateBtuDelete("bt1", "k3").convertToString());			
+			
+			
+//			btupdates.add(generateBtu("bt1", "k7", "c1", "x1", "c2", "y2", "c3", "9"));
+//			btupdates.add(generateBtu("bt1", "k8", "c1", "x2", "c2", "y1", "c3", "12"));
+//			btupdates.add(generateBtu("bt1", "k9", "c1", "x7", "c2", "y2", "c3", "34"));
+//			btupdates.add(generateBtu("bt1", "k10", "c1", "x1", "c2", "y2", "c3", "17"));
+//			btupdates.add(generateBtu("bt1", "k11", "c1", "x2", "c2", "y1", "c3", "12"));		
+			
+//			
+//			btupdates.add(generateBtu("bt2", "l1", "d1", "x7", "d2", "y1", "d3", "10"));
+//			btupdates.add(generateBtu("bt2", "l2", "d1", "x2", "d2", "y1", "d3", "15"));
+//			btupdates.add(generateBtu("bt2", "l3", "d1", "x1", "d2", "y2", "d3", "20"));
+//			btupdates.add(generateBtu("bt2", "l4", "d1", "x7", "d2", "y1", "d3", "10"));
+//			btupdates.add(generateBtu("bt2", "l5", "d1", "x3", "d2", "y1", "d3", "15"));
+//			btupdates.add(generateBtu("bt2", "l6", "d1", "x5", "d2", "y2", "d3", "20"));			
+//			
+//			
+//			btupdates.add(generateBtu("bt1", "k1", "c1", "x5", "c2", "5", "c3", "10"));
+//			btupdates.add(generateBtu("bt1", "k2", "c1", "x5", "c2", "6", "c3", "15"));
+//			btupdates.add(generateBtu("bt1", "k3", "c1", "x5", "c2", "7", "c3", "20"));
+//			btupdates.add(generateBtu("bt1", "k4", "c1", "x5", "c2", "8", "c3", "35"));
+//			btupdates.add(generateBtu("bt1", "k5", "c1", "x5", "c2", "9", "c3", "20"));
+//			btupdates.add(generateBtu("bt1", "k6", "c1", "x5", "c2", "10", "c3", "23"));
+//			btupdates.add(generateBtu("bt1", "k7", "c1", "x5", "c2", "10", "c3", "23"));
+//			
+//			
+//			btupdates.add(generateBtu("bt2", "l1", "d1", "x5", "d2", "y1", "d3", "10"));
+//			btupdates.add(generateBtu("bt2", "l2", "d1", "x5", "d2", "y1", "d3", "15"));
+//			btupdates.add(generateBtu("bt2", "l3", "d1", "x5", "d2", "y2", "d3", "20"));
+//			btupdates.add(generateBtu("bt2", "l4", "d1", "x5", "d2", "y1", "d3", "10"));
+//			btupdates.add(generateBtu("bt2", "l5", "d1", "x5", "d2", "y1", "d3", "15"));
+//			btupdates.add(generateBtu("bt2", "l6", "d1", "x5", "d2", "y2", "d3", "20"));	
+			
+			
+//			for (int i = 0; i < 100; i++) {
+//				
+//				btupdates.add(generateBtu("bt1", "k"+(i%10000), "c1", "x5", "c2", "5", "c3", "10").convertToString());
+//			}
+			
+			/**
+			btupdates.add(generateBtu("bt1", "k1", "c1", "x3", "c2", "5", "c3", "10"));	
+			btupdates.add(generateBtu("bt1", "k1", "c1", "x5", "c2", "5", "c3", "10"));
+			btupdates.add(generateBtu("bt1", "k1", "c1", "x3", "c2", "5", "c3", "10"));	
+			btupdates.add(generateBtu("bt1", "k1", "c1", "x5", "c2", "5", "c3", "10"));
+			btupdates.add(generateBtu("bt1", "k1", "c1", "x3", "c2", "5", "c3", "10"));	
+			btupdates.add(generateBtu("bt1", "k1", "c1", "x5", "c2", "5", "c3", "10"));
+			btupdates.add(generateBtu("bt1", "k1", "c1", "x3", "c2", "5", "c3", "10"));	
+			btupdates.add(generateBtu("bt1", "k1", "c1", "x5", "c2", "5", "c3", "10"));
+			btupdates.add(generateBtu("bt1", "k1", "c1", "x3", "c2", "5", "c3", "10"));	
+			btupdates.add(generateBtu("bt1", "k1", "c1", "x5", "c2", "5", "c3", "10"));
+			btupdates.add(generateBtu("bt1", "k1", "c1", "x3", "c2", "5", "c3", "10"));	
+			btupdates.add(generateBtu("bt1", "k1", "c1", "x5", "c2", "5", "c3", "10"));
+			btupdates.add(generateBtu("bt1", "k1", "c1", "x3", "c2", "5", "c3", "10"));	
+			
+			btupdates.add(generateBtu("bt2", "l1", "d1", "x5", "d2", "y1", "d3", "10"));
+			btupdates.add(generateBtu("bt2", "l1", "d1", "x3", "d2", "y1", "d3", "10"));
+			btupdates.add(generateBtu("bt2", "l1", "d1", "x5", "d2", "y1", "d3", "10"));
+			btupdates.add(generateBtu("bt2", "l1", "d1", "x3", "d2", "y1", "d3", "10"));
+			btupdates.add(generateBtu("bt2", "l1", "d1", "x5", "d2", "y1", "d3", "10"));
+			btupdates.add(generateBtu("bt2", "l1", "d1", "x3", "d2", "y1", "d3", "10"));
+			btupdates.add(generateBtu("bt2", "l1", "d1", "x5", "d2", "y1", "d3", "10"));
+			
+			btupdates.add(generateBtuDelete("bt1", "k1"));
+			btupdates.add(generateBtu("bt1", "k1", "c1", "x5", "c2", "5", "c3", "10"));
+			btupdates.add(generateBtu("bt1", "k1", "c1", "x3", "c2", "5", "c3", "10"));	
+			btupdates.add(generateBtu("bt1", "k1", "c1", "x5", "c2", "5", "c3", "10"));
+			btupdates.add(generateBtu("bt1", "k1", "c1", "x3", "c2", "5", "c3", "10"));	
+			btupdates.add(generateBtu("bt1", "k1", "c1", "x5", "c2", "5", "c3", "10"));
+			btupdates.add(generateBtu("bt1", "k1", "c1", "x3", "c2", "5", "c3", "10"));	
+			btupdates.add(generateBtu("bt1", "k1", "c1", "x5", "c2", "5", "c3", "10"));
+			btupdates.add(generateBtu("bt1", "k1", "c1", "x3", "c2", "5", "c3", "10"));	
+			btupdates.add(generateBtu("bt1", "k1", "c1", "x5", "c2", "5", "c3", "10"));
+			btupdates.add(generateBtu("bt1", "k1", "c1", "x3", "c2", "5", "c3", "10"));	
+			btupdates.add(generateBtu("bt1", "k1", "c1", "x5", "c2", "5", "c3", "10"));
+			btupdates.add(generateBtu("bt1", "k1", "c1", "x3", "c2", "5", "c3", "10"));	
+			btupdates.add(generateBtu("bt1", "k1", "c1", "x5", "c2", "5", "c3", "10"));
+			btupdates.add(generateBtu("bt1", "k1", "c1", "x3", "c2", "5", "c3", "10"));				
+			
+			btupdates.add(generateBtu("bt2", "l1", "d1", "x3", "d2", "y1", "d3", "10"));
+			btupdates.add(generateBtu("bt2", "l1", "d1", "x5", "d2", "y1", "d3", "10"));
+			btupdates.add(generateBtu("bt2", "l1", "d1", "x3", "d2", "y1", "d3", "10"));
+			btupdates.add(generateBtu("bt2", "l1", "d1", "x5", "d2", "y1", "d3", "10"));
+			btupdates.add(generateBtu("bt2", "l1", "d1", "x3", "d2", "y1", "d3", "10"));
+			btupdates.add(generateBtu("bt2", "l1", "d1", "x5", "d2", "y1", "d3", "10"));			
+			btupdates.add(generateBtu("bt2", "l1", "d1", "x3", "d2", "y1", "d3", "10"));			
+			*/
+
+//			btupdates.add(generateBtuDelete("bt1", "k2"));
+//			btupdates.add(generateBtuDelete("bt1", "k3"));
+//			btupdates.add(generateBtuDelete("bt1", "k4"));
+//			btupdates.add(generateBtuDelete("bt1", "k5"));
+//			btupdates.add(generateBtuDelete("bt1", "k6"));
+			
+//			btupdates.add(generateBtuDelete("bt2", "l1"));			
+//			btupdates.add(generateBtuDelete("bt2", "l2"));
+//			btupdates.add(generateBtuDelete("bt2", "l3"));
+//			btupdates.add(generateBtuDelete("bt2", "l4"));
+//			btupdates.add(generateBtuDelete("bt2", "l5"));
+//			btupdates.add(generateBtuDelete("bt2", "l6"));
+			
+//			btupdates.add(generateBtu("bt1", "k6", "c1", "x7", "c2", "10", "c3", "23"));			
+//			btupdates.add(generateBtu("bt2", "l4", "d1", "x6", "d2", "y1", "d3", "10"));			
+//
+//			btupdates.add(generateBtu("bt3", "m1", "e1", "y1", "e2", "5"));
+//			btupdates.add(generateBtu("bt3", "m2", "e1", "y4", "e2", "6"));
+//			btupdates.add(generateBtu("bt3", "m3", "e1", "y5", "e2", "7"));
+			
+//			btupdates.add(generateBtuDelete("bt1", "k1"));
+
+			
+			//			select * from bt1, bt2, bt3 where bt1.c1 = bt2.d1 and  bt2.d2 = bt3.e1
+//			select bt2.d2, bt3.e2 from bt1, bt2, bt3 where bt1.c1 = bt2.d1 and  bt2.d1 = bt3.e1
+
+//			select bt1.c1, bt2.d2 from bt1, bt2 where bt1.c1 = bt2.d1		
+//			select sum(bt1.c3) as sum1, max(bt1.c3) from bt1, bt2 where bt1.c1 = bt2.d1 pre group by bt2.d2
+			
+//			btupdates.add(generateBtu("bt2", "l1", "d1", "x1", "d2", "5", "d3", "10"));
+//			btupdates.add(generateBtu("bt2", "l2", "d1", "x2", "d2", "6", "d3", "15"));
+//			btupdates.add(generateBtu("bt2", "l3", "d1", "x1", "d2", "7", "d3", "20"));			
+			
+		
+	}
+	
+
+//	public static BaseTableOperation generateBtu(String table, String key, String col1, String val1, String col2,  String val2){
+//		
+//		Map<String, String> cols = new HashMap<String, String>();
+//		Map<String, String> colFams = new HashMap<String, String>();
+//		
+//		cols.put(col1, val1);
+//		cols.put(col2, val2);
+//		colFams.put(col1, "colfam1");
+//		colFams.put(col2, "colfam1");
+//		
+//		
+//		BaseTableOperation btu = new BaseTableOperation(table, "rs1", "regionxy", 100+"",new Date().getTime()+"", key, "Put", cols, colFams);
+//		
+//		return btu;
+//		
+//	}
+	
+//	public static BaseTableOperation generateBtu(String table, String key, String col1, String val1, String col2,  String val2, String col3, String val3){
+//		
+//		Map<String, String> cols = new HashMap<String, String>();
+//		Map<String, String> colFams = new HashMap<String, String>();
+//		
+//		cols.put(col1, val1);
+//		cols.put(col2, val2);
+//		cols.put(col3, val3);
+//		colFams.put(col1, "colfam1");
+//		colFams.put(col2, "colfam1");
+//		colFams.put(col3, "colfam1");
+//		
+//		
+//		BaseTableOperation btu = new BaseTableOperation(table, "rs1", "regionxy", 100+"",new Date().getTime()+"", key, "Put", cols, colFams);
+//		
+//		return btu;
+//		
+//	}
+//	
+	
+	public static BaseTableOperation generateBtu(String table, String key, String... colValPairs){
+		
+		Map<String, String> cols = new HashMap<String, String>();
+		Map<String, String> colFams = new HashMap<String, String>();
+		
+		for (int i = 0; i < colValPairs.length; i+=2) {
+			
+			cols.put(colValPairs[i], colValPairs[i+1]);
+			colFams.put(colValPairs[i], "colfam1");
+		}
+		
+		
+		BaseTableOperation btu = new BaseTableOperation(table, "rs1", "regionxy", 100+"",new Date().getTime()+"", key, "Put", cols, colFams);
+		
+		return btu;
+	}
+	
+//	public static BaseTableOperation generateBtu(String table, String key, String col1, String val1, String col2,  String val2, String col3, String val3, String col4, String val4, String col5, String val5, String col6, String val6, String col7, String val7, String col8, String val8, String col9, String val9){
+//		
+//		Map<String, String> cols = new HashMap<String, String>();
+//		Map<String, String> colFams = new HashMap<String, String>();
+//		
+//		cols.put(col1, val1);
+//		cols.put(col2, val2);
+//		cols.put(col3, val3);
+//		cols.put(col4, val4);
+//		cols.put(col5, val5);
+//		cols.put(col6, val6);
+//		cols.put(col7, val7);
+//		cols.put(col8, val8);
+//		cols.put(col9, val9);		
+//		colFams.put(col1, "colfam1");
+//		colFams.put(col2, "colfam1");
+//		colFams.put(col3, "colfam1");
+//		colFams.put(col4, "colfam1");
+//		colFams.put(col5, "colfam1");
+//		colFams.put(col6, "colfam1");
+//		colFams.put(col7, "colfam1");
+//		colFams.put(col8, "colfam1");
+//		colFams.put(col9, "colfam1");		
+//		
+//		BaseTableOperation btu = new BaseTableOperation(table, "rs1", "regionxy", 100+"",new Date().getTime()+"", key, "Put", cols, colFams);
+//		
+//		return btu;
+//		
+//	}
+//	
+//	public static BaseTableOperation generateBtu(String table, String key, String col1, String val1, String col2,  String val2, String col3, String val3, String col4, String val4, String col5, String val5, String col6, String val6, String col7, String val7, String col8, String val8){
+//		
+//		Map<String, String> cols = new HashMap<String, String>();
+//		Map<String, String> colFams = new HashMap<String, String>();
+//		
+//		cols.put(col1, val1);
+//		cols.put(col2, val2);
+//		cols.put(col3, val3);
+//		cols.put(col4, val4);
+//		cols.put(col5, val5);
+//		cols.put(col6, val6);
+//		cols.put(col7, val7);
+//		cols.put(col8, val8);		
+//		colFams.put(col1, "colfam1");
+//		colFams.put(col2, "colfam1");
+//		colFams.put(col3, "colfam1");
+//		colFams.put(col4, "colfam1");
+//		colFams.put(col5, "colfam1");
+//		colFams.put(col6, "colfam1");
+//		colFams.put(col7, "colfam1");
+//		colFams.put(col7, "colfam1");		
+//		
+//		BaseTableOperation btu = new BaseTableOperation(table, "rs1", "regionxy", 100+"",new Date().getTime()+"", key, "Put", cols, colFams);
+//		
+//		return btu;
+//		
+//	}
+	
+	public static BaseTableOperation generateBtuDelete(String table, String key){
+		
+		Map<String, String> cols = new HashMap<String, String>();
+		Map<String, String> colFams = new HashMap<String, String>();
+		
+		
+		
+		BaseTableOperation btu = new BaseTableOperation(table, "rs1", "regionxy", 100+"",new Date().getTime()+"", key, "Delete", cols, colFams);
+		
+		return btu;
+		
+	}
+
+
+
+
+
+
+
+	public AtomicLong getUpdatesRetrieved() {
+		return updatesRetrieved;
+	}
+
+
+
+
+
+
+
+	public void setUpdatesRetrieved(AtomicLong updatesRetrieved) {
+		this.updatesRetrieved = updatesRetrieved;
+	}
+
+
+
+
+
+
+
+	public AtomicLong getUpdatesEnteredSystem() {
+		return updatesEnteredSystem;
+	}
+
+
+
+
+
+
+
+	public void setUpdatesEnteredSystem(AtomicLong updatesEnteredSystem) {
+		this.updatesEnteredSystem = updatesEnteredSystem;
+	}
+
+
+
+
+
+
+
+	public AtomicLong getUpdatesIterated() {
+		return updatesIterated;
+	}
+
+
+
+
+
+
+
+	public void setUpdatesIterated(AtomicLong updatesIterated) {
+		this.updatesIterated = updatesIterated;
+	}
+	
+
+
+	public StatisticsElement getStatisticsRetrieved() {
+		return null;
+	}
+
+
+
+	public void setStatisticsRetrieved(StatisticsElement statisticsRetrieved) {
+	}
+
+
+
+
+	
+
+	
+	
+	
+	
+	
+
+	
+
+}

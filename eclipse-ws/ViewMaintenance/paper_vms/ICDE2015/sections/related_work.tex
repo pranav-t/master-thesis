@@ -1,0 +1,95 @@
+\section{Related Work}
+\label{sec:related_work}
+
+
+Over the past decades, there has been much research on view maintenance, 
+for example, ~\cite{blakeley:efficiently,gupta:maintaining, zhuge:view, 
+colby:algorithms, wang:efficient}. J. Blakeley et 
+al.~\cite{blakeley:efficiently} developed an algorithm that reduces the 
+number of base table queries during the update of a join view. Y. Zhuge 
+et al.~\cite{zhuge:view} developed the ECA algorithm, which prevents 
+update anomalies. L. Colby et al.~\cite{colby:algorithms} introduced 
+deferred view maintenance based on differential tables that keeps around 
+a precomputed delta of the view table. Multiple algorithms are developed 
+to perform deferred view maintenance. Much attention has been given to 
+preventing update anomalies when applying incremental view 
+maintenance~\cite{gupta:maintaining, zhuge:view, salem:how}. These 
+approaches originate from the databases of that time, i.e. data storage 
+was centralized and data sets were of manageable size. 
+
+A lot of the mentioned papers, focus on pessimistic mechanisms, i.e. 
+they prevent update anomalies in the moment or even after they have 
+occurred. Instead, our approach tries to establish consistency by a more 
+optimistic concept. Correct ordering of base table operations is ensured 
+by consistent hashing right through the maintenance process. 
+Test-And-Set methods are used to retain the commit order, no explicit 
+locking or transactional mechanisms are need. In the end, this results 
+in a higher throughput and more up-to-date view computations. 
+
+In the context of data warehouses, view maintenance has also been 
+considered extensively. Early approaches aimed at integrating 
+incremental, deferred view maintenance based on distributed data 
+sources~\cite{wang:efficient, agrawal:efficient,zhuge:strobe}. Y. Zhuge 
+et al.~\cite{zhuge:strobe} suggested the strobe algorithm, a refinement 
+of the ECA algorithm that handles update anomalies, occurring when 
+multiple base table updates of a join view arrive from different data 
+sources. Agrawal et al.~\cite{agrawal:efficient} defined the sweep 
+algorithm, which like ECA and Strobe, compensates via error terms for 
+interfering updates. In these approaches, a data warehouse is considered 
+as a central component, where the flow of base table updates is joined 
+and a global time-stamp can be set. Thus, operations can be serialized 
+in order to obtain a global order. In the context of a KV-store, update 
+propagation is distributed and no global order exists, thus, the above 
+approaches cannot be applied. 
+
+Versioning and time-stamp-based approaches have been used to defer view 
+maintenance and ensure data consistency~\cite{salem:how, zhou:lazy}. For 
+example, Zhou et al.~\cite{zhou:lazy} use a SQL version store to 
+categorize updates. That is, the database can be queried in the state, 
+it has been in, when the base table update was applied. Also, Zhou et 
+al.~\cite{zhou:lazy} introduced the scheduling of view maintenance 
+tasks. There, tasks can be run, when the update load in the system is 
+low, yet, the approach applies tasks always in the correct update order. 
+Unfortunately, as illustrated above, in a KV-store, we cannot rely on 
+time synchronization. While some KV-store provide mechanisms for row 
+versioning, the local time on each node could differ due to clock skew 
+and deriving a unique global time-based update order is not possible. 
+Experiments with the versioning feature yielded a big storage overhead 
+and complicated the maintenance process. 
+
+Jacobsen et al.~\cite{jacobsen:viewmaintenance} discuss view maintenance 
+in the context of Web Data Platforms, i.e., large-scale storage systems, 
+such as HBase, where view managers are independent components for 
+updating views. Updates, issued to storage servers, are propagated to 
+the view managers. View managers relieve the storage servers that run 
+view update programs to update view tables. The authors identify and 
+analyze data consistency issues in this context and define a number of 
+consistency levels. These levels provide theoretical guarantees for 
+different classes of views in the context of the abstract WDP assumed in 
+the paper. Here, we use some of the foundations on view table 
+consistency developed in ~\cite{jacobsen:viewmaintenance}. 
+
+Agrawal et al.~\cite{agrawal:asynchronous} apply incremental, deferred 
+view maintenance to PNUTS~\cite{cooper:pnuts} supporting equi-joins, 
+selection, and group-by-aggregation views. Similar to Jacobsen et 
+al.~\cite{jacobsen:viewmaintenance}, Agrawal et al. can only rely on 
+record time-line guarantees in view maintenance. Updates to a view 
+record may involve one or more reads on base tables. View tables are 
+replicated in the underlying PNUTS architecture. Moreover, it does not 
+only provide a solution for special types of views and implementations, 
+but a simple generic system of view modules, that are built on top of 
+a generalized KV-store model. 
+
+
+%As described above, our approach completely goes without table scans and 
+%only applies operations to the view, locally. Existing approaches for 
+%batch-based view maintenance in warehouses, either compensate for 
+%changes in base tables as scans are in progress~\cite{zhuge:view}, 
+%version base data~\cite{zhang:parallel}, or outright reject that general 
+%join views can be maintained correctly in 
+%KV-stores~\cite{jacobsen:viewmaintenance}. Instead, in our approach, we 
+%materialize join views based on auxiliary views, internally maintained 
+%by the system. 
+
+
+

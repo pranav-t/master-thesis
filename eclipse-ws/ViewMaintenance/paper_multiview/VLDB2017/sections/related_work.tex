@@ -1,0 +1,57 @@
+\section{Related work}
+
+Research of incremental view maintenance technologies started back in 
+the nine-ties. The research was primarily conducted with regard to data 
+warehouses \cite{warehouse1, warehouse2, warehouse3, warehouse4}. While 
+many principles of incremental maintenance still apply today (e.g. how 
+deltas are computed), the underlying architectures have changed 
+significantly. The storage capacity has grown, the degree of 
+distribution increases continuously. Even though, there was research on 
+maintenance of distributed sources \cite{warehouse3}, the warehouse 
+itself was a stand-alone system that could be easily queried to retrieve 
+information. With the amount of analytical data today multi-view 
+optimization becomes a problem. 
+
+Cui and Widom \cite{warehouse1, warehouse2} already examined the usage 
+of auxiliary views. Even if the auxiliary views in our context serve a 
+different purpose (they define a pre-step of the logical computation), 
+they materialized intermediate steps to save processing effort. Already 
+here the trade-off of storage vs. processing capacity can be observed. 
+However, their research \cite{warehouse1, warehouse2} was more related 
+to the problem of lineage tracing and view selection. 
+
+View selection as is also described in \cite{view_selection1, 
+view_selection2} is problem, where an algorithm decides, which sub-set 
+of a set of view candidates should be materialized. Especially in the 
+context of multi-query optimization \cite{multi_query1, multi_query2, 
+multi_query3, multi_query4, multi_query5}, it is widely used. However, 
+view selection is a different problem than multi-view optimization 
+(especially views that are maintained incrementally). In multi-view 
+optimization every view has to be materialized. The problem is not the 
+choice of the correct materialization set-up, but the reduction of 
+processing and storage capacity by resource sharing. 
+
+Even if not the same problem, multi-query optimization (or view 
+selection) can provide instruments to also approach the multi-view 
+problem. For example, the maintenance plan (e.g. the AND-OR query DAG) 
+or a cost model, similar to that of the Volcano optimizer 
+\cite{multi_query4, multi_query5} can be used to find an optimal 
+solution for the multi-view problem. 
+
+A lot of the modern algorithms for sharing results and optimizing in a 
+multi-query environment are based on the map-reduce paradigm 
+\cite{map_reduce1, map_reduce2, map_reduce3, map_reduce4}. Map-reduce 
+provides a very similar data model to our solution -- records are 
+processed in a key-value format. The translation of SQL-statements into 
+basic expressions (like selection, aggregation, join) that can share 
+elements of computation \cite{map_reduce3} is somewhat comparable to our 
+solution. However, the processing style for map-reduce is a 
+batch-oriented strategy. Self-contained sets of records are retrieved, 
+computed and stored back to disk. When discussing the sharing of 
+intermediate results, this problem also reduces to a view selection 
+problem. As already stated, our model favours an incremental strategy.
+As we are dealing with streams of transactions (as opposed to sets of 
+records), optimization algorithms are different. 
+
+
+

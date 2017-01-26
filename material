@@ -1,0 +1,74 @@
+1. hadoop + hbase fully distributed setup
+	-- setting up VMs
+	-- getting familiar with configuration
+	-- getting familiar with basic hadoop and hbase architectures
+	-- getting familiar with basic hbase data processing (directly on the hbase shell)
+
+2. understanding the ViewManagementSystem(VMS)
+
+	-- understanding the properties of the VMS 
+
+		can it be qualified as an SQL on Hadoop System?
+
+		relational? -->  Nope
+		acid - responsibility of the VMS?
+			https://hbase.apache.org/acid-semantics.html .... hbase doesn't support full ACID so does it mean VMS will take care of ensuring ACID. ACID is required for TPC-H.
+
+		oltp/olap? --> OLAP (ad hoc decision support --> BI and SQL Analytics)
+		what kind of queries does it support?
+		what is an example of another existing system in the hadoop ecosystem that does the same/similar job Apache Phoenix/Cloudera Apache Impala/Hortonworks Apache Hive?
+
+	-- 	what made us choose TPC-H ?
+		go through the other TPC benchmarks
+
+	--	setup the VMS on top of the hadoop/hbase system
+
+	-- 	get familiar with VMS API
+
+
+The TPC-H database must be implemented using a commercially available database management system (DBMS)
+and the queries executed via an interface using dynamic SQL. The specification provides for variants of SQL, as
+implementers are not required to have implemented a specific SQL standard in full.
+
+
+
+http://blog.cloudera.com/blog/2016/02/new-sql-benchmarks-apache-impala-incubating-2-3-uniquely-delivers-analytic-database-performance/
+http://wikibon.com/where-are-the-big-data-performance-benchmarks/
+http://www.exasol.com/en/newsroom/blog/10-questions-the-tpc-h-benchmark/
+
+http://researcher.ibm.com/researcher/files/us-aflorat/BenchmarkingSQL-on-Hadoop.pdf
+http://web.ist.utl.pt/paulo.carreira/downloadable/papers/thanopoulou12tpch.pdf
+http://www.tpc.org/tpc_documents_current_versions/pdf/tpc-h_v2.17.1.pdf
+
+https://www.mapr.com/blog/in-depth-look-hbase-architecture
+https://www.mapr.com/blog/guidelines-hbase-schema-design
+http://www.dummies.com/programming/big-data/hadoop/transitioning-from-an-rdbms-model-to-hbase/
+http://hortonworks.com/blog/apache-hbase-region-splitting-and-merging/
+		
+https://www.youtube.com/watch?v=KZps2dzr_u4
+
+https://husnusensoy.wordpress.com/2010/10/22/create-your-own-oracle-tpc-h-playground-on-linux/
+
+http://cdn.oreillystatic.com/en/assets/1/event/119/Bulk%20Loading%20Your%20Big%20Data%20into%20Apache%20HBase,%20a%20Full%20Walkthrough%20Presentation.pdf
+http://blog.cloudera.com/blog/2013/09/how-to-use-hbase-bulk-loading-and-why/
+
+
+CREATE TABLE
+./hbase shell
+create 'part', 'f'
+
+EXTRACT
+Generation of .tbl file from TPC-H dbgen util
+
+TRANSFORM
+./hbase org.apache.hadoop.hbase.mapreduce.ImportTsv '-Dimporttsv.separator=|' -Dimporttsv.columns=HBASE_ROW_KEY,f:partkey,f:name,f:mfgr,f:brand,f:type,f:size,f:container,f:comment,f:retailprice -Dimporttsv.bulk.output=importtsv_output part generated-data/1-x/part.tbl 
+
+LOAD
+./hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles importtsv_output part 
+
+
+kill $(ps aux | grep "NameNode\|SecondaryNameNode\|DataNode\|HMaster\|HQuorumPeer\|HRegionServer\|TaskTracker\|JobTracker" | grep -v 'grep' | awk '{print $2}')
+
+
+
+

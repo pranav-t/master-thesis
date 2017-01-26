@@ -1,0 +1,48 @@
+package de.webdataplatform.parser;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class Test {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+
+		
+		
+		String query8 ="select s_acctbal, s_name, n_name, p_partkey, p_mfgr, s_address, s_phone, s_comment "
+		+"from part, supplier, partsupp, nation, region "
+		+"where p_partkey = ps_partkey "
+		+"and s_suppkey = ps_suppkey "
+		+"and p_size = 15 "
+		+"and p_type like '%BRASS' "
+		+"and s_nationkey = n_nationkey "
+		+"and n_regionkey = r_regionkey "
+		+"and r_name = 'EUROPE' "
+		+"and ps_supplycost = (select min(ps_supplycost) "
+		+"from partsupp, supplier, nation, region "
+		+"where p_partkey = ps_partkey "
+		+"and s_suppkey = ps_suppkey "
+		+"and s_nationkey = n_nationkey "
+		+"and n_regionkey = r_regionkey "
+		+"and r_name = 'EUROPE' "
+		+") "
+		+"order by s_acctbal desc, n_name, s_name, p_partkey; ";
+		
+//		hierarchicalParse(Arrays.asList(query8.split(" ")), "(", ")");
+		
+//		System.out.println(tokenizeString("min(ps_supplycost)yxcv"));
+		
+//		for (String string : ParserUtil.tokenize(query8)) {
+////			System.out.println("X: "+string);
+//		}
+//		System.out.println(TokenUtil.hierarchicalParse(ParserUtil.tokenize(query8), "(", ")"));
+	}
+	
+
+	
+
+}

@@ -1,0 +1,262 @@
+\subsection{Proof of Consistency}
+
+
+Theorem~\ref{theo:strong_consistency} states that a VMS system fulfilling all 
+three requirements achieves at least strong consistency. In the following, we 
+will present a proof for this theorem, which is organized in three stages: we 
+start with proving convergence and then present extensions to also prove weak 
+consistency  and finally strong consistency.
+
+
+
+
+
+\subsubsection{Notation}
+First, we define the following notation for keys, 
+operations on keys, and the ordering of operations. Let $k_x$ denote a key in 
+a base table, where $x \in X = \{1, \dots, m\}$, and $X$ is the 
+table's key range. Further, let an operation on key $k_x$ be defined as 
+$t[k_x]$, and a totally ordered sequence of such operations be denoted by 
+$\langle t_1, t_2, t_{3}, \dots, t_N\rangle$, where $N$ defines the total 
+number of operations on the table in a given timespan. 
+Hence, a generalized sequence of operations on a base table is 
+represented by $\langle t_1[k_{x_1}], t_2[k_{x_2}], \dots, 
+t_n[k_{x_m}]\rangle$, where $k_{x_1}, \dots, k_{x_m} \in X$ can be arbitrarily 
+chosen from the base table's key range for every timestamp. Based on this 
+generalized sequence every other sequence of operations can be derived, e.g. 
+$\langle t_1[k_{1}],t_2[k_{2}],t_3[k_{1}]\rangle$. In some cases, we also want 
+to keep the ordering of operations variable. For that reason, we introduce an 
+index $s_i$ with $i \in \{1, \dots, n\}$. Then we can write the arbitrary 
+sequence as $\langle t_{s_1}[k_{x_1}], t_{s_2}[k_{x_2}], \dots, 
+t_{s_n}[k_{x_n}]\rangle$ with $s_1\neq \dots \neq s_n$. Using this notion, we 
+are capable of representing every possible sequence of update operations in 
+the system. 
+
+The index $t^{(i)}[k_x]$ is used to express a sequence of operations on 
+a single row key (i.e. the time-line). For example, a sequence of 
+operations on row key $k_x$ is denoted as $\langle 
+t^{(1)}[k_x],t^{(2)}[k_x]...,t^{( \omega)}[k_x]\rangle$. The last 
+operation on a particular row key is always denoted with $\omega$. (see 
+Section~\ref{sec:consistency}).
+
+For the proof, we assume such an arbitrary sequence of base table operations
+ and then we show that --- given the requirements in the theorem --- a VMS 
+ system will produce correct view results. Formally, we show that $V_f=View(B_f)$. 
+
+\subsubsection{Convergence}
+\label{sub:proof_convergence}
+As mentioned earlier, every view type defines its own mapping from base table 
+to view table records. Thus, we prove the different cases separately. 
+
+\noindent
+\textit{One-to-one mapping:} \texttt{SELECTION}, \texttt{PROJECTION} 
+views define a one-to-one mapping between base and view table. The row 
+key of the base table is also the row key of the view table. Operations 
+for both view types are idempotent, meaning an operation could be 
+applied several times without changing the result. The view record is 
+always a representation of the last base table operation applied. A 
+correct view record with row key $k$ is defined as the last operation on 
+the row key in the base table key, e.g. $k\leftarrow 
+View(t^{(\omega)}[k])$. The function $View$ calculates the view record 
+(by using the appropriate view definition) and applies the result to the 
+correct view key. A view table converges, if all view records are 
+computed correctly in the last view state. 
+
+We start defining an arbitrary sequence of operations on the base table, 
+shown in Step~\ref{proof:oo_step1}. Clients can update different row 
+keys in the base table, using put or delete operations. Likewise, they 
+can update the same row key multiple times. The update operations of the 
+clients form a particular global order, expressed through $t_1..t_n$. 
+They take the base table from its initial state $B_0$ to its final state 
+$B_f$. In the next step, all update operations get forwarded, causing 
+the ordering of operations to be lost. If we would continue working with 
+an unordered set, convergence of the view will be violated at some 
+point. For this reason, we apply requirement (iii) (,i.e. the time-line 
+requirement) to our equation, as depicted in Step~\ref{proof:oo_step3}. 
+As updates operations do not influence each other (see requirement 
+(ii)), we are able to create a set of sub-sequences. These 
+sub-sequences only consist of updates that have been applied to the same 
+row key. Likewise the sub-sequences contain all operations from the 
+previous step (see requirement (i)). 
+%
+\begin{subequations}
+  \begin{align}
+ S_b&=\langle t_1[k_{x_1}],....,t_n[k_{x_n}] \rangle;\;\;\Big(B_0 \overset{S_b}{\rightarrow}B_f\Big) \label{proof:oo_step1}\\ 
+ S_1&=\langle t^{(1)}[k_{1}],..,t^{(\omega_1)}[k_{1}]\rangle,..,S_m=\langle t^{(1)}[k_{m}],..,t^{(\omega_m)}[k_{m}]\rangle\label{proof:oo_step3}\\
+  S_1&=\langle t^{(\omega_1)}[k_{1}]\rangle,..,S_m=\langle t^{(\omega_m)}[k_{m}]\rangle\label{proof:oo_step4}\\
+ S_v&=\langle t_{s_1}^{(\omega_1)}[k_{1}],..t_{s_n}^{(\omega_m)}[k_{m}]\rangle;\; \Big(V_0\overset{S_v}{\rightarrow}V_f\Big)\label{proof:oo_step5}\\
+ 	V_f&=k_x\leftarrow View(t^{(\omega_x)}[k_x])=View(B_f)\label{proof:oo_step6}
+  \end{align}
+\end{subequations}
+%
+In Step~\ref{proof:oo_step4}, we pick the last element of all 
+sub-sequences and eliminate the rest. As stated above, only the last 
+operation on a particular row key has an influence on the final view 
+state. Again, we observe that the time-line of a row key is vital. If it 
+is broken, e.g. for row key $k_1$, then an operation 
+$t^{(\omega-1)}[k_{1}]$ can be incorporated into the final result and 
+render it incorrect. After the elimination, we unite the operations 
+again in Step~\ref{proof:oo_step5}. The reunion allows the remaining 
+operations to be executed in every possible order (i.e. every operation 
+could be executed in parallel). Finally, the view definition is applied 
+to every operation in $R$. This leads to the correct final view records 
+and hence, to convergence. The \texttt{DELTA} view also defines a 
+one-to-one mapping between base and view records. In contrast to the 
+aforementioned views, the results of the \texttt{DELTA} view do not only 
+relate to the last, but to the two last operations. Therefore, we need 
+to change the last three steps of the proof as follows: 
+%
+\begin{subequations}
+  \begin{align}
+  S_1&=\langle t^{(\omega_1-1)}[k_{1}],t^{(\omega_1)}[k_{1}]\rangle,..,S_m=\langle t^{(\omega_m-1)}[k_{m}],t^{(\omega_m)}[k_{m}]\rangle\\
+   S_v&=\langle t_{s_1}^{(\omega_1-1)}[k_{1}],t_{s_2}^{(\omega_1)}[k_{1}],..t_{s_{n-1}}^{(\omega_m-1)}[k_{m}],t_{s_n}^{(\omega_m)}[k_{m}]\rangle\label{proof:ood_step2}\\
+   &(\forall t_{s_i}^{(\omega_y-1)}\in S_v)(\exists t_{s_j}^{(\omega_y)}\in S_v)\;s_i < s_j;\;\Big(V_0\overset{S_v}{\rightarrow}V_f\Big)\notag\\
+ 	V_f&=k_x\leftarrow View(t^{(\omega_x-1)}[k_x],t^{(\omega_x)}[k_x])=View(B_f)
+  \end{align}
+\end{subequations}
+%
+As can be observed in Step~\ref{proof:ood_step2}, the two last 
+operations of a time-line are included into the final result. However, 
+the sequence can be arbitrarily ordered, but needs to preserve the 
+time-line of both last operations (i.e. $\omega-1$ must always precede 
+$\omega$). Computing $V_f$ leads to the valid final state and the 
+\texttt{DELTA} view converges. 
+
+\noindent
+\textit{Many-to-one mapping:} (\texttt{PRE}-)\texttt{AGGREGATION} and 
+\texttt{INDEX} views define a many-to-one mapping between base and view 
+table. The row key of the view table is the aggregation key. Multiple 
+row keys in the base table can relate to a particular aggregation key. 
+However, a base table row has always only one aggregation key. A correct 
+view record with aggregation key $x$ is defined as the combination of 
+multiple base records $k_{x_1}..k_{x_j}$, related to the particular key. 
+In terms of incremental view maintenance, the correct view record can be 
+defined as a number of last operations, that have been applied to this 
+combination of base records: $x \leftarrow 
+View(t^{(\omega_1)}[k_{x_1}],..,t^{(\omega_j)}[k_{x_j}])$. In case of a 
+\texttt{SUM} view e.g., this resolves to $x \leftarrow 
+f(t^{(\omega_1)}[k_1])+..+f(t^{(\omega_j)}[k_j])$. We start again, 
+defining an arbitrary sequence of base table operations in 
+Step~\ref{proof:mo_step1}. In contrast to the previously handled views, 
+we are now processing $\delta$-operations. We construct a number of $m$ 
+sub- sequences, each containing the $\delta$-operations of one 
+particular base record key. In Step~\ref{proof:mo_step2}, we merge the 
+$\delta$-operations together. All $\delta$- operations add up to form 
+the last transaction as the end result (i.e. $\delta(t^{(1)}[k_{1}])+
+..+\delta(t^{( \omega_1)}[k_{1}])=t^{(\omega_1)}[k_{1}]$). 
+%\begin{subequations}
+%  \begin{align}
+%  \{t_1(k_1),..,t_n(k_1)..t_1(k_n),..,t_n(k_n)\}\\
+% \{\langle t_1(k_1),..,t_n(k_1)\rangle,..\langle t_1(k_n),..,t_n(k_n)\rangle\}\\
+% \{\langle t_n(k_1)\rangle,..\langle t_n(k_n)\rangle\}\\
+% 	x=f(t_n(k_1))+..+f(t_n(k_n))
+%  \end{align}
+%\end{subequations}
+%
+\begin{subequations}
+  \begin{align}
+  S_b&=\langle t_1[k_{x_1}],....,t_n[k_{x_n}] \rangle;\;\Big(B_0 \overset{S_b}{\rightarrow}B_f\Big) \label{proof:mo_step1}\\ 
+ S_1&=\langle \delta(t^{(1)}[k_{1}]),.,\delta(t^{(\omega_1)}[k_{1}])\rangle,..,\label{proof:mo_step2}\\
+ &\hspace{10 mm}S_m=\langle \delta(t^{(1)}[k_{m}]),.,\delta(t^{(\omega_m)}[k_{m}])\rangle\notag\\
+  S_1&=\langle t^{(\omega_1)}[k_{1}]\rangle,..,S_m=\langle t^{(\omega_m)}[k_{m}]\rangle\\
+ S_v&=\langle t_{s_1}^{(\omega_1)}[k_{1}],..t_{s_n}^{(\omega_m)}[k_{m}]\rangle;\;\Big(V_0\overset{S_v}{\rightarrow}V_f\Big)\label{proof:mo_step4}\\
+ 	V_f&=x\leftarrow View(t^{(\omega_{x_1})}[k_{x_1}],.., t^{(\omega_{x_j})}[k_{x_j}])=View(B_f)\label{proof:mo_step5}
+ 	%&\hspace{10 mm}x_1,..,x_j \in \{1,..,m\};\;x_1\neq,..,\neq x_j \notag
+  \end{align}
+\end{subequations}
+%
+Now, we can unite the single sequences as done before. We retrieve a 
+final sequence as shown in Step~\ref{proof:mo_step4}. The operations of 
+this sequence are then applied to the view --- simultaneously they are 
+grouped and stored according to their aggregation key. The final view 
+records are calculated correctly, as depicted in 
+Step~\ref{proof:mo_step5}, which causes the aggregation view to 
+converge. 
+
+\textit{Many-to-many mapping:} (\texttt{REVERSE}-)\texttt{JOIN} views 
+define a many-to-many mapping between base and view table. The row key 
+of the view table is a composite key of both join tables' row key. 
+Multiple records of both base tables form a set of multiple view records 
+in the view table. Since the joining of tables takes place in the 
+\texttt{REVERSE JOIN} view, we prove convergence only for this view 
+type. A \texttt{REVERSE JOIN} view has a structure that is similar to an 
+aggregation view. The row key of the \texttt{REVERSE JOIN} view is the 
+join key of both tables. All base table records are grouped according to 
+this join key. But in contrast to an aggregation view the 
+\texttt{REVERSE JOIN} view combines two base tables to create one view 
+table. A correct view record with join key $x$ is defined as a 
+combination of operations on keys $k_1..k_n$ from join table $A$ and 
+operations on keys $l_1..l_p$ from join table $B$. In order to represent 
+both keys we introduce an additional variable $z_1,..,z_n \in 
+\{k_1,..,k_m, l_1,..,l_p\}$. Then, the correct view record is defined 
+as: $x \leftarrow View(t^{(\omega_1)}[z_1], ..,t^{(\omega_j)}[z_j])$. 
+We start with a sequence of arbitrary client updates to both base 
+tables, as depicted in Step~\ref{proof:mm_step1}. Then, the order of 
+updates is lost and the time-line requirement is realized in 
+Step~\ref{proof:mm_step2}. 
+%
+\begin{subequations}
+  \begin{align}
+  S_b&=\langle t_1[z_1],..,t_n[z_n]\rangle;\;\Big(B_0 \overset{S_b}{\rightarrow}B_f\Big)\label{proof:mm_step1}\\ 
+ S_1&=\langle \delta(t^{(1)}[k_{1}]),..,\delta(t^{(\omega_1)}[k_{1}])\rangle,..,S_m,..,S_{m+1},..\label{proof:mm_step2}\\ 
+&\hspace{10 mm}S_{m+p}=\langle \delta(t^{(1)}[l_{p}]),..,\delta(t^{(\omega_p)}[l_{p}])\rangle\notag\\
+  S_1&=\langle t^{(\omega_{k_1})}[k_{1}]\rangle,.., S_m=\langle t^{(\omega_{k_m})}[k_{m}]\rangle,..,\\
+ &\hspace{10 mm}S_{m+1}=\langle t^{(\omega_{l_1})}[l_{1}]\rangle,..,S_{m+p}=\langle t^{(\omega_{l_p})}[l_{p}]\rangle\notag\\
+ S_v&=\langle t^{(\omega_{k_1})}[k_{1}],..t^{(\omega_{k_m})}[k_{m}],\\
+ &\hspace{10 mm}t^{(\omega_{l_1})}[l_{1}],..,t^{(\omega_{l_p})}[l_{p}] \rangle;\;\Big(V_0\overset{S_v}{\rightarrow}V_f\Big)\label{proof:mm_step3}\\
+ 	V_f&=x\leftarrow View(t^{(\omega_{z_1})}[z_1],.., t^{(\omega_{z_j})}[z_j])=View(B_f)\label{proof:mm_step4}
+ 	%&\hspace{10 mm}z_1,..,z_j \in \{k_1,..,k_m,l_1,..,l_p\}; z_1\neq,..,\neq z_j ;\; \notag
+  \end{align}
+\end{subequations}
+%
+We eliminate all but the last operations $\omega$ and reunite the 
+operations in Step~\ref{proof:mm_step3}. This leads to the final 
+Step~\ref{proof:mm_step4}, where the operations are applied to the view 
+record. Since the view records are calculated correctly (i.e. only the 
+last operations of the row keys are included) we conclude that the view 
+converges. 
+
+\subsubsection{Weak consistency} 
+\label{sub:proof_weak}
+
+Weak consistency has been defined as follows: Weak consistency is given 
+if the view converges and all intermediary view states are valid, 
+meaning they can be derived from one of the base states with 
+$V_j=View(B_i)$. As we already proved convergence, we need show that all 
+the intermediary view states are correct likewise. We start again with 
+an arbitrary sequence of operations in Step~\ref{proofw:oo_step1}. In 
+order to generate an intermediate base state, we cut the sequence at any 
+point before an operation $t_a$, with $1 < a < n$. After the ordering is 
+lost, we apply the time-line consistency. But in contrast to before, we 
+are not capable of processing the complete time-line (i.e. 
+$(1)..(\omega)$). Instead, we process the time-line until an 
+intermediary element $\alpha_x \leq \omega_x$. 
+%
+\begin{subequations}
+  \begin{align}
+  S_b&=\langle t_1[k_{x_1}],....,t_n[k_{x_n}] \rangle;\;\Big(B_0 \overset{S_b}{\rightarrow}B_{a}\Big)\label{proofw:oo_step1}\\
+ S_1&=\langle t^{(1)}[k_{1}],..,t^{(\alpha_1)}[k_{1}]\rangle,..,S_m=\langle t^{(1)}[k_{m}],..,t^{(\alpha_m)}[k_{m}]\rangle\\
+ S_v&=\langle t_{s_1}^{(1)}[k_{1}],..t_{s_i}^{(\alpha_1)}[k_{1}],..,t_{s_j}^{(1)}[k_{m}],..,t_{s_a}^{(\alpha_m)}[k_{m}]\rangle;\;\Big(V_0\overset{S_v}{\rightarrow}V_a\Big)\\
+ (\forall& t_{s_1}^{(\lambda_1)}[k_{x_1}] \in S_v)(\forall t_{s_2}^{(\lambda_2)}[k_{x_2}] \in S_v):(x_1=x_2)\;\land\;(\lambda_1<\lambda_2) \Rightarrow s_1 < s_2\notag\\
+V_{a}&=k_x\leftarrow View(t^{(\alpha_x)}[k_x])=View(B_{\alpha})
+  \end{align}
+\end{subequations}
+
+
+\subsubsection{Strong consistency}
+\label{sub:proof_strong}
+
+Strong consistency has been defined as follows: Weak consistency is 
+achieved and the following conditions hold true. All pairs of view 
+states $V_i$ and $V_j$ that are in a relation $V_i \leq V_j$ are derived 
+from base states $Bi$ and $B_j$ that are also in a relation $B_i \leq 
+B_j$. Since weak consistency is already proven, we only need to prove 
+the statement $V_i \leq V_j \Rightarrow B_i \leq B_j$. If this statement 
+is negated, then only two of the following cases can occur: Either $V_i 
+\leq V_j \Rightarrow B_i \parallel B_j$ or $V_i \leq V_j \Rightarrow B_i 
+\geq B_j$. Both cases can only be constructed by breaking the record 
+time-line. To be precise: At least one record has to exists, whose 
+time-line is broken. Formally, we demand $ (\exists t_l \in B_i)(\forall 
+t_k \in B_j):(r(t_l)=r(t_k))\land(l > k) $. Because requirement (iv) 
+prevents the breaking of time-lines, we conclude that both cases are not 
+possible. Thus, we have proven strong consistency by contradiction. 

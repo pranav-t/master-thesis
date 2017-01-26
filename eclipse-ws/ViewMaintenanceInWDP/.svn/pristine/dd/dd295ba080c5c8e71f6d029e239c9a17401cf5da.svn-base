@@ -1,0 +1,419 @@
+package de.webdataplatform.client;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
+import de.webdataplatform.log.Log;
+import de.webdataplatform.settings.NetworkConfig;
+import de.webdataplatform.settings.SystemConfig;
+import de.webdataplatform.settings.TableConfig;
+import de.webdataplatform.settings.TableDefinition;
+import de.webdataplatform.settings.Task;
+import de.webdataplatform.settings.TaskConfig;
+import de.webdataplatform.settings.TaskFill;
+
+public class BasetableClient {
+
+
+	
+	
+	private static Log log;
+
+	private static HbaseClient hbaseClient;
+	
+	public static void main(String[] args) {
+		
+		
+		log = new Log("bt-client.log");	
+		
+		SystemConfig.load(log);
+		NetworkConfig.load(log);
+		TableConfig.load(log);
+		TaskConfig.load(log);
+		
+		hbaseClient = new HbaseClient(log);
+		
+		// Console mode
+		if(args == null || args.length == 0){
+		
+			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+			String input;
+		
+			boolean esc = false;
+			while (!esc) {
+				try {
+					System.out.print("Enter input: ");
+					input = br.readLine();
+					String[] command = input.split(" ");
+		
+					if (command[0].equals("quit")) {
+						esc = true;
+					}else{
+						readCommand(command);
+					}
+	
+					
+				}catch (IOException e) {
+					e.printStackTrace();
+				}catch (Exception generalEx) {
+					generalEx.printStackTrace();
+					System.out.println("Error in command");
+				}
+				
+			}
+		}
+		// Execution mode		
+		if(args != null || args.length > 0){
+			
+			readCommand(args);
+		}
+		
+		
+	}
+	
+	
+	public static void readCommand(String[] command){
+		
+		if (command[0].equals("tables")) {
+			
+			showTables();
+
+		}else if (command[0].equals("create")||command[0].equals("reload")||command[0].equals("delete")||command[0].equals("record")||command[0].equals("fill")||command[0].equals("execute")) {
+			
+			executeCommand(command);
+
+		}else if (command[0].equals("tasks")) {
+			
+			showTasks();
+
+		}else{
+			System.out.println("command not found, try the following:");
+			System.out.println("--tables");
+			System.out.println("--create [tablename] [numRegions]");
+			System.out.println("--reload [tablename] [numRegions]");
+			System.out.println("--delete [tablename]");
+			System.out.println("--fill [tablename] [numClients] [numOperations] [distribution]");
+			System.out.println("--record [tablename] [operation]");
+			System.out.println("--tasks");
+			System.out.println("--execute [taskname]");
+			System.out.println("--execute all");
+			System.out.println("--quit");
+
+		}
+		
+	}
+	
+	
+	
+	public static void showTables(){
+		
+		for (TableDefinition tableDefinition : TableConfig.TABLEDEFINITIONS) {
+			log.info(HbaseClient.class, tableDefinition.toString());
+		}
+		
+		
+		
+	}
+	
+	public static void showTasks(){
+		
+		for (Task task : TaskConfig.TASKS) {
+			log.info(HbaseClient.class, task.toString());
+		}
+	}
+	
+	public static void executeCommand(String[] command){
+		
+		
+		
+		if(command[0].equals("create")){
+			
+			
+			if(command.length == 1){
+				log.info(HbaseClient.class, "create [tablename] [numRegions] ");
+				return;
+			}	
+			
+			int numRegions;
+			
+			try{
+				TableDefinition tableDef = TableConfig.getTableDefinition(command[1]);
+				if(tableDef ==  null){
+					log.info(HbaseClient.class, "no table definition found");
+					return;
+				}
+				numRegions = Integer.parseInt(command[2]);
+				hbaseClient.createRangeSplitTable(tableDef, numRegions);
+			
+			} catch (Exception e) {
+
+				log.error(HbaseClient.class, e);
+			}
+			
+		}
+		
+		if(command[0].equals("reload")){
+			
+			
+			if(command.length == 1){
+				log.info(HbaseClient.class, "reload [tablename] [numRegions] ");
+				return;
+			}	
+			
+			int numRegions;
+			
+			try{
+				TableDefinition tableDef = TableConfig.getTableDefinition(command[1]);
+				if(tableDef ==  null){
+					log.info(HbaseClient.class, "no table definition found");
+					return;
+				}
+				hbaseClient.deleteTable(tableDef.getName());
+				numRegions = Integer.parseInt(command[2]);
+				hbaseClient.createRangeSplitTable(tableDef, numRegions);
+			
+			} catch (Exception e) {
+
+				log.error(HbaseClient.class, e);
+			}
+			
+		}
+		
+		if(command[0].equals("delete")){
+			
+			if(command.length == 1){
+				log.info(HbaseClient.class, "delete [tablename]");
+				return;
+			}	
+			
+			try{
+				TableDefinition tableDef = TableConfig.getTableDefinition(command[1]);
+				if(tableDef ==  null){
+					log.info(HbaseClient.class, "no table definition found");
+					return;
+				}
+				hbaseClient.deleteTable(tableDef.getName());
+			
+			} catch (Exception e) {
+
+				log.error(HbaseClient.class, e);
+			}
+			
+		}
+		
+		if(command[0].equals("fill")){
+			
+			
+			if(command.length == 1){
+				log.info(HbaseClient.class, "fill [tablename] [numClients] [numOperations] [distribution]");
+				return;
+			}
+			int numClients;
+			int numOperations;
+			String distribution;
+			
+			
+			
+			try{
+				
+				TableDefinition tableDef = TableConfig.getTableDefinition(command[1]);
+				if(tableDef ==  null){
+					log.info(HbaseClient.class, "no table definition found");
+					return;
+				}
+				numClients = Integer.parseInt(command[2]);
+				numOperations = Integer.parseInt(command[3]);
+				distribution = command[4];
+				
+				TaskFill taskFill = new TaskFill("task", command[1], "fill", numClients, numOperations, distribution);
+				executeTask(taskFill);
+			
+			} catch (Exception e) {
+
+				log.error(HbaseClient.class, e);
+			}			
+			
+		}else if(command[0].equals("execute")){
+			
+			if(command.length == 1){
+				log.info(HbaseClient.class, "execute [taskname]");
+				return;
+			}	
+			
+			if(command[1].equals("all")){
+				
+				for (String name : TaskConfig.getTaskGroups().keySet()) {
+					
+					executeTasks(TaskConfig.getTaskGroups().get(name));
+				}				
+				
+			}else{
+				
+				if(TaskConfig.getTask(command[1]).size() == 0){
+					
+					log.info(HbaseClient.class, "no task found for "+command[1]);
+				}else executeTasks(TaskConfig.getTask(command[1]));
+				
+				
+			}
+
+			
+		}else if(command[0].equals("record")){
+			
+			if(command.length == 1){
+				log.info(HbaseClient.class, "record [tablename] [operation]");
+				return;
+			}	
+			
+			if(command[2].equals("insert")){
+				
+				try{
+
+					hbaseClient.executePut(command[1]);
+				
+				} catch (Exception e) {
+
+					log.error(HbaseClient.class, e);
+				}		
+				
+			}
+			if(command[2].equals("update")){
+				try{
+
+					hbaseClient.executeUpdate(command[1]);
+				
+				} catch (Exception e) {
+
+					log.error(HbaseClient.class, e);
+				}		
+							
+				
+			}
+			if(command[2].equals("delete")){
+				try{
+
+					hbaseClient.executeDelete(command[1]);
+				
+				} catch (Exception e) {
+
+					log.error(HbaseClient.class, e);
+				}		
+						
+				
+			}
+
+			
+		}
+		
+		
+	}
+
+
+
+	
+
+	
+	public static void executeTask(Task task){
+		
+		List<Task> tasks = new ArrayList<Task>();
+		
+		tasks.add(task);
+		executeTasks(tasks);
+		
+	}
+	
+	public static void executeTasks(List<Task> tasks) {
+
+		log.info(HbaseClient.class, "executing list of tasks "+tasks);
+
+		List<Task> runningTasks = new ArrayList<Task>();
+		
+		for (Task task : tasks) {
+			
+			if(task instanceof TaskFill){
+				
+				int x = 0;
+				TaskFill taskFill = (TaskFill)task;
+				
+				while (x < taskFill.getNumClients()) {
+					
+					
+					log.info(HbaseClient.class, "starting client"+x);
+					
+					TaskFill taskFillTemp = taskFill.copy();
+					taskFillTemp.setName("client"+x);
+					runningTasks.add(taskFillTemp);
+					
+					Thread t = new Thread(taskFillTemp);
+					t.start();
+					x++;
+					
+					
+				}
+			}else{
+				
+				runningTasks.add(task);
+				
+				Thread t = new Thread(task);
+				t.run();
+			}
+		}
+		
+		
+		checkTasksSuccessful(runningTasks);
+			
+		log.info(HbaseClient.class, "tasks successfully executed");	
+		
+		System.exit(0);
+	
+	}
+
+	public static void checkTasksSuccessful(List<Task> tasks){
+		
+		boolean successful=false;
+		log.info(HbaseClient.class, "waiting for tasks to finish....");	
+		while(!successful){
+			
+			successful=true;
+			for (Task task : tasks) {
+				
+				if(!task.isComplete()){
+					successful = false;
+				}
+			}
+			
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
+
+	
+	
+	
+	
+	
+
+
+
+
+	public Log getLog() {
+		return log;
+	}
+
+
+	public void setLog(Log log) {
+		this.log = log;
+	}
+	
+
+
+
+}

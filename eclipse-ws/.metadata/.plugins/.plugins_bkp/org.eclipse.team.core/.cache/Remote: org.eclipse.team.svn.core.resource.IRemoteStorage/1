@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<setup>
+<taskconfig>			
+	    <task>
+	        <name>task1</name>
+	        <table>bt1</table>
+			<type>fill</type>
+		    <numOperations>5001</numOperations>
+			<distribution>uniform</distribution>
+	    </task>
+	    
+	    <task>
+	        <name>task2</name>
+	        <table>orders</table>
+			<type>file</type>
+		    <fileName>orders.tbl</fileName>
+		    <count>1500000</count>
+		    <start>5000</start>
+		    <end>10000</end>
+	    </task>
+	    
+<!-- 	     <task> -->
+<!-- 	        <name>task1</name> -->
+<!-- 	        <table>orders</table> -->
+<!-- 			<type>fillfro</type> -->
+<!-- 			<fileName>orders.tbl</fileName> -->
+<!-- 	    </task> -->
+	    
+	    
+      <!--  <task>
+            <name>task2</name>
+            <table>bt2</table>
+            <type>fill</type>
+            <numClients>2</numClients>
+            <numOperations>5001</numOperations>
+            <distribution>uniform</distribution>
+        </task>-->
+</taskconfig>	  
+</setup>

@@ -1,0 +1,457 @@
+package de.webdataplatform.regionserver;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Queue;
+import java.util.Set;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.atomic.AtomicLong;
+
+import de.webdataplatform.basetable.BaseTableOperation;
+import de.webdataplatform.basetable.BaseTableUpdate;
+import de.webdataplatform.log.Log;
+import de.webdataplatform.log.StatisticLog;
+import de.webdataplatform.master.EventProcessor;
+import de.webdataplatform.master.MetaData;
+import de.webdataplatform.message.MessageUtil;
+import de.webdataplatform.message.Server;
+import de.webdataplatform.message.ServerMessageHandlerFactory;
+import de.webdataplatform.message.ServerUpdateHandlerFactory;
+import de.webdataplatform.message.SystemID;
+import de.webdataplatform.parser.Parser;
+import de.webdataplatform.query.Query;
+import de.webdataplatform.query.QueryManager;
+import de.webdataplatform.query.QueryTable;
+import de.webdataplatform.settings.SystemConfig;
+import de.webdataplatform.system.Component;
+import de.webdataplatform.system.StatisticsElement;
+import de.webdataplatform.view.ViewUpdate;
+import de.webdataplatform.viewmanager.ViewManager;
+import de.webdataplatform.zookeeper.IZooKeeperService;
+import de.webdataplatform.zookeeper.ZookeeperService;
+
+public class RegionServer implements Runnable{
+
+	
+	// Identification
+	private SystemID systemID;
+	
+	private SystemID masterID;
+	
+	
+	// Data structures
+	private MetaData metaData;
+	
+//	private AtomicLong updatesAssinged;
+//	
+//	private AtomicLong updatesSent;
+	
+	private StatisticsElement statisticsAssigned;
+	
+	private StatisticsElement statisticsSent;
+	
+	private StatisticsElement statisticReceived;
+	
+	
+	private Queue<String> incomingUpdates;
+	
+	private Queue<String> incomingMessages;
+	
+	private Map<String, Set<ViewManager>> markers;
+//	
+//	private Map<SystemID, List<Integer>> statusReports;
+	
+
+	//Message components
+	private Server messageServer;
+
+	private Server updateServer;
+	
+	
+	// Subcomponents
+	private RSController rsController;
+	
+	private EventProcessor eventProcessor;
+	
+	private IWALReader walReader;
+	
+	private UpdateAssigner updateAssigner;
+	
+	private UpdateDistributor updateDistributor;
+	
+	private QueryManager queryManager;
+	
+	
+	private IZooKeeperService zooKeeperService;
+	
+	
+	
+
+
+	
+	
+	private Log log;
+	
+	public RegionServer() {
+		super();
+	}
+
+	public RegionServer(Log log, String name, String ip, int messagePort, int updatePort){
+		
+        this.incomingUpdates = new LinkedBlockingQueue<String>();
+        
+        
+		systemID = new SystemID(Component.regionServer, name, ip, messagePort, updatePort);
+
+        masterID = new SystemID();
+
+        this.log = log;
+        
+	}
+	
+	public void initialize(){
+		
+
+        StatisticLog.name = systemID.getName();
+        StatisticLog.targetDirectory = "logs/";
+        
+        log.info(this.getClass(),"initializing new RegionServer with config");
+        log.info(this.getClass(),"name: "+systemID.getName());
+        log.info(this.getClass(),"address: "+systemID.getIp());
+        log.info(this.getClass(),"port messages: "+systemID.getMessagePort());
+        log.info(this.getClass(),"port update: "+systemID.getUpdatePort());
+        log.info(this.getClass(),"updates in queue: "+incomingUpdates.size());
+        log.info(this.getClass(),"-----------");
+        
+        
+        log.info(this.getClass(),"creating data structures ");
+        
+        metaData = new MetaData();
+        
+        statisticsAssigned = new StatisticsElement();
+        
+        statisticsSent = new StatisticsElement();
+        
+        statisticReceived = new StatisticsElement();
+
+        incomingMessages = new ConcurrentLinkedQueue<String>();
+
+        markers=new HashMap<String, Set<ViewManager>>();
+        
+		
+        
+
+        log.info(this.getClass(),"creating message components ");
+        
+        messageServer = new Server(new ServerMessageHandlerFactory(log, incomingMessages), systemID.getMessagePort());
+		
+        log.info(this.getClass(),"creating backflow components ");
+        
+        updateServer = new Server(new ServerUpdateHandlerFactory(log, incomingUpdates, statisticReceived), systemID.getUpdatePort());
+		
+		
+        log.info(this.getClass(),"creating subcomponents ");
+		
+
+		updateAssigner = new UpdateAssigner(log, new ArrayList<ViewManager>());
+		
+		updateDistributor = new UpdateDistributor(log, systemID, statisticsSent, SystemConfig.REGIONSERVER_SENDINGTHREADS);
+		
+		queryManager = new QueryManager(log);
+		
+		rsController = new RSController(log, this);
+
+		eventProcessor = new EventProcessor(log, metaData, rsController);
+		
+
+		log.info(this.getClass(),"connecting to zookeeper");
+		
+		List<String> trigger = new ArrayList<String>();
+		
+		trigger.add(SystemConfig.REGIONSERVER_ZOOKEEPERPATH);
+		
+		trigger.add(SystemConfig.VIEWMANAGER_ZOOKEEPERPATH);
+		
+		zooKeeperService = new ZookeeperService(log, trigger, eventProcessor);
+
+		
+		walReader = new WALReader(log, systemID.getName(), systemID.getIp(), incomingUpdates);
+
+		
+        log.info(this.getClass(),"initializing controller ");
+        
+        Thread trsm = new Thread(rsController);
+        
+        trsm.start();
+        
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+
+	private long lastMeasure = new Date().getTime();
+
+	
+	@Override
+	public void run() {
+
+		
+		
+		while(true){
+			
+			try{
+			
+			
+			long currentTime = new Date().getTime();
+			if((currentTime - lastMeasure) > 1000){
+				lastMeasure = currentTime;
+
+				statisticsAssigned.measureTroughput();
+				statisticsSent.measureTroughput();
+				statisticsSent.measureLatency();
+
+			}
+			
+			int numOfVms = updateAssigner.numOfVms();
+			if(numOfVms != 0 && updateDistributor.getQueueSize() < 5000){
+			
+					String update = incomingUpdates.poll();
+//					BaseTableOperation bto = incomingUpdates.poll();
+					if(update != null){
+						
+							BaseTableOperation bto = new BaseTableOperation(log, update);
+							log.info(this.getClass(),"update: "+bto);
+							
+							List<Query> queries = queryManager.getAffectedQueries(bto.getBaseTable(), false);
+							
+							if(queries.size() > 0){
+
+								List<ViewUpdate> viewUpdates = queries.get(0).getQueryDAG().getViewUpdates(bto.getBaseTable());
+								
+								BaseTableUpdate btu = new BaseTableUpdate(bto);
+								
+								
+								
+								
+								
+								try {
+									
+									
+									if(btu.isUpdate()){
+									
+									
+										log.info(this.getClass(),"Forwarding update");
+										BaseTableUpdate btu1 = btu.splitUpdate().get(0);
+										BaseTableUpdate btu2 = btu.splitUpdate().get(1);
+										
+										String key = viewUpdates.get(0).getViewOperation().getViewRecordKey(btu1);
+										ViewManager viewManager = updateAssigner.assignUpdate(key);
+										statisticsAssigned.recordUpdate();
+										
+										log.info(this.getClass(),"key: "+key+" assigned to: "+viewManager.getSystemID().getName());
+										BaseTableOperation bto1 = new BaseTableOperation(btu1.getRecord(), btu1.getOperationType(), btu1.getSender());
+										updateDistributor.queueUpdate(new AssignedUpdate(viewManager.getSystemID(), bto1));
+										
+										key = viewUpdates.get(0).getViewOperation().getViewRecordKey(btu2);
+										viewManager = updateAssigner.assignUpdate(key);
+										statisticsAssigned.recordUpdate();
+										
+										log.info(this.getClass(),"key: "+key+" assigned to: "+viewManager.getSystemID().getName());
+										BaseTableOperation bto2 = new BaseTableOperation(btu2.getRecord(), btu2.getOperationType(), btu2.getSender());
+										updateDistributor.queueUpdate(new AssignedUpdate(viewManager.getSystemID(), bto2));
+									
+									}else{
+									
+										String key = viewUpdates.get(0).getViewOperation().getViewRecordKey(btu);
+										ViewManager viewManager = updateAssigner.assignUpdate(key);
+										statisticsAssigned.recordUpdate();
+										log.info(this.getClass(),"key: "+key+" assigned to: "+viewManager.getSystemID().getName());
+										updateDistributor.queueUpdate(new AssignedUpdate(viewManager.getSystemID(), bto));
+									
+									}
+									
+									log.info(this.getClass(),"-------------------------------------");
+									
+								} catch (NoQueueForViewManagerException e) {
+									
+									log.error(this.getClass(),e);
+								} 
+							}else{
+								log.info(this.getClass(),"no query defined over base table update");
+							}
+
+
+							
+
+							
+
+						
+					}
+			}
+
+			
+			}catch(Exception e){
+				log.error(this.getClass(), e);
+			}
+			
+		}
+		
+		
+		
+	}
+
+
+	public UpdateAssigner getUpdateAssigner() {
+		return updateAssigner;
+	}
+
+	public void setUpdateAssigner(UpdateAssigner updateAssigner) {
+		this.updateAssigner = updateAssigner;
+	}
+
+	public UpdateDistributor getUpdateDistributor() {
+		return updateDistributor;
+	}
+
+	public void setUpdateDistributor(UpdateDistributor updateDistributor) {
+		this.updateDistributor = updateDistributor;
+	}
+
+	public Queue<String> getIncomingUpdates() {
+		return incomingUpdates;
+	}
+
+	public void setIncomingUpdates(Queue<String> incomingUpdates) {
+		this.incomingUpdates = incomingUpdates;
+	}
+
+	public RSController getRsController() {
+		return rsController;
+	}
+
+	public void setRsController(RSController rsController) {
+		this.rsController = rsController;
+	}
+
+	public Server getMessageServer() {
+		return messageServer;
+	}
+
+	public void setMessageServer(Server messageServer) {
+		this.messageServer = messageServer;
+	}
+
+	public Queue<String> getIncomingMessages() {
+		return incomingMessages;
+	}
+
+	public void setIncomingMessages(Queue<String> incomingMessages) {
+		this.incomingMessages = incomingMessages;
+	}
+
+
+
+
+	public IZooKeeperService getZooKeeperService() {
+		return zooKeeperService;
+	}
+
+	public void setZooKeeperService(IZooKeeperService zooKeeperService) {
+		this.zooKeeperService = zooKeeperService;
+	}
+
+	public SystemID getSystemID() {
+		return systemID;
+	}
+
+	public void setSystemID(SystemID systemID) {
+		this.systemID = systemID;
+	}
+
+
+
+
+	
+	
+
+	public IWALReader getWalReader() {
+		return walReader;
+	}
+
+	public SystemID getMasterID() {
+		return masterID;
+	}
+
+	public void setMasterID(SystemID masterID) {
+		this.masterID = masterID;
+	}
+
+	public void setWalReader(IWALReader walReader) {
+		this.walReader = walReader;
+	}
+
+
+
+	public QueryManager getQueryManager() {
+		return queryManager;
+	}
+
+	public void setQueryManager(QueryManager queryManager) {
+		this.queryManager = queryManager;
+	}
+
+
+	public Server getUpdateServer() {
+		return updateServer;
+	}
+
+	public void setUpdateServer(Server updateServer) {
+		this.updateServer = updateServer;
+	}
+
+	public MetaData getMetaData() {
+		return metaData;
+	}
+
+	public void setMetaData(MetaData metaData) {
+		this.metaData = metaData;
+	}
+
+
+	public Map<String, Set<ViewManager>> getMarkers() {
+		return markers;
+	}
+
+	public void setMarkers(Map<String, Set<ViewManager>> markers) {
+		this.markers = markers;
+	}
+
+	public StatisticsElement getStatisticsAssigned() {
+		return statisticsAssigned;
+	}
+
+	public void setStatisticsAssigned(StatisticsElement statisticsAssigned) {
+		this.statisticsAssigned = statisticsAssigned;
+	}
+
+	public StatisticsElement getStatisticsSent() {
+		return statisticsSent;
+	}
+
+	public void setStatisticsSent(StatisticsElement statisticsSent) {
+		this.statisticsSent = statisticsSent;
+	}
+
+	
+	
+
+}

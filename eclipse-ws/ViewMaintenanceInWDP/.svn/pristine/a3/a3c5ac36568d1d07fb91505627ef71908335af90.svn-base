@@ -1,0 +1,880 @@
+package de.webdataplatform.graph;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import de.webdataplatform.basetable.BaseTable;
+import de.webdataplatform.query.Cluster;
+import de.webdataplatform.query.ViewExpression;
+import de.webdataplatform.system.Table;
+import de.webdataplatform.view.ViewTable;
+import de.webdataplatform.view.ViewUpdate;
+import de.webdataplatform.view.operation.PreAggregation;
+import de.webdataplatform.view.operation.ReverseJoin;
+import de.webdataplatform.view.operation.Source;
+import de.webdataplatform.view.operation.ViewOperation;
+
+/**
+ * @author Jan Adler
+ *
+ */
+/**
+ * @author Jan Adler
+ *
+ */
+/**
+ * @author Jan Adler
+ *
+ */
+public class Graph {
+
+
+//	private List<Node> startingPoints=new ArrayList<Node>();
+	
+	private List<Node> nodes=new ArrayList<Node>();
+	private List<Edge> edges= new ArrayList<Edge>();
+	
+
+	public String toString(){
+		
+		String result="Graph[\n";
+		result+="Nodes{\n";
+		
+		for (Node node : getTableNodes()) {
+//			System.out.println("inputNode: "+tableNode);
+			result += node.toString()+":"+traverse(node, BACKWARD, Node.OPERATION_NODE, 0, 0)+"\n";
+//			System.out.println("-------->");
+		}
+		result+="};\nEdges{\n";
+		
+		for (Edge edge : this.edges) {
+			result += edge.toString()+"\n";
+		}
+		
+		result+="}]";
+		return result;
+		
+	}
+	
+	
+	
+	public String toString(Node node){
+		
+		String result="";
+		//Node node = startingPoints.get(0);
+		result += "["+node.toString()+"]";
+		List<Edge> outgoingEdges = outgoingEdges(node);
+		
+		if(outgoingEdges.size() > 0){
+			
+			int i = 0;
+			for (Edge edge : outgoingEdges) {
+				if(outgoingEdges.size() > 1)result += "{";
+				result += "--"+edge.toString()+"-->"+toString(edge.getDestination());
+				if(outgoingEdges.size() > 1)result += "}";
+				if((i+1) < outgoingEdges.size()){
+					result += "||";
+				}
+				i++;
+			}
+			
+		}
+		
+		return result;
+		
+	}
+//	public String toFlowString(){
+//		
+//		String result="Graph[\n";
+//		result+="Nodes{\n";
+//		
+//		for (Node tableNode : getTableNodes()) {
+//			
+//			int flow = 0;
+//			
+//			if(((TableNode)tableNode).getTable() instanceof BaseTable){
+//				
+//				Edge edge = outgoingEdges(tableNode).iterator().next();
+//					
+//				flow = edge.getFlow();
+//				
+//			}else{
+//				
+//				for (Edge edge : ingoingEdges(tableNode)){
+//					
+//					flow += edge.getFlow();
+//				}
+//			}
+//			result += tableNode.toString()+", in-flow:"+flow+", cost:"+tableNode.getCost()+"\n";
+//		}
+//		
+//		result+="}]";
+//		return result;
+//		
+//	}
+	public int getCost(){
+		
+		int cost = 0;
+		for (Node tableNode : getTableNodes()) {
+			
+				
+			cost += tableNode.getCost();
+			
+		}
+	
+		return cost;
+		
+	}
+
+	
+	public Set<Node> getStartingNodes(){
+		
+		Set<Node> result = new HashSet<Node>();
+		
+		for (Edge edge : this.edges) {
+
+			if(edge.getSource() == null)result.add(edge.getDestination()); 
+			
+		}
+
+		return result;
+		
+	}
+	
+	public List<Node> getTableNodes(List<Node> inputSet){
+		
+		List<Node> result = new ArrayList<Node>();
+		
+		for (Node node : inputSet) {
+//			System.out.println("ggg:"+node);
+			if(node instanceof TableNode)result.add(node); 
+			
+		}
+		return result;
+		
+	}
+	
+	public List<Node> getTableNodes(){
+		
+		List<Node> result = new ArrayList<Node>();
+		
+		for (Node node : nodes) {
+//			System.out.println("ggg:"+node);
+			if(node instanceof TableNode)result.add((TableNode)node); 
+			
+		}
+		return result;
+		
+	}
+	
+	public List<Node> getOperationNodes(){
+		
+		List<Node> result = new ArrayList<Node>();
+		
+		for (Node node : nodes) {
+//			System.out.println("ggg:"+node);
+			if(node instanceof OperationNode)result.add((OperationNode)node); 
+			
+		}
+		return result;
+		
+	}
+	
+	public List<Edge> getOperationEdges(){
+		
+		List<Edge> result = new ArrayList<Edge>();
+		
+		for (Edge edge : this.edges) {
+			if(edge.getDestination() instanceof OperationNode){
+				result.add(edge);
+			}
+		}
+		return result;
+	}
+	
+	public List<ViewTable> getViewTables(){
+		
+		List<ViewTable> result = new ArrayList<ViewTable>();
+		for (Node node : getTableNodes()) {
+
+			TableNode tableNode = (TableNode)node;
+			if(tableNode.getTable() instanceof ViewTable){
+				result.add((ViewTable)tableNode.getTable());
+			}
+			
+		}
+		return result;
+		
+	}
+	
+	public List<Table> getBaseTables(){
+		
+		List<Table> result = new ArrayList<Table>();
+		
+		for (Node node : getTableNodes()) {
+
+			TableNode tableNode = (TableNode)node;
+			if(tableNode.getTable() instanceof BaseTable){
+				result.add(tableNode.getTable());
+			}
+			
+		}
+		return result;
+		
+	}
+	
+	public List<TableNode> getBaseNodes(){
+		
+		List<TableNode> result = new ArrayList<TableNode>();
+		
+		for (Node node : getTableNodes()) {
+
+			TableNode tableNode = (TableNode)node;
+			
+			if(tableNode.getTable() instanceof BaseTable)result.add(tableNode);
+
+			
+		}
+		return result;
+		
+	}
+	
+	public List<Table> getTrackedTables(){
+		
+		List<Table> result = new ArrayList<Table>();
+		
+		
+		List<Node> linearList = GraphUtil.kahnsAlgorithm(this);
+		
+		System.out.println("linear list: "+linearList);
+		
+		for (Node node : linearList) {
+
+			
+			if(node instanceof OperationNode){
+				OperationNode operationNode = (OperationNode)node;
+				if(operationNode.getOperation().isRowKeyChanged()){
+						
+						System.out.println("operationNode.getOperation():"+operationNode.getOperation());
+						for (Node nodex : traverse(operationNode, BACKWARD, Node.TABLE_NODE, Node.TABLE_NODE, 1)) {
+							
+							result.add(((TableNode)nodex).getTable());
+						}
+
+				}
+			}
+			
+		}
+		return result;
+		
+	}
+	
+	
+//	public TableNode findUpdatedTable(String updatedTable){
+//		
+//		for (Node node : GraphUtil.kahnsAlgorithm(this)) {
+//			
+//			
+//			if(node instanceof TableNode){
+//				
+//				TableNode tableNode = (TableNode)node;
+//			
+//				if(tableNode.getTable().getTableName().equals(updatedTable)){
+//					return tableNode;
+//				}
+//					
+//					
+//			}
+//				
+//			
+//		}
+//		return null;
+//	}
+	public TableNode findUpdatedTable(String updatedTable){
+		
+		for (Node node : nodes) {
+			
+			
+			if(node instanceof TableNode){
+				
+				TableNode tableNode = (TableNode)node;
+			
+				if(tableNode.getTable().getTableName().equals(updatedTable)){
+					return tableNode;
+				}
+					
+					
+			}
+				
+			
+		}
+		return null;
+	}
+	
+	
+	public List<Node> getZone(String updatedTable){
+		
+		
+		TableNode startNode = findUpdatedTable(updatedTable);
+//		System.out.println("startNode: "+startNode);
+		
+		
+		List<Node> zone = traverse(startNode, FORWARD, Node.ALL, true);
+		zone.remove(0);
+
+		return zone;
+		
+		
+	}
+	
+	
+	Map<String, List<Node>> result = new HashMap<String, List<Node>>();
+	List<Node> visitedNodes = new ArrayList<Node>();
+	int zoneNo;
+	
+	public Map<String, List<Node>> getZones(){
+		
+		result = new HashMap<String, List<Node>>();
+		visitedNodes = new ArrayList<Node>();
+		zoneNo = 0;
+		
+		for (TableNode tableNode : getBaseNodes()) {
+
+			result.put("zone"+zoneNo, new ArrayList<Node>());
+//			zoneNo = getZones(zoneNo,tableNode);
+			getZones(tableNode);
+
+			zoneNo++;
+		}
+		
+		return result;
+		
+	}
+	
+	
+	private void getZones(Node inputNode){
+		
+			if(inputNode == null || visitedNodes.contains(inputNode))return;
+			visitedNodes.add(inputNode);
+			
+			if(inputNode instanceof TableNode){
+				
+				
+				result.get("zone"+zoneNo).add(inputNode);
+				getZones(outgoingNode(inputNode));
+
+				
+			} 
+			
+
+			if(inputNode instanceof OperationNode){
+				
+				OperationNode operationNode = (OperationNode)inputNode;
+
+//				System.out.println("operationNode:"+operationNode);
+//				System.out.println("operationNode:"+operationNode.getOperation().isRowKeyChanged());
+				
+				if(operationNode.getOperation().isRowKeyChanged()){
+					
+					zoneNo++;
+					result.put("zone"+zoneNo, new ArrayList<Node>());
+					
+				}
+				result.get("zone"+zoneNo).add(inputNode);
+				getZones(outgoingNode(inputNode));
+			}
+		
+
+		
+		
+			return;
+		
+		
+	}
+	
+	public void optimizeZone(List<Node> zone){
+		
+		
+		for (Node node : zone) {
+			
+			if(node instanceof TableNode){
+				
+				TableNode tableNode = (TableNode)node;
+				List<Node> nodes = ingoingOperationNodes(tableNode);
+						
+				
+				OperationNode operationNode = (OperationNode)nodes.get(0); 
+				 
+				if(!(operationNode.getOperation() instanceof PreAggregation) && !(operationNode.getOperation() instanceof ReverseJoin) && zone.indexOf(node)!= zone.size()-1){
+					
+					removeNode(tableNode);
+
+				}
+			}
+			
+
+			
+		}
+		
+		
+	}
+	
+	public ViewOperation getFirstOperator(String updatedTable){
+		
+		TableNode tableNode =  findUpdatedTable(updatedTable);
+		
+		OperationNode operationNode = outgoingOperationNode(tableNode);
+		
+		return operationNode.getOperation();
+		
+	}
+	
+	public List<ViewUpdate> getViewUpdates(String updatedTable){
+
+		
+		List<Node> zone = getZone(updatedTable);
+		List<Node> zoneProcessed = new ArrayList<Node>(zone);
+		
+//		System.out.println("UpdatedTable: "+updatedTable);
+//		System.out.println("Zone: "+zone);
+		
+		List<ViewUpdate> viewUpdates = new ArrayList<ViewUpdate>();
+		
+		
+		OperationNode operationNode = null;
+
+		for (Node node : zone) {
+			
+			if(node instanceof OperationNode){
+				operationNode = (OperationNode)node;
+				
+			}
+			
+			if(node instanceof TableNode){
+				
+				TableNode tableNode = (TableNode)node;
+				ViewUpdate viewUpdate = new ViewUpdate((ViewTable)tableNode.getTable(), operationNode.getOperation());
+				viewUpdates.add(viewUpdate);
+				zoneProcessed.remove(operationNode);
+				zoneProcessed.remove(tableNode);
+			}
+	
+		}
+		if(!zoneProcessed.isEmpty()){
+			
+			operationNode = (OperationNode)zoneProcessed.get(0);
+			ViewUpdate viewUpdate = new ViewUpdate(null, operationNode.getOperation());
+			viewUpdates.add(viewUpdate);
+		}
+		
+		
+//		if(viewUpdates.size()>0)viewUpdates.get(viewUpdates.size()-1).setTrackedTable(true);
+		
+		
+		return viewUpdates;
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	public List<Edge> copyEdges(){
+		
+		List<Edge> result = new ArrayList<Edge>();
+		
+		for (Edge edge : this.edges) {
+			result.add(edge);
+		}
+		return result;
+		
+	}
+	
+
+	
+
+	
+	
+	
+
+	
+	/////////TRAVERSE////////////
+
+	
+	public static int FORWARD = 1;
+	public static int BACKWARD = 2;
+	
+
+	public  List<Node> traverse(Node inputNode, int direction, int nodeType, int countType, int depth){
+		
+		 return traverse(inputNode, direction, nodeType, countType, depth, 0, false);
+		
+	}
+	
+	public  List<Node> traverse(Node inputNode, int direction, int nodeType, boolean rowKeyChange){
+		
+		 return traverse(inputNode, direction, nodeType, 0, 0, 0, rowKeyChange);
+		
+	}
+	
+	
+	public  List<Node> traverse(Node inputNode, int direction, int nodeType, int countType, int depth, int count, boolean rowKeyChanged){
+		
+		
+		List<Node> result = new ArrayList<Node>();
+
+		if(depth > 0 && count == depth)return result;
+//		if(rowKeyChange && count == 2)
+		
+		
+
+			if(inputNode instanceof OperationNode){
+				
+				
+				if(nodeType==Node.OPERATION_NODE || nodeType==Node.ALL){
+					result.add(inputNode);
+				}
+				if(depth > 0 && (countType==Node.OPERATION_NODE || countType==Node.ALL)){
+					count++;
+				}
+				if(rowKeyChanged && ((OperationNode)inputNode).getOperation().isRowKeyChanged() && count == 1){
+					return result;
+				}
+				if(rowKeyChanged && ((OperationNode)inputNode).getOperation().isRowKeyChanged() && count == 0){
+					count++;
+				}
+				
+				
+				Set<Node> nodes = null;
+				if(direction == FORWARD)nodes = outgoingNodes(inputNode);
+				if(direction == BACKWARD)nodes = ingoingNodes(inputNode);
+				
+				for (Node node : nodes){
+					if(direction == FORWARD)result.addAll(traverse(node, direction, nodeType, countType, depth, count, rowKeyChanged));
+					if(direction == BACKWARD)result.addAll(0, traverse(node, direction, nodeType, countType, depth, count, rowKeyChanged));
+				}
+			}
+			
+			
+			if(inputNode instanceof TableNode){
+				
+				if(nodeType==Node.TABLE_NODE || nodeType==Node.ALL){
+					result.add(inputNode);
+
+				}
+				if(depth > 0 && (countType==Node.TABLE_NODE || countType==Node.ALL)){
+					count++;
+				}
+				
+				Set<Node> nodes = null;
+				if(direction == FORWARD)nodes = outgoingNodes(inputNode);
+				if(direction == BACKWARD)nodes = ingoingNodes(inputNode);
+				
+				for (Node node : nodes){
+					if(direction == FORWARD)result.addAll(traverse(node, direction, nodeType, countType, depth, count, rowKeyChanged));
+					if(direction == BACKWARD)result.addAll(0, traverse(node, direction, nodeType, countType, depth, count, rowKeyChanged));
+				}
+			}
+
+		
+		return result;
+		
+	}
+	
+	
+
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+	
+	/////////CRUD////////////
+	
+	// inserts a node behind a node
+	public void insertNode(Node insertionPoint, Node insertionNode){
+		
+		for (Edge edge : outgoingEdges(insertionPoint)) {
+			edge.setSource(insertionNode);
+//			Edge newEdge = new Edge(insertionPoint, insertionNode);
+//			addEdge(newEdge);
+		}
+		Edge newEdge = new Edge(insertionPoint, insertionNode);
+		addEdge(newEdge);
+		
+		
+	}
+	
+	// redirects edges from one node to another
+	public void redirectIngoingEdges(Node from, Node to){
+		
+		for (Edge edge : ingoingEdges(from)) {
+			edge.setDestination(to);
+		}
+		
+	}
+	
+	// redirects edges from one node to another
+	public void redirectOutgoingEdges(Node from, Node to){
+		
+		for (Edge edge : outgoingEdges(from)) {
+			edge.setSource(to);
+		}
+		
+	}
+	
+	
+	// removes a node and all its edges from the graph
+	public void removeNode(Node node){
+		
+		List<Edge> ingoingEdges = ingoingEdges(node);
+		List<Edge> outgoingEdges = outgoingEdges(node);	
+
+		
+		for (Edge edge : ingoingEdges) {
+
+			this.edges.remove(edge);
+		}
+		for (Edge edge : outgoingEdges) {
+
+			this.edges.remove(edge);
+		}
+
+		this.nodes.remove(node);
+	}
+	
+
+	
+	
+	
+	
+	/////////INGOING////////////
+	
+
+	/**
+	 *  Ingoing edges to a node from the total graph 
+	 * @param node
+	 * @return ingoing edges
+	 */
+	public List<Edge> ingoingEdges(Node node){
+		
+		List<Edge> result = new ArrayList<Edge>();
+		for (Edge edge : edges) {
+			if(edge.getDestination() != null && edge.getDestination().equals(node)){
+				
+				result.add(edge);
+			}
+		}
+		return result;
+	}
+	
+	
+	
+	/**
+	 * Ingoing edges to a node from a subset of edges 
+	 * @param node
+	 * @param edges - subset to be checked
+	 * @return ingoing edges
+	 */
+	public List<Edge> ingoingEdges(Node node, List<Edge> edges){
+		
+		List<Edge> result = new ArrayList<Edge>();
+		for (Edge edge : edges) {
+			if(edge.getDestination() != null && edge.getDestination().equals(node)){
+				
+				result.add(edge);
+			}
+		}
+		return result;
+	}	
+	
+	
+	/**
+	 * Computes all ingoing operation nodes of a table node
+	 * @param node - table node in question
+	 * @return operation nodes
+	 */
+	public Set<Node> ingoingNodes(Node node){
+		
+		Set<Node> nodes = new HashSet<Node>();
+		
+		for (Edge edge : ingoingEdges(node)) {
+
+			nodes.add(edge.getSource());
+
+			
+		}
+		
+		return nodes;
+	}
+	
+	/**
+	 * Computes all ingoing operation nodes of a table node
+	 * @param node - table node in question
+	 * @return operation nodes
+	 */
+	public List<Node> ingoingOperationNodes(TableNode node){
+		
+		return traverse(node, BACKWARD, Node.OPERATION_NODE, Node.TABLE_NODE, 1);
+	}
+	
+	
+	public List<ViewOperation> ingoingOperations(TableNode tableNode){
+		
+		List<ViewOperation> result = new ArrayList<ViewOperation>();
+			
+		for (Node node : ingoingOperationNodes(tableNode)) {
+			
+			result.add(((OperationNode)node).getOperation());
+			
+		}
+		
+		
+		return result;
+	}		
+
+	
+	
+	
+	/////////OUTGOING////////////
+	
+	/**
+	 * Computes all ingoing operation nodes of a table node
+	 * @param node - table node in question
+	 * @return operation nodes
+	 */
+	public Set<Node> outgoingNodes(Node node){
+		
+		Set<Node> nodes = new HashSet<Node>();
+		
+		for (Edge edge : outgoingEdges(node)) {
+
+			nodes.add(edge.getDestination());
+
+			
+		}
+		
+		return nodes;
+	}
+	
+	/**
+	 *  Outgoing edges to a node from the total graph 
+	 * @param node
+	 * @return outgoing edges
+	 */
+	public List<Edge> outgoingEdges(Node node){
+		
+		List<Edge> result = new ArrayList<Edge>();
+		for (Edge edge : edges) {
+			if(edge.getSource() != null && edge.getSource().equals(node)){
+				
+				result.add(edge);
+			}
+		}
+		return result;
+	}
+
+	
+	/**
+	 *  Outgoing edges to a node from the total graph 
+	 * @param node
+	 * @param edges - subset to be checked
+	 * @return outgoing edges
+	 */
+	public List<Edge> outgoingEdges(Node node, List<Edge> edges){
+		
+		List<Edge> result = new ArrayList<Edge>();
+		for (Edge edge : edges) {
+			if(edge.getSource() != null && edge.getSource().equals(node)){
+				
+				result.add(edge);
+			}
+		}
+		return result;
+	}
+	
+	
+	/**
+	 * Computes all outgoing operation nodes of a table node
+	 * @param node - table node in question
+	 * @return operation nodes
+	 */
+	public OperationNode outgoingOperationNode(TableNode node){
+		
+		if(outgoingEdges(node).size()== 0)return null;
+		return (OperationNode)outgoingEdges(node).get(0).getDestination();
+	}
+	
+	
+	/**
+	 * Computes all outgoing table nodes of an operation node
+	 * @param node - operation node in question
+	 * @return table nodes
+	 */
+	public Node outgoingNode(Node node){
+		
+		if(outgoingEdges(node).size()== 0)return null;
+		return outgoingEdges(node).get(0).getDestination();
+	}
+	
+	
+	/**
+	 * Computes all outgoing table nodes of an operation node
+	 * @param node - operation node in question
+	 * @return table nodes
+	 */
+	public List<Node> outgoingTableNodes(OperationNode node){
+		
+		return traverse(node, Graph.FORWARD, Node.TABLE_NODE, Node.TABLE_NODE, 1);
+	}
+	
+
+	
+	
+	
+	
+	
+
+	public List<Node> getNodes() {
+		return nodes;
+	}
+
+	public void setNodes(List<Node> tables) {
+		this.nodes = tables;
+	}
+	
+	public void addNode(Node table){
+		this.nodes.add(table);
+	}
+
+	
+	public List<Edge> getEdges() {
+		return edges;
+	}
+
+	public void setEdges(List<Edge> edges) {
+		this.edges = edges;
+	}
+	
+	public void addEdge(Edge edge){
+		this.edges.add(edge);
+	}
+	
+
+	
+
+}

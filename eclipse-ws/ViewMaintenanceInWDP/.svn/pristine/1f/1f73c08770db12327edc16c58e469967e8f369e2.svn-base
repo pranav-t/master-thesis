@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<setup>
+    
+  <networkconfig>  
+
+         <zookeeper>
+		  <quorum>172.24.34.108</quorum>
+	<!--	  <clientPort>2222</clientPort>   --> 
+	  </zookeeper>
+         <master>
+                <address>deltaserver1</address>
+ 		<!--  <hbasePort>60000</hbasePort>--> 
+		  <vmPort>4004</vmPort>
+	  </master>
+	  <hdfs>hdfs://deltaserver1</hdfs>
+	  <client>
+	      	<nodes>
+			<node>deltaserver1</node>
+		</nodes>	      
+	  </client>
+	  
+	  <regionServer>
+	      <numOfInstances>2</numOfInstances>
+	      <messagePort>4533</messagePort> 
+	      <updatePort>4633</updatePort> 
+	      <nodes>
+			<node>deltaserver1</node>
+			<node>storageserver1</node>   
+	      </nodes>	  
+	  </regionServer>
+	  
+	  <viewManager>
+	      	<numOfInstances>2</numOfInstances>
+	      	<messagePort>4130</messagePort>
+	        <updatePort>4230</updatePort>
+	      	<nodes>
+			<node>deltaserver1</node>
+            <node>storageserver1</node>   
+		</nodes>	
+	  </viewManager>
+	  
+  </networkconfig> 
+</setup>

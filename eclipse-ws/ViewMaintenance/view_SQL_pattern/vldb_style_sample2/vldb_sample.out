@@ -1,0 +1,22 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Background}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{KV store}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{View Maintenance System}{section.2}% 4
+\BOOKMARK [1][-]{section.3}{View types}{}% 5
+\BOOKMARK [2][-]{subsection.3.1}{Auxiliary views}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.2}{Standard views}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.3}{Joins}{section.3}% 8
+\BOOKMARK [1][-]{section.4}{Maintenance plan}{}% 9
+\BOOKMARK [2][-]{subsection.4.1}{DAG}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.2}{Cost model}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.3}{Optimization}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.4}{SQL pattern}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.5}{Mapping}{section.4}% 14
+\BOOKMARK [2][-]{subsection.4.6}{Optimization}{section.4}% 15
+\BOOKMARK [1][-]{section.5}{Evaluation}{}% 16
+\BOOKMARK [2][-]{subsection.5.1}{Set-up}{section.5}% 17
+\BOOKMARK [2][-]{subsection.5.2}{Work load}{section.5}% 18
+\BOOKMARK [2][-]{subsection.5.3}{Experiments}{section.5}% 19
+\BOOKMARK [1][-]{section.6}{Related work}{}% 20
+\BOOKMARK [2][-]{subsection.6.1}{References}{section.6}% 21
+\BOOKMARK [1][-]{appendix.A}{Final Thoughts on Good Layout}{}% 22

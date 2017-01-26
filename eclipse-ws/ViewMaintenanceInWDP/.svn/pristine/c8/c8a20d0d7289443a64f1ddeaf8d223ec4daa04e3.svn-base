@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<setup>
+<tableconfig>
+                <table>
+                    <name>bt1</name>
+                    <primaryKey>
+                        <prefix>k</prefix>
+                        <startRange>1</startRange>
+                        <endRange>10001</endRange>
+                    </primaryKey>
+                    <numRegions>24</numRegions>
+                    <column>
+                        <name>c1</name>
+                        <family>colfam1</family>
+                        <prefix>x</prefix>
+                        <startRange>1</startRange>
+                        <endRange>10001</endRange>
+                    </column>
+                    <column>
+                        <name>c2</name>
+                        <family>colfam1</family>
+                        <prefix></prefix>
+                        <startRange>1</startRange>
+                        <endRange>100</endRange>
+                    </column>
+                </table>
+                <table>
+                    <name>q0_0</name>
+                    <primaryKey>
+                        <prefix>k</prefix>
+                        <startRange>1</startRange>
+                        <endRange>10001</endRange>
+                    </primaryKey>
+                    <numRegions>8</numRegions>
+                    <column>
+                        <name>c1</name>
+                        <family>colfam1</family>
+                        <prefix>x</prefix>
+                        <startRange>1</startRange>
+                        <endRange>10</endRange>
+                    </column>
+                </table>
+                <table>
+                    <name>q0_1</name>
+                    <primaryKey>
+                        <prefix>k</prefix>
+                        <startRange>1</startRange>
+                        <endRange>10001</endRange>
+                    </primaryKey>
+                    <numRegions>8</numRegions>
+                    <column>
+                        <name>c1</name>
+                        <family>colfam1</family>
+                        <prefix>x</prefix>
+                        <startRange>1</startRange>
+                        <endRange>10</endRange>
+                    </column>
+                </table>
+     </tableconfig>
+
+</setup>
+
+
+
+
+   						
+					
+					

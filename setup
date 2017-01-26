@@ -1,0 +1,35 @@
+http://lifehacker.com/5204434/the-beginners-guide-to-creating-virtual-machines-with-virtualbox
+http://askubuntu.com/questions/142549/how-to-install-ubuntu-on-virtualbox
+http://coding4streetcred.com/blog/post/VirtualBox-Configuring-Static-IPs-for-VMs
+
+
+https://hadoopmagic.wordpress.com/2013/07/13/how-to-create-hadoop-cluster-on-virtual-machines-running-on-same-laptopdesktop/
+http://www.michael-noll.com/tutorials/running-hadoop-on-ubuntu-linux-single-node-cluster/
+http://www.michael-noll.com/tutorials/running-hadoop-on-ubuntu-linux-multi-node-cluster/
+http://hadoopindepth.blogspot.de/2014/08/installing-hadoop-121single-node-in.html
+
+http://www.michael-noll.com/tutorials/running-hadoop-on-ubuntu-linux-multi-node-cluster/#caveats
+(https://community.cloudera.com/t5/Storage-Random-Access-HDFS/HMaster-not-starting-TableExistsException/td-p/11466)
+
+http://www.howtogeek.com/189974/how-to-share-your-computers-files-with-a-virtual-machine/
+http://askubuntu.com/questions/323392/how-to-access-shared-folders-in-ubuntu-vmoracle-virtualbox-and-link-them-to-th
+
+https://blog.nhaslam.com/2011/07/02/fun-with-tpc-h-part-1/
+
+https://ambari.apache.org/1.2.3/installing-hadoop-using-ambari/content/reference_chap2_1.html
+
+
+HBASE:
+------------
+
+https://hbase.apache.org/book.html
+
+https://www.mapr.com/blog/in-depth-look-hbase-architecture
+
+cat id_rsa_master.pub >> authorized_keys
+cat id_rsa_slave1.pub >> authorized_keys
+cat id_rsa_slave2.pub >> authorized_keys
+
+sudo usermod -G vboxsf -a username
+
+

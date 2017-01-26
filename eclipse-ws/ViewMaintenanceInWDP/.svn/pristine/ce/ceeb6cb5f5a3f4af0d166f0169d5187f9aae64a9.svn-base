@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<setup>
+<taskconfig>
+	    <task>
+	        <name>task1</name>
+	        <table>bt1</table>
+			<type>create</type>
+		    <numRegions>5</numRegions>
+	    </task>	
+	    <task>
+	        <name>task1</name>
+	        <table>bt2</table>
+			<type>create</type>
+		    <numRegions>5</numRegions>
+	    </task>				
+	    <task>
+	        <name>task2</name>
+	        <table>bt1</table>
+			<type>fill</type>
+			<numClients>2</numClients>
+		    <numOperations>5001</numOperations>
+			<distribution>uniform</distribution>
+	    </task>
+        <task>
+            <name>task2</name>
+            <table>bt2</table>
+            <type>fill</type>
+            <numClients>2</numClients>
+            <numOperations>5001</numOperations>
+            <distribution>uniform</distribution>
+        </task>
+    
+
+</taskconfig>	  
+</setup>

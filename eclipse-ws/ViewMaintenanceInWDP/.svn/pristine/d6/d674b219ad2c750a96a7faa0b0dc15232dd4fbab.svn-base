@@ -1,0 +1,200 @@
+package de.webdataplatform.test;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import de.webdataplatform.basetable.BaseTableUpdate;
+import de.webdataplatform.log.Log;
+import de.webdataplatform.parser.Column;
+import de.webdataplatform.parser.ColumnName;
+import de.webdataplatform.parser.ColumnSequence;
+import de.webdataplatform.settings.JoinTablePair;
+import de.webdataplatform.settings.NetworkConfig;
+import de.webdataplatform.settings.SystemConfig;
+import de.webdataplatform.system.DeltaRecord;
+import de.webdataplatform.system.PreAggRecord;
+import de.webdataplatform.system.ReverseJoinRecord;
+import de.webdataplatform.system.TableRecord;
+import de.webdataplatform.view.operation.PreAggregation;
+import de.webdataplatform.view.operation.ReverseJoin;
+
+public class TestRecordProcessing {
+
+	/**
+	 * @param args
+	 */
+	
+	private static Log log;
+	
+
+	
+	
+	public static void main(String[] args) {
+
+		log = new Log("TestClient");
+		SystemConfig.load(log);
+		NetworkConfig.load(log);
+
+		
+		TableRecord tableRecord = TableRecord.generateTableRecord("A", "k1", "c1", "x1", "c2", "10");
+		
+		TableRecord tableRecordA = TableRecord.generateTableRecord("q1_V1", "l0616", "c1", "x02", "c2", "089");
+		TableRecord tableRecordA2 = TableRecord.generateTableRecord("q1_V1", "l0617", "c1", "x02", "c2", "077");
+		TableRecord tableRecordB = TableRecord.generateTableRecord("q1_V0", "k39", "d1", "x02", "d2", "018");
+		
+		
+//		TableRecord tableRecordC = generateTableRecord("C", "m1", "c1", "x1", "c2", "10", "c3", "15");
+		
+		TableRecord tableRecord1 = TableRecord.generateTableRecord("A", "k1", "c1", "x1;x2", "c2", "10;12");
+		TableRecord tableRecord2 = TableRecord.generateTableRecord("A", "k1", "c1", "null;x2", "c2", "null;12");
+		TableRecord tableRecord3 = TableRecord.generateTableRecord("A", "k1", "c1", "null;x1", "c2", "null;10");
+		
+		
+		
+		
+		DeltaRecord deltaRecord1 = new DeltaRecord(tableRecord1);
+		DeltaRecord deltaRecord2 = new DeltaRecord(tableRecord2);
+		DeltaRecord deltaRecord3 = new DeltaRecord(null, new DeltaRecord(tableRecord3).getNewRecord());
+		
+		
+		System.out.println("deltaRecord1: "+deltaRecord1);
+		System.out.println("deltaRecord2: "+deltaRecord2);
+		System.out.println("deltaRecord3: "+deltaRecord3);
+		
+		System.out.println("-------------");
+		
+		System.out.println("deltaRecord1 back: "+deltaRecord1.transform());
+		System.out.println("deltaRecord2 back: "+deltaRecord2.transform());
+		System.out.println("deltaRecord3 back: "+deltaRecord3.transform());
+		
+		
+		System.out.println("-------------");
+		
+		ColumnSequence select = new ColumnSequence();//{"avg1", "sum2","sum3", "count1"};
+		select.addColumn(new Column("sum(A.c2)", "sum1"));
+		select.addColumn(new Column("sum(A.c3)", "sum2"));
+		select.addColumn(new Column("100 + sum(A.c3)", "sum3"));
+//		select.addColumn(new Column("count(*)", "count1"));
+		
+		
+		ColumnSequence groupingKeys = new ColumnSequence();//{"A.c1"};
+		groupingKeys.addColumn(new Column("A.c1", null));
+//		groupingKeys.addColumn(new Column("A.c1", null));
+
+		
+		TableRecord tableRecord4 = TableRecord.generateTableRecord("A", "k1", "c1","x1", "c2","14", "c3","33");
+		
+		TableRecord tableRecordNew = TableRecord.generateTableRecord("A", "x1", "c1", "k1:10,15;k2:5,8;k3:7,18;");
+		
+		PreAggregation preAggregation = new PreAggregation(select, groupingKeys,  false);
+		
+		PreAggRecord preAggRecord = new PreAggRecord(tableRecordNew, preAggregation);
+
+		System.out.println("preAggRecord: "+preAggRecord);
+		preAggRecord.addRecord(tableRecord4);
+		System.out.println("preAggRecord.add: "+preAggRecord);
+		System.out.println("preAggRecord: "+preAggRecord.buildAggRecord("C", "x1"));
+		System.out.println("preAggRecord trans: "+preAggRecord.transform());
+		
+		preAggRecord.backTransform(preAggRecord.transform());
+		System.out.println("preAggRecord back-trans: "+preAggRecord);
+		
+//		System.out.println("preAggRecord result: "+preAggRecord.buildAggRecord("C", "x1"));
+//		System.out.println("preAggRecord back: "+preAggRecord.transform());
+		
+		System.out.println("-------------");
+		
+
+		List<ColumnName> joinColumns = new ArrayList<ColumnName>();
+		joinColumns.add(new ColumnName("q1_V0.c1"));
+		joinColumns.add(new ColumnName("q1_V1.d1"));
+		
+//		String[] columns = {"q1_V0.c1","q1_V0.c2","q1_V1.c2", "q1_V1.c3"};
+		
+//		TableRecord tableRecordJoin = generateTableRecord("A", "x1", "colfam_A", "k1","f1", "colfam_B", "l1","15", "colfam_C", "m1","10");
+
+//		TableRecord tableRecordNew1 = TableRecord.generateTableRecord("A", "x1", "q1_V0", "k1:c2=10,c3=15;k2:c2=5,c3=8;k3:c2=7,c3=18;", "q1_V1", "l1:d2=12,d3=15;l2:d2=5,d3=8;l3:d2=7,d3=18;");
+		TableRecord tableRecordNew1 = TableRecord.generateTableRecord(null, "x0173", "c1", "q1_V0{k09069:c1=x0173,c2=056;}|q1_V1{l08069:d1=x0173,d2=088;l0500:d1=x0173,d2=098;}");
+		
+		ReverseJoin reverseJoin= new ReverseJoin(joinColumns, false);
+		
+//		tableRecordJoin, 
+		ReverseJoinRecord reverseJoinRecord = new ReverseJoinRecord(tableRecordNew1, reverseJoin);
+		
+//		tableRecordA = TableRecord.generateTableRecord("q1_V1", "l4", "d1", "x1", "d2", "11", "d3", "13");
+//		reverseJoinRecord.addRecord(tableRecordA);
+		
+		tableRecordB = TableRecord.generateTableRecord("q1_V0", "k1", "c1", "x1", "c2", "11", "c3", "13");
+
+		BaseTableUpdate btu = new BaseTableUpdate();
+		btu.setBaseRecord(tableRecordB);
+		btu.setOperationType("Put");
+		
+		
+//		reverseJoinRecord.removeTable(btu.getBaseRecord().getTableName());
+//		
+//		reverseJoinRecord.addRecord(btu.getBaseRecord());
+		
+//		reverseJoinRecord.addRecord(tableRecordA2);
+//		reverseJoinRecord.addRecord(tableRecordB);
+//		reverseJoinRecord.addRecord(tableRecordC);
+		
+		System.out.println("reverseJoinRecord: "+reverseJoinRecord);
+		TableRecord joinRec = reverseJoinRecord.transform();
+//		joinRec.setTableName(null);
+		System.out.println("reverseJoinRecord trans: "+joinRec);
+		
+		reverseJoinRecord.backTransform(reverseJoinRecord.transform());
+		
+		System.out.println("reverseJoinRecord back-trans: "+reverseJoinRecord);
+//		reverseJoinRecord.backTransform(joinRec);
+//		System.out.println("reverseJoinRecord back: "+reverseJoinRecord);
+		List<TableRecord> joinRecords = reverseJoinRecord.buildJoinRecords();
+		System.out.println("joinRecords:"+joinRecords);
+	
+
+		List<BaseTableUpdate> outputBtus=new ArrayList<BaseTableUpdate>();
+		
+		if(joinRecords != null){
+			for (TableRecord joinRecord : joinRecords) {
+				
+				
+				BaseTableUpdate btuCopy = btu.copy();
+				joinRecord.setTableName("q0_3");
+				btuCopy.setRecord(btu.getOperationType(), joinRecord);
+
+				outputBtus.add(btuCopy);
+				
+				System.out.println("btuCopy: "+btuCopy);
+			}
+		}	
+		
+		
+//		System.out.println("preAggRecord back: "+preAggRecord.transform());
+		
+		
+		
+		
+		
+//		ReverseJoinRecord reverseJoinRecord2 = new ReverseJoinRecord(reverseJoin);
+//		
+//		List<TableRecord> records = new ArrayList<TableRecord>();
+//		records.add(tableRecord);
+//		
+//		reverseJoinRecord2.getTableRecords().put(tableRecord.getTableName(), records);
+//		System.out.println("reverseJoinRecord2: "+reverseJoinRecord2.transform());
+
+		
+		
+		
+		
+		
+		
+	}
+
+
+	
+	
+}

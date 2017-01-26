@@ -1,0 +1,22 @@
+de.webdataplatform.parser.Parser: tokens: [select, bt1.c1, ,, sum, (, bt1.c3, ), as, sum1, ,, count, (, bt1.c3, ), as, count1, from, bt1, pre_group_by, bt1.c1, ,, bt1.c2]
+de.webdataplatform.parser.Parser: select: 
+de.webdataplatform.parser.Parser: column: Column [term=bt1.c1, alias=null]
+de.webdataplatform.parser.Parser: column: Column [term=Function [type=sum, term=bt1.c3], alias=sum1]
+de.webdataplatform.parser.Parser: column: Column [term=Function [type=count, term=bt1.c3], alias=count1]
+de.webdataplatform.parser.Parser: from: Table [table=TableName [tableName=bt1], alias=null]
+de.webdataplatform.parser.Parser: groupBy: ColumnSequence{[Column [term=bt1.c1, alias=null], Column [term=bt1.c2, alias=null]]}
+de.webdataplatform.parser.Parser: Parsing successful
+de.webdataplatform.parser.Planner: -----------------------------
+de.webdataplatform.parser.Planner: Planning query
+de.webdataplatform.parser.Planner: -----------------------------
+de.webdataplatform.parser.Planner: Creating base nodes
+de.webdataplatform.parser.Planner: result: NodeMap [nodeMap={[bt1]=bt1}]
+de.webdataplatform.parser.Planner: ------------------------
+de.webdataplatform.parser.Planner: Creating aggregation nodes
+de.webdataplatform.parser.Planner: tables: [bt1]
+de.webdataplatform.parser.Planner: node: bt1
+de.webdataplatform.parser.Planner: tables: [bt1], node: q1_0
+de.webdataplatform.parser.Planner: ------------------------
+de.webdataplatform.parser.Planner: Creating projection nodes
+de.webdataplatform.parser.Planner: tables: [bt1], node: q1_1
+de.webdataplatform.parser.Planner: ------------------------

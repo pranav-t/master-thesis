@@ -1,0 +1,475 @@
+package de.webdataplatform.test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import de.webdataplatform.log.Log;
+import de.webdataplatform.settings.NetworkConfig;
+import de.webdataplatform.settings.Node;
+import de.webdataplatform.settings.SystemConfig;
+import de.webdataplatform.ssh.SSHService;
+
+public class VMS {
+
+	
+	
+	private static Log log;
+
+	
+	
+	public static void main(String[] args) {
+
+		
+		if(args[0].equals("start")){
+			
+			log= new Log("start-vms.log");	
+			
+			SystemConfig.load(log);
+			NetworkConfig.load(log);
+			
+			if(args.length > 1){
+				NetworkConfig.VIEWMANAGERS_NUMOFINSTANCES= Integer.parseInt(args[1]);
+			}
+			
+			startVMSystem();
+			
+			SSHService.closeSessions();
+			log.close();
+		}
+		if(args[0].equals("startmaster")){
+			
+			log= new Log("start-vms.log");	
+			
+			SystemConfig.load(log);
+			NetworkConfig.load(log);
+			
+			startMaster();
+			
+			SSHService.closeSessions();
+			log.close();
+		}
+		if(args[0].equals("stop")){
+			
+			log= new Log("stop-vms.log");	
+			
+			SystemConfig.load(log);
+			NetworkConfig.load(log);
+			
+			if(args.length > 1){
+				NetworkConfig.VIEWMANAGERS_NUMOFINSTANCES= Integer.parseInt(args[1]);
+			}
+			
+			stopVMSystem();
+			
+			SSHService.closeSessions();
+			log.close();
+		}
+		if(args[0].equals("stopmaster")){
+			
+			log= new Log("start-vms.log");	
+			
+			SystemConfig.load(log);
+			NetworkConfig.load(log);
+			
+			stopMaster();
+			
+			SSHService.closeSessions();
+			log.close();
+		}
+	}	
+			
+			
+	
+	
+	
+	
+	
+	public static void stopVMSystem(){
+		
+
+		log.info(VMS.class, "stopping system....");
+		stopRegionServers();
+		stopViewManagers();
+		
+	}
+
+
+	
+	public static void startVMSystem(){		
+
+		
+		log.info(VMS.class, "starting region server extensions....");
+		startRegionServers();
+		
+		log.info(VMS.class, "starting view manager....");
+		startViewManagers();
+
+
+	}
+
+
+
+
+	
+	
+	private static void startMaster() {
+		
+		log.info(VMS.class, "starting master:"+NetworkConfig.VM_MASTER);
+		
+		List<String> startupCommand = new ArrayList<String>();
+		startupCommand.add("cd /");
+		startupCommand.add("cd "+SystemConfig.DIRECTORY_VMSYSTEM);
+		startupCommand.add("java -Xmx1000m -cp vmsystem.jar de.webdataplatform.master.TestMaster master1 "+NetworkConfig.VM_MASTER.getIpAddress()+" "+NetworkConfig.VM_MASTER.getMessagePort());
+		
+		
+		List<String> result = SSHService.sendCommand(log, NetworkConfig.VM_MASTER.getSshConnection(), startupCommand);
+		log.info(VMS.class, "result:"+result);
+		log.info(VMS.class, "\n");
+		
+	}
+
+	
+	private static void stopMaster() {
+		List<String> stopCommand = new ArrayList<String>();
+		stopCommand.add("pkill -9 -f TestMaster");
+		
+		log.info(VMS.class, "stopping master:");
+		List<String> result = SSHService.sendCommand(log, NetworkConfig.VM_MASTER.getSshConnection(), stopCommand);
+		
+		log.info(VMS.class, "\n");
+
+	}
+	
+	
+
+	
+	
+	private static void startRegionServers() {
+		
+		log.info(VMS.class, "");
+		log.info(VMS.class, "region server nodes: "+NetworkConfig.REGIONSERVERS.size());
+		log.info(VMS.class, "");
+		
+		int x = 0;
+		
+//		while (x < NetworkConfig.REGIONSERVERS_NUMOFINSTANCES) {
+			
+//			Node node = NetworkConfig.REGIONSERVERS.get(x%NetworkConfig.REGIONSERVERS.size());
+		
+		for (Node node : NetworkConfig.REGIONSERVERS) {
+			
+		
+			List<String> startupCommand = new ArrayList<String>();
+			startupCommand.add("cd /");
+			startupCommand.add("cd "+SystemConfig.DIRECTORY_VMSYSTEM);
+			startupCommand.add("java -Xmx1000m -cp vmsystem.jar de.webdataplatform.regionserver.TestRegionServer jan-rs-"+(x+1)+" "+node.getIpAddress()+" "+node.getMessagePort()+" "+node.getUpdatePort());
+			
+			log.info(VMS.class, "starting region server:"+node);
+			List<String> result = SSHService.sendCommand(log, node.getSshConnection(), startupCommand);
+
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+
+				e.printStackTrace();
+			}
+
+			x++;
+		}
+		
+//		}
+		
+		
+		log.info(VMS.class, "\n");
+	}
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+//	private static void readStatisticsLogsRegionServers(int numOfRs, String directory) {
+//		
+//		
+//		int x = 0;
+//		
+//		
+//		while (x < numOfRs) {
+//				
+//
+//				Node node = NetworkConfig.REGIONSERVERS.get(x%NetworkConfig.REGIONSERVERS.size());
+//				
+//				log.info(StartVMS.class, "reading statistics log of region server rs"+(x+1)+" on node: "+node);
+//				SSHService.retrieveFile(log, node.getSshConnection(), SystemConfig.DIRECTORY_VMSYSTEM+"/logs", directory+"/regionserverStatistics", "rs"+(x+1)+"-statistic.log");
+//				SSHService.retrieveFile(log, node.getSshConnection(), SystemConfig.DIRECTORY_VMSYSTEM+"/logs",directory+"/regionserverLogs", "rs"+(x+1)+".log");
+//				
+//				
+//				
+//				x++;
+//		}
+//		
+//		
+//		
+//		log.info(StartVMS.class, "\n");
+//	}	
+	
+	
+
+	
+	private static void stopRegionServers() {
+		
+		int x = 0;
+		
+//		while (x < NetworkConfig.REGIONSERVERS_NUMOFINSTANCES) {
+			
+		for (Node node : NetworkConfig.REGIONSERVERS) {
+		
+//			Node node = NetworkConfig.REGIONSERVERS.get(x%NetworkConfig.REGIONSERVERS.size());
+			
+			log.info(VMS.class, "stopping region server:"+node);
+			
+			List<String> stopCommand = new ArrayList<String>();
+			stopCommand.add("pkill -9 -f TestRegionServer");
+			
+			List<String> result = SSHService.sendCommand(log, node.getSshConnection(), stopCommand);
+//			x++;
+		}
+		log.info(VMS.class, "\n");
+	}
+	
+	
+	private static void startViewManagers() {
+		
+
+		Integer instancesPerNode = (NetworkConfig.VIEWMANAGERS_NUMOFINSTANCES/NetworkConfig.VIEWMANAGERS.size());
+		if(instancesPerNode == 0)instancesPerNode=1;
+		
+		
+//		log.info(StartVMS.class, "viewmanager nodes: "+NetworkConfig.VIEWMANAGERS.size());
+		log.info(VMS.class, "viewManagerInstances: "+NetworkConfig.VIEWMANAGERS_NUMOFINSTANCES);
+		log.info(VMS.class, "instancesPerNode: "+instancesPerNode);
+		log.info(VMS.class, "");
+		
+		int x= 0;
+
+			
+//			int messagePort = vmMessagePort;
+			while (x < NetworkConfig.VIEWMANAGERS_NUMOFINSTANCES) {
+				
+				Node node = NetworkConfig.VIEWMANAGERS.get(x%NetworkConfig.VIEWMANAGERS.size());
+				int updatePort = node.getUpdatePort()+(x/NetworkConfig.VIEWMANAGERS.size());
+				int messagePort = node.getMessagePort()+(x/NetworkConfig.VIEWMANAGERS.size());
+				
+				List<String> startupCommand = new ArrayList<String>();
+				startupCommand.add("cd /");
+				startupCommand.add("cd "+SystemConfig.DIRECTORY_VMSYSTEM);
+				startupCommand.add("java  -Xmx1000m -cp vmsystem.jar de.webdataplatform.viewmanager.TestViewManager vm"+(x+1)+" "+node.getIpAddress()+" "+updatePort+" "+messagePort);
+				log.info(VMS.class, "starting viewmanager vm"+(x+1)+" on node: "+node.getIpAddress()+" udpatePort:"+updatePort+", messagePort:"+messagePort);
+				List<String> result = SSHService.sendCommand(log, node.getSshConnection(), startupCommand);
+
+				try {
+					Thread.sleep(2000);
+				} catch (InterruptedException e) {
+
+					e.printStackTrace();
+				}
+				x++;
+			
+			}
+
+		log.info(VMS.class, "\n");
+	}
+	
+	
+//	
+//	private void readStatisticsLogsViewManagers(Integer viewManagerInstances, String directory) {
+//		
+//		int x= 0;
+//		
+//		
+//		while (x < viewManagerInstances) {
+//				
+//
+//				Node node = NetworkConfig.VIEWMANAGERS.get(x%NetworkConfig.VIEWMANAGERS.size());
+//				
+//				log.info(StartVMS.class, "reading statistics log of viewmanager vm"+(x+1)+" on node: "+node);
+//				SSHService.retrieveFile(log, node.getSshConnection(),SystemConfig.DIRECTORY_VMSYSTEM+"/logs", directory+"/viewmanagerStatistics", "vm"+(x+1)+"-statistic.log");
+//				SSHService.retrieveFile(log, node.getSshConnection(),SystemConfig.DIRECTORY_VMSYSTEM+"/logs", directory+"/viewmanagerLogs", "vm"+(x+1)+".log");
+//				
+//			
+//				
+//				x++;
+//		}
+//
+//		
+//		log.info(StartVMS.class, "\n");
+//	}
+	
+//	private void readStatisticsLogMaster(String directory) {
+//		
+//		
+//		log.info(StartVMS.class, "reading statistics log of master on node: "+NetworkConfig.VM_MASTER);
+//		SSHService.retrieveFile(log, NetworkConfig.VM_MASTER.getSshConnection(),SystemConfig.DIRECTORY_VMSYSTEM+"/logs", directory+"/masterLogs", "master.log");
+//				
+//
+//		
+//		log.info(StartVMS.class, "\n");
+//	}
+//	
+//	private void readStatisticsLogsClients(Integer numOfClients, List<ICreateTable> baseTables, String directory) {
+//		
+//		for (ICreateTable createTable : baseTables) {
+//			
+//			int x= 0;
+//						
+//			while (x < numOfClients) {
+//					
+//
+//				Node node = NetworkConfig.CLIENTS.get(x%NetworkConfig.CLIENTS.size());
+//				log.info(StartVMS.class, "reading statistics log of client "+"c"+(x+1)+"-filltable-"+createTable.getName()+" on node: "+node);
+//				SSHService.retrieveFile(log, node.getSshConnection(),SystemConfig.DIRECTORY_VMSYSTEM+"/logs" , directory+"", "c"+(x+1)+"-filltable-"+createTable.getName()+".log");
+//				x++;
+//				
+//	
+//			}
+//		}
+//	}
+//	
+//	
+//	private void readStatisticsLogExperiment(String directory, Experiment experiment) {
+//		
+//		
+//		log.info(StartVMS.class, "reading statistics log of experiment: "+NetworkConfig.VM_MASTER);
+//		SSHService.retrieveFile(log, new SSHConnection("localhost",22, SystemConfig.SSH_USERNAME, SystemConfig.SSH_PASSWORD),SystemConfig.DIRECTORY_VMSYSTEM+"/logs" , directory+"", "experiment.log");
+//		SSHService.retrieveFile(log, new SSHConnection("localhost",22, SystemConfig.SSH_USERNAME, SystemConfig.SSH_PASSWORD),SystemConfig.DIRECTORY_VMSYSTEM+"/logs" , directory+"", "evaluation.log");
+//		SSHService.retrieveFile(log, new SSHConnection("localhost",22, SystemConfig.SSH_USERNAME, SystemConfig.SSH_PASSWORD),SystemConfig.DIRECTORY_VMSYSTEM+"/logs" , directory+"", "queuefinishmarkers.log");
+////		SSHService.retrieveFile(log, new SSHConnection("localhost",22, SystemConfig.SSH_USERNAME, SystemConfig.SSH_PASSWORD),SystemConfig.DIRECTORY_VMSYSTEM+"/logs" , directory+"", "ccreatetable.log");
+//		
+//		
+//		for (ICreateTable createTable : experiment.getCreatedTables())
+//		SSHService.retrieveFile(log, new SSHConnection("localhost",22, SystemConfig.SSH_USERNAME, SystemConfig.SSH_PASSWORD),SystemConfig.DIRECTORY_VMSYSTEM+"/logs" , directory+"", "createsplittable-"+createTable.getName()+".log");
+//
+//
+//		
+//		
+//		
+//		log.info(StartVMS.class, "\n");
+//	}	
+//	
+	
+	
+	private static void stopViewManagers() {
+		
+		
+		int x= 0;
+		
+		
+		while (x < NetworkConfig.VIEWMANAGERS_NUMOFINSTANCES) {
+				
+
+			Node node = NetworkConfig.VIEWMANAGERS.get(x%NetworkConfig.VIEWMANAGERS.size());
+			
+			log.info(VMS.class, "stopping view manager:"+node);
+			
+			List<String> stopCommand = new ArrayList<String>();
+			stopCommand.add("pkill -9 -f TestViewManager");
+			
+			List<String> result = SSHService.sendCommand(log, node.getSshConnection(), stopCommand);
+			x++;
+
+		}
+		log.info(VMS.class, "\n");
+	}
+	
+//	private void killViewManagers(Integer numOfKilledViewManagers) {
+//		
+//
+//
+//		
+//		
+//		log.info(StartVMS.class, "viewmanager nodes: "+NetworkConfig.VIEWMANAGERS.size());
+//		log.info(StartVMS.class, "Instances to kill: "+numOfKilledViewManagers);
+//
+//		log.info(StartVMS.class, "");
+//		
+//		int x= 0;
+//
+//			
+////			int updatePort = vmUpdatePort;
+////			int messagePort = vmMessagePort;
+//			while (x < numOfKilledViewManagers) {
+//				
+//				Node node = NetworkConfig.VIEWMANAGERS.get(x%NetworkConfig.VIEWMANAGERS.size());
+//				
+//				List<String> startupCommand = new ArrayList<String>();
+//
+//				startupCommand.add("pkill -9 -f vm"+(x+1));
+//				log.info(StartVMS.class, "killing viewmanager vm"+(x+1)+" on node: "+node);
+//				List<String> result = SSHService.sendCommand(log, node.getSshConnection(), startupCommand);
+//
+//				x++;
+//			
+//			}
+//
+//		log.info(StartVMS.class, "\n");
+//	}
+
+
+
+
+
+	public Log getLog() {
+		return log;
+	}
+
+
+
+
+
+	public void setLog(Log log) {
+		this.log = log;
+	}
+	
+	////////////////////////////////////////////////////////////////////////////
+	
+//	log.info(StartVMS.class, "checking if basetable has been filled...");
+//	boolean baseTableFilled=false;
+	
+//	
+//	long firstMeasure = new Date().getTime();
+//	while(!baseTableFilled){
+//		
+//		baseTableFilled = true;
+//		log.info(StartVMS.class, "---------------------------");
+//		for (Node node : NetworkConfig.CLIENTS) {
+//			
+//			boolean processFinished = checkProcesesFinished(node, "basetable-filled");
+//			log.info(StartVMS.class, "node: "+node.getIpAddress()+", status: "+processFinished);
+//			if(!processFinished)baseTableFilled=false;
+//		}
+//		
+//
+//		long currentTime2;
+//			
+//		currentTime2 = new Date().getTime();
+//		if(EvaluationConfig.CLIENT_FILLTABLESTIMEOUT != 0 && (currentTime2 - firstMeasure) > EvaluationConfig.CLIENT_FILLTABLESTIMEOUT){
+//			log.info(StartVMS.class, "filling database process failed....");
+//			break;
+//		}
+//		
+//		
+//		try {
+//			Thread.sleep(1000);
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
+//		
+//	}
+//	log.info(StartVMS.class, "base table filled in "+((new Date().getTime() - currentTime)/1000)+" sec");
+
+
+}

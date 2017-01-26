@@ -1,0 +1,65 @@
+de.webdataplatform.settings.SystemConfig: Loading system config:
+de.webdataplatform.settings.SystemConfig: SystemConfig.HDFS_USERNAME:jan
+de.webdataplatform.settings.SystemConfig: SystemConfig.HDFS_PASSWORD:
+de.webdataplatform.settings.SystemConfig: SystemConfig.SSH_USERNAME:jan
+de.webdataplatform.settings.SystemConfig: SystemConfig.SSH_PASSWORD:MTVdvrDV$15
+de.webdataplatform.settings.SystemConfig: SystemConfig.SSH_PASSWORDLESSLOGIN:true
+de.webdataplatform.settings.SystemConfig: SystemConfig.SSH_PRIVATEKEY:d://id_rsa
+de.webdataplatform.settings.SystemConfig: SystemConfig.SSH_KNOWNHOSTS:d://known_hosts
+de.webdataplatform.settings.SystemConfig: SystemConfig.DIRECTORY_HDFS:/usr/local/hadoop-1.2.1/
+de.webdataplatform.settings.SystemConfig: SystemConfig.DIRECTORY_HDFSSTORAGE:/usr/local/hadoop/
+de.webdataplatform.settings.SystemConfig: SystemConfig.DIRECTORY_HBASE:/usr/local/hbase-0.98.6.1-hadoop1/
+de.webdataplatform.settings.SystemConfig: SystemConfig.DIRECTORY_VMSYSTEM:/usr/local/scalablevm/
+de.webdataplatform.settings.SystemConfig: SystemConfig.DIRECTORY_ZOOKEEPERSTORAGE:/usr/local/zookeeper/
+de.webdataplatform.settings.SystemConfig: SystemConfig.MASTER_ZOOKEEPERPATH:/hbase/vmaster
+de.webdataplatform.settings.SystemConfig: SystemConfig.MASTER_LOADBALANCINGINTERVAL:null
+de.webdataplatform.settings.SystemConfig: SystemConfig.VIEWMANAGER_ZOOKEEPERPATH:/hbase/vm
+de.webdataplatform.settings.SystemConfig: SystemConfig.VIEWMANAGER_HDFSPATH:/viewmanager/
+de.webdataplatform.settings.SystemConfig: SystemConfig.VIEWMANAGER_STATUSINTERVAL:10000
+de.webdataplatform.settings.SystemConfig: SystemConfig.VIEWMANAGER_CALCSTATUSINTERVAL:1000
+de.webdataplatform.settings.SystemConfig: SystemConfig.VIEWMANAGER_DISPLAYINTERVAL:10000
+de.webdataplatform.settings.SystemConfig: SystemConfig.VIEWMANAGER_CRUDOPERATIONSALARMTHRESHOLD:10000
+de.webdataplatform.settings.SystemConfig: SystemConfig.VIEWMANAGER_UPDATEPOLLINGINTERVAL:200
+de.webdataplatform.settings.SystemConfig: SystemConfig.VIEWMANAGER_LOGUPDATES:true
+de.webdataplatform.settings.SystemConfig: SystemConfig.VIEWMANAGER_LOGPERFORMANCE:false
+de.webdataplatform.settings.SystemConfig: SystemConfig.REGIONSERVER_ZOOKEEPERPATH:/hbase/rstest
+de.webdataplatform.settings.SystemConfig: SystemConfig.REGIONSERVER_STATUSINTERVAL:5000
+de.webdataplatform.settings.SystemConfig: SystemConfig.REGIONSERVER_CALCSTATUSINTERVAL:1000
+de.webdataplatform.settings.SystemConfig: SystemConfig.REGIONSERVER_DISPLAYINTERVAL:10000
+de.webdataplatform.settings.SystemConfig: SystemConfig.REGIONSERVER_WALPOLLINGINTERVAL:1000
+de.webdataplatform.settings.SystemConfig: SystemConfig.REGIONSERVER_MAXREPLICASHASHRING:500
+de.webdataplatform.settings.SystemConfig: SystemConfig.REGIONSERVER_LOGWAL:true
+de.webdataplatform.settings.SystemConfig: SystemConfig.CLIENT_LOGINTERVAL:10000
+de.webdataplatform.settings.SystemConfig: SystemConfig.MESSAGES_STARTSEQUENCE:<
+de.webdataplatform.settings.SystemConfig: SystemConfig.MESSAGES_ENDSEQUENCE:>
+de.webdataplatform.settings.SystemConfig: SystemConfig.MESSAGES_SPLITSEQUENCE:|
+de.webdataplatform.settings.SystemConfig: SystemConfig.MESSAGES_SPLITCONTENTSEQUENCE:~
+de.webdataplatform.settings.SystemConfig: SystemConfig.MESSAGES_SPLITCONTENTSEQUENCE2:~
+de.webdataplatform.settings.SystemConfig: SystemConfig.MESSAGES_SPLITIDSEQUENCE:#
+de.webdataplatform.settings.SystemConfig: SystemConfig.MESSAGES_MARKERPREFIX:marker:
+de.webdataplatform.settings.SystemConfig: SystemConfig.MESSAGES_POLLINGINTERVAL:100
+de.webdataplatform.settings.SystemConfig: SystemConfig.MESSAGES_LENGTH:250
+de.webdataplatform.settings.SystemConfig: SystemConfig.MESSAGES_RETRYINTERVAL:3000
+de.webdataplatform.settings.SystemConfig: SystemConfig.MESSAGES_NUMOFRETRIES:3
+de.webdataplatform.settings.SystemConfig: SystemConfig.RECORDS_SPLITDELTA:;
+de.webdataplatform.settings.SystemConfig: SystemConfig.RECORDS_SPLITPREAGGREGATION:;
+de.webdataplatform.settings.SystemConfig: SystemConfig.RECORDS_SPLITREVERSEJOIN:;
+de.webdataplatform.settings.SystemConfig: SystemConfig.LOGGING_CONSOLE:true
+de.webdataplatform.settings.SystemConfig: SystemConfig.LOGGING_FILE:true
+de.webdataplatform.settings.SystemConfig: SystemConfig.LOGGING_STATISTICS:true
+de.webdataplatform.settings.SystemConfig: SystemConfig.LOGGING_LOGUPDATES:false
+de.webdataplatform.settings.SystemConfig: SystemConfig.FAULTTOLERANCE_SIGNATURES:false
+de.webdataplatform.settings.SystemConfig: SystemConfig.FAULTTOLERANCE_COMMITLOG:false
+de.webdataplatform.settings.SystemConfig: SystemConfig.FAULTTOLERANCE_TESTANDSET:true
+de.webdataplatform.settings.SystemConfig: --------------------------------------------------------------
+de.webdataplatform.settings.NetworkConfig: Loading network config:
+de.webdataplatform.settings.NetworkConfig: NetworkConfig.ZOOKEEPER_QUORUM:deltaserver1
+de.webdataplatform.settings.NetworkConfig: NetworkConfig.ZOOKEEPER_CLIENTPORT:0
+de.webdataplatform.settings.NetworkConfig: NetworkConfig.HBASE_MASTER:Node [ipAddress=deltaserver1, messagePort=0, updatePort=0, sshConnection=SSHConnection [address=deltaserver1, port=22, user=jan, password=MTVdvrDV$15]]
+de.webdataplatform.settings.NetworkConfig: NetworkConfig.VM_MASTER:Node [ipAddress=deltaserver1, messagePort=4004, updatePort=0, sshConnection=SSHConnection [address=deltaserver1, port=22, user=jan, password=MTVdvrDV$15]]
+de.webdataplatform.settings.NetworkConfig: NetworkConfig.CLIENTS:[Node [ipAddress=deltaserver1, messagePort=0, updatePort=0, sshConnection=SSHConnection [address=deltaserver1, port=22, user=jan, password=MTVdvrDV$15]]]
+de.webdataplatform.settings.NetworkConfig: NetworkConfig.REGIONSERVERS:[Node [ipAddress=deltaserver1, messagePort=4533, updatePort=0, sshConnection=SSHConnection [address=deltaserver1, port=22, user=jan, password=MTVdvrDV$15]], Node [ipAddress=storageserver1, messagePort=4533, updatePort=0, sshConnection=SSHConnection [address=storageserver1, port=22, user=jan, password=MTVdvrDV$15]]]
+de.webdataplatform.settings.NetworkConfig: NetworkConfig.VIEWMANAGERS:[Node [ipAddress=deltaserver1, messagePort=4130, updatePort=4230, sshConnection=SSHConnection [address=deltaserver1, port=22, user=jan, password=MTVdvrDV$15]], Node [ipAddress=storageserver1, messagePort=4130, updatePort=4230, sshConnection=SSHConnection [address=storageserver1, port=22, user=jan, password=MTVdvrDV$15]]]
+de.webdataplatform.settings.NetworkConfig: NetworkConfig.HDFS:hdfs://deltaserver1
+de.webdataplatform.settings.NetworkConfig: --------------------------------------------------------------
+de.webdataplatform.ssh.TestSSH: setting hostname:SSHConnection [address=172.24.36.214, port=22, user=ubuntu, password=null]

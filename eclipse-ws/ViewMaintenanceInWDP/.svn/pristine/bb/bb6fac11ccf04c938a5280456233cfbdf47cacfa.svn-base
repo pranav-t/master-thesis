@@ -1,0 +1,183 @@
+package de.webdataplatform.settings;
+
+import de.webdataplatform.client.HbaseClient;
+import de.webdataplatform.log.Log;
+
+public abstract class Task implements Runnable{
+
+
+	protected String name;
+	
+	protected String table;
+	
+	protected String type;
+
+	
+	
+	
+	public Task(String name, String table, String type) {
+		super();
+		this.name = name;
+		this.table = table;
+		this.type = type;
+	}
+
+	
+	private HbaseClient hbaseClient;
+	
+	private Log log;
+	
+	private boolean complete=false;
+	
+
+	
+
+	
+//	public HbaseClient(String clientName, Task task){
+//
+//		Log log = new Log(clientName+".log");
+//
+//		
+//		this.task = task;
+//		
+//		NetworkConfig.load(log);
+//		EvaluationConfig.load(log);
+//		
+//		conf = NetworkConfig.getHBaseConfiguration(log);
+//
+//	}
+
+
+	@Override
+	public void run() {
+		
+			Log log = new Log(name+".log");
+		
+			SystemConfig.load(log);
+		
+			hbaseClient = new HbaseClient(log);
+
+		
+			log.info(HbaseClient.class,"running task: "+toString());
+	
+			if(this instanceof TaskFill){
+				
+				TaskFill taskFill = (TaskFill)this;
+				try {
+					hbaseClient.fillBaseTable(taskFill.getTable(), taskFill.getNumOperations(), taskFill.getDistribution());
+				} catch (Exception e) {
+			
+					log.error(HbaseClient.class,e);
+				}
+			}
+			if(this instanceof TaskCreate){
+				
+				TaskCreate taskCreate = (TaskCreate)this;
+				try {
+					TableDefinition tableDef = TableConfig.getTableDefinition(taskCreate.getTable());
+					hbaseClient.createRangeSplitTable(tableDef, taskCreate.getNumRegions());
+				} catch (Exception e) {
+			
+					log.error(HbaseClient.class,e);
+				}
+			}
+			if(this instanceof TaskDelete){
+				
+				TaskDelete taskDelete = (TaskDelete)this;
+				try {
+					hbaseClient.deleteTable(taskDelete.getTable());
+				} catch (Exception e) {
+			
+					log.error(HbaseClient.class,e);
+				}
+			}
+		
+			complete = true;
+			
+		
+	}
+	
+	
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getTable() {
+		return table;
+	}
+
+	public void setTable(String table) {
+		this.table = table;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+
+
+
+
+
+
+	public HbaseClient getHbaseClient() {
+		return hbaseClient;
+	}
+
+
+
+	public void setHbaseClient(HbaseClient hbaseClient) {
+		this.hbaseClient = hbaseClient;
+	}
+
+
+
+	public Log getLog() {
+		return log;
+	}
+
+
+
+	public void setLog(Log log) {
+		this.log = log;
+	}
+
+
+
+	public boolean isComplete() {
+		return complete;
+	}
+
+
+
+	public void setComplete(boolean complete) {
+		this.complete = complete;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Task [name=" + name + ", table=" + table + ", type=" + type
+				+ "]";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+}

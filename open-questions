@@ -1,0 +1,152 @@
+0. 	can the VMS be called a SQL-on-Hadoop framework?
+	can it be compared to impala/hive/phoenix?
+	where in the hadoop ecosystem does it fit?
+
+1. 	we are benchmarking the VMS - not HBase RIGHT?
+	why not tpc-ds? newer? more complex? can't find spec!?
+	the distributed nature of the database system must be transparent to the benchmark.... we might as well be running it on a mysql/oracle database
+
+2. 	would the VMS support all the 22 TPC-H queries and all the data load statements including creation of constratints(which are optional)?
+	are we running a subset of the TPC-H?
+	(if we are using the benchmark for finding the best configurations then a subset of the benchmarking test might suffice. If we are using it to compare it against other systems then we need to make sure the
+	syste is capable of supporting all the operations requried for the benchmark)
+
+3.  tpc-h requires ACID. But HBase doesn't support ACID. Is it the VMS's job to ensure ACID or do we do away with the ACID properties?
+
+4. 	common understanding of a TPC-H run - DISCUSS
+	is it possible to do all this in the VMS?
+
+	two kinds of tests  --> vary cluster configuration/tuning parameters for a given scale factor: helps us find an optimal config for a particualr scale factor/database size
+						--> vary scale factor for a fixed cluster configuration: helps us to compare it to other databases having similar configuariton and operating on same database size
+
+
+joins
+aggregate functions
+where clause with fuzzy comparizon like clause / range comparison/ date comparison
+group by / conditional group by (with having clause)
+order by
+inner queries
+queries on temporary views
+
+
+
+preparation
+	dbgen
+	qgen
+	setup db
+	query validation
+
+load test
+	create 
+	bulk load(insert)
+	create indexes/constraints
+	install/compile refresh fucntions
+
+performance test x 2
+	1.	power test: rf1, QS 00, rf2
+	2. 	thorughput test: QS01 || QS 02 || ... || QS S || refresh stream(S pairs of refresh functions)
+	
+
+	-------------------
+
+1. startvms.sh vs startmaster.sh ??
+
+	startvms: 		de.webdataplatform.test.VMS start
+	startmaster:	de.webdataplatform.test.VMS startmaster
+
+		SystemConfig.load(log);
+		NetworkConfig.load(log);
+
+		startVMSystem						startMaster
+			startRegionServers();				de.webdataplatform.master.TestMaster master1 currenthostIp 5555(from config)
+			startViewManagers();				initialize and then run MasterController
+												where are the RS and VMs started?
+
+
+2. startvmsclient.sh 
+
+	de.webdataplatform.client.VMSClient
+
+		client = new VMSClient(log, "client1", NetworkConfig.VMS_CLIENT, 5555);
+		client.initialize(args);	
+
+	why does status show 0 RS and VMs?
+
+
+3. what is going on in RunEvaluation?
+
+	init
+		create base tables
+		startmaster
+		add queries
+
+	runEvaluation
+		reload queries
+		fill base tables
+		startvms
+		wait for vms to finish
+		stopvms
+		throughput detailed/summary/rs detailed/rs summary
+
+		???	
+
+		select 
+			lineitem.l_returnflag, 
+			lineitem.l_linestatus, 
+			sum(lineitem.l_quantity) as sum_qty, 
+			sum(lineitem.l_extendedprice) as sum_base_price, 
+			sum(lineitem.l_extendedprice * (1 - lineitem.l_discount)) as sum_disc_price, 
+			sum(lineitem.l_extendedprice * (1 - lineitem.l_discount) * (1 + lineitem.l_tax)) as sum_charge, 
+			avg(lineitem.l_quantity) as avg_qty, 
+			avg(lineitem.l_extendedprice) as avg_price, 
+			avg(lineitem.l_discount) as avg_disc, 
+			count(lineitem.l_discount) as count_order 
+		from 
+			lineitem 
+		where 
+			lineitem.l_shipdate <= 1998-12-01 
+		pre group by 
+			lineitem.l_returnflag, 
+			lineitem.l_linestatus			
+
+
+select
+s_acctbal,
+s_name,
+n_name,
+p_partkey,
+p_mfgr,
+s_address,
+s_phone,
+s_comment
+from
+part,
+supplier,
+partsupp,
+nation,
+region
+where
+p_partkey = ps_partkey
+and s_suppkey = ps_suppkey
+and p_size = [SIZE]
+and p_type like '%[TYPE]'
+and s_nationkey = n_nationkey
+and n_regionkey = r_regionkey
+and r_name = '[REGION]'
+and ps_supplycost = (
+select min(ps_supplycost)
+from
+partsupp, supplier,
+nation, region
+where
+p_partkey = ps_partkey
+and s_suppkey = ps_suppkey
+and s_nationkey = n_nationkey
+and n_regionkey = r_regionkey
+and r_name = '[REGION]'
+)
+order by
+s_acctbal desc,
+n_name,
+s_name,
+p_partkey;			

@@ -1,0 +1,102 @@
+\section{Related Work}
+\label{sec:related_work}
+
+%
+% aj - if we are short on space, we could cut/condense the first part 
+%
+
+Research on view maintenance started in the
+80s~\cite{blakeley:efficiently,gupta:maintaining, zhuge:view,
+  colby:algorithms, wang:efficient}. Blakeley et
+al.~\cite{blakeley:efficiently} developed an algorithm that reduces
+the number of base table queries during updates of join views. Zhuge
+et al.~\cite{zhuge:view} developed the ECA algorithm, which prevents
+update anomalies. Colby et al.~\cite{colby:algorithms} introduced
+deferred view maintenance based on differential tables that keeps
+around a precomputed delta of the view table.  Much attention has been
+given to preventing update anomalies when applying incremental view
+maintenance~\cite{gupta:maintaining, zhuge:view, salem:how}. All these
+approaches originated from the databases at the time of their
+inception, i.e., storage was centralized and a fully transactional
+single-node database served as starting point, which is greatly
+different from the highly distributed nature of the \KVS\ we consider
+in this work. 
+
+%In data warehouses, view maintenance has also been studied
+%extensively. Early approaches aimed at integrating incremental,
+%deferred view maintenance based on distributed data
+%sources~\cite{wang:efficient, agrawal:efficient, zhuge:strobe}. Zhuge
+%et al.~\cite{zhuge:strobe} introduced Strobe, a refinement of the ECA
+%algorithm that handles update anomalies, occurring when multiple base
+%table updates of a join view arrive from different data
+%sources. Agrawal et al.~\cite{agrawal:efficient} defined the Sweep
+%algorithm, which like ECA and Strobe, compensates via error terms for
+%interfering updates. In these approaches, a data warehouse is
+%considered a central component, where the flow of base table updates
+%is joined and a global timestamp is set. Thus, operations can be
+%serialized in order to obtain an order. In \KVSs\ update propagation
+%is distributed and no global order exists, thus, the above approaches
+%do not apply.
+
+In recent years, there has been a rising interest in developing
+support for the materialization of views in a \KVS, both in open
+source projects and products~\cite{peng:percolator, murray:naiad,
+  phoenix:apache, foundationdb} and in academia~\cite{jacobsen:viewmaintenance,
+  agrawal:asynchronous, silberstein:feeding, jin:materialized,
+  rabl:materialized, kate:easy, kejriwal:slik}. 
+Percolator~\cite{peng:percolator} is a system specifically designed to
+incrementally update a Web search index as new content is found.
+Naiad~\cite{murray:naiad} is a system for incremental processing of
+source streams over potentially iterative computations expressed as a
+dataflow.  Both systems are designed for large-scale involving
+thousands of nodes, but are not addressing the incremental
+materialization of the kind of views considered in this work.
+
+The Apache Phoenix project~\cite{phoenix:apache} develops a relational
+database layer over \HB, also supporting the definition of
+views. Little is revealed about how views are implemented, except in
+as much as limiting view definitions to selection views and
+materializing views as part of the physical tables they are derived
+from. Also, a long list of view limitations is given. For
+  example, ''A VIEW may be defined over only a single table through a
+  simple SELECT * query. You may not create a VIEW over multiple,
+  joined tables nor over aggregations.''\cite{phoenix:apache} The work
+presented in this paper constitutes a foundation upon which future
+Phoenix designs could draw.
+
+Agrawal et al.~\cite{agrawal:asynchronous} realize incremental,
+deferred view maintenance in Yahoo!'s PNUTS \KVS~\cite{cooper:pnuts}
+in order to raise the level of abstraction of the store's API to
+expressing equijoin, selection and group-by-aggregation. The approach
+is based on multiple mechanisms to support this limited set of
+views. The crux are local view tables (LVTs) that partially
+materialize views in a synchronous fashion as part of the base table
+update path on the same storage unit where the view-defining base
+table resides. At view query time, LVTs are queried to compute
+aggregates or joins. A remote view table (RVT), potentially residing
+across the network, stores the mapping between views and constituting
+LVTs on different nodes. RVTs alone are sufficient to materialize
+selection views. Our approach significantly differs from this design
+and uses a single, asynchronous update propagation mechanisms as basis
+for a wide range of view types that go beyond the design by Agrawal et
+al.~\cite{agrawal:asynchronous}.
+
+In similar spirit, Silberstein et al.~\cite{silberstein:feeding}
+designed mechanisms to materialize selection views as underlying
+abstraction to derive the $N$ most recent events in support of, what
+the authors refer to as, follow applications, i.e., Twitter etc., in
+PNUTS. The work only considers selection views over windows of time, a
+query semantic even more restrictive than selection per se, thus, not
+applicable to the wide view semantics we aim at realizing.
+
+%
+% aj - the below is weak, we need to find more compelling differentiators
+%      
+Interesting materialization approaches are presented
+in~\cite{kate:easy, kejriwal:slik}. Pequod~\cite{kate:easy} serve as
+front-end application cache that materializes application
+computations.  Pequod supports a write-through policy to pass updates
+on to the back-end store, while serving reads from the cached data.
+SLIK~\cite{kejriwal:slik} focuses on materializing indexes in \KVSs.
+
+

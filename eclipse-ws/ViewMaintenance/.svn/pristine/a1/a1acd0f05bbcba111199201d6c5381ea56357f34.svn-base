@@ -1,0 +1,91 @@
+\documentclass[10pt, a4paper]{article}
+
+\usepackage[ngerman]{babel}
+\usepackage[ansinew]{inputenc}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{morefloats}
+
+\begin{document}
+
+%--------------------------------------------------------------- Cover page ---
+\begin{titlepage}
+% title
+\begin{center}
+	\begin{spacing}{3}
+		{\LARGE\bfseries Jahresbericht 1.5.2015 bis 30.4.2016}\\ 
+		{\LARGE\bfseries für die} \\
+		{\LARGE\bfseries Alexander von Humboldt Stiftung} 
+	\end{spacing}
+ \end{center}
+ %
+ \vspace{3.5cm}
+ %
+ \begin{minipage}[t][4cm][b]{0.7\textwidth}
+ 	\noindent
+  \vspace{.5cm}
+  {\large Prof. Dr. rer. pol.} \\ 
+  \vspace{.5cm}
+  {\Large\bfseries Hans-Arno Jacobsen} \\ 
+ 	{\Large\itshape Alexander von Humboldt-Professor}
+ \end{minipage}
+ \hfill
+ \fbox{\begin{minipage}[t][4cm][b]{0.25\textwidth}
+	 \includegraphics[width=\textwidth]{./figures/jacobsen}
+ \end{minipage}}
+ %
+ \vspace{2cm}
+ %
+ \begin{spacing}{1.5}
+	\noindent
+ 	{\large\bfseries Technische Universität München} \\
+	{\large\bfseries Fakultät für Informatik} \\
+ \end{spacing}	
+ %
+ \begin{spacing}{1.5}
+	\noindent
+ 	{\large\bfseries Lehrstuhl für Anwendungs- und Middleware-Systeme/} \\
+	{\large\bfseries Application and Middleware Systems Research Group  } \\
+ \end{spacing}
+ %
+ \noindent	
+ Boltzmannstraße 3 \\
+ 85748 Garching bei München \\
+ Tel.  +49 89 289 19452 \\
+ Fax  +49 89 289 19466 \\
+ jacobsen@in.tum.de \\
+ www.i13.in.tum.de \\
+\end{titlepage}
+
+%-------------------------------------------------------- Table of contents ---
+\tableofcontents 
+\newpage
+
+%------------------------------------------------------------------ Content ---
+%
+%\input{sections/erklaerungen.tex}
+%\clearpage
+
+
+
+\input{sections/research.tex}
+\newpage
+
+
+
+%------------------------------------------------------------ Verzeichnisse ---
+\listoffigures
+\newpage
+
+\listoftables
+\newpage
+
+\nocite{*}
+\bibliographystyle{abbrv}
+\bibliography{bibliography/bibliography}
+
+\end{document}

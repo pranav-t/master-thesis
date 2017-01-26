@@ -1,0 +1,222 @@
+package de.webdataplatform.graph;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import de.webdataplatform.basetable.BaseTable;
+import de.webdataplatform.query.Cluster;
+import de.webdataplatform.query.ViewExpression;
+import de.webdataplatform.settings.TableDefinition;
+import de.webdataplatform.view.ViewTable;
+import de.webdataplatform.view.operation.Source;
+import de.webdataplatform.view.operation.ViewOperation;
+
+public class MaintenancePlanUtil {
+
+
+
+	/**
+	 * Finds clusters of equal or similar view expressions in the graph
+	 * @param dag
+	 * @param nodeType - 1 for table nodes, 2 for operation nodes
+	 * @param searchCriterion - 1 for equal, 2 for similar 
+	 * @return
+	 */
+	
+	public static List<Cluster> findViewClusters(Graph dag, int nodeType, int searchCriterion){
+		
+		List<Cluster> viewClusters = new ArrayList<Cluster>();
+		
+		List<Node> nodes=null;
+		if(nodeType==Node.TABLE_NODE)nodes = dag.getTableNodes();
+		if(nodeType==Node.OPERATION_NODE)nodes = dag.getOperationNodes();
+		
+		for(Node node : nodes){
+			
+				
+				List<ViewOperation> viewExpression = getViewOperations(dag.traverse(node, Graph.BACKWARD, Node.OPERATION_NODE, 0, 0));
+				
+				
+				boolean isAdded=false;
+				
+				for (Cluster viewCluster : viewClusters) {
+					
+					if(searchCriterion == ViewExpression.EQUAL)if(viewCluster.compareAndAddOnEqual(viewExpression, node))isAdded=true;
+					if(searchCriterion == ViewExpression.SIMILAR)if(viewCluster.compareAndAddOnSimilar(viewExpression, node))isAdded=true;
+				}
+				
+				if(!isAdded){
+					
+					Cluster viewCluster = new Cluster(new ViewExpression(viewExpression, node));
+					viewClusters.add(viewCluster);
+					
+				}
+
+		}
+
+	return viewClusters;
+	}
+	
+	/**
+	 * merges the nodes of a cluster with equal or similar view expressions
+	 * @param dag
+	 * @param viewCluster
+	 * @param similar
+	 */
+	public static void mergeViewCluster(Graph dag, Cluster viewCluster, int mergeType){
+		
+		
+		List<Node> nodes = new ArrayList<Node>();
+		
+		for (ViewExpression viewExpression : viewCluster.getViewExpressions()) {
+			
+			nodes.add(viewExpression.getNode());	
+			
+			
+			if(mergeType == ViewExpression.SIMILAR){
+				
+				OperationNode operationNode = (OperationNode)viewExpression.getNode();
+				List<Node> tableNodes = dag.outgoingTableNodes(operationNode);
+				
+				for (Node tableNode : tableNodes) {
+					
+					
+					Node splitOperation = operationNode.getOperation().getSplitOperation();
+					dag.addNode(splitOperation);
+					dag.insertNode(tableNode, splitOperation);
+				}		
+				
+				
+			}
+		}
+		
+		
+		GraphUtil.mergeNodes(dag, nodes);
+		
+		
+	}
+	
+	
+	public static List<ViewOperation> getViewOperations(List<Node> operationNodes){
+		
+		List<ViewOperation> result = new ArrayList<ViewOperation>();
+		
+		
+		for (Node node : operationNodes) {
+			
+			result.add(((OperationNode)node).getOperation());
+			
+			
+		}
+		return result;
+		
+	}
+	
+	
+	
+	
+	public static List<Cluster> findMatchings(List<Cluster> viewClusters){
+		
+		List<Cluster> result = new ArrayList<Cluster>();
+		
+		for (Cluster viewCluster : viewClusters) {
+			
+			if(viewCluster.getViewExpressions().size() > 1)result.add(viewCluster);
+			
+		}
+		return result;
+	}
+	
+	
+	
+
+	
+	
+	
+	/**
+	 * Creates a base table in the given DAG
+	 * @param dag
+	 * @param baseName
+	 * @return
+	 */
+	public static TableNode createBaseTable(Graph dag, String baseName, TableDefinition tableDefinition){
+		
+		Node operationNode = new OperationNode(new Source(baseName, false));			
+	
+		Edge edge = new Edge(null, operationNode);
+		dag.addEdge(edge);
+		
+		TableNode tableNode = new TableNode(new BaseTable(baseName, tableDefinition));
+		
+		dag.addNode(operationNode);
+		dag.addNode(tableNode);
+		
+		edge = new Edge(operationNode, tableNode);
+		dag.addEdge(edge);	
+		
+		return tableNode;
+	}
+	
+	/**
+	 * Creates a view table in the given DAG
+	 * @param dag
+	 * @param inputNode
+	 * @param viewName
+	 * @param operation
+	 * @param colfams
+	 * @return
+	 */
+	public static TableNode createView(Graph dag, Node inputNode, String viewName, ViewOperation operation, List<String> colfams, TableDefinition tableDefintion){
+		
+		Node operationNode = new OperationNode(operation);			
+	
+		Edge edge = new Edge(inputNode, operationNode);
+		dag.addEdge(edge);
+		
+		
+		TableNode tableNode = new TableNode(new ViewTable(viewName, colfams, tableDefintion));
+		
+		dag.addNode(operationNode);
+		dag.addNode(tableNode);
+		
+		edge = new Edge(operationNode, tableNode);
+		dag.addEdge(edge);	
+		System.out.println("tableNodeXX: "+tableNode);
+		return tableNode;
+	}
+	
+	
+	/**
+	 * Creates a view table in the given DAG with multiple input operations
+	 * @param dag
+	 * @param inputNode
+	 * @param viewName
+	 * @param operation
+	 * @param colfams
+	 * @return
+	 */
+	public static TableNode createView(Graph dag, List<Node> inputNodes, String viewName, ViewOperation operation, List<String> colfams, TableDefinition tableDefinition){
+		
+		Node operationNode = new OperationNode(operation);			
+	
+		for (Node inputNode : inputNodes) {
+			
+			Edge edge = new Edge(inputNode, operationNode);
+			dag.addEdge(edge);
+		}
+		
+		
+		TableNode tableNode = new TableNode(new ViewTable(viewName, colfams, tableDefinition));
+		
+		dag.addNode(operationNode);
+		dag.addNode(tableNode);
+		
+		Edge edge = new Edge(operationNode, tableNode);
+		dag.addEdge(edge);	
+		
+		return tableNode;
+	}	
+	
+	
+
+}

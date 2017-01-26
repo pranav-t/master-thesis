@@ -1,0 +1,303 @@
+package de.webdataplatform.system;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import de.webdataplatform.parser.Column;
+import de.webdataplatform.parser.ColumnName;
+import de.webdataplatform.parser.ColumnSequence;
+import de.webdataplatform.settings.SystemConfig;
+import de.webdataplatform.view.operation.PreAggregation;
+
+public class PreAggRecord {
+
+
+	
+	private PreAggregation preAggregation;
+
+	private List<TableRecord> records;
+	
+	private String operationType;
+
+	public PreAggRecord(PreAggregation preAggOperation) {
+		super();
+		this.records = new ArrayList<TableRecord>();
+		this.preAggregation = preAggOperation;
+
+	}
+	
+	public PreAggRecord(TableRecord storedRecord, PreAggregation preAggOperation) {
+		super();
+		this.records = new ArrayList<TableRecord>();
+		this.preAggregation = preAggOperation;
+		
+		backTransform(storedRecord);
+		
+
+	}
+	
+	
+	
+	
+	public void addRecord(TableRecord tableRecord){
+		
+		
+		TableRecord matchRecord = null;
+		
+		for (TableRecord rec : records) {
+		
+			if(tableRecord.getKey().equals(rec.getKey())){
+				matchRecord = rec;
+			}
+			
+		}
+		if(matchRecord != null){
+			records.remove(matchRecord);
+		}
+		records.add(tableRecord);
+		
+		
+	}
+	
+	public void removeRecord(TableRecord tableRecord){
+		
+		TableRecord found=null;
+		for (TableRecord tabRec : records) {
+			
+			if(tableRecord.getKey().equals(tabRec.getKey()))found=tabRec;
+			
+		}
+		if(found != null)records.remove(found);
+		
+	}
+
+
+	
+	public TableRecord transform() {
+		
+		TableRecord result = new TableRecord();
+		
+		String aggVal ="";
+		for (TableRecord tableRecord : records) {
+			
+			result.setTableName(tableRecord.getTableName());
+			result.setKey(preAggregation.getViewRecordKey(tableRecord));
+			
+			aggVal += tableRecord.recordToString(preAggregation.getSelect().getDistinctBaseColumns(), false);
+			aggVal += SystemConfig.RECORDS_SPLITPREAGGREGATION;
+
+			
+		}
+		if(!aggVal.equals("")){
+			
+			result.putValue("colfam1", "c1", aggVal);
+		}
+
+
+		
+		return result;
+	}
+
+	@Deprecated
+	private TableRecord transformRecord(TableRecord inputRecord, TableRecord result) {
+		
+
+		result.setTableName(inputRecord.getTableName());
+		result.setKey(preAggregation.getViewRecordKey(inputRecord));
+		
+		
+		List<ColumnName> columnNames = preAggregation.getSelect().getDistinctBaseColumns();
+		
+		String aggValues="";
+		int x = 1;
+		for (ColumnName columnName : columnNames) {
+			
+			try {
+				aggValues+=inputRecord.resolveValue(columnName.getName());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			if(x != columnNames.size())aggValues+=SystemConfig.RECORDS_SPLITPREAGGREGATION;
+			x++;
+		}
+		result.putValue("colfam1", inputRecord.getKey(), aggValues);
+
+		
+		return result;
+	}
+	
+	
+	
+	public void backTransform(TableRecord inputRecord) {
+		
+		
+		records = new ArrayList<TableRecord>();
+
+		String compositeKey = inputRecord.getKey();
+		String compressedVal = inputRecord.getColumns().get("c1");
+
+//		System.out.println("compressedVal: "+compressedVal);
+		
+		for (String aggVal : compressedVal.split(SystemConfig.RECORDS_SPLITPREAGGREGATION)) {
+			
+//			System.out.println("aggVal: "+aggVal);
+			
+			TableRecord tabRec = inputRecord.recordFromString(aggVal, preAggregation.getSelect().getDistinctBaseColumns(), false);
+			
+			tabRec.setTableName(inputRecord.getTableName());
+			
+			// back transform grouping keys
+			ColumnSequence groupingKeys = preAggregation.getGroupingKeys();
+			String[] keys = compositeKey.split("_");
+			int i = 0;
+			for (ColumnName columnName : groupingKeys.getOutputColumns()) {
+				
+				tabRec.putValue("colfam1", columnName.getName(), keys[i]);
+				i++;
+			}
+
+			records.add(tabRec);
+		}
+		
+	}	
+	
+	
+
+	
+	
+
+
+	@Deprecated
+	private void backTransformRecord(TableRecord inputRecord, String colKey, String compositeKey) {
+		
+		
+		TableRecord tabRec = new TableRecord();
+		
+		tabRec.setTableName(inputRecord.getTableName());
+		tabRec.setKey(colKey);
+		
+		// back transform grouping keys
+		ColumnSequence groupingKeys = preAggregation.getGroupingKeys();
+		String[] keys = compositeKey.split("_");
+		int j = 0;
+		for (ColumnName columnName : groupingKeys.getOutputColumns()) {
+			
+			tabRec.putValue("colfam1", columnName.getName(), keys[j]);
+			j++;
+		}
+		
+		// back transform aggregation values
+		String compressedVal = inputRecord.getColumns().get(colKey);
+
+		List<ColumnName> columnNames = preAggregation.getSelect().getInputColumns();
+		
+		int i = 0;
+		for (String aggVal : compressedVal.split(SystemConfig.RECORDS_SPLITPREAGGREGATION)) {
+			
+			tabRec.putValue(inputRecord.getColFamilies().get(colKey), columnNames.get(i).getName(), aggVal);
+			
+			i++;
+		}
+		
+		
+		records.add(tabRec);
+	}
+
+	
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	public TableRecord buildAggRecord(String viewTableName, String viewTableKey){
+		
+
+		TableRecord aggRecord= new TableRecord(viewTableName, viewTableKey);
+		Integer result = null;
+		
+		
+
+		
+		for (Column column : preAggregation.getSelect().getColumns()) {
+
+				if(column.getTerm() instanceof ColumnName){
+					
+					String colName = column.getColumnName().getName();
+					try {
+						aggRecord.putValue(records.get(0).resolveFamily(colName), colName, records.get(0).resolveValue(colName));
+					} catch (Exception e) {
+	
+						e.printStackTrace();
+					}
+				}else{
+				
+					try {
+						result = column.getTerm().evalGrouping(records);
+					} catch (Exception e) {
+	
+						e.printStackTrace();
+					}
+					aggRecord.putValue("colfam1", column.getColumnName().getName(), String.valueOf(result));
+				}
+				
+				
+
+	
+				
+	
+		
+		}
+		
+		if(result != 0){
+			
+			operationType="Put";
+			
+		}else{
+			
+			operationType="Delete";
+		}
+		return aggRecord;
+	}
+
+	
+
+
+	public List<TableRecord> getRecords() {
+		return records;
+	}
+
+
+
+	public void setRecords(List<TableRecord> records) {
+		this.records = records;
+	}
+
+	
+	
+	
+	public String getOperationType() {
+		return operationType;
+	}
+
+	public void setOperationType(String operationType) {
+		this.operationType = operationType;
+	}
+
+	@Override
+	public String toString() {
+		return "PreAggRecord [records=" + records + "]";
+	}
+	
+
+	
+	
+	
+	
+
+}

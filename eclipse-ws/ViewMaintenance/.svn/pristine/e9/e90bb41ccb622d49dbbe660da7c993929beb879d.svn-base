@@ -1,0 +1,91 @@
+\section{Consistency models}
+\label{sec:consistency_models}
+
+The consistency model we use, is derived from earlier consistency
+models that have been developed to measure the degree of consistency
+during view maintenance. Now, we describe formally how these models build on
+top of each other.
+
+\textbf{1:1-model:} The very early models contain nothing but a base 
+table on one node (i.e. a standalone database) and a view table on 
+another node (i.e. the data warehouse) \cite{zhuge:view}. The base table 
+is denoted as $B$ and the view table as $V$. Once operations $t_1..t_n 
+\in T$ are applied to the base table $B$, the base table changes its 
+state. This leads to different \textit{base states} that are denoted as 
+$B_0..B_i..B_f$. The initial state of the base table is $B_0$. Every 
+operation on the base table produces a new base state until the final 
+state $B_f$ is reached. The operator $\leq$ is used to express the 
+relation between states, e.g. $B_i \leq B_j$. A state $B_j$ is said to 
+be greater than a state $B_i$ if $B_j$ contains all operations of $B_i$ 
+plus a number of subsequent operations. Formally, we demand $(\forall t 
+\in B_i)\;t \in B_j$ and $(\exists t_k \in B_j)(\forall t_l \in B_i)\;k 
+> l $. The view table in the data warehouse also consists of a series of 
+\textit{view states} $V_0..V_j..V_f$. Consistency is analysed by 
+comparing the system's view states with the theoretical correct view 
+states, derived from the appropriate base state. We derive the correct 
+view state by applying function $View(B)$. Thus, we say a view state 
+corresponds to a base state when $V_j=View(B_i)$. 
+
+
+\textbf{1:N model:} In a next step, the consistency model was extended 
+to describe view maintenance in a multi-source data 
+warehouse\cite{zhuge:strobe}. Here, the data warehouse is still located 
+on one node, but the base table information is consumed from $n$ 
+different source nodes. Operations on a single source are serializable 
+and executed in sequence. However, operations from different sources 
+doesn't need to preserve ordering. The base table states are defined as 
+$B_0..B_i..B_f$. The definition $\leq$ can be applied between the 
+produced states, again. But, in order to match the relaxed ordering 
+requirements, we have to extend the declaration from before to $(\exists 
+t_k \in B_j)(\forall t_l \in B_i)\;k > l\;\land\;s(t_k)=s(t_l)$. 
+Function $s()$ delivers, when applied to an operation, the source from 
+which the operation originated. However, two operations on different 
+sources are processed in parallel, allowing two possible intermediary 
+base states $B_i$ and $B_j$. $B_i$ does not contain all operations of 
+$B_j$ and vice versa. Thus, $B_i$ and $B_j$ are neither $\leq$ nor 
+$\geq$. We denote this relation as $B_i \parallel B_j$. As already 
+stated, this extended model represents a relaxation to the original 
+model. We do not claim global serializability of operations any more. 
+
+
+\textbf{N:M model:} In our context, we stream operations from multiple 
+sources (i.e. nodes) and apply them to different parts of the view 
+table, located on different nodes. For we want to parallelize view 
+maintenance and improve performance to a great extent, we further relax 
+the consistency model. We do not claim the stream of a local source to 
+be in sequence. Instead, we define consistency on a record base level. 
+Every sequence of operations, that is applied to a specific row key has 
+to be in sequence. A base state $B_j$ is said to be greater than $B_i$ 
+if all operations to a specific row key in $B_i$ are included in $B_j$ 
+plus a number of subsequent operations. Formally we write $(\exists t_k 
+\in B_j)(\forall t_l \in B_i)\;k > l\;\land\; r(t_k)=r(t_l)$. Function 
+$r()$ delivers, when applied to an operation, the row key of that 
+operation. Now, we define consistency levels in agreement to the 
+N:M-model. Formally, the consistency levels of the N:M-model are 
+defined as follows:
+
+
+\begin{enumerate}
+\item \textit{Convergence}: A view table converges, if after the system
+  quiesces, the last view state $V_f$ is computed correctly. This
+  means it corresponds to the evaluation of the view expression over
+  the final base state $V_f=View(B_f)$. 
+
+\item \textit{Weak consistency} Weak consistency is given if the view
+  converges and all intermediate view states are valid, meaning that
+  there exists a base table state in the sequence of base table states
+  produced by the update sequence from which they can be derived
+  %$V_j=View(B_i)$.
+
+\item \textit{Strong consistency}: Weak consistency is achieved and the
+  following condition is true. All pairs of view states $V_i$ and
+  $V_j$ that are in a relation $V_i \leq V_j$ are derived from base
+  states $B_i$ and $B_j$ that are also in a relation $B_i \leq B_j$.
+
+\item \textit{Complete consistency}: Strong consistency is achieved
+  and every base state $B_i$ of a valid base state sequence is
+  reflected in a view state $V_i$. Valid base state sequence means
+  $B_0 \leq B_i \leq B_{i+1}\leq B_f$.
+\end{enumerate}
+
+

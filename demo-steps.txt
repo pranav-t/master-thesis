@@ -1,0 +1,73 @@
+SUMMARY:
+--***--
+0.1.  generate split points based on node configuration and data size and table schema
+0.2.  create new hbase tables pre-split with these split points
+
+1. TPC-H data files(.tbl) --put--> HDFS
+2. hbase-ImportTsv utility: transform/parse the .tbl to hbase HFiles
+3. hbase-LoadIncrementalHFiles utility:
+
+--***--
+
+
+
+
+EXECUTION STEPS:
+----------------
+
+
+-1. see cluster status on hdfs, mr-admin, and hbase web-consoles
+
+0. do cleanup
+
+	drop old hbase tables
+		hbasebin
+		./hbase shell /media/sf_shared/tpch_2_17_0/hbase-shell-scripts/drop.txt
+
+	drop temporary hdfs files/folders from last bulk load
+		hdfsbin
+		hadoop dfs -rmr /user/hduser/importtsv_output_* 
+		hadoop dfs -rmr /user/hduser/generated-data
+
+1. decide tpc-h scale factor
+	1
+
+2. decide cluster configuration
+	set it in SplitPointsGenerator.java
+
+3. generate split points for pre-splitting tables
+	using SplitPointsGenerator.java
+
+4. create new tpch tables in HBase using the generated split points
+	hbasebin
+	./hbase shell /media/sf_shared/tpch_2_17_0/hbase-shell-scripts/create-1-x.txt
+
+
+5. EXTRACT
+-----------	
+	pranav@xerces:~$ 
+		cd ~/shared/tpch_2_17_0/dbgen && ./dbgen -s 1 -v && mv *.tbl ../generated-data/1-x/
+
+	hduser@node1:
+		hdfsbin
+		hadoop dfs -put /media/sf_shared/tpch_2_17_0/generated-data/1-x/part.tbl generated-data/1-x/part.tbl
+
+
+6. TRANSFORM
+-------------
+	hduser@node1:
+
+		hbasebin
+
+		./hbase org.apache.hadoop.hbase.mapreduce.ImportTsv '-Dimporttsv.separator=|' -Dimporttsv.columns=HBASE_ROW_KEY,f:name,f:mfgr,f:brand,f:type,f:size,f:container,f:retailprice,f:comment,f:extra -Dimporttsv.bulk.output=importtsv_output_part part generated-data/1-x/part.tbl
+
+
+7. LOAD
+--------
+	hduser@node1:
+
+		hbasebin
+
+		./hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles importtsv_output_part part 
+
+

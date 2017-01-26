@@ -1,0 +1,14 @@
+su hduser
+
+hadoopbin
+hadoopconf
+
+start-hdfs
+stop-hdfs
+start-mr
+stop-mr
+
+hadoop dfs -ls
+hadoop dfs -put <localsrc> <dst>
+hadoop dfs -rm <file-name>
+hadoop dfs -rmr <folder-name>

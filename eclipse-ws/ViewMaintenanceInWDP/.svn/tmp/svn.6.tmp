@@ -1,0 +1,350 @@
+package de.webdataplatform.viewmanager;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import de.webdataplatform.basetable.BaseTableOperation;
+import de.webdataplatform.log.Log;
+import de.webdataplatform.message.Message;
+import de.webdataplatform.message.MessageClient;
+import de.webdataplatform.message.SystemID;
+import de.webdataplatform.settings.NetworkConfig;
+import de.webdataplatform.settings.SystemConfig;
+import de.webdataplatform.system.Event;
+import de.webdataplatform.system.IEventHandler;
+
+public class VMController implements Runnable, IEventHandler{
+
+	
+	
+
+	private Log log; 
+	
+	private ViewManager viewManager;
+
+	private VMDispatcher dispatcher;
+	
+	private VMSender sender;
+	
+	private IEventHandler eventHandler;
+	
+
+	public VMController(Log log, ViewManager viewManager) {
+		
+		super();
+		this.viewManager = viewManager;
+		this.log = log;
+		
+		sender = new VMSender(log, viewManager);
+		dispatcher = new VMDispatcher(log, viewManager, sender);
+		System.out.println("viewManager.getUpdateDistributor():"+viewManager.getUpdateDistributor());
+		this.eventHandler = new VMEventHandler(log, viewManager.getUpdateDistributor(), viewManager.getMetaData(), viewManager.getSystemID());
+	}
+
+
+	
+	
+	
+	public void initialize() throws Exception{
+	
+		viewManager.setCondition(Condition.INITIALIZING);
+		
+		/** register at Zookeeper */
+		
+		
+		log.info(this.getClass(),"starting message server on port:"+viewManager.getSystemID().getMessagePort());
+		viewManager.getMessageServer().start();
+		
+		log.info(this.getClass(),"starting update server on port:"+viewManager.getSystemID().getUpdatePort());
+		viewManager.getUpdateServer().start();
+		
+		log.info(this.getClass(),"start udpate distributor");
+		viewManager.getUpdateDistributor().start();
+		
+		
+		log.info(this.getClass(),"loading queries:");
+		viewManager.getQueryManager().loadQueries();
+		
+		log.info(this.getClass(),"connecting to zookeeper on address: "+NetworkConfig.ZOOKEEPER_QUORUM+":"+NetworkConfig.ZOOKEEPER_CLIENTPORT);
+		viewManager.getZooKeeperService().startup();
+		
+		boolean created=false;
+		
+//		do{
+		try{
+			log.info(this.getClass(),"creating session node");
+			created = viewManager.getZooKeeperService().createSessionNode(SystemConfig.VIEWMANAGER_ZOOKEEPERPATH+"/"+viewManager.getSystemID().toString());
+			log.info(this.getClass(),"session node created: "+created);
+		}catch(Exception e){
+			log.error(this.getClass(), e);
+		}
+
+//		}while(!created);
+		
+		if(!created)throw new Exception("Zookeeper Session node could not be created");
+		List<String> result = viewManager.getZooKeeperService().getChildren(SystemConfig.MASTER_ZOOKEEPERPATH);
+		if(result.size() == 1){
+			viewManager.setMasterID(new SystemID(result.get(0)));
+			log.info(this.getClass(),"vms master found at: "+viewManager.getMasterID());
+			
+		}else{
+			log.info(this.getClass(),"no vms master found");
+		}
+
+		
+		
+		if(SystemConfig.FAULTTOLERANCE_COMMITLOG){
+			
+//			viewManager.getProcessing().getCommitLog().createLogDirectory();
+//			viewManager.getProcessing().getCommitLog().createLogFile();
+		}
+		
+//		log.info(this.getClass(),"start pre-processing udpates");
+//		Thread tpp = new Thread(viewManager.getPreProcessing());
+		
+		log.info(this.getClass(),"start processing udpates");
+		Thread tp = new Thread(viewManager.getProcessing());
+		tp.start();
+
+		
+		
+		viewManager.setCondition(Condition.RUNNING);
+		
+//		Thread.sleep(10000);
+		
+//		log.info(this.getClass(),"loading test data");
+		
+//		viewManager.getIncomingUpdates().add(generateBtu("bt1", "k1", "c1", "x1", "c2", "y1", "c3", "10").convertToString());
+//		viewManager.getIncomingUpdates().add(generateBtu("bt1", "k2", "c1", "x2", "c2", "y1", "c3", "15").convertToString());
+//		viewManager.getIncomingUpdates().add(generateBtu("bt1", "k3", "c1", "x1", "c2", "y1", "c3", "20").convertToString());
+		
+
+	}
+	
+
+		
+
+
+
+	public static BaseTableOperation generateBtu(String table, String key, String col1, String val1, String col2,  String val2, String col3, String val3){
+	
+		Map<String, String> cols = new HashMap<String, String>();
+		Map<String, String> colFams = new HashMap<String, String>();
+		
+		cols.put(col1, val1);
+		cols.put(col2, val2);
+		cols.put(col3, val3);
+		colFams.put(col1, "colfam1");
+		colFams.put(col2, "colfam1");
+		colFams.put(col3, "colfam1");
+		
+		
+		BaseTableOperation btu = new BaseTableOperation(table, "rs1", "regionxy", 100+"",new Date().getTime()+"", key, "Put", cols, colFams);
+		
+		return btu;
+	
+	}
+
+
+	// SYSTEM EVENTS
+
+
+
+	@Override
+	public void regionServerAdded(SystemID rsID) {
+		
+		eventHandler.regionServerAdded(rsID);
+		
+	}
+
+
+	@Override
+	public void regionServerShutdown(SystemID rsID) {
+
+		eventHandler.regionServerShutdown(rsID);
+		
+	}
+
+
+	@Override
+	public void regionServerCrashed(SystemID rsID) {
+
+		eventHandler.regionServerCrashed(rsID);
+		
+	}
+
+
+	@Override
+	public void viewManagerAdded(SystemID vmID) {
+		
+		eventHandler.viewManagerAdded(vmID);
+		
+	}
+
+
+	@Override
+	public void viewManagerShutdown(SystemID vmID) {
+
+		eventHandler.viewManagerShutdown(vmID);
+		
+	}
+
+
+	@Override
+	public void viewManagerCrashed(SystemID vmID) {
+
+		eventHandler.viewManagerCrashed(vmID);
+		
+	}
+
+
+	
+	
+	public void writeStatistics(){
+		
+//		log.info(this.getClass(),"writing statistics:"+viewManager.getMasterID());
+		
+		String statusReport = viewManager.getStatisticReceived().getThroughput().get()+";";
+		statusReport += viewManager.getIncomingUpdates().size()+";";
+		
+//		statusReport += viewManager.getProcessing().getStatisticBU().getTotalUpdates().get()+";";
+		statusReport += viewManager.getProcessing().getStatisticBU().getThroughput().get()+";";
+		statusReport += viewManager.getProcessing().getStatisticBU().getAvgThroughput().get()+";";
+//		statusReport += viewManager.getProcessing().getStatisticBU().getMaxThroughput().get()+SystemConfig.MESSAGES_SPLITCONTENTSEQUENCE;
+		statusReport += viewManager.getProcessing().getStatisticBU().getAvgLatency().intValue()+";";
+		
+//		statusReport += viewManager.getProcessing().getStatisticVR().getTotalUpdates().get()+";";
+		statusReport += viewManager.getProcessing().getStatisticVR().getAvgThroughput().get()+";";
+//		statusReport += viewManager.getProcessing().getStatisticVR().getMaxThroughput().get()+SystemConfig.MESSAGES_SPLITCONTENTSEQUENCE;
+		statusReport += viewManager.getProcessing().getStatisticVR().getAvgLatency().intValue()+";";
+		
+//		statusReport += viewManager.getProcessing().getStatisticVU().getTotalUpdates().get()+";";
+		statusReport += viewManager.getProcessing().getStatisticVU().getAvgThroughput().get()+";";
+//		statusReport += viewManager.getProcessing().getStatisticVU().getMaxThroughput().get()+SystemConfig.MESSAGES_SPLITCONTENTSEQUENCE;
+		statusReport += viewManager.getProcessing().getStatisticVU().getAvgLatency()+";";
+
+//		statusReport += viewManager.getProcessing().getStatisticSent().getTotalUpdates().get()+";";
+		statusReport += viewManager.getProcessing().getStatisticSent().getAvgThroughput().get()+";";
+//		statusReport += viewManager.getProcessing().getStatisticVU().getMaxThroughput().get()+SystemConfig.MESSAGES_SPLITCONTENTSEQUENCE;
+		statusReport += viewManager.getProcessing().getStatisticSent().getAvgLatency()+";";
+		statusReport += viewManager.getProcessing().getStatisticDetail().getAvgLatency().intValue();
+		
+		viewManager.getStatisticsLog().infoAnyways(statusReport+"\n");
+		
+	}
+
+
+	
+	
+
+	private long lastMeasure = new Date().getTime();
+	private long lastMeasureStatistic = new Date().getTime();
+
+	
+
+
+	@Override
+	public void run() {
+
+		try {
+			initialize();
+		} catch (Exception e) {
+			
+			log.error(this.getClass(), e);
+
+		}
+		
+		
+		while(true){
+			
+			try{
+			
+				long currentTime = new Date().getTime();
+				
+				
+				/**send status report*/
+				if(viewManager.getMasterID() != null && (currentTime - lastMeasure) > SystemConfig.VIEWMANAGER_STATUSINTERVAL){
+					
+					lastMeasure = currentTime;
+					
+					sender.sendStatusReport();
+				
+					
+				}
+
+				
+			   if((currentTime - lastMeasureStatistic) > 1000){
+				   lastMeasureStatistic = currentTime;
+				
+ 				   writeStatistics();
+
+ 				   viewManager.getStatisticReceived().measureTroughput();
+ 				   viewManager.getProcessing().getStatisticBU().measureTroughput();
+ 				   viewManager.getProcessing().getStatisticVR().measureTroughput();
+ 				   viewManager.getProcessing().getStatisticVU().measureTroughput();
+ 				   viewManager.getProcessing().getStatisticSent().measureTroughput();
+
+					
+ 				   viewManager.getProcessing().getStatisticBU().measureLatency();
+ 				   viewManager.getProcessing().getStatisticVR().measureLatency();
+ 				   viewManager.getProcessing().getStatisticVU().measureLatency();
+ 				   viewManager.getProcessing().getStatisticSent().measureLatency();
+
+			   }
+
+				/**check for markers*/
+				if(!viewManager.getProcessing().getMarkers().keySet().isEmpty()){
+					
+					
+					Set<String> keys = viewManager.getProcessing().getMarkers().keySet();
+					
+					for(String marker : keys){
+
+						sender.sendMarkerConfirmation(viewManager.getProcessing().getMarkers().get(marker), marker);
+					}
+					for (String string : keys) {
+						viewManager.getProcessing().getMarkers().remove(string);
+					}
+				
+					
+					
+				}
+				
+				
+				/**receive incoming messages*/
+				String messageString = viewManager.getIncomingMessages().poll();
+				
+				if(messageString != null){
+					
+					Message message = new Message(messageString);
+					
+					log.message(this.getClass(),"received message: "+message);
+					
+					dispatcher.receiveMessage(message);
+				}	
+	
+				try {
+					Thread.sleep(SystemConfig.MESSAGES_POLLINGINTERVAL);
+				} catch (InterruptedException e) {
+
+					log.error(this.getClass(), e);
+				}
+		
+			}catch(Exception e){
+				log.error(this.getClass(), e);
+			}
+	
+	}
+	}
+
+
+
+
+	
+
+	
+
+}

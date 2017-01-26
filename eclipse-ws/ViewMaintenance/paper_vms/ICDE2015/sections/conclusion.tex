@@ -1,0 +1,23 @@
+\section{Conclusions}
+\label{sec:conclusion}
+
+In this paper, we developed a scalable view maintenance system, fully 
+integrated with a distributed KV-store. We demonstrated the 
+efficient, incremental, and deferred materialization of selection, 
+index, aggregation, and join views with HBase. Our approach is capable 
+to consistently maintain multiple views that may depend on each other. 
+In the spirit of KV-stores, our view maintenance architecture is 
+incrementally scalable by adding additional view managers as maintenance 
+load increases. In our approach, a stream of base table updates is 
+propagated to view tables by a bank of view managers operating in 
+parallel. To establish view table consistency, we resort to the 
+application of a number of known techniques that are combined in novel 
+ways to materialize views consistently. We also address fault tolerance 
+and recovery to react to failing view managers in our approach. Our 
+experimental evaluation quantified the benefits and cost of the approach 
+and shows that it scales linearly in view update load and number of view 
+managers running. 
+
+In future work, we aim at exploring optimizations for the maintenance of 
+multiple, overlapping view expressions and explore automatic means for 
+reacting to view maintenance load variations in our architecture. 

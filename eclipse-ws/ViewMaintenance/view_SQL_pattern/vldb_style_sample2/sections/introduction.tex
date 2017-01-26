@@ -1,0 +1,77 @@
+\section{Introduction}
+
+
+KV-stores
+Nowadays, distributed KV-stores are powerful databases to handle large amounts
+of data. They spread data over the network, thereby allowing to scale the system
+horizontally. In case of scarce resources or heavy amounts of client request, 
+the administrator can just add more nodes to relive the system. Spreading the data
+also minimizes access time to the clients and improves availability. A KV-Store is 
+optimized for high write throughput and -- due to its distributed nature -- can 
+serve thousands of client requests at a time. Since data is spread, computations 
+can be executed in parallel on multiple parts of the data sets. Likewise, the 
+distributed KV-store replicates data over multiple nodes and provides automated 
+mechanisms for fault tolerance. 
+
+KV-store weakness
+Offering all the mentioned features the KV-store avoids a complex data model and 
+sacrifices a powerful query language for a much simpler API (comprising of put, get
+and delete operations). Tables are schema-less, records are identified by a
+row key, data is stored into byte arrays. To perform analytical queries on tables, 
+we perform scans over large data sets. This implies large run times for the queries 
+and leads to performance gaps, during which clients suffer slow response times. 
+Likewise, the logic for the SQL query is executed on application side. Often times 
+code is application specific and cannot be reused later. 
+
+Known approaches 
+One solution to the problem is loading the table snapshots of KV-store into an 
+external data warehouse. Here, all kinds of analytical operations can be applied to
+the data set (in-memory technologies can be used. Since loading a complete data 
+set is a long running task and we want to provide up-to-date results, this it not
+an option. 
+
+
+
+
+VMS
+
+
+Our approach
+Materialized views are a well known concept to obtain results from a database
+and cache them for subsequent client requests. A materialized view can
+express any SQL-query and provides fast access to the query results. However,
+materialized views introduce the problem of view maintenance -- once the base
+data changes the view needs to be updated. To update the views efficiently,
+we apply the principles of deferred and incremental view maintenance. We just 
+update those part of the view that are affected by the corresponding base 
+table update. 
+
+
+In paper XY, we designed a View Maintenance System that performs
+view maintenance at scale and tackles all the related consistency issues. Now,
+we use the View Maintenance System to implement all kinds of basic view types
+(e.g. selection, aggregation, join, etc..). Then, we provide a SQL layer to
+translate SQL queries into a view maintenance plan. We use a DAG (Directed acyclic 
+graphs) to describe the query as a tree of connected materialized views (of basic 
+view types). We describe the DAG of a general SQL pattern to match any kind 
+of SQL query. Using VMS, we create and maintain the view tree in a hierarchical
+manner and provide the latest results of the query. Since each materialized view 
+adds maintenance effort, we introduce methods to optimize (i.e. merge intermediate
+views, reorder the DAG) and reduce storage, as well as computation cost.
+
+
+ 
+The paper is structured as follows: first, we define a general data model for 
+KV-stores by looking at the different
+available implementations.Then we briefly discuss the VMS designed in paper 
+XY. In the core part of the paper, in Section view types, we define the basic view
+types that can be combined to form higher level abstractions. In Section 4, we
+show how a view maintenance plan can be derived from any SQL query. We also
+optimize this maintenance plan to reduce storage and computation cost. Finally,
+we evaluate our approach in an extensive experimental study, using HBase as a
+KV-store implementation.
+
+
+
+
+

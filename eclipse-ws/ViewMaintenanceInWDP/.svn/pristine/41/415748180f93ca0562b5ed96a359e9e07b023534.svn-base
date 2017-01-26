@@ -1,0 +1,173 @@
+package de.webdataplatform.view.operation;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.mortbay.log.Log;
+
+import de.webdataplatform.basetable.BaseTableUpdate;
+import de.webdataplatform.graph.CostModel;
+import de.webdataplatform.graph.Node;
+import de.webdataplatform.parser.ColumnSequence;
+import de.webdataplatform.system.TableRecord;
+
+
+
+public class Projection extends ViewOperation{
+
+
+	private ColumnSequence select;
+	
+
+	public Projection(ColumnSequence select, boolean rowKeyChanged) {
+		super("\u03C0", rowKeyChanged);
+		this.select = select;
+		
+	}
+	
+
+	
+	
+
+
+	
+	public TableRecord projectColumns(TableRecord tableRecord)throws Exception{
+		
+//		if(projectColumns.contains("*"))return colValMap;
+		
+		Map<String, String> columns = new HashMap<String, String>();
+		Map<String, String> colFamilies = new HashMap<String, String>();
+
+
+		tableRecord = select.computeColumns(tableRecord);
+
+		
+		if(select.getColumns().size() > 0){
+			
+			String tableName = select.getColumns().get(0).getColumnName().getTable();
+			
+			if(tableName != null && tableName.equals("*")){
+				
+				return tableRecord;
+			}
+		}
+		
+		for (String colName : tableRecord.getColumns().keySet()) {
+			
+			if(select.isOutputColumn(colName)){
+				
+				columns.put(colName, tableRecord.getColumns().get(colName));
+				colFamilies.put(colName, tableRecord.getColFamilies().get(colName));
+			}
+			
+		}
+		tableRecord.setColumns(columns);
+		tableRecord.setColFamilies(colFamilies);
+		
+		return tableRecord;
+	}
+
+	@Override
+	public String getViewRecordKey(BaseTableUpdate btu) {
+
+//		if(btu.getBaseRecord()==null && (btu.getOperationType().equals("Delete") || btu.getOperationType().equals("DeleteColumn") || btu.getOperationType().equals("DeleteFamily"))){
+//			return btu.getOldBaseRecord().getKey();
+//		}
+		
+		return btu.getRecord().getKey();
+	}
+
+
+	@Override
+	public String getViewRecordKey(TableRecord baseRecord) {
+		// TODO Auto-generated method stub
+		return baseRecord.getKey();
+	}
+
+
+	
+	@Override
+	public int computeFlow(int inputFlow) {
+
+		
+		return inputFlow;
+	}
+	
+	@Override
+	public int computeCost(int outputFlow) {
+		
+		float cost = outputFlow*CostModel.PUT_WEIGHT;
+		
+		return (int)cost;
+	}
+	
+
+	@Override
+	public String toString() {
+		
+		return this.symbol+"["+select+"]";
+	}
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + select.hashCode();
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Projection other = (Projection) obj;
+		if (!select.equals(other.select))
+			return false;
+		return true;
+	}
+
+
+
+
+
+
+	@Override
+	public boolean similar(Object obj) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+
+
+
+
+	@Override
+	public Node getSplitOperation() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
+
+
+
+
+	
+
+
+	
+
+
+	
+	
+
+}

@@ -1,0 +1,44 @@
+package de.webdataplatform.basetable;
+
+import de.webdataplatform.settings.TableDefinition;
+import de.webdataplatform.system.Table;
+
+
+public class BaseTable extends Table{
+
+
+	private int inputRate;
+	
+
+	public BaseTable(String tableName, TableDefinition tableDefinition) {
+		super(tableName, tableDefinition);
+
+	}
+
+
+
+	public int getInputRate() {
+		return inputRate;
+	}
+
+
+	public void setInputRate(int inputRate) {
+		this.inputRate = inputRate;
+	}
+
+	public String toString() {
+
+		return tableName;
+	}
+
+
+
+	@Override
+	public String toExtendedString() {
+
+		return tableName;
+	}
+		
+	
+
+}

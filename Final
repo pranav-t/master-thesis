@@ -1,0 +1,30 @@
+Implementation  		(5 pages)
+---------------
+
+In this chapter the design proposed in Chapter 4 is realized.
+
+Components
+
+class/component diagrams
+
+small code snippets
+
+
+Evaluation & Results 	(15 pages)
+---------------------
+
+	Experiment Setup
+		Deployment
+		Configuration
+	Workload
+	Performance Metrics
+	Control Parameters
+	Execution(summarize general steps)
+
+	Experiments(1-n)
+	describe setup and expectated behaviour
+	plot observations and interpretations
+	
+	
+
+	Point out that when VMS is running on top of HBase the Baseic LogCleaner class is overridden. So the WAL size would grow as long as updates are not processed by VMS regardless of weather they are flushed to disk or not(which is the default behaviour).

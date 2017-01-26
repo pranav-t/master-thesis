@@ -1,0 +1,138 @@
+
+%
+%Operations are applied to a view exactly once.
+%The update of a view record is atomic.
+%The timeline of a record is always preserved.
+
+
+We say that a base state $B_j$ is greater than $B_i$ if all operations
+to a specific row key in $B_i$ are included in $B_j$ plus a number of
+subsequent operations. Formally we write $(\exists t_k \in
+B_j)(\forall t_l \in B_i)\;k > l\;\land\; r(t_k)=r(t_l)$. Function
+$r()$ delivers, when applied to an operation, the row key of that
+operation. Now, we define consistency levels in agreement to the
+N:M-model.
+
+
+\begin{enumerate}
+\item \textit{Convergence}: A view table converges, if after the system
+  quiesces, the last view state $V_f$ is computed correctly. This
+  means it corresponds to the evaluation of the view expression over
+  the final base state $V_f=View(B_f)$. 
+
+\item \textit{Weak consistency} Weak consistency is given if the view
+  converges and all intermediate view states are valid, meaning that
+  there exists a base table state in the sequence of base table states
+  produced by the update sequence from which they can be derived
+  %$V_j=View(B_i)$.
+
+\item \textit{Strong consistency}: Weak consistency is achieved and the
+  following condition is true. All pairs of view states $V_i$ and
+  $V_j$ that are in a relation $V_i \leq V_j$ are derived from base
+  states $B_i$ and $B_j$ that are also in a relation $B_i \leq B_j$.
+
+\item \textit{Complete consistency}: Strong consistency is achieved
+  and every base state $B_i$ of a valid base state sequence is
+  reflected in a view state $V_i$. Valid base state sequence means
+  $B_0 \leq B_i \leq B_{i+1}\leq B_f$.
+\end{enumerate}
+
+%Using the N:M-model relaxes the requirements for the weak and strong 
+%consistency, because more valid base states are possible. The system 
+%does not need to preserve a global even a local order of operations. 
+%Remember, we chose the N:M-model to parallelize and increase the 
+%performance of view maintenance. We could also realize the 1:N-model in 
+%our architecture by constraining the NX-VM-ratio to 1:1. Then, all local 
+%updates are forwarded to a single view manager and the operations of a 
+%node are processed in local order. 
+
+
+\noindent
+Client $\boldsymbol{c_1}$ updates $\boldsymbol{k_1}$,
+$\boldsymbol{k_2}$ (3): The client performs two update operations
+$t_1=put(A(k_1,\{\langle c_1,v_1\rangle\}))$ and
+$t_2=put(A(k_2,\{\langle c_1, v_1\rangle\}))$.  We distinguish two
+cases: $k_1$ and $k_2$ belong to the same key range (a): Both
+operations are sent to the same node. They are written to the TL in
+order. NX evaluates $h(k_1)$ followed by $h(k_2)$, selecting a VM for
+each update.  Because keys are different, different VMs may be
+selected.  $k_1$ and $k_2$ belong to different key ranges (b): Two
+different regions may be hosted on the same region server, which
+corresponds to the case above. They may also be hosted on different
+nodes, then, the two operations are sent to different VMs. Thus, we
+conclude for both cases that operations on different keys may be
+propagated by different VMs. Let the system forward $t_1$ to $VM_1$
+and $t_2$ to $VM_2$. If $VM_1$ is slower than $VM_2$ or has a larger
+queue, then $VM_2$ applies its operation to the view table
+first. Therefore, given the input order $t_1$, $t_2$, the order of
+propagation by VMs may differ.
+
+
+\noindent
+Client $\boldsymbol{c_1}$ updates $\boldsymbol{k_1}$, client
+$\boldsymbol{c_2}$ updates $\boldsymbol{k_2}$: Updating different row
+keys, via different clients leads to the same result as the previous
+case: The order of operations is not predicatable.
+
+%In this section, we develop a consistency model for view maintenance in 
+%KV-stores. This model defines a number of consistency levels, which can 
+%be used to measure consistency. Then, we define the general 
+%requirements, that have to be full-filled by a VMS, to achieve the level 
+%of strong consistency. Finally, we show that our VMS is able to match 
+%these requirements and, thus, achieve strong consistency. 
+
+
+% \textbf{1:1-model:} The very early models contain nothing but a base 
+%table on one node (i.e. a standalone database) and a view table on 
+%another node (i.e. the data warehouse) \cite{zhuge:view}. The base table 
+%is denoted as $B$ and the view table as $V$. Once operations $t_1..t_n 
+%\in T$ are applied to the base table $B$, the base table changes its 
+%state. This leads to different \textit{base states} that are denoted as 
+%$B_0..B_i..B_f$. The initial state of the base table is $B_0$. Every 
+%operation on the base table produces a new base state until the final 
+%state $B_f$ is reached. The operator $\leq$ is used to express the 
+%relation between states, e.g. $B_i \leq B_j$. A state $B_j$ is said to 
+%be greater than a state $B_i$ if $B_j$ contains all operations of $B_i$ 
+%plus a number of subsequent operations. Formally, we demand $(\forall t 
+%\in B_i)\;t \in B_j$ and $(\exists t_k \in B_j)(\forall t_l \in B_i)\;k 
+%> l $. The view table in the data warehouse also consists of a series of 
+%\textit{view states} $V_0..V_j..V_f$. Consistency is analysed by 
+%comparing the system's view states with the theoretical correct view 
+%states, derived from the appropriate base state. We derive the correct 
+%view state by applying function $View(B)$. Thus, we say a view state 
+%corresponds to a base state when $V_j=View(B_i)$. 
+%
+%
+%\textbf{1:N model:} In a next step, the consistency model was extended 
+%to describe view maintenance in a multi-source data 
+%warehouse\cite{zhuge:strobe}. Here, the data warehouse is still located 
+%on one node, but the base table information is consumed from $n$ 
+%different source nodes. Operations on a single source are serializable 
+%and executed in sequence. However, operations from different sources 
+%doesn't need to preserve ordering. The base table states are defined as 
+%$B_0..B_i..B_f$. The definition $\leq$ can be applied between the 
+%produced states, again. But, in order to match the relaxed ordering 
+%requirements, we have to extend the declaration from before to $(\exists 
+%t_k \in B_j)(\forall t_l \in B_i)\;k > l\;\land\;s(t_k)=s(t_l)$. 
+%Function $s()$ delivers, when applied to an operation, the source from 
+%which the operation originated. However, two operations on different 
+%sources are processed in parallel, allowing two possible intermediary 
+%base states $B_i$ and $B_j$. $B_i$ does not contain all operations of 
+%$B_j$ and vice versa. Thus, $B_i$ and $B_j$ are neither $\leq$ nor 
+%$\geq$. We denote this relation as $B_i \parallel B_j$. As already 
+%stated, this extended model represents a relaxation to the original 
+%model. We do not claim global serializability of operations any more. 
+
+
+
+
+----- Cut from Fault Tolerance
+
+In the next step, the coordinator sends two messages to the
+responsible node, respectively the NX. The first message advices the
+NX to withdraw the crashed VM from its hash-ring and to stop sending
+operations to it.  Then, NX replays the node's TL from the smalles
+sequence ID onward, dispatching operations to the available VMs. The
+TL's current pointer is reset to the earlier point in the log to avoid
+issues that may arrise from a node crash interferring with this
+recovery procedure.

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<setup>
+<tableconfig>
+     	<table>
+   		    <name>bt1</name>
+   		    <primaryKey>
+   		        <prefix>k</prefix>
+   		        <startRange>1</startRange>
+   		        <endRange>101</endRange>
+   		    </primaryKey>
+   		    <numRegions>5</numRegions>
+   		    <column>
+   		        <name>colAggKey</name>
+   		        <family>colfam1</family>
+   		        <prefix>x</prefix>
+   		        <startRange>1</startRange>
+   		        <endRange>101</endRange>
+   		    </column>
+   		    <column>
+   		        <name>colAggVal</name>
+   		        <family>colfam1</family>
+   		        <prefix></prefix>
+   		        <startRange>1</startRange>
+   		        <endRange>101</endRange>
+   		    </column>   		    
+   		</table>
+   		<table>
+   		    <name>bt2</name>
+   		    <primaryKey>
+   		        <prefix>l</prefix>
+   		        <startRange>1</startRange>
+   		        <endRange>1001</endRange>
+   		    </primaryKey>
+   		    <numRegions>5</numRegions>
+   		    <column>
+   		        <name>colAggKey</name>
+   		        <family>colfam1</family>
+   		        <prefix>x</prefix>
+   		        <startRange>1</startRange>
+   		        <endRange>1001</endRange>
+   		    </column>
+   		    <column>
+   		        <name>colAggVal</name>
+   		        <family>colfam1</family>
+   		        <prefix></prefix>
+   		        <startRange>1</startRange>
+   		        <endRange>101</endRange>
+   		    </column>   		    
+   		</table>
+        <table>
+            <name>bt3</name>
+            <primaryKey>
+                <prefix>l</prefix>
+                <startRange>1</startRange>
+                <endRange>1001</endRange>
+            </primaryKey>
+            <numRegions>5</numRegions>
+            <column>
+                <name>colAggKey</name>
+                <family>colfam1</family>
+                <prefix>x</prefix>
+                <startRange>1</startRange>
+                <endRange>1001</endRange>
+            </column>
+            <column>
+                <name>colAggVal</name>
+                <family>colfam1</family>
+                <prefix></prefix>
+                <startRange>1</startRange>
+                <endRange>101</endRange>
+            </column>
+        </table>
+     </tableconfig>
+
+</setup>
+
+
+
+
+   						
+					
+					

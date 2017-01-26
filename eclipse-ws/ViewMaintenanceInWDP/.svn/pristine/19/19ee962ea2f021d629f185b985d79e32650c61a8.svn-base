@@ -1,0 +1,140 @@
+package de.webdataplatform.view.operation;
+
+import de.webdataplatform.basetable.BaseTableUpdate;
+import de.webdataplatform.graph.CostModel;
+import de.webdataplatform.graph.Node;
+import de.webdataplatform.parser.ColumnSequence;
+import de.webdataplatform.system.TableRecord;
+
+
+
+public class Delta extends ViewOperation{
+
+
+	private ColumnSequence select;
+	
+
+	public Delta(boolean rowKeyChanged) {
+		super("\u03B4", rowKeyChanged);
+		
+	}
+	
+
+
+
+
+
+	@Override
+	public String getViewRecordKey(BaseTableUpdate btu) {
+
+		return btu.getRecord().getKey();
+	}
+
+
+	@Override
+	public String getViewRecordKey(TableRecord baseRecord) {
+
+		return baseRecord.getKey();
+	}
+	
+	
+
+
+	@Override
+	public String toString() {
+		
+		return this.symbol+"[]";
+	}
+
+	
+	@Override
+	public int computeFlow(int inputFlow) {
+
+		return inputFlow;
+	}
+	
+	@Override
+	public int computeCost(int outputFlow) {
+		
+		float cost = outputFlow*CostModel.PUT_WEIGHT+outputFlow*CostModel.GET_WEIGHT;
+		
+		return (int)cost;
+	}
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result;
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		return true;
+	}
+
+
+	@Override
+	public boolean similar(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+
+		return true;
+	}
+
+
+
+
+
+
+	@Override
+	public Node getSplitOperation() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
+
+	
+
+
+//
+//	@Override
+//	public boolean equivalent(Operation operation) {
+//		
+//		if(!operation.getSymbol().equals(symbol))return false;
+//		else{
+//			
+//			Delta delta = (Delta)operation;
+//			for (int i = 0; i < columns.length; i++) {
+//				for (int j = 0; j < delta.getColumns().length; j++) {
+//					if(columns[i] != delta.getColumns()[j])return false;
+//				}
+//			}
+//			
+//		}
+//		
+//		
+//		return true;
+//	}
+
+
+	
+	
+
+}

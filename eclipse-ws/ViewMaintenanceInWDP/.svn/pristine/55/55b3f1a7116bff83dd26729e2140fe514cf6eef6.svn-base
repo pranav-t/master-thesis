@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<setup>
+	<evalconfig>
+	    <basetables>
+	        <table>bt1</table>
+	        <table>bt2</table>
+	    </basetables>
+	    <tasks>
+	        <task>task1</task>
+	        <task>task2</task>
+	    </tasks>
+	    <queries>
+		    <query>select bt1.c1 from bt1 where bt1.c2 &lt; 20</query>
+		    <query>select bt1.c1, sum(bt1.c3) as sum1, count(bt1.c3) as count1 from bt1 pre group by bt1.c1, bt1.c2</query>
+		    <query>select * from bt1, bt2, bt3 where bt1.c1 = bt2.d1 and bt2.d2 = bt3.e1</query>
+	    </queries>
+	</evalconfig>	  
+</setup>
